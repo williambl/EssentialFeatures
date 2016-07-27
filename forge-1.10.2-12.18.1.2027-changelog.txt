@@ -1,0 +1,7 @@
+Changelog:
+Build 1.10.2-12.18.1.2027:
+	cpw:
+		Fix a vanilla bug with the blockstate ID map not being properly
+		symmetric with respect to block.getStateFromMeta - closes #3012 properly
+		but probably has a random MCJIRA ticket somewhere too.
+
