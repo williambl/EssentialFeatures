@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "essentialfeatures:blocks/ViewedBlock",
+    "down": "essentialfeatures:blocks/ViewedBlock",
+    "up": "essentialfeatures:blocks/ViewedBlockTop",
+    "east": "essentialfeatures:blocks/ViewedBlock",
+    "west": "essentialfeatures:blocks/ViewedBlock",
+    "north": "essentialfeatures:blocks/ViewedBlock",
+    "south": "essentialfeatures:blocks/ViewedBlock"
+  }
+}
