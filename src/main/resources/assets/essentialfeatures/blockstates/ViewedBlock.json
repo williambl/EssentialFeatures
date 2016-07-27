@@ -6,7 +6,8 @@
   "variants": {
 
     	"inventory": [{}],
+		"powered=false": [{}],
+		"powered=true": [{}]
 
-		"normal": {"model": "essentialfeatures:ViewedBlock"},
 	}
 }

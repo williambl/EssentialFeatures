@@ -7,7 +7,7 @@ public class ModBlocks {
 	public static BlockViewedBlock viewedBlock;
 	
 	public static void addBlocks() {
-        viewedBlock = new BlockViewedBlock("ViewedBlock", Material.ROCK, 5, 5);
+        viewedBlock = new BlockViewedBlock("viewedblock", Material.ROCK, 5, 5);
     }
 
 	public static void initModels() {
