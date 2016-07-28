@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "essentialfeatures:ViewedBlock"
+  },
+  "variants": {
+
+    	"inventory": [{}],
+		"powered=false": [{}],
+		"powered=true": [{}]
+
+	}
+}
