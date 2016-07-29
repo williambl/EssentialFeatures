@@ -15,7 +15,7 @@ public class BlockSmoothGlowstone extends Block {
 
 	public BlockSmoothGlowstone(String registryName, Material material, float hardness, float resistance) {
         super(material);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
+        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
