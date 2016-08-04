@@ -3,6 +3,7 @@ package net.anti_quark.EssentialFeatures.common.block;
 import java.util.List;
 import java.util.Random;
 
+import net.anti_quark.EssentialFeatures.common.item.ItemStainedLamp;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneLight;
 import net.minecraft.block.material.Material;
@@ -42,9 +43,10 @@ public class BlockStainedLamp extends Block {
         if (isOn)
         {
             this.setLightLevel(1.0F);
+            this.setCreativeTab(null);
         }
         GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.register(new ItemStainedLamp(this, true), getRegistryName());
 	}
 
     @SideOnly(Side.CLIENT)
@@ -83,12 +85,10 @@ public class BlockStainedLamp extends Block {
         {
             if (this.isOn && !worldIn.isBlockPowered(pos))
             {
-                worldIn.setBlockState(pos, ModBlocks.stainedLamp.getDefaultState(), 2);
-            }
+            	worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
             else if (!this.isOn && worldIn.isBlockPowered(pos))
             {
-                worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState(), 2);
-            }
+            	worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
         }
     }
     
@@ -102,8 +102,7 @@ public class BlockStainedLamp extends Block {
             }
             else if (!this.isOn && worldIn.isBlockPowered(pos))
             {
-                worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState(), 2);
-            }
+            	worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
         }
     }
     
@@ -113,8 +112,13 @@ public class BlockStainedLamp extends Block {
         {
             if (this.isOn && !worldIn.isBlockPowered(pos))
             {
-                worldIn.setBlockState(pos, ModBlocks.stainedLamp.getDefaultState(), 2);
+                worldIn.setBlockState(pos, ModBlocks.stainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
             }
         }
+    }
+    
+    public int damageDropped(IBlockState state)
+    {
+        return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
     }
 }
