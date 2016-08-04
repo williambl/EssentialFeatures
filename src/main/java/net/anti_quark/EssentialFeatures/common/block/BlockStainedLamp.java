@@ -46,7 +46,7 @@ public class BlockStainedLamp extends Block {
             this.setCreativeTab(null);
         }
         GameRegistry.register(this);
-        GameRegistry.register(new ItemStainedLamp(this, true), getRegistryName());
+        GameRegistry.register(new ItemStainedLamp(this, true, new String[]{}), getRegistryName());
 	}
 
     @SideOnly(Side.CLIENT)

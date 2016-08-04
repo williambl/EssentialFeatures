@@ -6,6 +6,7 @@ public class ModBlocks {
 
 	public static BlockViewedBlock viewedBlock;
 	public static BlockSmoothGlowstone smoothGlowstone;
+	public static BlockPolishedGlowstone polishedGlowstone;
 	public static BlockStainedLamp stainedLamp;
 	public static BlockStainedLamp litStainedLamp;
 	
@@ -15,6 +16,7 @@ public class ModBlocks {
         smoothGlowstone = new BlockSmoothGlowstone("smoothglowstone", Material.GLASS, 1, 2);
         stainedLamp = new BlockStainedLamp("stainedlamp", Material.GLASS, 0.3F, 1.5F, false);
         litStainedLamp = new BlockStainedLamp("litstainedlamp", Material.GLASS, 0.3F, 1.5F, true);
+        polishedGlowstone = new BlockPolishedGlowstone("polishedglowstone", Material.GLASS, 1, 2);
     }
 
 	public static void initModels() 
@@ -23,5 +25,6 @@ public class ModBlocks {
 		smoothGlowstone.initModel();
 		stainedLamp.initModel();
 		litStainedLamp.initModel();
+		polishedGlowstone.initModel();
 	}
 }

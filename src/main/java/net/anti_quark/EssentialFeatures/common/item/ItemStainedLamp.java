@@ -9,13 +9,14 @@ public class ItemStainedLamp extends ItemBlock {
 	
 	private String[] subtypeNames;
 
-	public ItemStainedLamp(Block block, boolean hasSubtypes) {
+	public ItemStainedLamp(Block block, boolean hasSubtypes, String[] names) {
 		super(block);
 		
         if (hasSubtypes)
         {
             this.setMaxDamage(0);
             this.setHasSubtypes(true);
+            this.setSubtypeNames(names);
         }
 	}
 	
