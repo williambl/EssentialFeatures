@@ -20,6 +20,7 @@ public class BlockSmoothGlowstone extends Block {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setSoundType(blockSoundType.GLASS);
         this.setLightLevel(1F);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

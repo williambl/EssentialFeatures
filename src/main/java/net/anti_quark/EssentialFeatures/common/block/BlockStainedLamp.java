@@ -39,6 +39,7 @@ public class BlockStainedLamp extends Block {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setSoundType(blockSoundType.GLASS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
         this.isOn = isOn;
         if (isOn)
