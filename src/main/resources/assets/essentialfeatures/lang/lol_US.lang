@@ -19,3 +19,5 @@ tile.essentialfeatures:stainedlamp.brown.name=Brown staind glow thing
 tile.essentialfeatures:stainedlamp.green.name=Green staind glow thing
 tile.essentialfeatures:stainedlamp.red.name=Red staind glow thing
 tile.essentialfeatures:stainedlamp.black.name=Black staind glow thing
+
+entity.Villager.mechanic=mecanik

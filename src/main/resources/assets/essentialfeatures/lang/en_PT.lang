@@ -19,3 +19,5 @@ tile.essentialfeatures:stainedlamp.brown.name=Brown Magic Glow Block
 tile.essentialfeatures:stainedlamp.green.name=Green Magic Glow Block
 tile.essentialfeatures:stainedlamp.red.name=Red Magic Glow Block
 tile.essentialfeatures:stainedlamp.black.name=Black Magic Glow Block
+
+entity.Villager.mechanic=Magic Circuit Maker
