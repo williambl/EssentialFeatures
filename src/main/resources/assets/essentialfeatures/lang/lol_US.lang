@@ -1,3 +1,21 @@
 tile.essentialfeatures:viewedblock.name=look at the bluk
+
 tile.essentialfeatures:smoothglowstone.name=smoth glowy rock
 tile.essentialfeatures:polishedglowstone.name=polishd glowy rock
+
+tile.essentialfeatures:stainedlamp.white.name=staind glow thing
+tile.essentialfeatures:stainedlamp.orange.name=Orange staind glow thing
+tile.essentialfeatures:stainedlamp.magenta.name=Magenta staind glow thing
+tile.essentialfeatures:stainedlamp.light_blue.name=Light Blue staind glow thing
+tile.essentialfeatures:stainedlamp.yellow.name=Yellow staind glow thing
+tile.essentialfeatures:stainedlamp.lime.name=Lime staind glow thing
+tile.essentialfeatures:stainedlamp.pink.name=Pink staind glow thing
+tile.essentialfeatures:stainedlamp.gray.name=Grey staind glow thing
+tile.essentialfeatures:stainedlamp.silver.name=Light Grey staind glow thing
+tile.essentialfeatures:stainedlamp.cyan.name=Cyan staind glow thing
+tile.essentialfeatures:stainedlamp.purple.name=Purple staind glow thing
+tile.essentialfeatures:stainedlamp.blue.name=Blue staind glow thing
+tile.essentialfeatures:stainedlamp.brown.name=Brown staind glow thing
+tile.essentialfeatures:stainedlamp.green.name=Green staind glow thing
+tile.essentialfeatures:stainedlamp.red.name=Red staind glow thing
+tile.essentialfeatures:stainedlamp.black.name=Black staind glow thing

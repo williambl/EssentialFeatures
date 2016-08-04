@@ -1,3 +1,24 @@
 tile.essentialfeatures:viewedblock.name=Viewed Block
+
 tile.essentialfeatures:smoothglowstone.name=Smooth Glowstone
 tile.essentialfeatures:polishedglowstone.name=Polished Glowstone
+
+tile.essentialfeatures:stainedlamp.white.name=Stained Lamp
+tile.essentialfeatures:stainedlamp.orange.name=Orange Stained Lamp
+tile.essentialfeatures:stainedlamp.magenta.name=Magenta Stained Lamp
+tile.essentialfeatures:stainedlamp.light_blue.name=Light Blue Stained Lamp
+tile.essentialfeatures:stainedlamp.yellow.name=Yellow Stained Lamp
+tile.essentialfeatures:stainedlamp.lime.name=Lime Stained Lamp
+tile.essentialfeatures:stainedlamp.pink.name=Pink Stained Lamp
+tile.essentialfeatures:stainedlamp.gray.name=Gray Stained Lamp
+tile.essentialfeatures:stainedlamp.silver.name=Light Gray Stained Lamp
+tile.essentialfeatures:stainedlamp.cyan.name=Cyan Stained Lamp
+tile.essentialfeatures:stainedlamp.purple.name=Purple Stained Lamp
+tile.essentialfeatures:stainedlamp.blue.name=Blue Stained Lamp
+tile.essentialfeatures:stainedlamp.brown.name=Brown Stained Lamp
+tile.essentialfeatures:stainedlamp.green.name=Green Stained Lamp
+tile.essentialfeatures:stainedlamp.red.name=Red Stained Lamp
+tile.essentialfeatures:stainedlamp.black.name=Black Stained Lamp
+
+
+

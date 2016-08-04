@@ -5,6 +5,8 @@
   },
   "variants": {
 
+  		"inventory": [{}],
+
 		"color=white": { "model": "essentialfeatures:whitestainedlamp" },
 		"color=orange": { "model": "essentialfeatures:orangestainedlamp" },
 		"color=magenta": { "model": "essentialfeatures:magentastainedlamp" },

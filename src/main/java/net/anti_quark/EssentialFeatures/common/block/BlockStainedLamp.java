@@ -30,6 +30,7 @@ public class BlockStainedLamp extends Block {
 	
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
     private final boolean isOn;
+    private static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 
 	public BlockStainedLamp(String registryName, Material material, float hardness, float resistance, boolean isOn) {
         super(material);
@@ -46,12 +47,22 @@ public class BlockStainedLamp extends Block {
             this.setCreativeTab(null);
         }
         GameRegistry.register(this);
-        GameRegistry.register(new ItemStainedLamp(this, true, new String[]{}), getRegistryName());
+        GameRegistry.register(new ItemStainedLamp(this, true, names), getRegistryName());
 	}
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
+    	
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        if (!isOn)
+        {
+        	for (int x = 1; x < 16; x++)
+        	{
+                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), x, new ModelResourceLocation(getRegistryName() + names[x], "inventory"));
+        	}
+        }
+
+            
     }
     
     @Override
