@@ -27,6 +27,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		IBlockState blockstate = worldObj.getBlockState(getPos());
 		BlockViewedBlock block = (BlockViewedBlock) worldObj.getBlockState(getPos()).getBlock();
 		wasLookingLastTime = block.isPowered(blockstate);
+		BlockPos thisPos = getPos();
 
 		boolean isNowLooking = false;
 		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos.getX()-radius,this.pos.getY()-radius,this.pos.getZ()-radius,this.pos.getX()+radius,this.pos.getY()+radius,this.pos.getZ()+radius));
@@ -36,26 +37,30 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		{
 			if (!isNowLooking) 
 			{
-			isNowLooking = checkIfLooking(player);
+			isNowLooking = checkIfLooking(player, thisPos);
 			}
 		}
 		
 		if (wasLookingLastTime != isNowLooking) 
 		{
-			if (isNowLooking) {block.activate(worldObj, getPos(), blockstate);} else {block.deactivate(worldObj, getPos(), blockstate);}
+			if (isNowLooking) {block.activate(worldObj, thisPos, blockstate);} else {block.deactivate(worldObj, thisPos, blockstate);}
 		}
 	}
 	
-	public boolean checkIfLooking(EntityPlayer player) {
+	public boolean checkIfLooking(EntityPlayer player, BlockPos thisPos) {
 		//float playerPitch = player.rotationPitch;
 		//float playerYaw = player.rotationYawHead;
 		
 		RayTraceResult rayPos = player.rayTrace(50, 1F);
 		BlockPos pos = rayPos.getBlockPos();
 		
-		if (worldObj.getBlockState(pos).getBlock() instanceof BlockViewedBlock)
+		System.out.println("me " + thisPos);
+		System.out.println("look " + pos);
+		System.out.println(pos == thisPos);
+		
+		if (thisPos == pos)
         {
-           return true;
+            return true;
         }
 		
 		return false;
