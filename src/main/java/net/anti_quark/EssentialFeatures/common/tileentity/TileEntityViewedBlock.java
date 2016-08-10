@@ -58,7 +58,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		System.out.println("look " + pos);
 		System.out.println(pos == thisPos);
 		
-		if (thisPos == pos)
+		if (thisPos.equals(pos))
         {
             return true;
         }
