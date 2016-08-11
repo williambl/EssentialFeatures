@@ -20,6 +20,7 @@ public class ItemStainedLamp extends ItemBlock {
         }
 	}
 	
+    @Override
     public int getMetadata(int damage)
     {
         return damage;
@@ -31,6 +32,7 @@ public class ItemStainedLamp extends ItemBlock {
         return this;
     }
     
+    @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         if (this.subtypeNames == null)

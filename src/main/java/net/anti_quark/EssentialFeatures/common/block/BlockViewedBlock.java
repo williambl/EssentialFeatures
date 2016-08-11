@@ -53,7 +53,6 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         world.removeTileEntity(pos);
     }
 	
-    @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
@@ -76,11 +75,13 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
 		return new BlockStateContainer(this, new IProperty[]{POWERED});
 	}
     
+    @Override
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(POWERED, Boolean.valueOf((meta & 1) > 0));
     }
 
+    @Override
     public int getMetaFromState(IBlockState state)
     {
         return ((Boolean)state.getValue(POWERED)).booleanValue() ? 1 : 0;
@@ -95,7 +96,7 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
     {
     	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.valueOf(false)));
     }
-    
+   
     public boolean isPowered (IBlockState blockstate)
     {
 		return ((Boolean)blockstate.getValue(POWERED)).booleanValue();

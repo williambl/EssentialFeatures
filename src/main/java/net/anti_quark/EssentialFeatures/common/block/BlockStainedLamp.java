@@ -51,7 +51,6 @@ public class BlockStainedLamp extends Block {
         GameRegistry.register(new ItemStainedLamp(this, true, names), getRegistryName());
 	}
 
-    @SideOnly(Side.CLIENT)
     public void initModel() {
     	
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
@@ -72,17 +71,19 @@ public class BlockStainedLamp extends Block {
 		return new BlockStateContainer(this, new IProperty[]{COLOR});
 	}
     
+    @Override
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
     }
 
+    @Override
     public int getMetaFromState(IBlockState state)
     {
         return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
     }
     
-    @SideOnly(Side.CLIENT)
+    @Override
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
         for (EnumDyeColor enumdyecolor : EnumDyeColor.values())
@@ -91,6 +92,7 @@ public class BlockStainedLamp extends Block {
         }
     }
     
+    @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)
@@ -104,6 +106,7 @@ public class BlockStainedLamp extends Block {
         }
     }
     
+    @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
     {
         if (!worldIn.isRemote)
@@ -118,6 +121,7 @@ public class BlockStainedLamp extends Block {
         }
     }
     
+    @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         if (!worldIn.isRemote)
@@ -129,6 +133,7 @@ public class BlockStainedLamp extends Block {
         }
     }
     
+    @Override
     public int damageDropped(IBlockState state)
     {
         return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
