@@ -15,7 +15,7 @@ public class EssentialFeatures {
 	public static EssentialFeatures instance;
 	
     public static final String MODID = "essentialfeatures";
-    public static final String VERSION = "1.2";
+    public static final String VERSION = "1.2.1";
     
     @SidedProxy(clientSide="net.anti_quark.EssentialFeatures.client.ClientProxy", serverSide="net.anti_quark.EssentialFeatures.server.ServerProxy")
     public static CommonProxy proxy;

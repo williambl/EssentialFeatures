@@ -54,10 +54,6 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		RayTraceResult rayPos = player.rayTrace(50, 1F);
 		BlockPos pos = rayPos.getBlockPos();
 		
-		System.out.println("me " + thisPos);
-		System.out.println("look " + pos);
-		System.out.println(pos == thisPos);
-		
 		if (thisPos.equals(pos))
         {
             return true;
