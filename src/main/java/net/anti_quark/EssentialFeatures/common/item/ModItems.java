@@ -4,10 +4,10 @@ import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
 
 public class ModItems {
 	
-
+	public static ItemCereal itemCereal;
 	
 	public static void addItems () 
 	{
-
+		itemCereal = new ItemCereal("cereal", 1, 6);
 	}
 }
