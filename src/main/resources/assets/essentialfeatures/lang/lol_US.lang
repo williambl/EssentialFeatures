@@ -24,4 +24,5 @@ entity.Villager.mechanic=mecanik
 
 tile.essentialfeatures:snowbrick.name=sno brik
 
-item.essentialfeatures:cereal.name=crl
+item.essentialfeatures:cereal.name=ceral
+item.essentialfeatures:iron_cereal.name=irn ceral

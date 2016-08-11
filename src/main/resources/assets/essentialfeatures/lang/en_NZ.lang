@@ -25,3 +25,4 @@ entity.Villager.mechanic=Mechanic
 tile.essentialfeatures:snowbrick.name=Snow Brick
 
 item.essentialfeatures:cereal.name=Cereal
+item.essentialfeatures:iron_cereal.name=Iron-Fortified Cereal
