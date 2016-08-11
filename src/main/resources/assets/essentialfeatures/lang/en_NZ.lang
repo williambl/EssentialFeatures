@@ -23,3 +23,5 @@ tile.essentialfeatures:stainedlamp.black.name=Black Stained Lamp
 entity.Villager.mechanic=Mechanic
 
 tile.essentialfeatures:snowbrick.name=Snow Brick
+
+item.essentialfeatures:cereal.name=Cereal
