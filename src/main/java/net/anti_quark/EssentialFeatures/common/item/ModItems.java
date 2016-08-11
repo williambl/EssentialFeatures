@@ -10,4 +10,9 @@ public class ModItems {
 	{
 		itemCereal = new ItemCereal("cereal", 1, 6);
 	}
+	
+	public static void initModels ()
+	{
+		itemCereal.initModel();
+	}
 }

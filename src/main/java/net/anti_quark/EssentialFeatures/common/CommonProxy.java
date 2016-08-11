@@ -9,10 +9,10 @@ public class CommonProxy {
 
 	public void preInit() {
 		ModBlocks.addBlocks();
+		ModItems.addItems();
 	}
 
 	public void init() {
-		ModItems.addItems();
 		ModRecipes.addRecipes();
 		ModEntities.addVillagers();
 	}

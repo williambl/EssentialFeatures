@@ -2,6 +2,7 @@ package net.anti_quark.EssentialFeatures.common.item;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
@@ -9,7 +10,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCereal extends ItemFood {
 
@@ -26,6 +30,11 @@ public class ItemCereal extends ItemFood {
     {
         super.onItemUseFinish(stack, worldIn, entityLiving);
         return new ItemStack(Items.BOWL);
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
 }
