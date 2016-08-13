@@ -53,6 +53,7 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         world.removeTileEntity(pos);
     }
 	
+    @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
