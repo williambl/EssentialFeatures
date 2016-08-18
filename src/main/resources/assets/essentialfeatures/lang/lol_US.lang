@@ -26,3 +26,5 @@ tile.essentialfeatures:snowbrick.name=sno brik
 
 item.essentialfeatures:cereal.name=ceral
 item.essentialfeatures:iron_cereal.name=irn ceral
+
+tile.essentialfeatures:blockbreaker.name=blck smashr

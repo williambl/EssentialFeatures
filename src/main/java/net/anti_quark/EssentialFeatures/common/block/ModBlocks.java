@@ -10,6 +10,7 @@ public class ModBlocks {
 	public static BlockStainedLamp stainedLamp;
 	public static BlockStainedLamp litStainedLamp;
 	public static BlockSnowBrick snowBrick;
+	public static BlockBlockBreaker blockBreaker;
 	
 	public static void addBlocks() 
 	{
@@ -19,6 +20,7 @@ public class ModBlocks {
         litStainedLamp = new BlockStainedLamp("litstainedlamp", Material.GLASS, 0.3F, 1.5F, true);
         polishedGlowstone = new BlockPolishedGlowstone("polishedglowstone", Material.GLASS, 1, 2);
         snowBrick = new BlockSnowBrick("snowbrick", Material.ROCK, 1, 1);
+        blockBreaker = new BlockBlockBreaker("blockbreaker", Material.ROCK, 5, 5);
     }
 
 	public static void initModels() 
@@ -29,5 +31,6 @@ public class ModBlocks {
 		litStainedLamp.initModel();
 		polishedGlowstone.initModel();
 		snowBrick.initModel();
+		blockBreaker.initModel();
 	}
 }

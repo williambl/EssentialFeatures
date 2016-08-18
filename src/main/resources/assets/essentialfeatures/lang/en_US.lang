@@ -27,3 +27,5 @@ tile.essentialfeatures:snowbrick.name=Snow Brick
 
 item.essentialfeatures:cereal.name=Cereal
 item.essentialfeatures:iron_cereal.name=Iron-Fortified Cereal
+
+tile.essentialfeatures:blockbreaker.name=Block Breaker

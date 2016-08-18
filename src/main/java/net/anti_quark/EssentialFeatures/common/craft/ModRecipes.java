@@ -14,11 +14,15 @@ public class ModRecipes {
 	public static void addRecipes () 
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.viewedBlock), new Object[] { "qrq", "r*r", "qrq", 'q', Items.QUARTZ, 'r', Items.REDSTONE, '*', Items.ENDER_EYE });
+		
 		GameRegistry.addSmelting(Blocks.GLOWSTONE, new ItemStack(ModBlocks.smoothGlowstone), 1.0F);
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.polishedGlowstone), new Object[] { "ss", "ss", 's', ModBlocks.smoothGlowstone});
+		
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.snowBrick), new Object[] { "ss", "ss", 's', Blocks.SNOW});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.itemCereal), new Object[] {"w", "m", "b", 'w', Items.WHEAT, 'm', Items.MILK_BUCKET, 'b', Items.BOWL});
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.itemIronCereal), new Object[] {"iii", "ici", "iii", 'i', Items.IRON_INGOT, 'c', ModItems.itemCereal});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockBreaker), new Object[] {"cpc", "crc", "crc", 'c', Blocks.COBBLESTONE, 'p', Items.DIAMOND_PICKAXE, 'r', Items.REDSTONE});
 	}
 }
