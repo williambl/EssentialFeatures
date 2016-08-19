@@ -2,16 +2,12 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "north": "essentialfeatures:blocks/blockbreaker_inner",
-            "east": "essentialfeatures:blocks/blockbreaker_side",
-            "south": "blocks/piston_bottom",
-            "west": "essentialfeatures:blocks/blockbreaker_side",
-            "up": "essentialfeatures:blocks/blockbreaker_side",
-            "down": "essentialfeatures:blocks/blockbreaker_side",
-            "particle": "essentialfeatures:blocks/blockbreaker_side"
+            "platform": "essentialfeatures:blocks/blockbreaker_inner",
+            "side": "essentialfeatures:blocks/blockbreaker_side",
+            "bottom": "blocks/piston_bottom"
         },
-        "model": "cube_directional",
-        "uvlock": true
+        "model": "essentialfeatures:directionable",
+        "uvlock": false
     },
     "variants": {
         "normal": [{}],
