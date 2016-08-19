@@ -10,7 +10,7 @@
             "down": "essentialfeatures:blocks/blockbreaker_side",
             "particle": "essentialfeatures:blocks/blockbreaker_side"
         },
-        "model": "cube_orientable",
+        "model": "cube_directional",
         "uvlock": true
     },
     "variants": {
