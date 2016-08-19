@@ -1,4 +1,6 @@
 {
+    "parent": "block/block",
+    
     "textures": {
         "particle": "#side"
     },
@@ -15,4 +17,4 @@
             }
         }
     ]
-}
+} 

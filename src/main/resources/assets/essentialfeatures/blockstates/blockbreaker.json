@@ -11,7 +11,15 @@
     },
     "variants": {
         "normal": [{}],
-        "inventory":[{}],
+        "inventory":{
+            "model":"cube_bottom_top", 
+
+            "textures": {
+                "side":"essentialfeatures:blocks/blockbreaker_side",
+                "top":"essentialfeatures:blocks/blockbreaker_inner",
+                "bottom":"block/piston_bottom"
+            }
+        },
 
         "triggered": {
             "true":{},
