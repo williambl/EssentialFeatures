@@ -112,7 +112,7 @@ public class BlockCryingObsidian extends Block {
             double d2 = (double)pos.getZ();
             
     		worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
-    		worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
+    		worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 1.0D, 0.0D, 0.0D, new int[0]);
     	}
     }
 }
