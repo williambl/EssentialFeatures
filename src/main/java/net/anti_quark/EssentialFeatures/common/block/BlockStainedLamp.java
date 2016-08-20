@@ -99,10 +99,10 @@ public class BlockStainedLamp extends Block {
         {
             if (this.isOn && !worldIn.isBlockPowered(pos))
             {
-            	worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
+            	worldIn.setBlockState(pos, ModBlocks.LIT_STAINED_LAMP.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
             else if (!this.isOn && worldIn.isBlockPowered(pos))
             {
-            	worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
+            	worldIn.setBlockState(pos, ModBlocks.LIT_STAINED_LAMP.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
         }
     }
     
@@ -117,7 +117,7 @@ public class BlockStainedLamp extends Block {
             }
             else if (!this.isOn && worldIn.isBlockPowered(pos))
             {
-            	worldIn.setBlockState(pos, ModBlocks.litStainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
+            	worldIn.setBlockState(pos, ModBlocks.LIT_STAINED_LAMP.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);            }
         }
     }
     
@@ -128,7 +128,7 @@ public class BlockStainedLamp extends Block {
         {
             if (this.isOn && !worldIn.isBlockPowered(pos))
             {
-                worldIn.setBlockState(pos, ModBlocks.stainedLamp.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
+                worldIn.setBlockState(pos, ModBlocks.STAINED_LAMP.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
             }
         }
     }

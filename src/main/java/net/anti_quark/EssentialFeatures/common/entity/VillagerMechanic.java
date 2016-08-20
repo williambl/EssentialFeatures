@@ -17,7 +17,7 @@ public class VillagerMechanic {
     protected static final VillagerRegistry.VillagerCareer CAREER = new VillagerRegistry.VillagerCareer(PROFESSION, "mechanic")
     		.addTrade(1, new EmeraldForItems(Items.REDSTONE, new PriceInfo(20, 1)))
     		.addTrade(2, new ListItemForEmeralds(new ItemStack(Blocks.REDSTONE_LAMP), new PriceInfo(1, 3)))
-    		.addTrade(2, new ListItemForEmeralds(new ItemStack(ModBlocks.stainedLamp), new PriceInfo(1, 5)));
+    		.addTrade(2, new ListItemForEmeralds(new ItemStack(ModBlocks.STAINED_LAMP), new PriceInfo(1, 5)));
         
     public static void addVillagers ()
     {
