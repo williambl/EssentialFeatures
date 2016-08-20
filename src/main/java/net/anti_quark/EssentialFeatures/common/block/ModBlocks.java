@@ -11,6 +11,7 @@ public class ModBlocks {
 	public static BlockStainedLamp litStainedLamp;
 	public static BlockSnowBrick snowBrick;
 	public static BlockBlockBreaker blockBreaker;
+	public static BlockCryingObsidian CRYING_OBSIDIAN;
 	
 	public static void addBlocks() 
 	{
@@ -21,6 +22,7 @@ public class ModBlocks {
         polishedGlowstone = new BlockPolishedGlowstone("polishedglowstone", Material.GLASS, 1, 2);
         snowBrick = new BlockSnowBrick("snowbrick", Material.CRAFTED_SNOW, 1, 1);
         blockBreaker = new BlockBlockBreaker("blockbreaker", Material.PISTON, 5, 5);
+        CRYING_OBSIDIAN = new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100);
     }
 
 	public static void initModels() 
@@ -32,5 +34,6 @@ public class ModBlocks {
 		polishedGlowstone.initModel();
 		snowBrick.initModel();
 		blockBreaker.initModel();
+		CRYING_OBSIDIAN.initModel();
 	}
 }

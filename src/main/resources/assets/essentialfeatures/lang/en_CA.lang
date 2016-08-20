@@ -28,3 +28,5 @@ item.essentialfeatures:cereal.name=Cereal
 item.essentialfeatures:iron_cereal.name=Iron-Fortified Cereal
 
 tile.essentialfeatures:blockbreaker.name=Block Breaker
+
+tile.essentialfeatures:crying_obsidian.name=Crying Obsidian

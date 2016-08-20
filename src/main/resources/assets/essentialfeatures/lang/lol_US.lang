@@ -28,3 +28,6 @@ item.essentialfeatures:cereal.name=ceral
 item.essentialfeatures:iron_cereal.name=irn ceral
 
 tile.essentialfeatures:blockbreaker.name=blck smashr
+
+tile.essentialfeatures:crying_obsidian.name=sad obby
+
