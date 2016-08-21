@@ -18,7 +18,7 @@ public class RenderPanda extends RenderLiving {
 	
     protected void setEntityTexture()
     {
-        pandaTexture = new ResourceLocation("textures/entity/wolf/wolf.png");
+        pandaTexture = new ResourceLocation("textures/entity/wolf/wol.png");
 
     }
 
