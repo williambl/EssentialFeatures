@@ -10,48 +10,54 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class ModelPanda extends ModelBase
 {
-    /** main box for the panda head */
-    public ModelRenderer pandaHeadMain;
-    /** The panda's body */
-    public ModelRenderer pandaBody;
-    /** Panda'se first leg */
-    public ModelRenderer pandaLeg1;
-    /** Panda's second leg */
-    public ModelRenderer pandaLeg2;
-    /** Panda's third leg */
-    public ModelRenderer pandaLeg3;
-    /** Panda's fourth leg */
-    public ModelRenderer pandaLeg4;
-
-    public ModelPanda()
-    {
-        float f = 0.0F;
-        float f1 = 13.5F;
-        this.pandaHeadMain = new ModelRenderer(this, 0, 0);
-        this.pandaHeadMain.addBox(-2.0F, -3.0F, -6.0F, 6, 6, 4, 0.0F);
-        this.pandaHeadMain.setRotationPoint(-1.0F, 13.5F, -7.0F);
-        this.pandaBody = new ModelRenderer(this, 18, 14);
-        this.pandaBody.addBox(-10.0F, -16.0F, -10.0F, 20, 24, 20, 0.0F);
-        this.pandaBody.setRotationPoint(0.0F, 14.0F, 2.0F);
-        this.pandaLeg1 = new ModelRenderer(this, 0, 18);
-        this.pandaLeg1.addBox(0.0F, 0.0F, -1.0F, 2, 8, 2, 0.0F);
-        this.pandaLeg1.setRotationPoint(-2.5F, 16.0F, 7.0F);
-        this.pandaLeg2 = new ModelRenderer(this, 0, 18);
-        this.pandaLeg2.addBox(0.0F, 0.0F, -1.0F, 2, 8, 2, 0.0F);
-        this.pandaLeg2.setRotationPoint(0.5F, 16.0F, 7.0F);
-        this.pandaLeg3 = new ModelRenderer(this, 0, 18);
-        this.pandaLeg3.addBox(0.0F, 0.0F, -1.0F, 2, 8, 2, 0.0F);
-        this.pandaLeg3.setRotationPoint(-2.5F, 16.0F, -4.0F);
-        this.pandaLeg4 = new ModelRenderer(this, 0, 18);
-        this.pandaLeg4.addBox(0.0F, 0.0F, -1.0F, 2, 8, 2, 0.0F);
-        this.pandaLeg4.setRotationPoint(0.5F, 16.0F, -4.0F);
-        this.pandaHeadMain.setTextureOffset(16, 14).addBox(-2.0F, -5.0F, 0.0F, 2, 2, 1, 0.0F);
-        this.pandaHeadMain.setTextureOffset(16, 14).addBox(2.0F, -5.0F, 0.0F, 2, 2, 1, 0.0F);
-        this.pandaHeadMain.setTextureOffset(0, 10).addBox(-0.5F, 0.0F, -5.0F, 3, 3, 4, 0.0F);
-    }
+	  //fields
+    ModelRenderer Head;
+    ModelRenderer Body;
+    ModelRenderer Leg3;
+    ModelRenderer Leg4;
+    ModelRenderer Leg2;
+    ModelRenderer Leg1;
+    
+    float legHeight = 13;
+  
+  public ModelPanda()
+  {
+    textureWidth = 64;
+    textureHeight = 32;
+    
+      Head = new ModelRenderer(this, 0, 0);
+      Head.addBox(-2.5F, -2.5F, -8F, 5, 5, 5);
+      Head.setRotationPoint(0F, 1F, -5F);
+      Head.setTextureSize(64, 32);
+      Head.mirror = true;
+      Body = new ModelRenderer(this, 0, 0);
+      Body.addBox(-5F, -5F, -7.5F, 10, 10, 8);
+      Body.setRotationPoint(0F, 0F, 0F);
+      Body.setTextureSize(64, 32);
+      Body.mirror = true;
+      Leg3 = new ModelRenderer(this, 0, 0);
+      Leg3.addBox(-1.5F, legHeight, -1.5F, 3, 6, 3);
+      Leg3.setRotationPoint(2.5F, 5F, 3F);
+      Leg3.setTextureSize(64, 32);
+      Leg3.mirror = true;
+      Leg4 = new ModelRenderer(this, 0, 0);
+      Leg4.addBox(-1.5F, legHeight, -1.5F, 3, 6, 3);
+      Leg4.setRotationPoint(-2.5F, 5F, 3F);
+      Leg4.setTextureSize(64, 32);
+      Leg4.mirror = true;
+      Leg2 = new ModelRenderer(this, 0, 0);
+      Leg2.addBox(-1.5F, legHeight, -1.5F, 3, 6, 3);
+      Leg2.setRotationPoint(-2.5F, 5F, -3F);
+      Leg2.setTextureSize(64, 32);
+      Leg2.mirror = true;
+      Leg1 = new ModelRenderer(this, 0, 0);
+      Leg1.addBox(-1.5F, legHeight, -1.5F, 3, 6, 3);
+      Leg1.setRotationPoint(2.5F, 5F, -3F);
+      Leg1.setTextureSize(64, 32);
+      Leg1.mirror = true;
+  }
 
     /**
      * Sets the models various rotation angles then renders the model.
@@ -66,26 +72,26 @@ public class ModelPanda extends ModelBase
             float f = 2.0F;
             GlStateManager.pushMatrix();
             GlStateManager.translate(0.0F, 5.0F * scale, 2.0F * scale);
-            this.pandaHeadMain.renderWithRotation(scale);
+            this.Head.renderWithRotation(scale);
             GlStateManager.popMatrix();
             GlStateManager.pushMatrix();
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
             GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
-            this.pandaBody.render(scale);
-            this.pandaLeg1.render(scale);
-            this.pandaLeg2.render(scale);
-            this.pandaLeg3.render(scale);
-            this.pandaLeg4.render(scale);
+            this.Body.render(scale);
+            this.Leg1.render(scale);
+            this.Leg2.render(scale);
+            this.Leg3.render(scale);
+            this.Leg4.render(scale);
             GlStateManager.popMatrix();
         }
         else
         {
-            this.pandaHeadMain.renderWithRotation(scale);
-            this.pandaBody.render(scale);
-            this.pandaLeg1.render(scale);
-            this.pandaLeg2.render(scale);
-            this.pandaLeg3.render(scale);
-            this.pandaLeg4.render(scale);
+            this.Head.renderWithRotation(scale);
+            this.Body.render(scale);
+            this.Leg1.render(scale);
+            this.Leg2.render(scale);
+            this.Leg3.render(scale);
+            this.Leg4.render(scale);
         }
     }
 
@@ -99,29 +105,29 @@ public class ModelPanda extends ModelBase
 
         if (entitypanda.isSitting())
         {
-            this.pandaBody.setRotationPoint(0.0F, 18.0F, 0.0F);
-            this.pandaBody.rotateAngleX = ((float)Math.PI / 4F);
-            this.pandaLeg1.setRotationPoint(-2.5F, 22.0F, 2.0F);
-            this.pandaLeg1.rotateAngleX = ((float)Math.PI * 3F / 2F);
-            this.pandaLeg2.setRotationPoint(0.5F, 22.0F, 2.0F);
-            this.pandaLeg2.rotateAngleX = ((float)Math.PI * 3F / 2F);
-            this.pandaLeg3.rotateAngleX = 5.811947F;
-            this.pandaLeg3.setRotationPoint(-2.49F, 17.0F, -4.0F);
-            this.pandaLeg4.rotateAngleX = 5.811947F;
-            this.pandaLeg4.setRotationPoint(0.51F, 17.0F, -4.0F);
+            this.Body.setRotationPoint(0.0F, 18.0F, 0.0F);
+            this.Body.rotateAngleX = ((float)Math.PI / 4F);
+            this.Leg1.setRotationPoint(-2.5F, 22.0F, 2.0F);
+            this.Leg1.rotateAngleX = ((float)Math.PI * 3F / 2F);
+            this.Leg2.setRotationPoint(0.5F, 22.0F, 2.0F);
+            this.Leg2.rotateAngleX = ((float)Math.PI * 3F / 2F);
+            this.Leg3.rotateAngleX = 5.811947F;
+            this.Leg3.setRotationPoint(-2.49F, 17.0F, -4.0F);
+            this.Leg4.rotateAngleX = 5.811947F;
+            this.Leg4.setRotationPoint(0.51F, 17.0F, -4.0F);
         }
         else
         {
-            this.pandaBody.setRotationPoint(0.0F, 14.0F, 2.0F);
-            this.pandaBody.rotateAngleX = ((float)Math.PI / 2F);
-            this.pandaLeg1.setRotationPoint(-2.5F, 16.0F, 7.0F);
-            this.pandaLeg2.setRotationPoint(0.5F, 16.0F, 7.0F);
-            this.pandaLeg3.setRotationPoint(-2.5F, 16.0F, -4.0F);
-            this.pandaLeg4.setRotationPoint(0.5F, 16.0F, -4.0F);
-            this.pandaLeg1.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F) * 1.4F * p_78086_3_;
-            this.pandaLeg2.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F + (float)Math.PI) * 1.4F * p_78086_3_;
-            this.pandaLeg3.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F + (float)Math.PI) * 1.4F * p_78086_3_;
-            this.pandaLeg4.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F) * 1.4F * p_78086_3_;
+            Body.setRotationPoint(0F, 0F, 0F);
+            this.Body.rotateAngleX = ((float)Math.PI / 2F);
+            this.Leg1.setRotationPoint(2.5F, 5F, -3F);
+            this.Leg2.setRotationPoint(-2.5F, 5F, -3F);
+            this.Leg3.setRotationPoint(2.5F, 5F, 3F);
+            this.Leg4.setRotationPoint(-2.5F, 5F, 3F);
+            this.Leg1.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F) * 1.4F * p_78086_3_;
+            this.Leg2.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F + (float)Math.PI) * 1.4F * p_78086_3_;
+            this.Leg3.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F + (float)Math.PI) * 1.4F * p_78086_3_;
+            this.Leg4.rotateAngleX = MathHelper.cos(p_78086_2_ * 0.6662F) * 1.4F * p_78086_3_;
         }
     }
 
@@ -133,7 +139,7 @@ public class ModelPanda extends ModelBase
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
         super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-        this.pandaHeadMain.rotateAngleX = headPitch * 0.017453292F;
-        this.pandaHeadMain.rotateAngleY = netHeadYaw * 0.017453292F;
+        this.Head.rotateAngleX = headPitch * 0.017453292F;
+        this.Head.rotateAngleY = netHeadYaw * 0.017453292F;
     }
 }
