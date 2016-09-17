@@ -14,10 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelPanda extends ModelQuadruped
 {
 	/*
-	 * Leg 1 is back right.
-	 * Leg 2 is back left.
-	 * Leg 3 is front right.
-	 * Leg 4 is front left.
+	 * leg 1 is back right.
+	 * leg 2 is back left.
+	 * leg 3 is front right.
+	 * leg 4 is front left.
 	 */
 	
       
@@ -88,16 +88,15 @@ public class ModelPanda extends ModelQuadruped
 
         if (entitypanda.isSitting())
         {
-            this.body.setRotationPoint(0.0F, 18.0F, 0.0F);
-            this.body.rotateAngleX = ((float)Math.PI / 4F);
-            this.leg1.setRotationPoint(-2.5F, 22.0F, 2.0F);
-            this.leg1.rotateAngleX = ((float)Math.PI * 3F / 2F);
-            this.leg2.setRotationPoint(0.5F, 22.0F, 2.0F);
-            this.leg2.rotateAngleX = ((float)Math.PI * 3F / 2F);
-            this.leg3.rotateAngleX = 5.811947F;
-            this.leg3.setRotationPoint(-2.49F, 17.0F, -4.0F);
-            this.leg4.rotateAngleX = 5.811947F;
-            this.leg4.setRotationPoint(0.51F, 17.0F, -4.0F);
+            body.setRotationPoint(0.0F, 17.0F, 2.0F);
+            this.leg1.setRotationPoint(-3.0F, 12F, 7.0F);
+            this.leg2.setRotationPoint(3.0F, 12F, 7.0F);
+            this.leg3.setRotationPoint(-3.0F, 12F, -5.0F);
+            this.leg4.setRotationPoint(3.0F, 12F, -5.0F);
+            this.leg1.rotateAngleZ = 90F;
+            this.leg2.rotateAngleZ = 90F;
+            this.leg3.rotateAngleZ = 90F;
+            this.leg4.rotateAngleZ = 90F;
         }
         
         else
