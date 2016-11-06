@@ -4,7 +4,7 @@
         "textures": {
             "cross": "essentialfeatures:blocks/spike_block"
         },
-        "model": "blocks/cross",
+        "model": "cross",
         "uvlock": true
     },
     "variants": {
