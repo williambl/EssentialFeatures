@@ -24,5 +24,9 @@ public class ModRecipes {
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.IRON_CEREAL), new Object[] {"iii", "ici", "iii", 'i', Items.IRON_INGOT, 'c', ModItems.CEREAL});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.BLOCK_BREAKER), new Object[] {"cpc", "crc", "crc", 'c', Blocks.COBBLESTONE, 'p', Items.DIAMOND_PICKAXE, 'r', Items.REDSTONE});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.DOUBLE_STONE_SLAB, 2, 8), new Object[] {new ItemStack(Blocks.STONE_SLAB, 1, 0)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.DOUBLE_STONE_SLAB, 2, 9), new Object[] {new ItemStack(Blocks.STONE_SLAB, 1, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.DOUBLE_STONE_SLAB2, 2, 8), new Object[] {new ItemStack(Blocks.STONE_SLAB2, 1, 0)});
 	}
 }
