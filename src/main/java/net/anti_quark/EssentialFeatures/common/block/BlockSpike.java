@@ -43,7 +43,6 @@ public class BlockSpike extends Block {
         entityIn.attackEntityFrom(DamageSource.cactus, 2.0F);
         if(entityIn instanceof EntityLivingBase)
         {
-        	System.out.println("hello");
         	((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 1, 1));
         }
     }
