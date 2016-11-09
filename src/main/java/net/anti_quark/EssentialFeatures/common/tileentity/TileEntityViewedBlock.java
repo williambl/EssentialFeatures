@@ -15,6 +15,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 
 public class TileEntityViewedBlock extends TileEntity implements ITickable {
 	
@@ -51,7 +52,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		//float playerPitch = player.rotationPitch;
 		//float playerYaw = player.rotationYawHead;
 		
-		RayTraceResult rayPos = player.rayTrace(50, 1F);
+		RayTraceResult rayPos = rayTrace(player, 50, 1F);
 		BlockPos pos = rayPos.getBlockPos();
 		
 		if (thisPos.equals(pos))
@@ -62,5 +63,14 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		return false;
 		
 	}
-
+	
+	
+	//For some reason EntityPlayer.raytrace is Client Only, so here's a slightly modified version for use on servers
+    public RayTraceResult rayTrace(EntityPlayer playerIn, double blockReachDistance, float partialTicks)
+    {
+        Vec3d vec3d = playerIn.getPositionEyes(partialTicks);
+        Vec3d vec3d1 = playerIn.getLook(partialTicks);
+        Vec3d vec3d2 = vec3d.addVector(vec3d1.xCoord * blockReachDistance, vec3d1.yCoord * blockReachDistance, vec3d1.zCoord * blockReachDistance);
+        return this.worldObj.rayTraceBlocks(vec3d, vec3d2, false, false, true);
+    }
 }
