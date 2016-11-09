@@ -64,13 +64,30 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		
 	}
 	
-	
-	//For some reason EntityPlayer.raytrace is Client Only, so here's a slightly modified version for use on servers
+	/*
+	For some reason EntityPlayer.raytrace and EntityPlayer.getPositionEyes
+	are Client Only, so here are two slightly modified functions for use on servers.
+	*/
     public RayTraceResult rayTrace(EntityPlayer playerIn, double blockReachDistance, float partialTicks)
     {
-        Vec3d vec3d = playerIn.getPositionEyes(partialTicks);
+        Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
         Vec3d vec3d2 = vec3d.addVector(vec3d1.xCoord * blockReachDistance, vec3d1.yCoord * blockReachDistance, vec3d1.zCoord * blockReachDistance);
         return this.worldObj.rayTraceBlocks(vec3d, vec3d2, false, false, true);
+    }
+    
+    public Vec3d getPositionEyes(EntityPlayer playerIn, float partialTicks)
+    {
+        if (partialTicks == 1.0F)
+        {
+            return new Vec3d(playerIn.posX, playerIn.posY + (double)playerIn.getEyeHeight(), playerIn.posZ);
+        }
+        else
+        {
+            double d0 = playerIn.prevPosX + (playerIn.posX - playerIn.prevPosX) * (double)partialTicks;
+            double d1 = playerIn.prevPosY + (playerIn.posY - playerIn.prevPosY) * (double)partialTicks + (double)playerIn.getEyeHeight();
+            double d2 = playerIn.prevPosZ + (playerIn.posZ - playerIn.prevPosZ) * (double)partialTicks;
+            return new Vec3d(d0, d1, d2);
+        }
     }
 }
