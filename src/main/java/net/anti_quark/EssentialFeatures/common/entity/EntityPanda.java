@@ -239,7 +239,7 @@ public class EntityPanda extends EntityTameable {
                 {
                         if (!player.capabilities.isCreativeMode)
                         {
-                            --stack.stackSize;
+                            stack = stack.splitStack(1);
                         }
 
                         this.heal(3.0F);
@@ -260,7 +260,7 @@ public class EntityPanda extends EntityTameable {
         {
             if (!player.capabilities.isCreativeMode)
             {
-                --stack.stackSize;
+                stack = stack.splitStack(1);
             }
 
             if (!this.worldObj.isRemote)
@@ -285,7 +285,7 @@ public class EntityPanda extends EntityTameable {
             return true;
         }
 
-        return super.processInteract(player, hand, stack);
+        return super.processInteract(player, hand);
     }
 
     /**

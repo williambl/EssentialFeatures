@@ -1,8 +1,6 @@
 package net.anti_quark.EssentialFeatures.common.tileentity;
 
 import java.util.List;
-import java.util.function.Consumer;
-
 import net.anti_quark.EssentialFeatures.common.block.BlockViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
