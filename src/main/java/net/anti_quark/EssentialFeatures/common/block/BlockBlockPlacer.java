@@ -2,7 +2,6 @@ package net.anti_quark.EssentialFeatures.common.block;
 
 import javax.annotation.Nullable;
 
-import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
@@ -53,7 +52,6 @@ public class BlockBlockPlacer extends BlockDispenser {
         this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
-        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, registryName);
 	}
 	
     public void initModel() {
