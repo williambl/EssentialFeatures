@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "essentialfeatures:purple_stained_lamp"
+  },
+  "variants": {
+
+  		"inventory": [{}]
+	}
+}

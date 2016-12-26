@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "essentialfeatures:white_stained_lamp"
+  },
+  "variants": {
+
+  		"inventory": [{}],
+
+		"color=white": { "model": "essentialfeatures:white_stained_lamp" },
+		"color=orange": { "model": "essentialfeatures:orange_stained_lamp" },
+		"color=magenta": { "model": "essentialfeatures:magenta_stained_lamp" },
+		"color=light_blue": { "model": "essentialfeatures:light_blue_stained_lamp" },
+		"color=yellow": { "model": "essentialfeatures:yellow_stained_lamp" },
+		"color=lime": { "model": "essentialfeatures:lime_stained_lamp" },
+		"color=pink": { "model": "essentialfeatures:pink_stained_lamp" },
+		"color=gray": { "model": "essentialfeatures:gray_stained_lamp" },
+		"color=silver": { "model": "essentialfeatures:silver_stained_lamp" },
+		"color=cyan": { "model": "essentialfeatures:cyan_stained_lamp" },
+		"color=purple": { "model": "essentialfeatures:purple_stained_lamp" },
+		"color=blue": { "model": "essentialfeatures:blue_stained_lamp" },
+		"color=brown": { "model": "essentialfeatures:brown_stained_lamp" },
+		"color=green": { "model": "essentialfeatures:green_stained_lamp" },
+		"color=red": { "model": "essentialfeatures:red_stained_lamp" },
+		"color=black": { "model": "essentialfeatures:black_stained_lamp" }
+	}
+}

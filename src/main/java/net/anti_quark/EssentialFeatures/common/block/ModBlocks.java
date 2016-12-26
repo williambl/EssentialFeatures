@@ -17,13 +17,13 @@ public class ModBlocks {
 	
 	public static void addBlocks() 
 	{
-        VIEWED_BLOCK = new BlockViewedBlock("viewedblock", Material.ROCK, 5, 5);
-        SMOOTH_GLOWSTONE = new BlockSmoothGlowstone("smoothglowstone", Material.GLASS, 1, 2);
-        STAINED_LAMP = new BlockStainedLamp("stainedlamp", Material.GLASS, 0.3F, 1.5F, false);
-        LIT_STAINED_LAMP = new BlockStainedLamp("litstainedlamp", Material.GLASS, 0.3F, 1.5F, true);
-        POLISHED_GLOWSTONE = new BlockPolishedGlowstone("polishedglowstone", Material.GLASS, 1, 2);
-        SNOW_BRICK = new BlockSnowBrick("snowbrick", Material.CRAFTED_SNOW, 1, 1);
-        BLOCK_BREAKER = new BlockBlockBreaker("blockbreaker", Material.PISTON, 5, 5);
+        VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
+        SMOOTH_GLOWSTONE = new BlockSmoothGlowstone("smooth_glowstone", Material.GLASS, 1, 2);
+        STAINED_LAMP = new BlockStainedLamp("stained_lamp", Material.GLASS, 0.3F, 1.5F, false);
+        LIT_STAINED_LAMP = new BlockStainedLamp("lit_stained_lamp", Material.GLASS, 0.3F, 1.5F, true);
+        POLISHED_GLOWSTONE = new BlockPolishedGlowstone("polished_glowstone", Material.GLASS, 1, 2);
+        SNOW_BRICK = new BlockSnowBrick("snow_brick", Material.CRAFTED_SNOW, 1, 1);
+        BLOCK_BREAKER = new BlockBlockBreaker("block_breaker", Material.PISTON, 5, 5);
         CRYING_OBSIDIAN = new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100);
         SPIKE_BLOCK = new BlockSpike("spike_block", Material.IRON, 1, 1);
         BLOCK_PLACER = new BlockBlockPlacer("block_placer", Material.ROCK, 5, 5);
