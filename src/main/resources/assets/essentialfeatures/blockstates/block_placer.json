@@ -23,8 +23,8 @@
             "south": {"y": 180 },
             "west": {"y": 270 },
             "east": {"y": 90 },
-            "down": {"x": 90, "textures": {"front":"essentialfeatures:blocks/block_placer_vertical"}},
-            "up": {"x": 270, "textures": {"front":"essentialfeatures:blocks/block_placer_vertical"}}
+            "down": {"x": 90, "textures": {"front":"essentialfeatures:blocks/block_placer_vertical", "side": "blocks/furnace_top"}},
+            "up": {"x": 270, "textures": {"front":"essentialfeatures:blocks/block_placer_vertical", "side": "blocks/furnace_top"}}
         }
     }
 }
