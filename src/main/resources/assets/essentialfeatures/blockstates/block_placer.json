@@ -1,0 +1,30 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "top": "blocks/furnace_top",
+            "front": "essentialfeatures:blocks/block_placer",
+            "side": "blocks/furnace_side"
+        },
+        "model": "orientable",
+        "uvlock": false
+    },
+    "variants": {
+        "normal": [{}],
+        "inventory":[{}],
+
+        "triggered": {
+            "true":{},
+            "false":{}
+        },
+
+        "facing": {
+            "north": {},
+            "south": {"y": 180 },
+            "west": {"y": 270 },
+            "east": {"y": 90 },
+            "down": {"x": 90, "textures": {"front":"essentialfeatures:blocks/block_placer_vertical"}},
+            "up": {"x": 270, "textures": {"front":"essentialfeatures:blocks/block_placer_vertical"}}
+        }
+    }
+}

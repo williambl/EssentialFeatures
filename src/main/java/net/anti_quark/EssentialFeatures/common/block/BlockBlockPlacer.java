@@ -99,7 +99,7 @@ public class BlockBlockPlacer extends BlockDispenser {
                     		worldIn.destroyBlock(blockpos, true);
                     	itemstack1 = itemstack.copy();
                     	itemstack = itemstack1.splitStack(1);
-                    	place(itemstack1, blockpos, worldIn);
+                    	place(itemstack, blockpos, worldIn);
                     }
                     else {
                     	itemstack1 = this.dropBehavior.dispense(blocksourceimpl, itemstack);
