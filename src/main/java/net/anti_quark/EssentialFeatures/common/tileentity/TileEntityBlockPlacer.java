@@ -22,6 +22,6 @@ public class TileEntityBlockPlacer extends TileEntityDispenser
 
     public String getGuiID()
     {
-        return "essentialfeatures:block_placer";
+        return "minecraft:dropper";
     }
 }
