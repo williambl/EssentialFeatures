@@ -32,3 +32,6 @@ tile.essentialfeatures:block_breaker.name=Block Breakarrrrr
 tile.essentialfeatures:crying_obsidian.name=Weepin’ Obsidiarrrrn
 
 tile.essentialfeatures:spike_block.name=Spikeys
+
+tile.essentialfeatures:block_placer.name=Block Placarrrrr
+container.block_placer=Block Placarrrrr
