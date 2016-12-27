@@ -2,6 +2,7 @@ package net.anti_quark.EssentialFeatures.common.block;
 
 import javax.annotation.Nullable;
 
+import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
@@ -52,6 +53,7 @@ public class BlockBlockPlacer extends BlockDispenser {
         this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, registryName);
 	}
 	
     public void initModel() {
@@ -68,17 +70,17 @@ public class BlockBlockPlacer extends BlockDispenser {
      */
     public TileEntity createNewTileEntity(World worldIn, int meta)
     {
-        return new TileEntityDropper();
+        return new TileEntityBlockPlacer();
     }
 
     protected void dispense(World worldIn, BlockPos pos)
     {
         BlockSourceImpl blocksourceimpl = new BlockSourceImpl(worldIn, pos);
-        TileEntityDispenser tileentitydispenser = (TileEntityDispenser)blocksourceimpl.getBlockTileEntity();
+        TileEntityBlockPlacer tileentityblockplacer = (TileEntityBlockPlacer)blocksourceimpl.getBlockTileEntity();
 
-        if (tileentitydispenser != null)
+        if (tileentityblockplacer != null)
         {
-            int i = tileentitydispenser.getDispenseSlot();
+            int i = tileentityblockplacer.getDispenseSlot();
 
             if (i < 0)
             {
@@ -86,9 +88,9 @@ public class BlockBlockPlacer extends BlockDispenser {
             }
             else
             {
-                ItemStack itemstack = tileentitydispenser.getStackInSlot(i);
+                ItemStack itemstack = tileentityblockplacer.getStackInSlot(i);
 
-                if (itemstack != null && net.minecraftforge.items.VanillaInventoryCodeHooks.dropperInsertHook(worldIn, pos, tileentitydispenser, i, itemstack))
+                if (itemstack != null && net.minecraftforge.items.VanillaInventoryCodeHooks.dropperInsertHook(worldIn, pos, tileentityblockplacer, i, itemstack))
                 {
                     EnumFacing enumfacing = (EnumFacing)worldIn.getBlockState(pos).getValue(FACING);
                     BlockPos blockpos = pos.offset(enumfacing);
@@ -109,7 +111,7 @@ public class BlockBlockPlacer extends BlockDispenser {
                     		itemstack1 = null;
                     	}
                     }
-                    tileentitydispenser.setInventorySlotContents(i, itemstack1);
+                    tileentityblockplacer.setInventorySlotContents(i, itemstack1);
                 }
             }
         }
