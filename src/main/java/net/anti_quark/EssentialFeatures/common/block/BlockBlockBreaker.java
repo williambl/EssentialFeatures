@@ -45,7 +45,7 @@ public class BlockBlockBreaker extends BlockDirectional {
     }
     
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
     {
     	if (!worldIn.isRemote)
     	{
