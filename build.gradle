@@ -14,6 +14,11 @@ version = "1.3"
 group= "net.anti_quark.essentialfeatures" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "essentialfeatures"
 
+sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
 minecraft {
     version = "1.11-13.19.1.2189"
     runDir = "run"
