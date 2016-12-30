@@ -14,6 +14,7 @@ public class ModBlocks {
 	public static BlockCryingObsidian CRYING_OBSIDIAN;
 	public static BlockSpike SPIKE_BLOCK;
 	public static BlockBlockPlacer BLOCK_PLACER;
+	public static BlockDecorativeStone DECORATIVE_STONE;
 	
 	public static void addBlocks() 
 	{
@@ -27,6 +28,7 @@ public class ModBlocks {
         CRYING_OBSIDIAN = new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100);
         SPIKE_BLOCK = new BlockSpike("spike_block", Material.IRON, 1, 1);
         BLOCK_PLACER = new BlockBlockPlacer("block_placer", Material.ROCK, 5, 5);
+        DECORATIVE_STONE = new BlockDecorativeStone("decorative_stone", Material.ROCK, 3, 3);
     }
 
 	public static void initModels() 
@@ -41,5 +43,6 @@ public class ModBlocks {
 		CRYING_OBSIDIAN.initModel();
 		SPIKE_BLOCK.initModel();
 		BLOCK_PLACER.initModel();
+		DECORATIVE_STONE.initModel();
 	}
 }
