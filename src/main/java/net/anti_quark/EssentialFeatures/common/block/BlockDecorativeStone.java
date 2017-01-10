@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BlockDecorativeStone extends Block {
 	
     private static final String[] names = new String[]{"carved_stone", "carved_granite", "carved_diorite", "carved_andesite"};
-	public static final PropertyInteger subblock = PropertyInteger.create("subblock", 0, 3);
+	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 3);
 
 	public BlockDecorativeStone(String registryName, Material material, float hardness, float resistance) {
         super(material);
@@ -31,37 +31,38 @@ public class BlockDecorativeStone extends Block {
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(blockSoundType.STONE);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(subblock, 0));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
         GameRegistry.register(this);
         GameRegistry.register(new ItemDecorativeStone(this, true, names), getRegistryName());
 	}
 	
     public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));     
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(getRegistryName(), "inventory_1"));
     }
     
     @Override
     protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[]{subblock});
+		return new BlockStateContainer(this, new IProperty[]{variant});
 	}
 	
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(subblock, meta);
+        return this.getDefaultState().withProperty(variant, meta);
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return state.getValue(subblock).intValue();
+        return state.getValue(variant).intValue();
     }
     
     @Override
     public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list)
     {
-        for (Integer integer : subblock.getAllowedValues())
+        for (Integer integer : variant.getAllowedValues())
         {
             list.add(new ItemStack(itemIn, 1, integer));
         }
@@ -70,7 +71,7 @@ public class BlockDecorativeStone extends Block {
     @Override
     public int damageDropped(IBlockState state)
     {
-        return state.getValue(subblock).intValue();
+        return state.getValue(variant).intValue();
     }
 	
 }
