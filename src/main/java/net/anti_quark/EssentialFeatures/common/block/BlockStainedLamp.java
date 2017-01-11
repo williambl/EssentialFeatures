@@ -3,7 +3,7 @@ package net.anti_quark.EssentialFeatures.common.block;
 import java.util.List;
 import java.util.Random;
 
-import net.anti_quark.EssentialFeatures.common.item.ItemStainedLamp;
+import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneLight;
 import net.minecraft.block.material.Material;
@@ -49,7 +49,7 @@ public class BlockStainedLamp extends Block {
             this.setCreativeTab(null);
         }
         GameRegistry.register(this);
-        GameRegistry.register(new ItemStainedLamp(this, true, names), getRegistryName());
+        GameRegistry.register(new ItemBlockWithSubtypes(this, true, names), getRegistryName());
 	}
 
     public void initModel() {

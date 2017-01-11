@@ -1,6 +1,6 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
-import net.anti_quark.EssentialFeatures.common.item.ItemDecorativeStone;
+import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -33,7 +33,7 @@ public class BlockDecorativeStone extends Block {
         this.setSoundType(blockSoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
         GameRegistry.register(this);
-        GameRegistry.register(new ItemDecorativeStone(this, true, names), getRegistryName());
+        GameRegistry.register(new ItemBlockWithSubtypes(this, true, names), getRegistryName());
 	}
 	
     public void initModel() {
