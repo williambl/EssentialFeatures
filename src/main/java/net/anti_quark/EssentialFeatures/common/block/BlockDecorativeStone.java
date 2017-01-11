@@ -39,6 +39,8 @@ public class BlockDecorativeStone extends Block {
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(getRegistryName(), "inventory_1"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 2, new ModelResourceLocation(getRegistryName(), "inventory_2"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 3, new ModelResourceLocation(getRegistryName(), "inventory_3"));
     }
     
     @Override
@@ -65,6 +67,7 @@ public class BlockDecorativeStone extends Block {
         for (Integer integer : variant.getAllowedValues())
         {
             list.add(new ItemStack(itemIn, 1, integer));
+            System.out.println(integer);
         }
     }
     

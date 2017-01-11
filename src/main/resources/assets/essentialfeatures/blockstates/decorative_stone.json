@@ -11,20 +11,20 @@
         "normal": [{}],
         "inventory": [{}],
         "inventory_1":[{
-        //    "textures": {
-        //        "all" : "essentialfeatures:blocks/carved_granite"
-        //   	}
+            "textures": {
+                "all" : "essentialfeatures:blocks/carved_granite"
+           	}
         }],
-        //"inventory_2":{
-        //    "textures": {
-        //        "all" : "essentialfeatures:blocks/carved_diorite"
-        //   	}
-        //},
-        //"inventory_3":{
-        //    "textures": {
-        //        "all" : "essentialfeatures:blocks/carved_andesite"
-        //   	}
-        //},
+        "inventory_2":[{
+            "textures": {
+                "all" : "essentialfeatures:blocks/carved_diorite"
+           	}
+        }],
+        "inventory_3":[{
+            "textures": {
+                "all" : "essentialfeatures:blocks/carved_andesite"
+          	}
+        }],
         "variant": {
 
             0:{ 
