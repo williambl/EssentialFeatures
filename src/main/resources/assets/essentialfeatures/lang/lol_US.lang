@@ -35,3 +35,7 @@ tile.essentialfeatures:spike_block.name=spiek
 
 tile.essentialfeatures:block_placer.name=blok makr
 container.block_placer=blok makr
+tile.essentialfeatures:decorative_stone.carved_stone.name=carv ston
+tile.essentialfeatures:decorative_stone.carved_granite.name=carv granit
+tile.essentialfeatures:decorative_stone.carved_diorite.name=carv diorit
+tile.essentialfeatures:decorative_stone.carved_andesite.name=carv andesit
