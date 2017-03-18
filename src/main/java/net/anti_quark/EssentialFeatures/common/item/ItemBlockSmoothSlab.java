@@ -3,11 +3,13 @@ package net.anti_quark.EssentialFeatures.common.item;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStoneSlab;
+import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -19,10 +21,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemBlockSmoothSlab extends ItemBlock {
+	
+	BlockStoneSlab.EnumType blockType;
+	BlockStoneSlabNew.EnumType blockType2;
 		
-	public ItemBlockSmoothSlab(Block block, String name) {
+	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlab.EnumType type) {
 		super(block);
 		this.setRegistryName(name);
+		this.blockType = type;
+	}
+	
+	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlabNew.EnumType type) {
+		super(block);
+		this.setRegistryName(name);
+		this.blockType2 = type;
 	}
 	
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
@@ -39,7 +51,10 @@ public class ItemBlockSmoothSlab extends ItemBlock {
 
         if (!itemstack.func_190926_b() && playerIn.canPlayerEdit(pos, facing, itemstack) && worldIn.func_190527_a(this.block, pos, false, facing, (Entity)null))
         {
-            IBlockState iblockstate1 = this.block.getBlockState().getBaseState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.STONE);
+            IBlockState iblockstate1 = 
+            		block == Blocks.DOUBLE_STONE_SLAB ?
+            		this.block.getBlockState().getBaseState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, blockType)
+            		: this.block.getBlockState().getBaseState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, blockType2);
 
             if (placeBlockAt(itemstack, playerIn, worldIn, pos, facing, hitX, hitY, hitZ, iblockstate1))
             {
