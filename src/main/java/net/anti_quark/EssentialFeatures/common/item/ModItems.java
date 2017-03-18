@@ -1,6 +1,8 @@
 package net.anti_quark.EssentialFeatures.common.item;
 
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
+import net.minecraft.init.Blocks;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
 	
@@ -11,6 +13,7 @@ public class ModItems {
 	{
 		CEREAL = new ItemCereal("cereal", 1, 6, false);
 		IRON_CEREAL = new ItemCereal("iron_cereal", 3, 6, true);
+		GameRegistry.register(new ItemBlockSmoothSlab(Blocks.DOUBLE_STONE_SLAB, "smoothdoubleslab"));
 	}
 	
 	public static void initModels ()
