@@ -7,28 +7,37 @@ import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockSmoothSlab extends ItemBlock {
 	
 	BlockStoneSlab.EnumType blockType;
 	BlockStoneSlabNew.EnumType blockType2;
+	
+	String unlocalizedName;
 		
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlab.EnumType type) {
 		super(block);
+		System.out.println(name);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setRegistryName(name);
 		this.blockType = type;
@@ -38,10 +47,11 @@ public class ItemBlockSmoothSlab extends ItemBlock {
 	
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlabNew.EnumType type) {
 		super(block);
+		System.out.println(name + "  2");
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setRegistryName(name);
 		this.blockType2 = type;
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		this.setUnlocalizedName(name);
+		this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
 	}
 	
@@ -77,6 +87,38 @@ public class ItemBlockSmoothSlab extends ItemBlock {
         {
             return EnumActionResult.FAIL;
         }
+    }
+    
+    /**
+     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
+     */
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
+    {
+        return;
+    }
+    
+    public ItemBlockSmoothSlab setUnlocalizedName(String name)
+    {
+        this.unlocalizedName = name;
+        return this;
+    }
+    
+    /**
+     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
+     * different names based on their damage or NBT.
+     */
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        return this.unlocalizedName;
+    }
+
+    /**
+     * Returns the unlocalized name of this item.
+     */
+    public String getUnlocalizedName()
+    {
+        return this.unlocalizedName;
     }
     
 }
