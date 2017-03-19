@@ -20,6 +20,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemBlockSmoothSlab extends ItemBlock {
 	
@@ -28,10 +29,11 @@ public class ItemBlockSmoothSlab extends ItemBlock {
 		
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlab.EnumType type) {
 		super(block);
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setRegistryName(name);
 		this.blockType = type;
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		this.setUnlocalizedName(name);
+		this.setUnlocalizedName(this.getRegistryName().toString());
+        GameRegistry.register(this);
 	}
 	
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlabNew.EnumType type) {
@@ -40,6 +42,7 @@ public class ItemBlockSmoothSlab extends ItemBlock {
 		this.blockType2 = type;
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setUnlocalizedName(name);
+        GameRegistry.register(this);
 	}
 	
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
