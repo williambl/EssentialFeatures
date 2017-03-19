@@ -52,7 +52,7 @@ public class ItemBlockSmoothSlab extends ItemBlock {
         if (!itemstack.func_190926_b() && playerIn.canPlayerEdit(pos, facing, itemstack) && worldIn.func_190527_a(this.block, pos, false, facing, (Entity)null))
         {
             IBlockState iblockstate1 = 
-            		block == Blocks.DOUBLE_STONE_SLAB ?
+            		blockType != null ?
             		this.block.getBlockState().getBaseState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, blockType)
             		: this.block.getBlockState().getBaseState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, blockType2);
 
