@@ -37,20 +37,18 @@ public class ItemBlockSmoothSlab extends ItemBlock {
 		
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlab.EnumType type) {
 		super(block);
-		System.out.println(name);
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		this.setRegistryName(name);
 		this.blockType = type;
+		this.block.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		this.setRegistryName(name);
 		this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
 	}
 	
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlabNew.EnumType type) {
 		super(block);
-		System.out.println(name + "  2");
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		this.setRegistryName(name);
 		this.blockType2 = type;
+		this.block.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		this.setRegistryName(name);
 		this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
 	}
