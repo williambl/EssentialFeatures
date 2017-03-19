@@ -7,6 +7,7 @@ import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -29,12 +30,16 @@ public class ItemBlockSmoothSlab extends ItemBlock {
 		super(block);
 		this.setRegistryName(name);
 		this.blockType = type;
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		this.setUnlocalizedName(name);
 	}
 	
 	public ItemBlockSmoothSlab(Block block, String name, BlockStoneSlabNew.EnumType type) {
 		super(block);
 		this.setRegistryName(name);
 		this.blockType2 = type;
+		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		this.setUnlocalizedName(name);
 	}
 	
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
@@ -70,24 +75,5 @@ public class ItemBlockSmoothSlab extends ItemBlock {
             return EnumActionResult.FAIL;
         }
     }
-    
-    /**
-     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
-     * different names based on their damage or NBT.
-     */
-    public String getUnlocalizedName(ItemStack stack)
-    {
-        return this.block.getUnlocalizedName();
-    }
-
-    /**
-     * Returns the unlocalized name of this item.
-     */
-    public String getUnlocalizedName()
-    {
-        return this.block.getUnlocalizedName();
-    }
-    
-    
     
 }
