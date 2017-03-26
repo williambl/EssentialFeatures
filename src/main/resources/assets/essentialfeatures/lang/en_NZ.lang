@@ -39,3 +39,7 @@ tile.essentialfeatures:decorative_stone.carved_stone.name=Carved Stone
 tile.essentialfeatures:decorative_stone.carved_granite.name=Carved Granite
 tile.essentialfeatures:decorative_stone.carved_diorite.name=Carved Diorite
 tile.essentialfeatures:decorative_stone.carved_andesite.name=Carved Andesite
+
+tile.essentialfeatures:smooth_double_stone_slab.name=Smooth Double Stone Slab
+tile.essentialfeatures:smooth_double_sandstone_slab.name=Smooth Double Sandstone Slab
+tile.essentialfeatures:smooth_double_red_sandstone_slab.name=Smooth Double Red Sandstone Slab
