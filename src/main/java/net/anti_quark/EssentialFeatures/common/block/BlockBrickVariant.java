@@ -20,8 +20,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockBrickVariant extends Block {
 	
-    private static final String[] names = new String[]{"cream_brick", "london_brick", "roman_brick", "blue_brick", "black_brick", "mixed_brick"};
-	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 5);
+    private static final String[] names = new String[]{"cream_bricks", "london_bricks", "roman_bricks", "blue_bricks", "mixed_bricks"};
+	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
 
 	public BlockBrickVariant(String registryName, Material material, float hardness, float resistance) {
         super(material);
