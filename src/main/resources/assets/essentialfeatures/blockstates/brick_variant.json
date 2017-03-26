@@ -30,11 +30,6 @@
                 "all" : "essentialfeatures:blocks/carved_andesite"
             }
         }],
-        "inventory_5":[{
-            "textures": {
-                "all" : "essentialfeatures:blocks/carved_andesite"
-            }
-        }],
         "variant": {
 
             0:{ 
@@ -58,11 +53,6 @@
             	}
             },
             4:{
-                "textures": {
-                    "all" : "essentialfeatures:blocks/carved_andesite"
-                }
-            },
-            5:{
                 "textures": {
                     "all" : "essentialfeatures:blocks/carved_andesite"
                 }
