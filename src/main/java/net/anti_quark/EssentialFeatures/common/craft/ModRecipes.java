@@ -29,8 +29,8 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.DOUBLE_STONE_SLAB, 2, 9), new Object[] {new ItemStack(Blocks.STONE_SLAB, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.DOUBLE_STONE_SLAB2, 2, 8), new Object[] {new ItemStack(Blocks.STONE_SLAB2, 1, 0)});
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.LONDON_CLAY, 2), new Object[]{new ItemStack(Blocks.CLAY, 2), new ItemStack(Blocks.SAND), new ItemStack(Items.GUNPOWDER)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.SAND_CLAY_MIXTURE, 1, 0), new Object[] {new ItemStack(Blocks.CLAY), new ItemStack(Blocks.SAND)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.LONDON_CLAY, 2), new Object[]{new ItemStack(Items.CLAY_BALL, 2), new ItemStack(Blocks.SAND), new ItemStack(Items.GUNPOWDER)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.SAND_CLAY_MIXTURE, 1, 0), new Object[] {new ItemStack(Items.CLAY_BALL), new ItemStack(Blocks.SAND)});
 		
 		GameRegistry.addSmelting(ModItems.LONDON_CLAY, new ItemStack(ModItems.LONDON_BRICK), 1.0F);
 		GameRegistry.addSmelting(ModItems.SAND_CLAY_MIXTURE, new ItemStack(ModItems.CREAM_BRICK), 1.0F);
