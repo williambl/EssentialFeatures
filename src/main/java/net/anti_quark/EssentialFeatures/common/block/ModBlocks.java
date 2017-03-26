@@ -19,6 +19,7 @@ public class ModBlocks {
 	public static BlockSpike SPIKE_BLOCK;
 	public static BlockBlockPlacer BLOCK_PLACER;
 	public static BlockDecorativeStone DECORATIVE_STONE;
+	public static BlockBrickVariant BRICK_VARIANT;
 	
 	public static BlockFake SMOOTH_DOUBLE_STONE_SLAB;
 	public static BlockFake SMOOTH_DOUBLE_SANDSTONE_SLAB;
@@ -37,6 +38,7 @@ public class ModBlocks {
         SPIKE_BLOCK = new BlockSpike("spike_block", Material.IRON, 1, 1);
         BLOCK_PLACER = new BlockBlockPlacer("block_placer", Material.ROCK, 5, 5);
         DECORATIVE_STONE = new BlockDecorativeStone("decorative_stone", Material.ROCK, 3, 3);
+        BRICK_VARIANT = new BlockBrickVariant("brick_variant", Material.ROCK, 3, 3);
         
         SMOOTH_DOUBLE_STONE_SLAB = new BlockFake("smooth_double_stone_slab", CreativeTabs.BUILDING_BLOCKS,
         		Blocks.DOUBLE_STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.STONE));
@@ -59,6 +61,8 @@ public class ModBlocks {
 		SPIKE_BLOCK.initModel();
 		BLOCK_PLACER.initModel();
 		DECORATIVE_STONE.initModel();
+		BRICK_VARIANT.initModel();
+		
 		SMOOTH_DOUBLE_STONE_SLAB.initModel();
 		SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
 		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
