@@ -1,6 +1,5 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
-import net.anti_quark.EssentialFeatures.common.item.ItemBlockSmoothSlab;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.material.Material;
