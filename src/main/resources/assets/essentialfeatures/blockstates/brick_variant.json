@@ -2,7 +2,7 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "all": "essentialfeatures:blocks/carved_stone"
+            "all": "essentialfeatures:blocks/cream_bricks"
         },
         "model": "cube_all",
         "uvlock": true
@@ -12,49 +12,49 @@
         "inventory": [{}],
         "inventory_1":[{
             "textures": {
-                "all" : "essentialfeatures:blocks/carved_granite"
+                "all" : "essentialfeatures:blocks/london_bricks"
            	}
         }],
         "inventory_2":[{
             "textures": {
-                "all" : "essentialfeatures:blocks/carved_diorite"
+                "all" : "essentialfeatures:blocks/roman_bricks"
            	}
         }],
         "inventory_3":[{
             "textures": {
-                "all" : "essentialfeatures:blocks/carved_andesite"
+                "all" : "essentialfeatures:blocks/blue_bricks"
           	}
         }],
         "inventory_4":[{
             "textures": {
-                "all" : "essentialfeatures:blocks/carved_andesite"
+                "all" : "essentialfeatures:blocks/mixed_bricks"
             }
         }],
         "variant": {
 
             0:{ 
             	"textures": {
-            	    "all" : "essentialfeatures:blocks/carved_stone" 
+            	    "all" : "essentialfeatures:blocks/cream_bricks" 
             	} 
             },
             1:{
             	"textures": {
-            	    "all" : "essentialfeatures:blocks/carved_granite"
+            	    "all" : "essentialfeatures:blocks/london_bricks"
             	}
             },
             2:{
             	"textures": {
-            	    "all" : "essentialfeatures:blocks/carved_diorite"
+            	    "all" : "essentialfeatures:blocks/roman_bricks"
             	}
             },
             3:{
             	"textures": {
-            	    "all" : "essentialfeatures:blocks/carved_andesite"
+            	    "all" : "essentialfeatures:blocks/blue_bricks"
             	}
             },
             4:{
                 "textures": {
-                    "all" : "essentialfeatures:blocks/carved_andesite"
+                    "all" : "essentialfeatures:blocks/mixed_bricks"
                 }
             }
         }
