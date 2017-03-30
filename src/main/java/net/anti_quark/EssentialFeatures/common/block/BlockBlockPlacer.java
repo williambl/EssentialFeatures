@@ -2,6 +2,7 @@ package net.anti_quark.EssentialFeatures.common.block;
 
 import javax.annotation.Nullable;
 
+import mcjty.lib.tools.ItemStackTools;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
@@ -106,7 +107,7 @@ public class BlockBlockPlacer extends BlockDispenser {
                     else {
                     	itemstack1 = this.dropBehavior.dispense(blocksourceimpl, itemstack);
 
-                    	if (!itemstack1.isEmpty() && itemstack1.getCount() <= 0)
+                    	if (!ItemStackTools.isEmpty(itemstack1) && ItemStackTools.getStackSize(itemstack1) <= 0)
                     	{
                     		itemstack1 = null;
                     	}
