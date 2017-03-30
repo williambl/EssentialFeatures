@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -39,13 +40,13 @@ public class BlockCryingObsidian extends Block {
     }
     
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
     {
     	if(placer instanceof EntityPlayer) 
     	{
-    		((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, worldIn.provider.getDimension());
+    		((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, world.provider.getDimension());
     		
-    		particleExplosion(worldIn, pos);
+    		particleExplosion(world, pos);
     	}
     	return this.getStateFromMeta(meta);
     }

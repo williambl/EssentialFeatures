@@ -17,7 +17,7 @@ public class TileEntityBlockPlacer extends TileEntityDispenser
      */
     public String getName()
     {
-        return this.hasCustomName() ? this.field_190577_o : "container.block_placer";
+        return this.hasCustomName() ? this.customName : "container.block_placer";
     }
 
     public String getGuiID()
