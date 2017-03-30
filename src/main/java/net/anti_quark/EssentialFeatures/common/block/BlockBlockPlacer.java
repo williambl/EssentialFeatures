@@ -106,7 +106,7 @@ public class BlockBlockPlacer extends BlockDispenser {
                     else {
                     	itemstack1 = this.dropBehavior.dispense(blocksourceimpl, itemstack);
 
-                    	if (itemstack1 != null && itemstack1.stackSize <= 0)
+                    	if (!itemstack1.isEmpty() && itemstack1.getCount() <= 0)
                     	{
                     		itemstack1 = null;
                     	}

@@ -152,9 +152,9 @@ public class EntityPanda extends EntityTameable {
     {
         super.onLivingUpdate();
 
-        if (!this.worldObj.isRemote && !this.hasPath() && this.onGround)
+        if (!this.getEntityWorld().isRemote && !this.hasPath() && this.onGround)
         {
-            this.worldObj.setEntityState(this, (byte)8);
+            this.getEntityWorld().setEntityState(this, (byte)8);
         }
         
         //System.out.println(isSitting());
@@ -247,7 +247,7 @@ public class EntityPanda extends EntityTameable {
                 }
             }
 
-            if (this.isOwner(player) && !this.worldObj.isRemote && !this.isBreedingItem(stack))
+            if (this.isOwner(player) && !this.getEntityWorld().isRemote && !this.isBreedingItem(stack))
             {
                 this.aiSit.setSitting(!this.isSitting());
                 System.out.println("rClick");
@@ -263,7 +263,7 @@ public class EntityPanda extends EntityTameable {
                 stack = stack.splitStack(1);
             }
 
-            if (!this.worldObj.isRemote)
+            if (!this.getEntityWorld().isRemote)
             {
                 if (this.rand.nextInt(3) == 0)
                 {
@@ -273,12 +273,12 @@ public class EntityPanda extends EntityTameable {
                     this.setHealth(20.0F);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.worldObj.setEntityState(this, (byte)7);
+                    this.getEntityWorld().setEntityState(this, (byte)7);
                 }
                 else
                 {
                     this.playTameEffect(false);
-                    this.worldObj.setEntityState(this, (byte)6);
+                    this.getEntityWorld().setEntityState(this, (byte)6);
                 }
             }
 
@@ -307,7 +307,7 @@ public class EntityPanda extends EntityTameable {
 
     public EntityPanda createChild(EntityAgeable ageable)
     {
-        EntityPanda panda = new EntityPanda(this.worldObj);
+        EntityPanda panda = new EntityPanda(this.getEntityWorld());
         UUID uuid = this.getOwnerId();
 
         if (uuid != null)

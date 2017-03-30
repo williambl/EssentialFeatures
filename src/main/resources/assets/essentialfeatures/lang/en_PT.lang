@@ -35,3 +35,22 @@ tile.essentialfeatures:spike_block.name=Spikeys
 
 tile.essentialfeatures:block_placer.name=Block Placarrrrr
 container.block_placer=Block Placarrrrr
+tile.essentialfeatures:decorative_stone.carved_stone.name=Caaaaarved Stone
+tile.essentialfeatures:decorative_stone.carved_granite.name=Caaaaarved Granite
+tile.essentialfeatures:decorative_stone.carved_diorite.name=Caaaaarved Diorite
+tile.essentialfeatures:decorative_stone.carved_andesite.name=Caaaaarved Andesite
+
+tile.essentialfeatures:smooth_double_stone_slab.name=Smooth Double Stone Slarrrrrrb
+tile.essentialfeatures:smooth_double_sandstone_slab.name=Smooth Double Sandstone Slarrrrrrb
+tile.essentialfeatures:smooth_double_red_sandstone_slab.name=Smooth Double Red Sandstone Slarrrrrrrb
+
+tile.essentialfeatures:brick_variant.cream_bricks.name=Cream-Colaarred Bricks
+tile.essentialfeatures:brick_variant.london_bricks.name=Bricks O’ London
+tile.essentialfeatures:brick_variant.roman_bricks.name=Bricks O’ Rome
+tile.essentialfeatures:brick_variant.blue_bricks.name=Blue-Colaarred Bricks
+tile.essentialfeatures:brick_variant.mixed_bricks.name=Bricks O’ Many Types
+
+item.essentialfeatures:london_clay.name=Clay O’ London
+item.essentialfeatures:sand_clay_mixture.name=Mixture O’ The Sea Bed
+item.essentialfeatures:london_brick.name=Brick O’ London
+item.essentialfeatures:cream_brick.name=Cream-Colaarred Brick

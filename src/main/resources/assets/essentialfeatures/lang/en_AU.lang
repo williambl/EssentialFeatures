@@ -3,22 +3,22 @@ tile.essentialfeatures:viewed_block.name=Viewed Block
 tile.essentialfeatures:smooth_glowstone.name=Smooth Glowstone
 tile.essentialfeatures:polished_glowstone.name=Polished Glowstone
 
-tile.essentialfeatures:stained_lamp.white.name=stained_ Lamp
-tile.essentialfeatures:stained_lamp.orange.name=Orange stained_ Lamp
-tile.essentialfeatures:stained_lamp.magenta.name=Magenta stained_ Lamp
-tile.essentialfeatures:stained_lamp.light_blue.name=Light Blue stained_ Lamp
-tile.essentialfeatures:stained_lamp.yellow.name=Yellow stained_ Lamp
-tile.essentialfeatures:stained_lamp.lime.name=Lime stained_ Lamp
-tile.essentialfeatures:stained_lamp.pink.name=Pink stained_ Lamp
-tile.essentialfeatures:stained_lamp.gray.name=Grey stained_ Lamp
-tile.essentialfeatures:stained_lamp.silver.name=Light Grey stained_ Lamp
-tile.essentialfeatures:stained_lamp.cyan.name=Cyan stained_ Lamp
-tile.essentialfeatures:stained_lamp.purple.name=Purple stained_ Lamp
-tile.essentialfeatures:stained_lamp.blue.name=Blue stained_ Lamp
-tile.essentialfeatures:stained_lamp.brown.name=Brown stained_ Lamp
-tile.essentialfeatures:stained_lamp.green.name=Green stained_ Lamp
-tile.essentialfeatures:stained_lamp.red.name=Red stained_ Lamp
-tile.essentialfeatures:stained_lamp.black.name=Black stained_ Lamp
+tile.essentialfeatures:stained_lamp.white.name=Stained Lamp
+tile.essentialfeatures:stained_lamp.orange.name=Orange Stained Lamp
+tile.essentialfeatures:stained_lamp.magenta.name=Magenta Stained Lamp
+tile.essentialfeatures:stained_lamp.light_blue.name=Light Blue Stained Lamp
+tile.essentialfeatures:stained_lamp.yellow.name=Yellow Stained Lamp
+tile.essentialfeatures:stained_lamp.lime.name=Lime Stained Lamp
+tile.essentialfeatures:stained_lamp.pink.name=Pink Stained Lamp
+tile.essentialfeatures:stained_lamp.gray.name=Grey Stained Lamp
+tile.essentialfeatures:stained_lamp.silver.name=Light Grey Stained Lamp
+tile.essentialfeatures:stained_lamp.cyan.name=Cyan Stained Lamp
+tile.essentialfeatures:stained_lamp.purple.name=Purple Stained Lamp
+tile.essentialfeatures:stained_lamp.blue.name=Blue Stained Lamp
+tile.essentialfeatures:stained_lamp.brown.name=Brown Stained Lamp
+tile.essentialfeatures:stained_lamp.green.name=Green Stained Lamp
+tile.essentialfeatures:stained_lamp.red.name=Red Stained Lamp
+tile.essentialfeatures:stained_lamp.black.name=Black Stained Lamp
 
 entity.Villager.mechanic=Mechanic
 
@@ -35,3 +35,22 @@ tile.essentialfeatures:spike_block.name=Spike Block
 
 tile.essentialfeatures:block_placer.name=Block Placer
 container.block_placer=Block Placer
+tile.essentialfeatures:decorative_stone.carved_stone.name=Carved Stone
+tile.essentialfeatures:decorative_stone.carved_granite.name=Carved Granite
+tile.essentialfeatures:decorative_stone.carved_diorite.name=Carved Diorite
+tile.essentialfeatures:decorative_stone.carved_andesite.name=Carved Andesite
+
+tile.essentialfeatures:smooth_double_stone_slab.name=Smooth Double Stone Slab
+tile.essentialfeatures:smooth_double_sandstone_slab.name=Smooth Double Sandstone Slab
+tile.essentialfeatures:smooth_double_red_sandstone_slab.name=Smooth Double Red Sandstone Slab
+
+tile.essentialfeatures:brick_variant.cream_bricks.name=Cream Bricks
+tile.essentialfeatures:brick_variant.london_bricks.name=London Bricks
+tile.essentialfeatures:brick_variant.roman_bricks.name=Roman Bricks
+tile.essentialfeatures:brick_variant.blue_bricks.name=Blue Bricks
+tile.essentialfeatures:brick_variant.mixed_bricks.name=Mixed Bricks
+
+item.essentialfeatures:london_clay.name=London Clay
+item.essentialfeatures:sand_clay_mixture.name=Sand-Clay Mixture
+item.essentialfeatures:london_brick.name=London Brick
+item.essentialfeatures:cream_brick.name=Cream Brick

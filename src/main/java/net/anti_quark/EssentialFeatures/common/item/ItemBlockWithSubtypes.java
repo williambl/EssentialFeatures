@@ -5,11 +5,11 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemColored;
 import net.minecraft.item.ItemStack;
 
-public class ItemStainedLamp extends ItemBlock {
+public class ItemBlockWithSubtypes extends ItemBlock {
 	
 	private String[] subtypeNames;
 
-	public ItemStainedLamp(Block block, boolean hasSubtypes, String[] names) {
+	public ItemBlockWithSubtypes(Block block, boolean hasSubtypes, String[] names) {
 		super(block);
 		
         if (hasSubtypes)
@@ -26,7 +26,7 @@ public class ItemStainedLamp extends ItemBlock {
         return damage;
     }
     
-    public ItemStainedLamp setSubtypeNames(String[] names)
+    public ItemBlockWithSubtypes setSubtypeNames(String[] names)
     {
         this.subtypeNames = names;
         return this;
