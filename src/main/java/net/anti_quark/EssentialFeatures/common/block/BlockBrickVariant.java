@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
+import mcjty.lib.tools.ItemStackList;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -14,7 +15,6 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -65,7 +65,7 @@ public class BlockBrickVariant extends Block {
     }
     
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list)
+    public void getSubBlocks(Item itemIn, CreativeTabs tab, ItemStackList list)
     {
         for (Integer integer : variant.getAllowedValues())
         {

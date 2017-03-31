@@ -9,7 +9,7 @@ public class TileEntityBlockPlacer extends TileEntityDispenser
 {
     public static void registerFixesDropper(DataFixer fixer)
     {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityBlockPlacer.class, new String[] {"Items"}));
+        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists("BlockPlacer", new String[] {"Items"}));
     }
 
     /**
