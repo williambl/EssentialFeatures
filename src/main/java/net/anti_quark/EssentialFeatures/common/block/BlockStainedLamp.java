@@ -3,6 +3,7 @@ package net.anti_quark.EssentialFeatures.common.block;
 import java.util.List;
 import java.util.Random;
 
+import mcjty.lib.compat.CompatBlock;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneLight;
@@ -19,6 +20,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -26,7 +28,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockStainedLamp extends Block {
+public class BlockStainedLamp extends CompatBlock {
 	
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
     private final boolean isOn;
@@ -84,7 +86,7 @@ public class BlockStainedLamp extends Block {
     }
     
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
+    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList list)
     {
         for (EnumDyeColor enumdyecolor : EnumDyeColor.values())
         {
@@ -107,7 +109,7 @@ public class BlockStainedLamp extends Block {
     }
     
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
     {
         if (!worldIn.isRemote)
         {

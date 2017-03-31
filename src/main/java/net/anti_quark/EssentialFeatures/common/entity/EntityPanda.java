@@ -285,7 +285,7 @@ public class EntityPanda extends EntityTameable {
             return true;
         }
 
-        return super.processInteract(player, hand, stack);
+        return super.processInteract(player, hand);
     }
 
     /**

@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
+import mcjty.lib.compat.CompatBlock;
 import mcjty.lib.tools.ItemStackList;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
@@ -15,10 +16,11 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BlockBrickVariant extends Block {
+public class BlockBrickVariant extends CompatBlock {
 	
     private static final String[] names = new String[]{"cream_bricks", "london_bricks", "roman_bricks", "blue_bricks", "mixed_bricks"};
 	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
@@ -65,7 +67,7 @@ public class BlockBrickVariant extends Block {
     }
     
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, ItemStackList list)
+    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list)
     {
         for (Integer integer : variant.getAllowedValues())
         {

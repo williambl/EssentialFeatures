@@ -62,7 +62,7 @@ public class BlockSpike extends Block {
     
     @Nullable
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
+    public AxisAlignedBB getBoundingBox(IBlockState blockState, IBlockAccess source, BlockPos pos)
     {
         return NULL_AABB;
     }
