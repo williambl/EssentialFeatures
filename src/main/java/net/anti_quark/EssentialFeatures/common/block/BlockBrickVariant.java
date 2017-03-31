@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
+import mcjty.lib.compat.CompatBlock;
 import mcjty.lib.tools.ItemStackList;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
@@ -18,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BlockBrickVariant extends Block {
+public class BlockBrickVariant extends CompatBlock {
 	
     private static final String[] names = new String[]{"cream_bricks", "london_bricks", "roman_bricks", "blue_bricks", "mixed_bricks"};
 	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
