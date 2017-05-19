@@ -21,7 +21,6 @@ public class CommonProxy {
 		
 		CommonEventHandler handler = new CommonEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
-		FMLCommonHandler.instance().bus().register(handler);
 	}
 
 	public void postInit() {
