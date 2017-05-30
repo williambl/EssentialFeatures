@@ -30,7 +30,7 @@ public class ClientProxy extends CommonProxy {
 		super.init();
 		ClientEventHandler handler = new ClientEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
-	}
+ 	}
 	
 	@Override
 	public void postInit()
