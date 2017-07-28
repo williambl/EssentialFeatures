@@ -2,6 +2,8 @@ package net.anti_quark.EssentialFeatures.client.music;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
+import net.minecraft.client.audio.MusicTicker;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.world.World;
@@ -19,14 +21,15 @@ public class CustomMusic {
 		
 		if (world == null) {
 			return musicIn;
-		}
-		else {
+		} else {
 			System.out.println(Biome.getIdForBiome(world.getBiome(player.getPosition())));
 			switch (Biome.getIdForBiome(world.getBiome(player.getPosition()))) {
 			case OCEAN:
-				return null;
+		        musicIn = PositionedSoundRecord.getMusicRecord(ModSound.OCEAN);
+				return musicIn;
 			case DEEP_OCEAN:
-				return null;
+		        musicIn = PositionedSoundRecord.getMusicRecord(ModSound.OCEAN);
+				return musicIn;
 			default:
 				return musicIn;
 			}
