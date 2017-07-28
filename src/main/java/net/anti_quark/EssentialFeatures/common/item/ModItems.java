@@ -27,7 +27,7 @@ public class ModItems {
 		SAND_CLAY_MIXTURE = new EFItem("sand_clay_mixture", CreativeTabs.MATERIALS);
 		LONDON_BRICK = new EFItem("london_brick", CreativeTabs.MATERIALS);
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
-		RECORD = new ItemEFRecord("scarlet", ModSound.OCEAN);
+		RECORD = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
 	}
 	
 	public static void initModels ()

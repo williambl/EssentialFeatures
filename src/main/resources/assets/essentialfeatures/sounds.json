@@ -6,5 +6,13 @@
         "name":"essentialfeatures:music/ocean_music",
         "stream":true
         } ]
+  },
+  "record_scarlet": {
+      "category": "record",
+      "subtitle": "essentialfeatures.subtitle.record_scarlet",
+      "sounds": [ {
+          "name": "essentialfeatures:music/records/scarlet.ogg",
+          "stream": true
+          } ]
   }
 }
