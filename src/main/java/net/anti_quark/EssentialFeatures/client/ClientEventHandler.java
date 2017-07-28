@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.client;
 
+import net.anti_quark.EssentialFeatures.client.music.CustomMusic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.SoundManager;
@@ -13,11 +14,14 @@ public class ClientEventHandler {
 	
 	@SubscribeEvent
 	public void playSoundEvent (PlaySoundEvent event) {
-	    if (event.getSound().getCategory() == SoundCategory.MUSIC) {
-	    		event.setResultSound(null);
-	    		//event.getManager().playSound(p_sound);
+	    if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
+	    	    System.out.println(event.getName());
+	    	    ISound result = CustomMusic.PlayMusic(event.getSound());
+	    	    if (result != null) {
+	    	    		System.out.println(result.toString());
+	    	    }
+	    	    event.setResultSound(result);
 	    }
-	    System.out.println(event.getName());
 	}
 
 }
