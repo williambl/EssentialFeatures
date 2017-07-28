@@ -1,0 +1,10 @@
+{
+  "ocean_music": {
+    "category": "music",
+    "subtitle": "essential.subtitle.ocean_music",
+    "sounds": [ {
+        "name":"essentialfeatures:music/ocean_music",
+        "stream":true
+        } ]
+  }
+}
