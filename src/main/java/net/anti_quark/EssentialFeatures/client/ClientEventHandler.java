@@ -15,11 +15,7 @@ public class ClientEventHandler {
 	@SubscribeEvent
 	public void playSoundEvent (PlaySoundEvent event) {
 	    if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
-	    	    System.out.println(event.getName());
 	    	    ISound result = CustomMusic.PlayMusic(event.getSound());
-	    	    if (result != null) {
-	    	    		System.out.println(result.toString());
-	    	    }
 	    	    event.setResultSound(result);
 	    }
 	}

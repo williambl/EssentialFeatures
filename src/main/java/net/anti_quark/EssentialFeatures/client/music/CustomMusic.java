@@ -1,5 +1,7 @@
 package net.anti_quark.EssentialFeatures.client.music;
 
+import java.util.Random;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.MusicTicker;
@@ -14,15 +16,20 @@ public class CustomMusic {
 	static final int OCEAN = 0;
 	static final int DEEP_OCEAN = 24;
 	
+    private final static Random rand = new Random();
+	
 	public static ISound PlayMusic (ISound musicIn) {
 		Minecraft mc = Minecraft.getMinecraft();
 		WorldClient world = mc.theWorld;
 		EntityPlayerSP player = mc.thePlayer;
+
+		if (rand.nextFloat() > 0.5) {
+			return musicIn;
+		}
 		
 		if (world == null) {
 			return musicIn;
 		} else {
-			System.out.println(Biome.getIdForBiome(world.getBiome(player.getPosition())));
 			switch (Biome.getIdForBiome(world.getBiome(player.getPosition()))) {
 			case OCEAN:
 		        musicIn = PositionedSoundRecord.getMusicRecord(ModSound.OCEAN);
