@@ -11,7 +11,7 @@
       "category": "record",
       "subtitle": "essentialfeatures.subtitle.record_scarlet",
       "sounds": [ {
-          "name": "essentialfeatures:music/records/scarlet.ogg",
+          "name": "essentialfeatures:music/records/scarlet",
           "stream": true
           } ]
   }
