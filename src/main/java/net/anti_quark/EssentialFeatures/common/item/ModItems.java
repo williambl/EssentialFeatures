@@ -38,5 +38,6 @@ public class ModItems {
 		SAND_CLAY_MIXTURE.initModel();
 		LONDON_BRICK.initModel();
 		CREAM_BRICK.initModel();
+		RECORD.initModel();
 	}
 }

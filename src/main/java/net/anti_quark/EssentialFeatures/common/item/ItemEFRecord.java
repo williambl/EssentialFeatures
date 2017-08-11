@@ -48,5 +48,9 @@ public class ItemEFRecord extends ItemRecord
         this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
     }
+	
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
     
 }
