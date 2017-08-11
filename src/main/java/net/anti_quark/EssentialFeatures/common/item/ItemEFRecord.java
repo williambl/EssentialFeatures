@@ -41,22 +41,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemEFRecord extends ItemRecord
 {
-    private static final Map<SoundEvent, ItemRecord> RECORDS = Maps.<SoundEvent, ItemRecord>newHashMap();
-    private final SoundEvent sound;
-    private final String displayName;
-
 	public ItemEFRecord(String recordName, SoundEvent soundIn)
     {
     		super(recordName, soundIn);
-        this.displayName = "item.record." + recordName + ".desc";
-        this.sound = soundIn;
-        this.maxStackSize = 1;
-        this.setCreativeTab(CreativeTabs.MISC);
-        RECORDS.put(this.sound, this);
         this.setRegistryName(recordName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         GameRegistry.register(this);
     }
-	
     
 }
