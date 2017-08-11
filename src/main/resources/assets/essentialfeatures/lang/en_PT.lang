@@ -54,3 +54,6 @@ item.essentialfeatures:london_clay.name=Clay O’ London
 item.essentialfeatures:sand_clay_mixture.name=Mixture O’ The Sea Bed
 item.essentialfeatures:london_brick.name=Brick O’ London
 item.essentialfeatures:cream_brick.name=Cream-Colaarred Brick
+
+item.essentialfeatures:scarlet.name=Shanty
+item.record.scarlet.desc=Trophäe - scarlet

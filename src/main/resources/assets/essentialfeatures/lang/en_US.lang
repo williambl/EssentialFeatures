@@ -53,3 +53,6 @@ item.essentialfeatures:london_clay.name=London Clay
 item.essentialfeatures:sand_clay_mixture.name=Sand-Clay Mixture
 item.essentialfeatures:london_brick.name=London Brick
 item.essentialfeatures:cream_brick.name=Cream Brick
+
+item.essentialfeatures:scarlet.name=Music Disc
+item.record.scarlet.desc=Trophäe - scarlet
