@@ -6,7 +6,7 @@ import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemRecord;
+import net.anti_quark.EssentialFeatures.common.item.ItemEFRecord;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -17,7 +17,7 @@ public class ModItems {
 	public static EFItem LONDON_BRICK;
 	public static EFItem SAND_CLAY_MIXTURE;
 	public static EFItem CREAM_BRICK;
-	public static ItemRecord RECORD;
+	public static ItemEFRecord RECORD;
 
 	public static void addItems () 
 	{
