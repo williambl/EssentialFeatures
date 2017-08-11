@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.client;
 
+import net.anti_quark.EssentialFeatures.client.music.ModSound;
 import net.anti_quark.EssentialFeatures.client.render.entity.PandaRenderFactory;
 import net.anti_quark.EssentialFeatures.client.render.entity.RenderPanda;
 import net.anti_quark.EssentialFeatures.common.CommonEventHandler;
@@ -18,7 +19,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void preInit()
 	{
-    	super.preInit();
+		super.preInit();
 		ModBlocks.initModels();
 		ModItems.initModels();
 		RenderingRegistry.registerEntityRenderingHandler(EntityPanda.class, new PandaRenderFactory(){});

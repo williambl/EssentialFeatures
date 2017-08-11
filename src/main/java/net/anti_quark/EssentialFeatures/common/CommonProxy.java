@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.common;
 
+import net.anti_quark.EssentialFeatures.client.music.ModSound;
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
 import net.anti_quark.EssentialFeatures.common.craft.ModRecipes;
 import net.anti_quark.EssentialFeatures.common.entity.ModEntities;
@@ -10,6 +11,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 public class CommonProxy {
 
 	public void preInit() {
+		ModSound.addSounds();
 		ModBlocks.addBlocks();
 		ModItems.addItems();
 	}
