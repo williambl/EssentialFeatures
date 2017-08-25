@@ -37,7 +37,6 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.valueOf(false)));
         this.isBlockContainer = true;
-        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, registryName);
     }
 
 	@Override

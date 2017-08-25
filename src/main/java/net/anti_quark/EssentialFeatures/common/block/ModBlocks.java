@@ -1,6 +1,8 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
+import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
+import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
@@ -12,6 +14,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 
@@ -75,6 +78,9 @@ public class ModBlocks {
 	    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
 	    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB
 	    		);
+        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
+        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
+
 	}
 	
 	@SubscribeEvent

@@ -51,7 +51,6 @@ public class BlockBlockPlacer extends BlockDispenser {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, registryName);
 	}
 	
     public void initModel() {
