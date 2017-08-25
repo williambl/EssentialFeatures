@@ -1,6 +1,7 @@
 package net.anti_quark.EssentialFeatures.common.entity;
 
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.entity.passive.EntityVillager.PriceInfo;
@@ -9,7 +10,10 @@ import net.minecraft.entity.passive.EntityVillager.ListItemForEmeralds;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
 public class VillagerMechanic {
 
@@ -19,8 +23,9 @@ public class VillagerMechanic {
     		.addTrade(2, new ListItemForEmeralds(new ItemStack(Blocks.REDSTONE_LAMP), new PriceInfo(1, 3)))
     		.addTrade(2, new ListItemForEmeralds(new ItemStack(ModBlocks.STAINED_LAMP), new PriceInfo(1, 5)));
         
-    public static void addVillagers ()
+    @SubscribeEvent
+    public void registerVillagers (RegistryEvent.Register<VillagerProfession> event)
     {
-    	VillagerRegistry.instance().register(PROFESSION);
+    		event.getRegistry().register(PROFESSION);
     }
 }
