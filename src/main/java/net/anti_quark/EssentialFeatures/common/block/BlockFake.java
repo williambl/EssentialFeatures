@@ -26,8 +26,6 @@ public class BlockFake extends Block {
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.realBlockState = realBlockState;
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 	}
 	
     public void initModel() {

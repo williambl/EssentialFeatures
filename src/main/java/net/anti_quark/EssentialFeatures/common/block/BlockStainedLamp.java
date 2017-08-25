@@ -31,7 +31,7 @@ public class BlockStainedLamp extends Block {
 	
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
     private final boolean isOn;
-    private static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
+    static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 
 	public BlockStainedLamp(String registryName, Material material, float hardness, float resistance, boolean isOn) {
         super(material);
@@ -48,8 +48,6 @@ public class BlockStainedLamp extends Block {
             this.setLightLevel(1.0F);
             this.setCreativeTab(null);
         }
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockWithSubtypes(this, true, names), getRegistryName());
 	}
 
     public void initModel() {

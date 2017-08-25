@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockDecorativeStone extends Block {
 	
-    private static final String[] names = new String[]{"carved_stone", "carved_granite", "carved_diorite", "carved_andesite"};
+    static final String[] names = new String[]{"carved_stone", "carved_granite", "carved_diorite", "carved_andesite"};
 	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 3);
 
 	public BlockDecorativeStone(String registryName, Material material, float hardness, float resistance) {
@@ -32,8 +32,6 @@ public class BlockDecorativeStone extends Block {
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(blockSoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockWithSubtypes(this, true, names), getRegistryName());
 	}
 	
     public void initModel() {

@@ -1,10 +1,17 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
+import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModBlocks {
 
@@ -47,6 +54,49 @@ public class ModBlocks {
         SMOOTH_DOUBLE_RED_SANDSTONE_SLAB = new BlockFake("smooth_double_red_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
         		Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
     }
+	
+	@SubscribeEvent
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		addBlocks();
+	    event.getRegistry().registerAll(
+	    		VIEWED_BLOCK,
+	    		SMOOTH_GLOWSTONE,
+	    		STAINED_LAMP,
+	    		LIT_STAINED_LAMP,
+	    		POLISHED_GLOWSTONE,
+	    		SNOW_BRICK,
+	    		BLOCK_BREAKER,
+	    		CRYING_OBSIDIAN,
+	    		SPIKE_BLOCK,
+	    		BLOCK_PLACER,
+	    		DECORATIVE_STONE,
+	    		BRICK_VARIANT,
+	    		SMOOTH_DOUBLE_STONE_SLAB,
+	    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
+	    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB
+	    		);
+	}
+	
+	@SubscribeEvent
+	public void registerItemBlocks(RegistryEvent.Register<Item> event) {
+		event.getRegistry().registerAll(
+				new ItemBlock(VIEWED_BLOCK).setRegistryName(VIEWED_BLOCK.getRegistryName()),
+				new ItemBlock(SMOOTH_GLOWSTONE).setRegistryName(SMOOTH_GLOWSTONE.getRegistryName()),
+				new ItemBlockWithSubtypes(STAINED_LAMP, true, STAINED_LAMP.names).setRegistryName(STAINED_LAMP.getRegistryName()),
+				new ItemBlockWithSubtypes(LIT_STAINED_LAMP, true, LIT_STAINED_LAMP.names).setRegistryName(LIT_STAINED_LAMP.getRegistryName()),
+				new ItemBlock(POLISHED_GLOWSTONE).setRegistryName(POLISHED_GLOWSTONE.getRegistryName()),
+				new ItemBlock(SNOW_BRICK).setRegistryName(SNOW_BRICK.getRegistryName()),
+				new ItemBlock(BLOCK_BREAKER).setRegistryName(BLOCK_BREAKER.getRegistryName()),
+				new ItemBlock(CRYING_OBSIDIAN).setRegistryName(CRYING_OBSIDIAN.getRegistryName()),
+				new ItemBlock(SPIKE_BLOCK).setRegistryName(SPIKE_BLOCK.getRegistryName()),
+				new ItemBlock(BLOCK_PLACER).setRegistryName(BLOCK_PLACER.getRegistryName()),
+				new ItemBlockWithSubtypes(DECORATIVE_STONE, true, DECORATIVE_STONE.names).setRegistryName(DECORATIVE_STONE.getRegistryName()),
+				new ItemBlockWithSubtypes(BRICK_VARIANT, true, BRICK_VARIANT.names).setRegistryName(BRICK_VARIANT.getRegistryName()),
+				new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB).setRegistryName(SMOOTH_DOUBLE_STONE_SLAB.getRegistryName()),
+				new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB).setRegistryName(SMOOTH_DOUBLE_SANDSTONE_SLAB.getRegistryName()),
+				new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB).setRegistryName(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.getRegistryName())
+				);
+	}
 
 	public static void initModels() 
 	{

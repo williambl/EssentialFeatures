@@ -22,8 +22,6 @@ public class BlockPolishedGlowstone extends Block {
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setLightLevel(1F);
         this.setSoundType(blockSoundType.GLASS);
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 	}
 	
     public void initModel() {

@@ -36,8 +36,6 @@ public class BlockBlockBreaker extends BlockDirectional {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 	}
 	
     public void initModel() {
