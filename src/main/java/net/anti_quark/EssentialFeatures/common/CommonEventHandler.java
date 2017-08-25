@@ -12,8 +12,8 @@ public class CommonEventHandler {
 	@SubscribeEvent
 	public void OnPlayerRespawn (PlayerRespawnEvent e)
 	{
-		e.player.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, e.player.posX, e.player.posY, e.player.posZ, 1.0D, 0.0D, 0.0D, new int[0]);
-		e.player.worldObj.playSound((EntityPlayer)null, e.player.posX, e.player.posY, e.player.posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.player.worldObj.rand.nextFloat() - e.player.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+		e.player.world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, e.player.posX, e.player.posY, e.player.posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+		e.player.world.playSound((EntityPlayer)null, e.player.posX, e.player.posY, e.player.posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.player.world.rand.nextFloat() - e.player.world.rand.nextFloat()) * 0.2F) * 0.7F);
 	}
 
 }
