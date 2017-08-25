@@ -27,7 +27,6 @@ public class ItemCereal extends ItemFood {
         this.isIron = isIron;
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());;
-        GameRegistry.register(this);
     }
 	
     public boolean hasEffect(ItemStack stack)

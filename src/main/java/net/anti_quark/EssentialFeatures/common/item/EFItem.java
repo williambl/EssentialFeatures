@@ -28,7 +28,6 @@ public class EFItem extends Item {
         this.setCreativeTab(tab);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());;
-        GameRegistry.register(this);
     }
 	
     public void initModel() {

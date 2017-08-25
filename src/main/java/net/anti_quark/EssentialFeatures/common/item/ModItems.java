@@ -6,7 +6,10 @@ import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.anti_quark.EssentialFeatures.common.item.ItemEFRecord;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -28,6 +31,20 @@ public class ModItems {
 		LONDON_BRICK = new EFItem("london_brick", CreativeTabs.MATERIALS);
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
 		RECORD = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
+	}
+	
+	@SubscribeEvent
+	public void registerItems(RegistryEvent.Register<Item> event) {
+		addItems();
+		event.getRegistry().registerAll(
+				CEREAL,
+				IRON_CEREAL,
+				LONDON_CLAY,
+				SAND_CLAY_MIXTURE,
+				LONDON_BRICK,
+				CREAM_BRICK,
+				RECORD
+				);
 	}
 	
 	public static void initModels ()

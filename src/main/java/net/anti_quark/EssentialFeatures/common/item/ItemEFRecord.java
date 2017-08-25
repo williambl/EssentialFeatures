@@ -46,7 +46,6 @@ public class ItemEFRecord extends ItemRecord
     		super(recordName, soundIn);
         this.setRegistryName(recordName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        GameRegistry.register(this);
     }
 	
     public void initModel() {
