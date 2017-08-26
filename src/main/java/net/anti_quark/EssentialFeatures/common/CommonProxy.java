@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 public class CommonProxy {
 
 	public void preInit() {
+		ModBlocks.addBlocks();
+		ModItems.addItems();
 	}
 
 	public void init() {

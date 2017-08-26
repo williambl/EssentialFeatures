@@ -35,7 +35,6 @@ public class ModItems {
 	
 	@SubscribeEvent
 	public void registerItems(RegistryEvent.Register<Item> event) {
-		addItems();
 		event.getRegistry().registerAll(
 				CEREAL,
 				IRON_CEREAL,

@@ -60,7 +60,6 @@ public class ModBlocks {
 	
 	@SubscribeEvent
 	public void registerBlocks(RegistryEvent.Register<Block> event) {
-		addBlocks();
 	    event.getRegistry().registerAll(
 	    		VIEWED_BLOCK,
 	    		SMOOTH_GLOWSTONE,
