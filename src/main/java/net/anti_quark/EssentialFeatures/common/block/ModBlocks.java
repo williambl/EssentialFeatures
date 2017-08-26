@@ -1,5 +1,9 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import net.anti_quark.EssentialFeatures.EssentialFeatures;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
@@ -13,8 +17,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModBlocks {
 
@@ -57,51 +63,6 @@ public class ModBlocks {
         SMOOTH_DOUBLE_RED_SANDSTONE_SLAB = new BlockFake("smooth_double_red_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
         		Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
     }
-	
-	@SubscribeEvent
-	public void registerBlocks(RegistryEvent.Register<Block> event) {
-	    event.getRegistry().registerAll(
-	    		VIEWED_BLOCK,
-	    		SMOOTH_GLOWSTONE,
-	    		STAINED_LAMP,
-	    		LIT_STAINED_LAMP,
-	    		POLISHED_GLOWSTONE,
-	    		SNOW_BRICK,
-	    		BLOCK_BREAKER,
-	    		CRYING_OBSIDIAN,
-	    		SPIKE_BLOCK,
-	    		BLOCK_PLACER,
-	    		DECORATIVE_STONE,
-	    		BRICK_VARIANT,
-	    		SMOOTH_DOUBLE_STONE_SLAB,
-	    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
-	    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB
-	    		);
-        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
-        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
-
-	}
-	
-	@SubscribeEvent
-	public void registerItemBlocks(RegistryEvent.Register<Item> event) {
-		event.getRegistry().registerAll(
-				new ItemBlock(VIEWED_BLOCK).setRegistryName(VIEWED_BLOCK.getRegistryName()),
-				new ItemBlock(SMOOTH_GLOWSTONE).setRegistryName(SMOOTH_GLOWSTONE.getRegistryName()),
-				new ItemBlockWithSubtypes(STAINED_LAMP, true, STAINED_LAMP.names).setRegistryName(STAINED_LAMP.getRegistryName()),
-				new ItemBlockWithSubtypes(LIT_STAINED_LAMP, true, LIT_STAINED_LAMP.names).setRegistryName(LIT_STAINED_LAMP.getRegistryName()),
-				new ItemBlock(POLISHED_GLOWSTONE).setRegistryName(POLISHED_GLOWSTONE.getRegistryName()),
-				new ItemBlock(SNOW_BRICK).setRegistryName(SNOW_BRICK.getRegistryName()),
-				new ItemBlock(BLOCK_BREAKER).setRegistryName(BLOCK_BREAKER.getRegistryName()),
-				new ItemBlock(CRYING_OBSIDIAN).setRegistryName(CRYING_OBSIDIAN.getRegistryName()),
-				new ItemBlock(SPIKE_BLOCK).setRegistryName(SPIKE_BLOCK.getRegistryName()),
-				new ItemBlock(BLOCK_PLACER).setRegistryName(BLOCK_PLACER.getRegistryName()),
-				new ItemBlockWithSubtypes(DECORATIVE_STONE, true, DECORATIVE_STONE.names).setRegistryName(DECORATIVE_STONE.getRegistryName()),
-				new ItemBlockWithSubtypes(BRICK_VARIANT, true, BRICK_VARIANT.names).setRegistryName(BRICK_VARIANT.getRegistryName()),
-				new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB).setRegistryName(SMOOTH_DOUBLE_STONE_SLAB.getRegistryName()),
-				new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB).setRegistryName(SMOOTH_DOUBLE_SANDSTONE_SLAB.getRegistryName()),
-				new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB).setRegistryName(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.getRegistryName())
-				);
-	}
 
 	public static void initModels() 
 	{
@@ -121,5 +82,83 @@ public class ModBlocks {
 		SMOOTH_DOUBLE_STONE_SLAB.initModel();
 		SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
 		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
+	}
+	
+	@Mod.EventBusSubscriber
+	public static class RegistrationHandler {
+		public static final Set<ItemBlock> ITEM_BLOCKS = new HashSet<>();
+
+		/**
+		 * Register this mod's {@link Block}s.
+		 *
+		 * @param event The event
+		 */
+		@SubscribeEvent
+		public static void registerBlocks(RegistryEvent.Register<Block> event) {
+			final IForgeRegistry<Block> registry = event.getRegistry();
+
+			event.getRegistry().registerAll(
+		    		VIEWED_BLOCK,
+		    		SMOOTH_GLOWSTONE,
+		    		STAINED_LAMP,
+		    		LIT_STAINED_LAMP,
+		    		POLISHED_GLOWSTONE,
+		    		SNOW_BRICK,
+		    		BLOCK_BREAKER,
+		    		CRYING_OBSIDIAN,
+		    		SPIKE_BLOCK,
+		    		BLOCK_PLACER,
+		    		DECORATIVE_STONE,
+		    		BRICK_VARIANT,
+		    		SMOOTH_DOUBLE_STONE_SLAB,
+		    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
+		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB
+		    		);
+	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
+	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
+		}
+		
+		/**
+		 * Register this mod's {@link ItemBlock}s.
+		 *
+		 * @param event The event
+		 */
+		@SubscribeEvent
+		public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
+			final ItemBlock[] items = {
+					new ItemBlock(VIEWED_BLOCK),
+					new ItemBlock(SMOOTH_GLOWSTONE),
+					new ItemBlockWithSubtypes(STAINED_LAMP, true, STAINED_LAMP.names),
+					new ItemBlockWithSubtypes(LIT_STAINED_LAMP, true, LIT_STAINED_LAMP.names),
+					new ItemBlock(POLISHED_GLOWSTONE),
+					new ItemBlock(SNOW_BRICK),
+					new ItemBlock(BLOCK_BREAKER),
+					new ItemBlock(CRYING_OBSIDIAN),
+					new ItemBlock(SPIKE_BLOCK),
+					new ItemBlock(BLOCK_PLACER),
+					new ItemBlockWithSubtypes(DECORATIVE_STONE, true, DECORATIVE_STONE.names),
+					new ItemBlockWithSubtypes(BRICK_VARIANT, true, BRICK_VARIANT.names),
+					new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB),
+					new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
+					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB)
+			};
+
+			final IForgeRegistry<Item> registry = event.getRegistry();
+
+			for (final ItemBlock item : items) {
+				registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
+				ITEM_BLOCKS.add(item);
+			}
+		}
+		
+		public static void registerTileEntities() {
+	        registerTileEntity(TileEntityViewedBlock.class);
+	        registerTileEntity(TileEntityBlockPlacer.class);
+		}
+		
+		private static void registerTileEntity(Class<? extends TileEntity> tileEntityClass) {
+			GameRegistry.registerTileEntity(tileEntityClass, EssentialFeatures.MODID + ":" + tileEntityClass.getSimpleName().replaceFirst("TileEntity", ""));
+		}
+
 	}
 }
