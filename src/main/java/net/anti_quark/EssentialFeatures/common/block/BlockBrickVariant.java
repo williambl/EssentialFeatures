@@ -63,11 +63,11 @@ public class BlockBrickVariant extends Block {
     }
     
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list)
+    public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
     {
         for (Integer integer : variant.getAllowedValues())
         {
-            list.add(new ItemStack(itemIn, 1, integer));
+            list.add(new ItemStack(this, 1, integer));
             System.out.println(integer);
         }
     }
