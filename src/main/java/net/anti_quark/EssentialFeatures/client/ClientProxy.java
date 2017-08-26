@@ -20,16 +20,15 @@ public class ClientProxy extends CommonProxy {
 	public void preInit()
 	{
 		super.preInit();
+		ModBlocks.initModels();
+		ModItems.initModels();
+		RenderingRegistry.registerEntityRenderingHandler(EntityPanda.class, new PandaRenderFactory(){});
 	}
     
 	@Override
 	public void init()
 	{
 		super.init();
-		ModBlocks.initModels();
-		ModItems.initModels();
-		RenderingRegistry.registerEntityRenderingHandler(EntityPanda.class, new PandaRenderFactory(){});
-		
 		ClientEventHandler handler = new ClientEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
  	}

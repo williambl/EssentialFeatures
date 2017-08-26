@@ -43,6 +43,7 @@ public class ModBlocks {
 	
 	public static void addBlocks() 
 	{
+		System.out.println("adding blocks");
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
         SMOOTH_GLOWSTONE = new BlockSmoothGlowstone("smooth_glowstone", Material.GLASS, 1, 2);
         STAINED_LAMP = new BlockStainedLamp("stained_lamp", Material.GLASS, 0.3F, 1.5F, false);
@@ -66,6 +67,7 @@ public class ModBlocks {
 
 	public static void initModels() 
 	{
+		System.out.println("initing models");
 		VIEWED_BLOCK.initModel();
 		SMOOTH_GLOWSTONE.initModel();
 		STAINED_LAMP.initModel();
