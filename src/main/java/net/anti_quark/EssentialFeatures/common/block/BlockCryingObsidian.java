@@ -30,8 +30,6 @@ public class BlockCryingObsidian extends Block {
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setLightLevel(0.1F);
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 	}
 	
     public void initModel() {
@@ -39,23 +37,24 @@ public class BlockCryingObsidian extends Block {
     }
     
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
-    	if(placer instanceof EntityPlayer) 
-    	{
-    		((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, worldIn.provider.getDimension());
+    		if(placer instanceof EntityPlayer) 
+    		{
+    			((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, worldIn.provider.getDimension());
     		
-    		particleExplosion(worldIn, pos);
-    	}
-    	return this.getStateFromMeta(meta);
+    			particleExplosion(worldIn, pos);
+    		}
+    		return this.getStateFromMeta(meta);
     }
-
+    
+    
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
     	EnumFacing enumfacing = EnumFacing.random(rand);
 
-        if (enumfacing != EnumFacing.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullyOpaque())
+        if (enumfacing != EnumFacing.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullCube())
         {
             double d0 = (double)pos.getX();
             double d1 = (double)pos.getY();
