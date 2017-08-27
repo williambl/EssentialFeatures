@@ -20,8 +20,6 @@ public class ClientProxy extends CommonProxy {
 	public void preInit()
 	{
 		super.preInit();
-		ModBlocks.initModels();
-		ModItems.initModels();
 		RenderingRegistry.registerEntityRenderingHandler(EntityPanda.class, new PandaRenderFactory(){});
 	}
     

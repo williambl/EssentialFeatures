@@ -11,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.anti_quark.EssentialFeatures.common.item.ItemEFRecord;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -37,17 +38,6 @@ public class ModItems {
 		LONDON_BRICK = new EFItem("london_brick", CreativeTabs.MATERIALS);
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
 		RECORD = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
-	}
-	
-	public static void initModels ()
-	{
-		CEREAL.initModel();
-		IRON_CEREAL.initModel();
-		LONDON_CLAY.initModel();
-		SAND_CLAY_MIXTURE.initModel();
-		LONDON_BRICK.initModel();
-		CREAM_BRICK.initModel();
-		RECORD.initModel();
 	}
 	
 	@Mod.EventBusSubscriber
@@ -77,6 +67,22 @@ public class ModItems {
 				registry.register(item);
 				ITEMS.add(item);
 			}
+		}
+		
+		/**
+		 * Register this mod's Item Models.
+		 *
+		 * @param event The event
+		 */
+		@SubscribeEvent
+		public static void registerItemBlockModels(ModelRegistryEvent event) {
+			CEREAL.initModel();
+			IRON_CEREAL.initModel();
+			LONDON_CLAY.initModel();
+			SAND_CLAY_MIXTURE.initModel();
+			LONDON_BRICK.initModel();
+			CREAM_BRICK.initModel();
+			RECORD.initModel();
 		}
 	}
 }

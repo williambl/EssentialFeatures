@@ -16,6 +16,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -43,7 +44,6 @@ public class ModBlocks {
 	
 	public static void addBlocks() 
 	{
-		System.out.println("adding blocks");
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
         SMOOTH_GLOWSTONE = new BlockSmoothGlowstone("smooth_glowstone", Material.GLASS, 1, 2);
         STAINED_LAMP = new BlockStainedLamp("stained_lamp", Material.GLASS, 0.3F, 1.5F, false);
@@ -64,27 +64,6 @@ public class ModBlocks {
         SMOOTH_DOUBLE_RED_SANDSTONE_SLAB = new BlockFake("smooth_double_red_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
         		Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
     }
-
-	public static void initModels() 
-	{
-		System.out.println("initing models");
-		VIEWED_BLOCK.initModel();
-		SMOOTH_GLOWSTONE.initModel();
-		STAINED_LAMP.initModel();
-		LIT_STAINED_LAMP.initModel();
-		POLISHED_GLOWSTONE.initModel();
-		SNOW_BRICK.initModel();
-		BLOCK_BREAKER.initModel();
-		CRYING_OBSIDIAN.initModel();
-		SPIKE_BLOCK.initModel();
-		BLOCK_PLACER.initModel();
-		DECORATIVE_STONE.initModel();
-		BRICK_VARIANT.initModel();
-		
-		SMOOTH_DOUBLE_STONE_SLAB.initModel();
-		SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
-		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
-	}
 	
 	@Mod.EventBusSubscriber
 	public static class RegistrationHandler {
@@ -151,6 +130,31 @@ public class ModBlocks {
 				registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
 				ITEM_BLOCKS.add(item);
 			}
+		}
+		
+		/**
+		 * Register this mod's ItemBlock Models.
+		 *
+		 * @param event The event
+		 */
+		@SubscribeEvent
+		public static void registerItemBlockModels(ModelRegistryEvent event) {
+			VIEWED_BLOCK.initModel();
+			SMOOTH_GLOWSTONE.initModel();
+			STAINED_LAMP.initModel();
+			LIT_STAINED_LAMP.initModel();
+			POLISHED_GLOWSTONE.initModel();
+			SNOW_BRICK.initModel();
+			BLOCK_BREAKER.initModel();
+			CRYING_OBSIDIAN.initModel();
+			SPIKE_BLOCK.initModel();
+			BLOCK_PLACER.initModel();
+			DECORATIVE_STONE.initModel();
+			BRICK_VARIANT.initModel();
+			
+			SMOOTH_DOUBLE_STONE_SLAB.initModel();
+			SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
+			SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
 		}
 		
 		public static void registerTileEntities() {
