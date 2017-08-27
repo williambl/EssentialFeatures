@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "essentialfeatures:decorative_stone",
+    "data": 2,
+    "count": 4
+  },
+  "pattern": [
+    " s ",
+    "s s",
+    " s "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:stone",
+      "data": 2
+    }
+  }
+}

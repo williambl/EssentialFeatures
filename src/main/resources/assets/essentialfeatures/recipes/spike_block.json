@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "essentialfeatures:spike_block",
+    "count": 8
+  },
+  "pattern": [
+    "i i",
+    "iii",
+    "iii"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

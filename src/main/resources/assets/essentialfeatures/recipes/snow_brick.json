@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "essentialfeatures:snow_brick"
+  },
+  "pattern": [
+    "ss",
+    "ss"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:snow"
+    }
+  }
+}

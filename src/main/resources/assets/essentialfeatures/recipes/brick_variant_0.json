@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "essentialfeatures:brick_variant",
+    "data": 0
+  },
+  "pattern": [
+    "bb",
+    "bb"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "essentialfeatures:cream_brick"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "essentialfeatures:polished_glowstone"
+  },
+  "pattern": [
+    "ss",
+    "ss"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "item": "essentialfeatures:smooth_glowstone"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "essentialfeatures:viewed_block"
+  },
+  "pattern": [
+    "qrq",
+    "r*r",
+    "qrq"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "q": {
+      "item": "minecraft:quartz"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "*": {
+      "item": "minecraft:ender_eye"
+    }
+  }
+}

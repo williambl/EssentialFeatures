@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "essentialfeatures:sand_clay_mixture"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "item": "minecraft:sand",
+      "data": 0
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

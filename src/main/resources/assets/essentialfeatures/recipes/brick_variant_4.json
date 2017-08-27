@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "essentialfeatures:brick_variant",
+    "data": 4
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:netherbrick"
+    },
+    {
+      "item": "essentialfeatures:london_brick"
+    },
+    {
+      "item": "essentialfeatures:cream_brick"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

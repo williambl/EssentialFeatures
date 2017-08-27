@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "essentialfeatures:double_sandstone_slab",
+    "data": 9
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:stone_slab",
+      "data": 1,
+      "count": 2
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}
