@@ -1,20 +1,5 @@
 package net.anti_quark.EssentialFeatures.common.craft;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
 import net.anti_quark.EssentialFeatures.common.item.ModItems;
 import net.minecraft.block.Block;
