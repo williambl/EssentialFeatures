@@ -16,7 +16,7 @@ public class CommonProxy {
 	}
 
 	public void init() {
-		//ModRecipes.addRecipes();		
+		ModRecipes.addRecipes();		
 		CommonEventHandler handler = new CommonEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
 	}
