@@ -34,14 +34,12 @@ public class BlockSpike extends Block {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 	}
 	
 	@Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
     {
-        entityIn.attackEntityFrom(DamageSource.cactus, 2.0F);
+        entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
         if(entityIn instanceof EntityLivingBase)
         {
         	((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 1, 1));

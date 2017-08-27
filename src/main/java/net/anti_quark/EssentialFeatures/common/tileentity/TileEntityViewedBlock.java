@@ -23,13 +23,13 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 	@Override
 	public void update() {
 		
-		IBlockState blockstate = worldObj.getBlockState(getPos());
-		BlockViewedBlock block = (BlockViewedBlock) worldObj.getBlockState(getPos()).getBlock();
+		IBlockState blockstate = world.getBlockState(getPos());
+		BlockViewedBlock block = (BlockViewedBlock) world.getBlockState(getPos()).getBlock();
 		wasLookingLastTime = block.isPowered(blockstate);
 		BlockPos thisPos = getPos();
 
 		boolean isNowLooking = false;
-		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos.getX()-radius,this.pos.getY()-radius,this.pos.getZ()-radius,this.pos.getX()+radius,this.pos.getY()+radius,this.pos.getZ()+radius));
+		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos.getX()-radius,this.pos.getY()-radius,this.pos.getZ()-radius,this.pos.getX()+radius,this.pos.getY()+radius,this.pos.getZ()+radius));
 		
 
 		for (EntityPlayer player : players) 
@@ -42,7 +42,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		
 		if (wasLookingLastTime != isNowLooking) 
 		{
-			if (isNowLooking) {block.activate(worldObj, thisPos, blockstate);} else {block.deactivate(worldObj, thisPos, blockstate);}
+			if (isNowLooking) {block.activate(world, thisPos, blockstate);} else {block.deactivate(world, thisPos, blockstate);}
 		}
 	}
 	
@@ -70,8 +70,8 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
     {
         Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
-        Vec3d vec3d2 = vec3d.addVector(vec3d1.xCoord * blockReachDistance, vec3d1.yCoord * blockReachDistance, vec3d1.zCoord * blockReachDistance);
-        return this.worldObj.rayTraceBlocks(vec3d, vec3d2, false, false, true);
+        Vec3d vec3d2 = vec3d.addVector(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
+        return this.world.rayTraceBlocks(vec3d, vec3d2, false, false, true);
     }
     
     public Vec3d getPositionEyes(EntityPlayer playerIn, float partialTicks)

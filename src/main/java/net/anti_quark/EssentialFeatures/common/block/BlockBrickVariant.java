@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockBrickVariant extends Block {
 	
-    private static final String[] names = new String[]{"cream_bricks", "london_bricks", "roman_bricks", "blue_bricks", "mixed_bricks"};
+    static final String[] names = new String[]{"cream_bricks", "london_bricks", "roman_bricks", "blue_bricks", "mixed_bricks"};
 	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
 
 	public BlockBrickVariant(String registryName, Material material, float hardness, float resistance) {
@@ -32,8 +32,6 @@ public class BlockBrickVariant extends Block {
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(blockSoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockWithSubtypes(this, true, names), getRegistryName());
 	}
 	
     public void initModel() {
@@ -65,11 +63,11 @@ public class BlockBrickVariant extends Block {
     }
     
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list)
+    public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
     {
         for (Integer integer : variant.getAllowedValues())
         {
-            list.add(new ItemStack(itemIn, 1, integer));
+            list.add(new ItemStack(this, 1, integer));
             System.out.println(integer);
         }
     }

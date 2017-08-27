@@ -8,11 +8,6 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 public class ModEntities {
 
-	public static void addVillagers () 
-	{
-		VillagerMechanic.addVillagers();
-	}
-	
 	public static void addEntities ()
 	{
 		//EntityRegistry.registerModEntity(null, EntityPanda.class, "panda", 0, EssentialFeatures.MODID, 48, 3, false, 222222, 202020);

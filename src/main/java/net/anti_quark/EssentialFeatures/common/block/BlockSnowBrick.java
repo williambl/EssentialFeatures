@@ -21,8 +21,6 @@ public class BlockSnowBrick extends Block {
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(blockSoundType.SNOW);
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
 	}
 	
     public void initModel() {

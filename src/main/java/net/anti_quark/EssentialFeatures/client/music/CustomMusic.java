@@ -20,8 +20,8 @@ public class CustomMusic {
 	
 	public static ISound PlayMusic (ISound musicIn) {
 		Minecraft mc = Minecraft.getMinecraft();
-		WorldClient world = mc.theWorld;
-		EntityPlayerSP player = mc.thePlayer;
+		WorldClient world = mc.world;
+		EntityPlayerSP player = mc.player;
 
 		if (rand.nextFloat() > 0.5) {
 			return musicIn;

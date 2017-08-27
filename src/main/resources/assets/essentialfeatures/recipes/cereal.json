@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "essentialfeatures:cereal"
+  },
+  "pattern": [
+    "w",
+    "m",
+    "b"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:bowl"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    },
+    "m": {
+      "item": "minecraft:milk_bucket"
+    }
+  }
+}

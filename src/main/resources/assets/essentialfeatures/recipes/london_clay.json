@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "essentialfeatures:london_clay",
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:clay_ball",
+      "count": 2
+    },
+    {
+      "item": "minecraft:sand",
+      "data": 0
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "essentialfeatures:brick_variant",
+    "data": 1
+  },
+  "pattern": [
+    "bb",
+    "bb"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "essentialfeatures:london_brick"
+    }
+  }
+}

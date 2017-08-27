@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "essentialfeatures:crying_obsidian"
+  },
+  "pattern": [
+    " l ",
+    "lol",
+    " l "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "l": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "o": {
+      "item": "minecraft:obsidian"
+    }
+  }
+}

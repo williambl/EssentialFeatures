@@ -11,16 +11,12 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 public class CommonProxy {
 
 	public void preInit() {
-		ModSound.addSounds();
 		ModBlocks.addBlocks();
 		ModItems.addItems();
 	}
 
 	public void init() {
-		ModRecipes.addRecipes();
-		ModEntities.addVillagers();
-		ModEntities.addEntities();
-		
+		ModRecipes.addRecipes();		
 		CommonEventHandler handler = new CommonEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
 	}
