@@ -42,6 +42,8 @@ public class ModBlocks {
 	public static BlockFake SMOOTH_DOUBLE_SANDSTONE_SLAB;
 	public static BlockFake SMOOTH_DOUBLE_RED_SANDSTONE_SLAB;
 	
+	public static BlockSlate SLATE;
+	
 	public static void addBlocks() 
 	{
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
@@ -63,6 +65,8 @@ public class ModBlocks {
         		Blocks.DOUBLE_STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.SAND));
         SMOOTH_DOUBLE_RED_SANDSTONE_SLAB = new BlockFake("smooth_double_red_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
         		Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
+        
+        SLATE = new BlockSlate("slate", Material.ROCK, 5, 3);
     }
 	
 	@Mod.EventBusSubscriber
@@ -93,7 +97,8 @@ public class ModBlocks {
 		    		BRICK_VARIANT,
 		    		SMOOTH_DOUBLE_STONE_SLAB,
 		    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
-		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB
+		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB,
+		    		SLATE
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -121,7 +126,8 @@ public class ModBlocks {
 					new ItemBlockWithSubtypes(BRICK_VARIANT, true, BRICK_VARIANT.names),
 					new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
-					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB)
+					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB),
+					new ItemBlock(SLATE)
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -155,6 +161,7 @@ public class ModBlocks {
 			SMOOTH_DOUBLE_STONE_SLAB.initModel();
 			SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
 			SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
+			SLATE.initModel();
 		}
 		
 		public static void registerTileEntities() {
