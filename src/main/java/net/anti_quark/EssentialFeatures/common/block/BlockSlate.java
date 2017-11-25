@@ -87,10 +87,11 @@ public class BlockSlate extends Block {
     /**
      * Returns the quantity of items to drop on block destruction.
      */
-    public int quantityDropped(Random random)
-    {
-        return (Integer)getBlockState().getBaseState().getValue(LAYERS);
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random random) {
+        return ((Integer)state.getValue(LAYERS));
     }
+
 
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
