@@ -5,6 +5,7 @@ import java.util.Set;
 
 import net.anti_quark.EssentialFeatures.EssentialFeatures;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
+import net.anti_quark.EssentialFeatures.common.item.ItemSlate;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
@@ -127,7 +128,7 @@ public class ModBlocks {
 					new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB),
-					new ItemBlock(SLATE)
+					new ItemSlate(SLATE)
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
