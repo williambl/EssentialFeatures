@@ -1,6 +1,7 @@
 {
-    "parent": "block/cube_all",
+    "parent": "block/cube_column",
     "textures": {
-        "all": "blocks/snow"
+        "end": "essentialfeatures:blocks/slate_top",
+        "side": "essentialfeatures:blocks/slate_side"
     }
 }
