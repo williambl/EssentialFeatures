@@ -21,7 +21,7 @@ public class CommonProxy {
 	}
 
 	public void init() {
-		if (ModConfig.crafting)
+		if (ModConfig.smelting)
 			ModRecipes.addRecipes();
 
 		CommonEventHandler handler = new CommonEventHandler();

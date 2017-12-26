@@ -14,9 +14,9 @@ public class ModConfig {
     @Config.RequiresMcRestart
     public static boolean villagers = true;
 
-    @Config.Comment("Add crafting recipes")
+    @Config.Comment("Add smelting recipes")
     @Config.RequiresMcRestart
-    public static boolean crafting = true;
+    public static boolean smelting = true;
 
     @Config.Comment("Add blocks")
     @Config.RequiresMcRestart
