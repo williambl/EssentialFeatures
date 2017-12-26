@@ -10,9 +10,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = EssentialFeatures.MODID)
 public class ModConfig {
 
-    @Config.Comment("This is an example boolean property.")
-    public static boolean fooBar = false;
+    @Config.Comment("Add mechanic villagers")
+    public static boolean villagers = true;
 
+    @Config.Comment("Add crafting recipes")
+    public static boolean crafting = true;
+
+    @Config.Comment("Add blocks")
+    public static boolean blocks = true;
+
+    @Config.Comment("Generate slate")
+    public static boolean slateGen = true;
 
     @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
     private static class EventHandler {
