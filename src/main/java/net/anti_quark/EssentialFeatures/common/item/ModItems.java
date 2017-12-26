@@ -5,6 +5,7 @@ import java.util.Set;
 
 import net.anti_quark.EssentialFeatures.client.music.ModSound;
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
+import net.anti_quark.EssentialFeatures.common.config.ModConfig;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.creativetab.CreativeTabs;
@@ -51,6 +52,9 @@ public class ModItems {
 		 */
 		@SubscribeEvent
 		public static void registerItems(RegistryEvent.Register<Item> event) {
+			if (!ModConfig.items)
+				return;
+
 			final Item[] items = {
 					CEREAL,
 					IRON_CEREAL,
@@ -76,6 +80,9 @@ public class ModItems {
 		 */
 		@SubscribeEvent
 		public static void registerItemBlockModels(ModelRegistryEvent event) {
+			if (!ModConfig.items)
+				return;
+
 			CEREAL.initModel();
 			IRON_CEREAL.initModel();
 			LONDON_CLAY.initModel();
