@@ -11,18 +11,23 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModConfig {
 
     @Config.Comment("Add mechanic villagers")
+    @Config.RequiresMcRestart
     public static boolean villagers = true;
 
     @Config.Comment("Add crafting recipes")
+    @Config.RequiresMcRestart
     public static boolean crafting = true;
 
     @Config.Comment("Add blocks")
+    @Config.RequiresMcRestart
     public static boolean blocks = true;
 
     @Config.Comment("Generate slate")
+    @Config.RequiresMcRestart
     public static boolean slateGen = true;
 
     @Config.Comment("Add items")
+    @Config.RequiresMcRestart
     public static boolean items = true;
 
     @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
