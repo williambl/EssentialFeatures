@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.anti_quark.EssentialFeatures.EssentialFeatures;
+import net.anti_quark.EssentialFeatures.common.config.ModConfig;
 import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.anti_quark.EssentialFeatures.common.item.ItemSlate;
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
@@ -72,6 +73,7 @@ public class ModBlocks {
 	
 	@Mod.EventBusSubscriber
 	public static class RegistrationHandler {
+
 		public static final Set<ItemBlock> ITEM_BLOCKS = new HashSet<>();
 
 		/**
@@ -81,6 +83,8 @@ public class ModBlocks {
 		 */
 		@SubscribeEvent
 		public static void registerBlocks(RegistryEvent.Register<Block> event) {
+			if (!ModConfig.blocks)
+				return;
 			final IForgeRegistry<Block> registry = event.getRegistry();
 
 			event.getRegistry().registerAll(
@@ -112,6 +116,9 @@ public class ModBlocks {
 		 */
 		@SubscribeEvent
 		public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
+			if (!ModConfig.blocks)
+				return;
+
 			final ItemBlock[] items = {
 					new ItemBlock(VIEWED_BLOCK),
 					new ItemBlock(SMOOTH_GLOWSTONE),
@@ -146,6 +153,9 @@ public class ModBlocks {
 		 */
 		@SubscribeEvent
 		public static void registerItemBlockModels(ModelRegistryEvent event) {
+			if (!ModConfig.blocks)
+				return;
+
 			VIEWED_BLOCK.initModel();
 			SMOOTH_GLOWSTONE.initModel();
 			STAINED_LAMP.initModel();

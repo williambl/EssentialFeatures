@@ -1,6 +1,7 @@
 package net.anti_quark.EssentialFeatures.common.entity;
 
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
+import net.anti_quark.EssentialFeatures.common.config.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
@@ -29,6 +30,9 @@ public class VillagerMechanic {
 	public static class RegistrationHandler {
 		@SubscribeEvent
 		public static void registerSoundEvents(RegistryEvent.Register<VillagerProfession> event) {
+			if (!ModConfig.villagers)
+				return;
+
 			event.getRegistry().registerAll(
 					MECHANIC_PROFESSION
 			);
