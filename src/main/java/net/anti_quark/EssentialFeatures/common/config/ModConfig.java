@@ -22,6 +22,9 @@ public class ModConfig {
     @Config.Comment("Generate slate")
     public static boolean slateGen = true;
 
+    @Config.Comment("Add items")
+    public static boolean items = true;
+
     @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
     private static class EventHandler {
 

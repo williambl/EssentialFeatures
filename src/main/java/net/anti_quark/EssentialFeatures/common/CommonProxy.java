@@ -15,8 +15,8 @@ public class CommonProxy {
 	public void preInit() {
 		if (ModConfig.blocks)
 			ModBlocks.addBlocks();
-
-		ModItems.addItems();
+		if (ModConfig.items)
+			ModItems.addItems();
 		ModWorld.registerWorldGenerators();
 	}
 
