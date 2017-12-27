@@ -18,7 +18,6 @@ texture for the block, etc.)
 ## Setting up
  - After cloning the repo, run `./gradlew setupDecompWorkspace`.
  - If you use Eclipse, you will then need to run `./gradlew eclipse`.
- - If you use IntelliJ IDEA, then just import `build.gradle`. You might want
-to run `./gradlew idea` beforehand, but I'm not entirely sure it actually
-does anything.
+ - If you use IntelliJ IDEA, then you should run `./gradlew genIntellijRuns`.
+ Then import build.gradle into IDEA.
  - Your IDE should now work with the repo!
