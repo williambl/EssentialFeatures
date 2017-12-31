@@ -13,6 +13,7 @@ public class ModOreDict {
 	@Mod.EventBusSubscriber
 	public static class RegistrationHandler {
 
+
 		/**
 		 * Register this mod's Ore Dictionary entries.
 		 *
@@ -20,7 +21,13 @@ public class ModOreDict {
 		 */
 		@SubscribeEvent(priority = EventPriority.LOWEST)
 		public static void registerOreDictEntries(final RegistryEvent.Register<Item> event) {
-			OreDictionary.registerOre("", );
+			OreDictionary.registerOre("blockBrick", ModBlocks.BRICK_VARIANT);
+			OreDictionary.registerOre("brickSnow", ModBlocks.SNOW_BRICK);
+			OreDictionary.registerOre("glowstone", ModBlocks.SMOOTH_GLOWSTONE);
+			OreDictionary.registerOre("glowstone", ModBlocks.POLISHED_GLOWSTONE);
+			OreDictionary.registerOre("glowstoneSmooth", ModBlocks.SMOOTH_GLOWSTONE);
+			OreDictionary.registerOre("glowstonePolished", ModBlocks.POLISHED_GLOWSTONE);
+			OreDictionary.registerOre("blockSlate", ModBlocks.SLATE);
 		}
 
 	}
