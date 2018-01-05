@@ -14,5 +14,13 @@
           "name": "essentialfeatures:music/records/scarlet",
           "stream": true
           } ]
+  },
+  "record_lofi": {
+    "category": "record",
+    "subtitle": "essentialfeatures.subtitle.record_lofi",
+    "sounds": [ {
+        "name": "essentialfeatures:music/records/lo-fi",
+        "stream": true
+    } ]
   }
 }
