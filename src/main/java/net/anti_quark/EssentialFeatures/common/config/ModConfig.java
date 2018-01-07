@@ -30,6 +30,10 @@ public class ModConfig {
     @Config.RequiresMcRestart
     public static boolean items = true;
 
+    @Config.Comment("Range for viewed block")
+    @Config.RequiresWorldRestart
+    public static int viewedRange = 50;
+
     @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
     private static class EventHandler {
 
