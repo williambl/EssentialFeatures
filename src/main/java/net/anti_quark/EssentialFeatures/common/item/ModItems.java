@@ -28,7 +28,8 @@ public class ModItems {
 	public static EFItem LONDON_BRICK;
 	public static EFItem SAND_CLAY_MIXTURE;
 	public static EFItem CREAM_BRICK;
-	public static ItemEFRecord RECORD;
+	public static ItemEFRecord RECORD_SCARLET;
+	public static ItemEFRecord RECORD_LOFI;
 
 	public static void addItems () 
 	{
@@ -38,7 +39,8 @@ public class ModItems {
 		SAND_CLAY_MIXTURE = new EFItem("sand_clay_mixture", CreativeTabs.MATERIALS);
 		LONDON_BRICK = new EFItem("london_brick", CreativeTabs.MATERIALS);
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
-		RECORD = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
+		RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
+		RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
 	}
 	
 	@Mod.EventBusSubscriber
@@ -62,7 +64,8 @@ public class ModItems {
 					SAND_CLAY_MIXTURE,
 					LONDON_BRICK,
 					CREAM_BRICK,
-					RECORD
+					RECORD_SCARLET,
+					RECORD_LOFI
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -89,7 +92,8 @@ public class ModItems {
 			SAND_CLAY_MIXTURE.initModel();
 			LONDON_BRICK.initModel();
 			CREAM_BRICK.initModel();
-			RECORD.initModel();
+			RECORD_SCARLET.initModel();
+			RECORD_LOFI.initModel();
 		}
 	}
 }
