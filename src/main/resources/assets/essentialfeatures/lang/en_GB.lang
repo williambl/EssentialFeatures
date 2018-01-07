@@ -56,6 +56,9 @@ item.essentialfeatures:london_brick.name=London Brick
 item.essentialfeatures:cream_brick.name=Cream Brick
 
 item.essentialfeatures:scarlet.name=Music Disc
-item.record.scarlet.desc=Trophäe - scarlet
+item.record.scarlet.desc=Palmidence - scarlet
 
 tile.essentialfeatures:slate.name=Slate
+
+item.essentialfeatures:lo-fi.name=Music Disc
+item.record.lo-fi.desc=Palmidence - lo-fi

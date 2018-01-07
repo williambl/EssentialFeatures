@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 public class CommonProxy {
 
 	public void preInit() {
+		ModSound.addSounds();
 		if (ModConfig.blocks)
 			ModBlocks.addBlocks();
 		if (ModConfig.items)

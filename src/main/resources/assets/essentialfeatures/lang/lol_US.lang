@@ -55,6 +55,9 @@ item.essentialfeatures:sand_clay_mixture.name=snd-cly mix
 item.essentialfeatures:london_brick.name=londn brik
 item.essentialfeatures:cream_brick.name=crem brik
 item.essentialfeatures:scarlet.name=Round loud thing
-item.record.scarlet.desc=Trophäe - scarlet
+item.record.scarlet.desc=Palmidence - scarlet
 
 tile.essentialfeatures:slate.name=flat rok
+
+item.essentialfeatures:lo-fi.name=Music Disc
+item.record.lo-fi.desc=Palmidence - lo-fi

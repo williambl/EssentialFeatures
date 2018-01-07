@@ -1,9 +1,9 @@
 {
   "ocean_music": {
     "category": "music",
-    "subtitle": "essential.subtitle.ocean_music",
+    "subtitle": "essentialfeatures.subtitle.ocean_music",
     "sounds": [ {
-        "name":"essentialfeatures:music/ocean_music",
+        "name":"essentialfeatures:music/ocean/give-up",
         "stream":true
         } ]
   },
@@ -14,5 +14,13 @@
           "name": "essentialfeatures:music/records/scarlet",
           "stream": true
           } ]
+  },
+  "record_lofi": {
+    "category": "record",
+    "subtitle": "essentialfeatures.subtitle.record_lofi",
+    "sounds": [ {
+        "name": "essentialfeatures:music/records/lo-fi",
+        "stream": true
+    } ]
   }
 }
