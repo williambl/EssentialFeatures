@@ -58,3 +58,6 @@ item.essentialfeatures:scarlet.name=Round loud thing
 item.record.scarlet.desc=Palmidence - scarlet
 
 tile.essentialfeatures:slate.name=flat rok
+
+item.essentialfeatures:lo-fi.name=Music Disc
+item.record.lo-fi.desc=Palmidence - lo-fi

@@ -59,3 +59,6 @@ item.essentialfeatures:scarlet.name=Music Disc
 item.record.scarlet.desc=Palmidence - scarlet
 
 tile.essentialfeatures:slate.name=Slate
+
+item.essentialfeatures:lo-fi.name=Music Disc
+item.record.lo-fi.desc=Palmidence - lo-fi

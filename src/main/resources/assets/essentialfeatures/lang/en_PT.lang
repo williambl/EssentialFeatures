@@ -59,3 +59,6 @@ item.essentialfeatures:scarlet.name=Shanty
 item.record.scarlet.desc=Palmidence - scarlet
 
 tile.essentialfeatures:slate.name=HorARRzontal Rock
+
+item.essentialfeatures:lo-fi.name=Music Disc
+item.record.lo-fi.desc=Palmidence - lo-fi
