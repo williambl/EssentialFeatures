@@ -33,7 +33,6 @@ public class ModSound {
 	public static class RegistrationHandler {
 		@SubscribeEvent
 		public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
-			ModSound.addSounds();
 			event.getRegistry().registerAll(
 					OCEAN,
 					RECORD_SCARLET,
