@@ -30,6 +30,7 @@ public class ModItems {
 	public static EFItem CREAM_BRICK;
 	public static ItemEFRecord RECORD_SCARLET;
 	public static ItemEFRecord RECORD_LOFI;
+	public static ItemPortableJukebox PORTABLE_JUKEBOX;
 
 	public static void addItems () 
 	{
@@ -41,6 +42,7 @@ public class ModItems {
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
 		RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
 		RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
+		PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", CreativeTabs.TOOLS);
 	}
 	
 	@Mod.EventBusSubscriber
@@ -65,7 +67,8 @@ public class ModItems {
 					LONDON_BRICK,
 					CREAM_BRICK,
 					RECORD_SCARLET,
-					RECORD_LOFI
+					RECORD_LOFI,
+					PORTABLE_JUKEBOX
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -94,6 +97,7 @@ public class ModItems {
 			CREAM_BRICK.initModel();
 			RECORD_SCARLET.initModel();
 			RECORD_LOFI.initModel();
+			PORTABLE_JUKEBOX.initModel();
 		}
 	}
 }
