@@ -1,5 +1,6 @@
 package net.anti_quark.EssentialFeatures.common.item;
 
+import net.anti_quark.EssentialFeatures.client.music.ModSound;
 import net.anti_quark.EssentialFeatures.client.music.MovingSoundGeneric;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,7 +23,7 @@ public class ItemPortableJukebox extends EFItem {
      */
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, SoundEvents.ENTITY_GENERIC_EXPLODE));
+        Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, ModSound.RECORD_SCARLET));
         return EnumActionResult.SUCCESS;
     }
 }

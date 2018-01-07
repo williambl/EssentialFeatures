@@ -9,7 +9,6 @@ import net.minecraft.util.math.MathHelper;
 public class MovingSoundGeneric extends MovingSound {
 
     private final Entity entity;
-    private float distance = 0.0F;
 
     public MovingSoundGeneric(Entity entityIn, SoundEvent soundIn)
     {
@@ -17,6 +16,7 @@ public class MovingSoundGeneric extends MovingSound {
         this.entity = entityIn;
         this.repeat = true;
         this.repeatDelay = 0;
+        this.volume = 1.0F;
     }
 
     /**
@@ -27,24 +27,10 @@ public class MovingSoundGeneric extends MovingSound {
         if (this.entity.isDead)
         {
             this.donePlaying = true;
-        }
-        else
-        {
+        } else {
             this.xPosF = (float)this.entity.posX;
             this.yPosF = (float)this.entity.posY;
             this.zPosF = (float)this.entity.posZ;
-            float f = MathHelper.sqrt(this.entity.motionX * this.entity.motionX + this.entity.motionZ * this.entity.motionZ);
-
-            if ((double)f >= 0.01D)
-            {
-                this.distance = MathHelper.clamp(this.distance + 0.0025F, 0.0F, 1.0F);
-                this.volume = 0.0F + MathHelper.clamp(f, 0.0F, 0.5F) * 0.7F;
-            }
-            else
-            {
-                this.distance = 0.0F;
-                this.volume = 0.0F;
-            }
         }
     }
 }
