@@ -10,13 +10,15 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.lwjgl.input.Mouse;
 
 public class ItemPortableJukebox extends EFItem {
 
     public ItemRecord record;
 
-    public ItemPortableJukebox (String registryName, CreativeTabs tab) {
+    public ItemPortableJukebox (String registryName, CreativeTabs tab, ItemRecord recordIn) {
         super(registryName, tab);
+        record = recordIn;
     }
 
      /**

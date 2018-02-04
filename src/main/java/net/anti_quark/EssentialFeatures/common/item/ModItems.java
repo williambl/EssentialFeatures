@@ -42,7 +42,7 @@ public class ModItems {
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
 		RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
 		RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
-		PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", CreativeTabs.TOOLS);
+		PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", CreativeTabs.TOOLS, RECORD_SCARLET);
 	}
 	
 	@Mod.EventBusSubscriber
