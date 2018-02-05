@@ -5,6 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemRecord;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -26,8 +28,24 @@ public class ItemPortableJukebox extends EFItem {
      */
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
+        ItemStack heldItemStack = player.getHeldItem(hand);
+        if (openGUIIfNeeded(heldItemStack, worldIn, player))
+            return EnumActionResult.SUCCESS;
+
         if (worldIn.isRemote)
             Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, record.getSound()));
         return EnumActionResult.SUCCESS;
+    }
+
+protected boolean openGUIIfNeeded (ItemStack stack, World worldIn, EntityPlayer playerIn) {
+        NBTTagCompound tag = stack.getTagCompound().getCompoundTag("record");
+        boolean needsRecord = (tag == null || tag.hasNoTags() || playerIn.isSneaking());
+
+        if (needsRecord & !worldIn.isRemote) {
+            //TODO: Open GUI with one slot to put record in
+            System.out.println("open gui now");
+        }
+
+        return needsRecord;
     }
 }
