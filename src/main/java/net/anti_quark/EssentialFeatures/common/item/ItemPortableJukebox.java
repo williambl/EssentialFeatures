@@ -28,8 +28,15 @@ public class ItemPortableJukebox extends EFItem {
      */
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        ItemStack heldItemStack = player.getHeldItem(hand);
-        if (openGUIIfNeeded(heldItemStack, worldIn, player))
+        ItemStack stack = player.getHeldItem(hand);
+
+        NBTTagCompound nbt;
+        if (stack.hasTagCompound())
+            nbt = stack.getTagCompound();
+        else
+            nbt = new NBTTagCompound();
+
+        if (openGUIIfNeeded(stack, worldIn, player, nbt))
             return EnumActionResult.SUCCESS;
 
         if (worldIn.isRemote)
@@ -37,8 +44,9 @@ public class ItemPortableJukebox extends EFItem {
         return EnumActionResult.SUCCESS;
     }
 
-protected boolean openGUIIfNeeded (ItemStack stack, World worldIn, EntityPlayer playerIn) {
-        NBTTagCompound tag = stack.getTagCompound().getCompoundTag("record");
+    protected boolean openGUIIfNeeded (ItemStack stack, World worldIn, EntityPlayer playerIn, NBTTagCompound nbt) {
+        NBTTagCompound tag = nbt.getCompoundTag("record");
+
         boolean needsRecord = (tag == null || tag.hasNoTags() || playerIn.isSneaking());
 
         if (needsRecord & !worldIn.isRemote) {
