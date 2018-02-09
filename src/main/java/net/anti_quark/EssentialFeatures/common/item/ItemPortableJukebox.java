@@ -12,6 +12,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import org.lwjgl.input.Mouse;
 
 public class ItemPortableJukebox extends EFItem {
@@ -21,6 +24,11 @@ public class ItemPortableJukebox extends EFItem {
     public ItemPortableJukebox (String registryName, CreativeTabs tab, ItemRecord recordIn) {
         super(registryName, tab);
         record = recordIn;
+    }
+
+    @Override
+    public boolean initCapabilities () {
+        ICapabilityProvider
     }
 
      /**
@@ -52,9 +60,10 @@ public class ItemPortableJukebox extends EFItem {
         if (needsRecord & !worldIn.isRemote) {
             //TODO: Open GUI with one slot to put record in
             System.out.println("open gui now");
+            stack.writeToNBT(nbt);
         }
 
-        stack.setTagCompound(nbt);
+        stack.setTagInfo("record", nbt);
         playerIn.setHeldItem(hand, stack);
         return needsRecord;
     }
