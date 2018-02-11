@@ -1,6 +1,8 @@
 package net.anti_quark.EssentialFeatures.common.item;
 
+import jline.internal.Nullable;
 import net.anti_quark.EssentialFeatures.client.music.MovingSoundGeneric;
+import net.anti_quark.EssentialFeatures.common.capabilites.InventoryProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,8 +29,8 @@ public class ItemPortableJukebox extends EFItem {
     }
 
     @Override
-    public boolean initCapabilities () {
-        ICapabilityProvider
+    public ICapabilityProvider initCapabilities (ItemStack stack, @Nullable NBTTagCompound nbt) {
+        return new InventoryProvider();
     }
 
      /**
