@@ -36,7 +36,7 @@ public class ItemPortableJukebox extends EFItem {
 
             player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
             player.addItemStackToInventory(new ItemStack(record));
-            return EnumActionResult.PASS;
+            return EnumActionResult.SUCCESS;
         }
 
         if (worldIn.isRemote)
