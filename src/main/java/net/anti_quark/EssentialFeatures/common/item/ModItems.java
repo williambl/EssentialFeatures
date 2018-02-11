@@ -34,6 +34,7 @@ public class ModItems {
 	public static EFItem CREAM_BRICK;
 	public static ItemEFRecord RECORD_SCARLET;
 	public static ItemEFRecord RECORD_LOFI;
+	public static ItemPortableJukebox PORTABLE_JUKEBOX;
 	public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<ItemPortableJukebox>();
 
 	public static void addItems () 
@@ -51,6 +52,7 @@ public class ModItems {
 	}
 
 	private static void addPortableJukeboxes () {
+		PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", CreativeTabs.TOOLS, null);
 
 		HashMap<String, ItemRecord> discs = new HashMap<>();
 		discs.put("13", (ItemRecord)Items.RECORD_13);
@@ -95,6 +97,7 @@ public class ModItems {
 					CREAM_BRICK,
 					RECORD_SCARLET,
 					RECORD_LOFI,
+					PORTABLE_JUKEBOX
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -127,6 +130,8 @@ public class ModItems {
 			CREAM_BRICK.initModel();
 			RECORD_SCARLET.initModel();
 			RECORD_LOFI.initModel();
+
+			PORTABLE_JUKEBOX.initModel();
 			PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
 		}
 	}

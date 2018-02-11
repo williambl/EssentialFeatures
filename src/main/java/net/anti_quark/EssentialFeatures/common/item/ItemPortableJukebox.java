@@ -26,6 +26,9 @@ public class ItemPortableJukebox extends EFItem {
      */
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
+        if (record == null)
+            return EnumActionResult.PASS;
+
         if (worldIn.isRemote)
             Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, record.getSound()));
         return EnumActionResult.SUCCESS;
