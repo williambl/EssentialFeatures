@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemRecord;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -28,6 +29,15 @@ public class ItemPortableJukebox extends EFItem {
     {
         if (record == null)
             return EnumActionResult.PASS;
+
+        if (player.isSneaking()) {
+            ItemStack itemstack = player.getHeldItem(hand);
+            itemstack.shrink(1);
+
+            player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
+            player.addItemStackToInventory(new ItemStack(record));
+            return EnumActionResult.PASS;
+        }
 
         if (worldIn.isRemote)
             Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, record.getSound()));
