@@ -3,6 +3,7 @@ package net.anti_quark.EssentialFeatures.common.item;
 import net.anti_quark.EssentialFeatures.client.music.MovingSoundGeneric;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemRecord;
@@ -15,6 +16,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import org.lwjgl.input.Mouse;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemPortableJukebox extends EFItem {
 
@@ -46,6 +50,12 @@ public class ItemPortableJukebox extends EFItem {
         if (worldIn.isRemote)
             Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, record.getSound()));
         return EnumActionResult.SUCCESS;
+    }
+
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        if (record != null)
+            tooltip.add(record.getRecordNameLocal());
     }
 
     public void initModel() {
