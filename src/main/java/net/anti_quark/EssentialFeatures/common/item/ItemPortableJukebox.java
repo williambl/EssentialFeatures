@@ -39,6 +39,7 @@ public class ItemPortableJukebox extends EFItem {
 
             player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
             player.addItemStackToInventory(new ItemStack(record));
+            Minecraft.getMinecraft().getSoundHandler().stopSounds();
             return EnumActionResult.SUCCESS;
         }
 
