@@ -62,3 +62,19 @@ tile.essentialfeatures:slate.name=Slate
 
 item.essentialfeatures:lo-fi.name=Music Disc
 item.record.lo-fi.desc=Palmidence - lo-fi
+
+item.essentialfeatures:portable_jukebox.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_13.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_cat.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_blocks.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_chirp.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_far.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_mall.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_mellohi.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_stal.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_strad.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_ward.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_11.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_wait.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_scarlet.name=Portable Jukebox
+item.essentialfeatures:portable_jukebox_lo-fi.name=Portable Jukebox

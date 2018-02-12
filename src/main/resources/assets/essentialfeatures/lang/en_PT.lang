@@ -62,3 +62,19 @@ tile.essentialfeatures:slate.name=HorARRzontal Rock
 
 item.essentialfeatures:lo-fi.name=Music Disc
 item.record.lo-fi.desc=Palmidence - lo-fi
+
+item.essentialfeatures:portable_jukebox.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_13.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_cat.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_blocks.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_chirp.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_far.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_mall.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_mellohi.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_stal.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_strad.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_ward.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_11.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_wait.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_scarlet.name=PortARRble Music Player
+item.essentialfeatures:portable_jukebox_lo-fi.name=PortARRble Music Player

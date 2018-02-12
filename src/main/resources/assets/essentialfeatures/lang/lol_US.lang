@@ -61,3 +61,19 @@ tile.essentialfeatures:slate.name=flat rok
 
 item.essentialfeatures:lo-fi.name=Music Disc
 item.record.lo-fi.desc=Palmidence - lo-fi
+
+item.essentialfeatures:portable_jukebox.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_13.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_cat.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_blocks.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_chirp.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_far.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_mall.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_mellohi.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_stal.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_strad.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_ward.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_11.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_wait.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_scarlet.name=carryable loud thing
+item.essentialfeatures:portable_jukebox_lo-fi.name=carryable loud thing
