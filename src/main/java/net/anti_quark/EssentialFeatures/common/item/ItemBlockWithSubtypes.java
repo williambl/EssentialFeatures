@@ -2,7 +2,6 @@ package net.anti_quark.EssentialFeatures.common.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemColored;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockWithSubtypes extends ItemBlock {

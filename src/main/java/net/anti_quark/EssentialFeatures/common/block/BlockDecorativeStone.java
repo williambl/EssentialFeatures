@@ -1,22 +1,17 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
-import net.anti_quark.EssentialFeatures.common.item.ItemBlockWithSubtypes;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockDecorativeStone extends Block {
 	
@@ -30,7 +25,7 @@ public class BlockDecorativeStone extends Block {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setSoundType(blockSoundType.STONE);
+        this.setSoundType(SoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
 	}
 	
@@ -47,7 +42,7 @@ public class BlockDecorativeStone extends Block {
     @Override
     protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[]{variant});
+		return new BlockStateContainer(this, variant);
 	}
 	
     @Override
@@ -59,7 +54,7 @@ public class BlockDecorativeStone extends Block {
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return state.getValue(variant).intValue();
+        return state.getValue(variant);
     }
     
     @Override
@@ -75,7 +70,7 @@ public class BlockDecorativeStone extends Block {
     @Override
     public int damageDropped(IBlockState state)
     {
-        return state.getValue(variant).intValue();
+        return state.getValue(variant);
     }
 	
 }

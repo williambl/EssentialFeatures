@@ -3,41 +3,23 @@ package net.anti_quark.EssentialFeatures.common.block;
 import javax.annotation.Nullable;
 
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityBlockPlacer;
-import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityDispenser;
-import net.minecraft.tileentity.TileEntityDropper;
-import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.RegistryDefaulted;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockBlockPlacer extends BlockDispenser {
 	
@@ -45,7 +27,7 @@ public class BlockBlockPlacer extends BlockDispenser {
 
 	protected BlockBlockPlacer(String registryName, Material material, float hardness, float resistance) {
 		super();
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.valueOf(false)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.FALSE));
         this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setHardness(hardness);
         this.setResistance(resistance);
@@ -73,7 +55,7 @@ public class BlockBlockPlacer extends BlockDispenser {
     protected void dispense(World worldIn, BlockPos pos)
     {
         BlockSourceImpl blocksourceimpl = new BlockSourceImpl(worldIn, pos);
-        TileEntityBlockPlacer tileentityblockplacer = (TileEntityBlockPlacer)blocksourceimpl.getBlockTileEntity();
+        TileEntityBlockPlacer tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
 
         if (tileentityblockplacer != null)
         {
@@ -89,7 +71,7 @@ public class BlockBlockPlacer extends BlockDispenser {
 
                 if (itemstack != null && net.minecraftforge.items.VanillaInventoryCodeHooks.dropperInsertHook(worldIn, pos, tileentityblockplacer, i, itemstack))
                 {
-                    EnumFacing enumfacing = (EnumFacing)worldIn.getBlockState(pos).getValue(FACING);
+                    EnumFacing enumfacing = worldIn.getBlockState(pos).getValue(FACING);
                     BlockPos blockpos = pos.offset(enumfacing);
                 	ItemStack itemstack1;
                     

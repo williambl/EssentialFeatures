@@ -2,16 +2,12 @@ package net.anti_quark.EssentialFeatures.common.entity;
 
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
 import net.anti_quark.EssentialFeatures.common.config.ModConfig;
-import net.minecraft.block.Block;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.entity.passive.EntityVillager.EmeraldForItems;
 import net.minecraft.entity.passive.EntityVillager.ListItemForEmeralds;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

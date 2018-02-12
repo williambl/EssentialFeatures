@@ -1,15 +1,7 @@
 package net.anti_quark.EssentialFeatures.client.model;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelQuadruped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.anti_quark.EssentialFeatures.common.entity.EntityPanda;
-import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModelPanda extends ModelQuadruped
 {

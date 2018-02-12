@@ -3,10 +3,6 @@ package net.anti_quark.EssentialFeatures.common.tileentity;
 import java.util.List;
 import net.anti_quark.EssentialFeatures.common.block.BlockViewedBlock;
 import net.anti_quark.EssentialFeatures.common.config.ModConfig;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -53,15 +49,10 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 		
 		RayTraceResult rayPos = rayTrace(player, 50, 1F);
 		BlockPos pos = rayPos.getBlockPos();
-		
-		if (thisPos.equals(pos))
-        {
-            return true;
-        }
-		
-		return false;
-		
-	}
+
+        return thisPos.equals(pos);
+
+    }
 	
 	/*
 	For some reason EntityPlayer.raytrace and EntityPlayer.getPositionEyes

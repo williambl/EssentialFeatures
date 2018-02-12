@@ -1,11 +1,5 @@
 package net.anti_quark.EssentialFeatures.common.entity;
 
-import net.anti_quark.EssentialFeatures.EssentialFeatures;
-import net.anti_quark.EssentialFeatures.client.render.entity.PandaRenderFactory;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
-
 public class ModEntities {
 
 	public static void addEntities ()

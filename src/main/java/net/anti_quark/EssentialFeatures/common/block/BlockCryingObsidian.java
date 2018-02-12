@@ -10,15 +10,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCryingObsidian extends Block {
 
@@ -98,7 +94,7 @@ public class BlockCryingObsidian extends Block {
                 }
             }
             
-    	worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
+    	worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
     }
     
@@ -110,8 +106,8 @@ public class BlockCryingObsidian extends Block {
             double d1 = (double)pos.getY();
             double d2 = (double)pos.getZ();
             
-    		worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
-    		worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 1.0D, 0.0D, 0.0D, new int[0]);
+    		worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+    		worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 1.0D, 0.0D, 0.0D);
     	}
     }
 }

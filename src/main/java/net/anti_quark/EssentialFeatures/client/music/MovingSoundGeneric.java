@@ -4,7 +4,6 @@ import net.minecraft.client.audio.MovingSound;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.MathHelper;
 
 public class MovingSoundGeneric extends MovingSound {
 

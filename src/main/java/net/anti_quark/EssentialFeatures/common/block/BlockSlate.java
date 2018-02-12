@@ -1,9 +1,7 @@
 package net.anti_quark.EssentialFeatures.common.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSnow;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
@@ -38,7 +36,7 @@ public class BlockSlate extends Block {
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return SNOW_AABB[((Integer)state.getValue(LAYERS)).intValue()];
+        return SNOW_AABB[state.getValue(LAYERS)];
     }
 
     /**
@@ -46,7 +44,7 @@ public class BlockSlate extends Block {
      */
     public boolean isPassable(IBlockAccess worldIn, BlockPos pos)
     {
-        return ((Integer)worldIn.getBlockState(pos).getValue(LAYERS)).intValue() < 5;
+        return worldIn.getBlockState(pos).getValue(LAYERS) < 5;
     }
 
     /**
@@ -54,7 +52,7 @@ public class BlockSlate extends Block {
      */
     public boolean isTopSolid(IBlockState state)
     {
-        return ((Integer)state.getValue(LAYERS)).intValue() == 8;
+        return state.getValue(LAYERS) == 8;
     }
 
     public BlockFaceShape getBlockFaceShape(IBlockAccess p_193383_1_, IBlockState p_193383_2_, BlockPos p_193383_3_, EnumFacing p_193383_4_)
@@ -65,7 +63,7 @@ public class BlockSlate extends Block {
     @Nullable
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
-        int i = ((Integer)blockState.getValue(LAYERS)).intValue() - 1;
+        int i = blockState.getValue(LAYERS) - 1;
         float f = 0.125F;
         AxisAlignedBB axisalignedbb = blockState.getBoundingBox(worldIn, pos);
         return new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.maxX, (double)((float)i * 0.125F), axisalignedbb.maxZ);
@@ -89,7 +87,7 @@ public class BlockSlate extends Block {
      */
     @Override
     public int quantityDropped(IBlockState state, int fortune, Random random) {
-        return ((Integer)state.getValue(LAYERS));
+        return state.getValue(LAYERS);
     }
 
 
@@ -103,7 +101,7 @@ public class BlockSlate extends Block {
         else
         {
             IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
-            return iblockstate.getBlock() == this && ((Integer)iblockstate.getValue(LAYERS)).intValue() >= ((Integer)blockState.getValue(LAYERS)).intValue() ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+            return (iblockstate.getBlock() != this || iblockstate.getValue(LAYERS) < blockState.getValue(LAYERS)) && super.shouldSideBeRendered(blockState, blockAccess, pos, side);
         }
     }
 
@@ -112,7 +110,7 @@ public class BlockSlate extends Block {
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(LAYERS, Integer.valueOf((meta & 7) + 1));
+        return this.getDefaultState().withProperty(LAYERS, (meta & 7) + 1);
     }
 
     /**
@@ -120,12 +118,12 @@ public class BlockSlate extends Block {
      */
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(LAYERS)).intValue() - 1;
+        return state.getValue(LAYERS) - 1;
     }
 
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {LAYERS});
+        return new BlockStateContainer(this, LAYERS);
     }
 
     public void initModel() {

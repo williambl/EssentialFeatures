@@ -7,15 +7,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCereal extends ItemFood {
 	
@@ -26,7 +22,7 @@ public class ItemCereal extends ItemFood {
         this.setCreativeTab(CreativeTabs.FOOD);
         this.isIron = isIron;
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());;
+        this.setUnlocalizedName(this.getRegistryName().toString());
     }
 	
     public boolean hasEffect(ItemStack stack)

@@ -4,62 +4,32 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import com.google.common.base.Predicate;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockReed;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
-import net.minecraft.entity.ai.EntityAIBeg;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityRabbit;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityTameable;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlockSpecial;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityPanda extends EntityTameable {
 
@@ -235,7 +205,7 @@ public class EntityPanda extends EntityTameable {
         {
             if (stack != null)
             {
-                if (stack.areItemsEqual(stack, new ItemStack(Items.REEDS)))
+                if (ItemStack.areItemsEqual(stack, new ItemStack(Items.REEDS)))
                 {
                         if (!player.capabilities.isCreativeMode)
                         {
@@ -253,10 +223,10 @@ public class EntityPanda extends EntityTameable {
                 System.out.println("rClick");
                 this.isJumping = false;
                 this.navigator.clearPathEntity();
-                this.setAttackTarget((EntityLivingBase)null);
+                this.setAttackTarget(null);
             }
         }
-        else if (stack != null && stack.areItemsEqual(stack, new ItemStack(Items.REEDS)))
+        else if (stack != null && ItemStack.areItemsEqual(stack, new ItemStack(Items.REEDS)))
         {
             if (!player.capabilities.isCreativeMode)
             {
@@ -269,7 +239,7 @@ public class EntityPanda extends EntityTameable {
                 {
                     this.setTamed(true);
                     this.navigator.clearPathEntity();
-                    this.setAttackTarget((EntityLivingBase)null);
+                    this.setAttackTarget(null);
                     this.setHealth(20.0F);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
@@ -294,7 +264,7 @@ public class EntityPanda extends EntityTameable {
      */
     public boolean isBreedingItem(@Nullable ItemStack stack)
     {
-        return stack == null ? false : (stack.areItemsEqual(stack, new ItemStack(Items.REEDS)));
+        return stack != null && (ItemStack.areItemsEqual(stack, new ItemStack(Items.REEDS)));
     }
 
     /**
@@ -339,7 +309,7 @@ public class EntityPanda extends EntityTameable {
         else
         {
             EntityPanda panda = (EntityPanda)otherAnimal;
-            return !panda.isTamed() ? false : (panda.isSitting() ? false : this.isInLove() && panda.isInLove());
+            return panda.isTamed() && (!panda.isSitting() && (this.isInLove() && panda.isInLove()));
         }
     }
 

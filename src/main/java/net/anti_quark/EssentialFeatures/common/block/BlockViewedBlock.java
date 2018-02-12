@@ -2,25 +2,20 @@ package net.anti_quark.EssentialFeatures.common.block;
 
 import net.anti_quark.EssentialFeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -35,7 +30,7 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.valueOf(false)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE));
         this.isBlockContainer = true;
     }
 
@@ -64,39 +59,39 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
     @Override
     public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {
-    	return ((Boolean)blockState.getValue(POWERED)).booleanValue() ? 15 : 0;
+    	return blockState.getValue(POWERED) ? 15 : 0;
     }
 
     @Override
     protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[]{POWERED});
+		return new BlockStateContainer(this, POWERED);
 	}
     
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(POWERED, Boolean.valueOf((meta & 1) > 0));
+        return this.getDefaultState().withProperty(POWERED, (meta & 1) > 0);
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Boolean)state.getValue(POWERED)).booleanValue() ? 1 : 0;
+        return state.getValue(POWERED) ? 1 : 0;
     }
 
     public void activate (World worldIn, BlockPos pos, IBlockState blockstate)
     {
-    	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.valueOf(true)));
+    	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.TRUE));
     }
     
     public void deactivate (World worldIn, BlockPos pos, IBlockState blockstate) 
     {
-    	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.valueOf(false)));
+    	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.FALSE));
     }
    
     public boolean isPowered (IBlockState blockstate)
     {
-		return ((Boolean)blockstate.getValue(POWERED)).booleanValue();
+		return blockstate.getValue(POWERED);
     }
 }

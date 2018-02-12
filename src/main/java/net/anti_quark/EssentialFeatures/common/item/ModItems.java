@@ -6,12 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.anti_quark.EssentialFeatures.client.music.ModSound;
-import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
 import net.anti_quark.EssentialFeatures.common.config.ModConfig;
-import net.minecraft.block.BlockStoneSlab;
-import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.anti_quark.EssentialFeatures.common.item.ItemEFRecord;
@@ -20,8 +16,6 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModItems {
@@ -35,7 +29,7 @@ public class ModItems {
 	public static ItemEFRecord RECORD_SCARLET;
 	public static ItemEFRecord RECORD_LOFI;
 	public static ItemPortableJukebox PORTABLE_JUKEBOX;
-	public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<ItemPortableJukebox>();
+	public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<>();
 
 	public static void addItems () 
 	{

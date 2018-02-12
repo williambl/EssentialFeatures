@@ -1,22 +1,12 @@
 package net.anti_quark.EssentialFeatures.common.craft;
 
 import net.anti_quark.EssentialFeatures.common.block.ModBlocks;
-import net.anti_quark.EssentialFeatures.common.item.ItemPortableJukebox;
 import net.anti_quark.EssentialFeatures.common.item.ModItems;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class ModRecipes {
 
