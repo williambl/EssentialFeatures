@@ -1,5 +1,7 @@
 package net.anti_quark.EssentialFeatures.common.item;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +12,10 @@ import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.anti_quark.EssentialFeatures.common.item.ItemEFRecord;
+import net.minecraft.item.ItemRecord;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -30,6 +34,8 @@ public class ModItems {
 	public static EFItem CREAM_BRICK;
 	public static ItemEFRecord RECORD_SCARLET;
 	public static ItemEFRecord RECORD_LOFI;
+	public static ItemPortableJukebox PORTABLE_JUKEBOX;
+	public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<ItemPortableJukebox>();
 
 	public static void addItems () 
 	{
@@ -41,9 +47,34 @@ public class ModItems {
 		CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
 		RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
 		RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
+
+		addPortableJukeboxes();
+	}
+
+	private static void addPortableJukeboxes () {
+		PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", CreativeTabs.TOOLS, null);
+
+		HashMap<String, ItemRecord> discs = new HashMap<>();
+		discs.put("13", (ItemRecord)Items.RECORD_13);
+		discs.put("cat", (ItemRecord)Items.RECORD_CAT);
+		discs.put("blocks", (ItemRecord)Items.RECORD_BLOCKS);
+		discs.put("chirp", (ItemRecord)Items.RECORD_CHIRP);
+		discs.put("far", (ItemRecord)Items.RECORD_FAR);
+		discs.put("mall", (ItemRecord)Items.RECORD_MALL);
+		discs.put("mellohi", (ItemRecord)Items.RECORD_MELLOHI);
+		discs.put("stal", (ItemRecord)Items.RECORD_STAL);
+		discs.put("strad", (ItemRecord)Items.RECORD_STRAD);
+		discs.put("ward", (ItemRecord)Items.RECORD_WARD);
+		discs.put("11", (ItemRecord)Items.RECORD_11);
+		discs.put("wait", (ItemRecord)Items.RECORD_WAIT);
+
+		discs.put("scarlet", RECORD_SCARLET);
+		discs.put("lo-fi", RECORD_LOFI);
+
+		discs.forEach((name, record) -> PORTABLE_JUKEBOXES.add(new ItemPortableJukebox("portable_jukebox_"+name, CreativeTabs.TOOLS, record)));
 	}
 	
-	@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber
 	public static class RegistrationHandler {
 		public static final Set<Item> ITEMS = new HashSet<>();
 
@@ -65,7 +96,8 @@ public class ModItems {
 					LONDON_BRICK,
 					CREAM_BRICK,
 					RECORD_SCARLET,
-					RECORD_LOFI
+					RECORD_LOFI,
+					PORTABLE_JUKEBOX
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -73,6 +105,10 @@ public class ModItems {
 			for (final Item item : items) {
 				registry.register(item);
 				ITEMS.add(item);
+			}
+			for (final Item jukebox : PORTABLE_JUKEBOXES) {
+				registry.register(jukebox);
+				ITEMS.add(jukebox);
 			}
 		}
 		
@@ -94,6 +130,9 @@ public class ModItems {
 			CREAM_BRICK.initModel();
 			RECORD_SCARLET.initModel();
 			RECORD_LOFI.initModel();
+
+			PORTABLE_JUKEBOX.initModel();
+			PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
 		}
 	}
 }
