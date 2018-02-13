@@ -40,11 +40,6 @@ public class BlockBlockPlacer extends BlockDispenser {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 	
-    protected IBehaviorDispenseItem getBehavior(@Nullable ItemStack stack)
-    {
-        return this.dropBehavior;
-    }
-
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
@@ -70,7 +65,7 @@ public class BlockBlockPlacer extends BlockDispenser {
             {
                 ItemStack itemstack = tileentityblockplacer.getStackInSlot(i);
 
-                if (!itemstack.isEmpty() && net.minecraftforge.items.VanillaInventoryCodeHooks.dropperInsertHook(worldIn, pos, tileentityblockplacer, i, itemstack))
+                if (!itemstack.isEmpty())
                 {
                     ItemStack itemstack1;
 
