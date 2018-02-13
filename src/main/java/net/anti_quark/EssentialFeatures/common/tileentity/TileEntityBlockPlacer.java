@@ -7,7 +7,7 @@ import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 
 public class TileEntityBlockPlacer extends TileEntityDispenser
 {
-    public static void registerFixesDropper(DataFixer fixer)
+    public static void registerFixes(DataFixer fixer)
     {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityBlockPlacer.class, "Items"));
     }
