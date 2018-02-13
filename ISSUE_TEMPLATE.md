@@ -2,11 +2,11 @@
 
 ### Steps to reproduce the problem:
 
-###Expected behavior:
+### Expected behavior:
 
-###Actual behavior:
+### Actual behavior:
 
-###Info:
+### Info:
 
  - EssentialFeatures version
  - Forge version
