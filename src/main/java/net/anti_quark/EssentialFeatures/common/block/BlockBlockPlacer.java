@@ -14,6 +14,7 @@ import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -45,13 +46,13 @@ public class BlockBlockPlacer extends BlockDispenser {
      */
     public TileEntity createNewTileEntity(World worldIn, int meta)
     {
-        return new TileEntityBlockPlacer();
+        return new TileEntityDispenser();
     }
 
     protected void dispense(World worldIn, BlockPos pos)
     {
         BlockSourceImpl blocksourceimpl = new BlockSourceImpl(worldIn, pos);
-        TileEntityBlockPlacer tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
+        TileEntityDispenser tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
 
         if (tileentityblockplacer != null)
         {
