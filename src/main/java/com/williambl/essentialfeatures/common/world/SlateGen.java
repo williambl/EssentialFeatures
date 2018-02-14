@@ -15,7 +15,8 @@ public class SlateGen implements IWorldGenerator {
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		generateOre(ModBlocks.SLATE, world, random, chunkX, chunkZ, 70, 16, 10);
+		if (world.provider.getDimension() == 0)
+			generateOre(ModBlocks.SLATE, world, random, chunkX, chunkZ, 70, 16, 10);
 	}
 	
 	public void generateOre(Block block, World world, Random random, int chunk_x, int chunk_z, int maxY, int minY, int chancesToSpawn) {
