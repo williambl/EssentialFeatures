@@ -45,14 +45,14 @@ tile.essentialfeatures:smooth_double_sandstone_slab.name=Smooth Double Sandstone
 tile.essentialfeatures:smooth_double_red_sandstone_slab.name=Smooth Double Red Sandstone Slab
 
 tile.essentialfeatures:brick_variant.cream_bricks.name=Cream Bricks
-tile.essentialfeatures:brick_variant.london_bricks.name=London Bricks
-tile.essentialfeatures:brick_variant.roman_bricks.name=Roman Bricks
+tile.essentialfeatures:brick_variant.dirty_bricks.name=Dirty Bricks
+tile.essentialfeatures:brick_variant.long_bricks.name=Long Bricks
 tile.essentialfeatures:brick_variant.blue_bricks.name=Blue Bricks
 tile.essentialfeatures:brick_variant.mixed_bricks.name=Mixed Bricks
 
-item.essentialfeatures:london_clay.name=London Clay
+item.essentialfeatures:london_clay.name=Dirty Clay
 item.essentialfeatures:sand_clay_mixture.name=Sand-Clay Mixture
-item.essentialfeatures:london_brick.name=London Brick
+item.essentialfeatures:dirty_brick.name=Dirty Brick
 item.essentialfeatures:cream_brick.name=Cream Brick
 
 item.essentialfeatures:scarlet.name=Music Disc
