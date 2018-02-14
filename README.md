@@ -1,4 +1,5 @@
 # EssentialFeatures
+[![Github All Releases](https://img.shields.io/github/downloads/williambl/EssentialFeatures/total.svg)]()
 A Minecraft Mod for 1.10.2/1.11/1.12
 
 # Contributing
