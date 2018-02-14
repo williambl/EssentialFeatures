@@ -8,21 +8,30 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 
-public class BlockSmoothGlowstone extends Block {
+public class EFBlock extends Block {
 
-	public BlockSmoothGlowstone(String registryName, Material material, float hardness, float resistance) {
+	public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance, float lightLevel) {
         super(material);
-        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        this.setCreativeTab(tab);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setSoundType(SoundType.GLASS);
-        this.setLightLevel(1F);
+        this.setLightLevel(lightLevel);
+        this.setSoundType(soundType);
 	}
-	
+
+    public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance) {
+        super(material);
+        this.setCreativeTab(tab);
+        this.setHardness(hardness);
+        this.setResistance(resistance);
+        this.setRegistryName(registryName);
+        this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setSoundType(soundType);
+    }
+
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-
 }
