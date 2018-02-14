@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -85,6 +86,10 @@ public class BlockBlockPlacer extends BlockDispenser {
         @Override
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
             Block block = Block.getBlockFromItem(stack.getItem());
+
+            System.out.println(block);
+            if (block == Blocks.AIR)
+                return stack;
 
             EnumFacing facing = source.getBlockState().getValue(BlockDispenser.FACING);
             EnumFacing.Axis axis = facing.getAxis();
