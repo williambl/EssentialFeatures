@@ -222,7 +222,7 @@ public class EntityPanda extends EntityTameable {
                 this.aiSit.setSitting(!this.isSitting());
                 System.out.println("rClick");
                 this.isJumping = false;
-                this.navigator.clearPathEntity();
+                this.navigator.clearPath();
                 this.setAttackTarget(null);
             }
         }
@@ -238,7 +238,7 @@ public class EntityPanda extends EntityTameable {
                 if (this.rand.nextInt(3) == 0)
                 {
                     this.setTamed(true);
-                    this.navigator.clearPathEntity();
+                    this.navigator.clearPath();
                     this.setAttackTarget(null);
                     this.setHealth(20.0F);
                     this.setOwnerId(player.getUniqueID());

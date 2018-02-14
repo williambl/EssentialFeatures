@@ -31,7 +31,7 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE));
-        this.isBlockContainer = true;
+        this.hasTileEntity = true;
     }
 
 	@Override
