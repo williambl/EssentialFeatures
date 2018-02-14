@@ -15,7 +15,7 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class BlockBrickVariant extends Block {
 	
-    static final String[] names = new String[]{"cream_bricks", "london_bricks", "roman_bricks", "blue_bricks", "mixed_bricks"};
+    static final String[] names = new String[]{"cream_bricks", "dirty_bricks", "long_bricks", "blue_bricks", "mixed_bricks"};
 	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
 
 	public BlockBrickVariant(String registryName, Material material, float hardness, float resistance) {

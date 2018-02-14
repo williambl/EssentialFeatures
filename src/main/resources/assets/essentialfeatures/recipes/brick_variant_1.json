@@ -10,7 +10,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "b": {
-      "item": "essentialfeatures:london_brick"
+      "item": "essentialfeatures:dirty_brick"
     }
   }
 }

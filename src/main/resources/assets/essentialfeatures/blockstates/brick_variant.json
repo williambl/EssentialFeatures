@@ -12,12 +12,12 @@
         "inventory": [{}],
         "inventory_1":[{
             "textures": {
-                "all" : "essentialfeatures:blocks/london_bricks"
+                "all" : "essentialfeatures:blocks/dirty_bricks"
            	}
         }],
         "inventory_2":[{
             "textures": {
-                "all" : "essentialfeatures:blocks/roman_bricks"
+                "all" : "essentialfeatures:blocks/long_bricks"
            	}
         }],
         "inventory_3":[{
@@ -39,12 +39,12 @@
             },
             1:{
             	"textures": {
-            	    "all" : "essentialfeatures:blocks/london_bricks"
+            	    "all" : "essentialfeatures:blocks/dirty_bricks"
             	}
             },
             2:{
             	"textures": {
-            	    "all" : "essentialfeatures:blocks/roman_bricks"
+            	    "all" : "essentialfeatures:blocks/long_bricks"
             	}
             },
             3:{

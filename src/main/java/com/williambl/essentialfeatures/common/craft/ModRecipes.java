@@ -14,7 +14,7 @@ public class ModRecipes {
 	public static void addRecipes () 
 	{
 		GameRegistry.addSmelting(Blocks.GLOWSTONE, new ItemStack(ModBlocks.SMOOTH_GLOWSTONE), 1.0F);		
-		GameRegistry.addSmelting(ModItems.LONDON_CLAY, new ItemStack(ModItems.LONDON_BRICK), 1.0F);
+		GameRegistry.addSmelting(ModItems.DIRTY_CLAY, new ItemStack(ModItems.DIRTY_BRICK), 1.0F);
 		GameRegistry.addSmelting(ModItems.SAND_CLAY_MIXTURE, new ItemStack(ModItems.CREAM_BRICK), 1.0F);
 
 		ModItems.PORTABLE_JUKEBOXES.forEach(jukebox -> GameRegistry.addShapelessRecipe(new ResourceLocation("essentialfeatures:"+jukebox.getRegistryName().getResourcePath()+"_loading"), new ResourceLocation("essentialfeatures:portable_jukebox_loading"),
