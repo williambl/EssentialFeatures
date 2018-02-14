@@ -50,7 +50,7 @@ tile.essentialfeatures:brick_variant.long_bricks.name=romn briks
 tile.essentialfeatures:brick_variant.blue_bricks.name=blu briks
 tile.essentialfeatures:brick_variant.mixed_bricks.name=mix briks
 
-item.essentialfeatures:london_clay.name=londn cly
+item.essentialfeatures:dirty_clay.name=londn cly
 item.essentialfeatures:sand_clay_mixture.name=snd-cly mix
 item.essentialfeatures:dirty_brick.name=londn brik
 item.essentialfeatures:cream_brick.name=crem brik

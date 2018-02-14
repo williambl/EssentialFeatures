@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "essentialfeatures:items/london_clay"
+    "layer0": "essentialfeatures:items/dirty_brick"
   },
   "display": {
          "ground": {

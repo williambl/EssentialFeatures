@@ -50,7 +50,7 @@ tile.essentialfeatures:brick_variant.long_bricks.name=Bricks O’ Rome
 tile.essentialfeatures:brick_variant.blue_bricks.name=Blue-Colaarred Bricks
 tile.essentialfeatures:brick_variant.mixed_bricks.name=Bricks O’ Many Types
 
-item.essentialfeatures:london_clay.name=Clay O’ Dirty
+item.essentialfeatures:dirty_clay.name=Clay O’ Dirty
 item.essentialfeatures:sand_clay_mixture.name=Mixture O’ The Sea Bed
 item.essentialfeatures:dirty_brick.name=Brick O’ Dirty
 item.essentialfeatures:cream_brick.name=Cream-Colaarred Brick

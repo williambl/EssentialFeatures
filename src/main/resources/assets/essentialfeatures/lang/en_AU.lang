@@ -50,7 +50,7 @@ tile.essentialfeatures:brick_variant.long_bricks.name=Long Bricks
 tile.essentialfeatures:brick_variant.blue_bricks.name=Blue Bricks
 tile.essentialfeatures:brick_variant.mixed_bricks.name=Mixed Bricks
 
-item.essentialfeatures:london_clay.name=Dirty Clay
+item.essentialfeatures:dirty_clay.name=Dirty Clay
 item.essentialfeatures:sand_clay_mixture.name=Sand-Clay Mixture
 item.essentialfeatures:dirty_brick.name=Dirty Brick
 item.essentialfeatures:cream_brick.name=Cream Brick
