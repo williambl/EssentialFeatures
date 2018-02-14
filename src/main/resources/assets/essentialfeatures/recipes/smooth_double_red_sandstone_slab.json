@@ -1,13 +1,15 @@
 {
   "result": {
-    "item": "essentialfeatures:double_red_sandstone_slab",
-    "data": 8
+    "item": "essentialfeatures:smooth_double_red_sandstone_slab"
   },
   "ingredients": [
     {
       "item": "minecraft:stone_slab2",
-      "data": 0,
-      "count": 2
+      "data": 0
+    },
+    {
+      "item": "minecraft:stone_slab2",
+      "data": 0
     }
   ],
   "type": "minecraft:crafting_shapeless"
