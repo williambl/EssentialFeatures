@@ -12,6 +12,7 @@ import com.williambl.essentialfeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -28,11 +29,11 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModBlocks {
 
 	public static BlockViewedBlock VIEWED_BLOCK;
-	public static BlockSmoothGlowstone SMOOTH_GLOWSTONE;
-	public static BlockPolishedGlowstone POLISHED_GLOWSTONE;
+	public static EFBlock SMOOTH_GLOWSTONE;
+	public static EFBlock POLISHED_GLOWSTONE;
 	public static BlockStainedLamp STAINED_LAMP;
 	public static BlockStainedLamp LIT_STAINED_LAMP;
-	public static BlockSnowBrick SNOW_BRICK;
+	public static EFBlock SNOW_BRICK;
 	public static BlockBlockBreaker BLOCK_BREAKER;
 	public static BlockCryingObsidian CRYING_OBSIDIAN;
 	public static BlockSpike SPIKE_BLOCK;
@@ -49,11 +50,11 @@ public class ModBlocks {
 	public static void addBlocks() 
 	{
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
-        SMOOTH_GLOWSTONE = new BlockSmoothGlowstone("smooth_glowstone", Material.GLASS, 1, 2);
+        SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
         STAINED_LAMP = new BlockStainedLamp("stained_lamp", Material.GLASS, 0.3F, 1.5F, false);
         LIT_STAINED_LAMP = new BlockStainedLamp("lit_stained_lamp", Material.GLASS, 0.3F, 1.5F, true);
-        POLISHED_GLOWSTONE = new BlockPolishedGlowstone("polished_glowstone", Material.GLASS, 1, 2);
-        SNOW_BRICK = new BlockSnowBrick("snow_brick", Material.CRAFTED_SNOW, 1, 1);
+        POLISHED_GLOWSTONE = new EFBlock("polished_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
+        SNOW_BRICK = new EFBlock("snow_brick", Material.CRAFTED_SNOW, CreativeTabs.BUILDING_BLOCKS, SoundType.SNOW, 1, 1);
         BLOCK_BREAKER = new BlockBlockBreaker("block_breaker", Material.PISTON, 5, 5);
         CRYING_OBSIDIAN = new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100);
         SPIKE_BLOCK = new BlockSpike("spike_block", Material.IRON, 1, 1);
