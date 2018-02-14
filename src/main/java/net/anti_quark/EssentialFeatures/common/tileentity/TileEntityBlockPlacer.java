@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class TileEntityBlockPlacer extends TileEntityDispenser
 {
-
+    //TODO: Make this actually work, instead of stacks being full of air...
     /**
      * Get the name of this object. For players this returns their username
      */
