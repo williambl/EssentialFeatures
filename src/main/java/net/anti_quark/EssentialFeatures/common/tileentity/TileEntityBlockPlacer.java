@@ -1,17 +1,17 @@
 package net.anti_quark.EssentialFeatures.common.tileentity;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityDispenser;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 
+import java.util.Random;
+
 public class TileEntityBlockPlacer extends TileEntityDispenser
 {
-    public static void registerFixesDropper(DataFixer fixer)
-    {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityBlockPlacer.class, "Items"));
-    }
-
+    //TODO: Make this actually work, instead of stacks being full of air...
     /**
      * Get the name of this object. For players this returns their username
      */
@@ -20,8 +20,4 @@ public class TileEntityBlockPlacer extends TileEntityDispenser
         return this.hasCustomName() ? this.customName : "container.block_placer";
     }
 
-    public String getGuiID()
-    {
-        return "minecraft:dropper";
-    }
 }
