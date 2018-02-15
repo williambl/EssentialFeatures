@@ -4,7 +4,10 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -18,9 +21,15 @@ public class BlockBlaze extends EFBlock {
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
-        entityIn.setFire(5);
+        if (!entityIn.isImmuneToFire() && entityIn instanceof EntityLivingBase && !EnchantmentHelper.hasFrostWalkerEnchantment((EntityLivingBase)entityIn))
+        {
+            entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 1.0F);
+            entityIn.setFire(5);
+        }
+
+        super.onEntityWalk(worldIn, pos, entityIn);
     }
 
     @Override

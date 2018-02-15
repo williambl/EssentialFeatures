@@ -106,7 +106,8 @@ public class ModBlocks {
 		    		SMOOTH_DOUBLE_STONE_SLAB,
 		    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
 		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB,
-		    		SLATE
+		    		SLATE,
+					BLAZE_BLOCK
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -138,7 +139,8 @@ public class ModBlocks {
 					new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB),
-					new ItemSlate(SLATE)
+					new ItemSlate(SLATE),
+					new ItemBlock(BLAZE_BLOCK)
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -176,6 +178,7 @@ public class ModBlocks {
 			SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
 			SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
 			SLATE.initModel();
+			BLAZE_BLOCK.initModel();
 		}
 		
 		public static void registerTileEntities() {
