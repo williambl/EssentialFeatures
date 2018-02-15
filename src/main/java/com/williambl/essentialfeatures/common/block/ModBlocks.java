@@ -46,6 +46,7 @@ public class ModBlocks {
 	public static BlockFake SMOOTH_DOUBLE_RED_SANDSTONE_SLAB;
 	
 	public static BlockSlate SLATE;
+	public static BlockBlaze BLAZE_BLOCK;
 	
 	public static void addBlocks() 
 	{
@@ -70,6 +71,7 @@ public class ModBlocks {
         		Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
         
         SLATE = new BlockSlate("slate", Material.ROCK, 5, 3);
+        BLAZE_BLOCK = new BlockBlaze("blaze_block");
     }
 	
 	@Mod.EventBusSubscriber
