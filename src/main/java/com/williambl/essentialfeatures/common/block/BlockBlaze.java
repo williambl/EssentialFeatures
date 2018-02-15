@@ -43,7 +43,7 @@ public class BlockBlaze extends EFBlock {
 
             worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
-        if (rand.nextDouble() < 0.1) {
+        if (rand.nextDouble() < 0.01) {
             particleExplosion(worldIn, pos, rand);
         }
     }
