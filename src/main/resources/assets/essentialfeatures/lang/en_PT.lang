@@ -78,3 +78,5 @@ item.essentialfeatures:portable_jukebox_11.name=PortARRble Music Player
 item.essentialfeatures:portable_jukebox_wait.name=PortARRble Music Player
 item.essentialfeatures:portable_jukebox_scarlet.name=PortARRble Music Player
 item.essentialfeatures:portable_jukebox_lo-fi.name=PortARRble Music Player
+
+tile.essentialfeatures:blaze_block.name=Block O' Blaze PowdARR

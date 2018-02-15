@@ -77,3 +77,5 @@ item.essentialfeatures:portable_jukebox_11.name=carryable loud thing
 item.essentialfeatures:portable_jukebox_wait.name=carryable loud thing
 item.essentialfeatures:portable_jukebox_scarlet.name=carryable loud thing
 item.essentialfeatures:portable_jukebox_lo-fi.name=carryable loud thing
+
+tile.essentialfeatures:blaze_block.name=fiary blok

@@ -46,6 +46,7 @@ public class ModBlocks {
 	public static BlockFake SMOOTH_DOUBLE_RED_SANDSTONE_SLAB;
 	
 	public static BlockSlate SLATE;
+	public static BlockBlaze BLAZE_BLOCK;
 	
 	public static void addBlocks() 
 	{
@@ -70,6 +71,7 @@ public class ModBlocks {
         		Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
         
         SLATE = new BlockSlate("slate", Material.ROCK, 5, 3);
+        BLAZE_BLOCK = new BlockBlaze("blaze_block");
     }
 	
 	@Mod.EventBusSubscriber
@@ -104,10 +106,12 @@ public class ModBlocks {
 		    		SMOOTH_DOUBLE_STONE_SLAB,
 		    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
 		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB,
-		    		SLATE
+		    		SLATE,
+				BLAZE_BLOCK
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
+                GameRegistry.registerFuelHandler(BLAZE_BLOCK);
 		}
 		
 		/**
@@ -136,7 +140,8 @@ public class ModBlocks {
 					new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB),
-					new ItemSlate(SLATE)
+					new ItemSlate(SLATE),
+					new ItemBlock(BLAZE_BLOCK)
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -174,6 +179,7 @@ public class ModBlocks {
 			SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
 			SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
 			SLATE.initModel();
+			BLAZE_BLOCK.initModel();
 		}
 		
 		public static void registerTileEntities() {
