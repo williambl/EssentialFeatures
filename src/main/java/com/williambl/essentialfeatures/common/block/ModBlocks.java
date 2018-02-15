@@ -107,10 +107,11 @@ public class ModBlocks {
 		    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
 		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB,
 		    		SLATE,
-					BLAZE_BLOCK
+				BLAZE_BLOCK
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
+                GameRegistry.registerFuelHandler(BLAZE_BLOCK);
 		}
 		
 		/**

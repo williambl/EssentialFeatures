@@ -15,13 +15,23 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.IFuelHandler;
 
 import java.util.Random;
 
-public class BlockBlaze extends EFBlock {
+public class BlockBlaze extends EFBlock implements IFuelHandler {
 
     public BlockBlaze(String registryName) {
         super(registryName, Material.IRON, CreativeTabs.BUILDING_BLOCKS, SoundType.METAL, 5f, 15f, 10f);
+    }
+
+    @Override
+    public int getBurnTime(ItemStack fuel) {
+        if (fuel.getItem() == Item.getItemFromBlock(ModBlocks.BLAZE_BLOCK))
+            return 4800;
+        return 0;
     }
 
     @Override
