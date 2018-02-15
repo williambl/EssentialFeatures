@@ -77,3 +77,5 @@ item.essentialfeatures:portable_jukebox_11.name=Portable Jukebox
 item.essentialfeatures:portable_jukebox_wait.name=Portable Jukebox
 item.essentialfeatures:portable_jukebox_scarlet.name=Portable Jukebox
 item.essentialfeatures:portable_jukebox_lo-fi.name=Portable Jukebox
+
+tile.essentialfeatures:blaze_block.name=Blaze Block
