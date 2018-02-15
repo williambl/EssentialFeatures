@@ -7,8 +7,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -43,9 +45,16 @@ public class BlockBlaze extends EFBlock {
 
             worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
-        if (rand.nextDouble() < 0.01) {
+        if (rand.nextDouble() < 0.01 || isTouchingWater(worldIn, pos)) {
             particleExplosion(worldIn, pos, rand);
         }
+    }
+
+    private boolean isTouchingWater(World worldIn, BlockPos pos) {
+        for (EnumFacing facing : EnumFacing.VALUES)
+            if (worldIn.getBlockState(pos.offset(facing)).getBlock() == Blocks.WATER)
+                return true;
+        return false;
     }
 
     private void particleExplosion(World worldIn, BlockPos pos, Random rand) {
