@@ -31,7 +31,6 @@ public class SlateGen implements IWorldGenerator {
 			BlockPos pos = new BlockPos(chunkX+randX, randY, chunkZ+randZ);
 
 			worldgen.generate(world, random, pos);
-			System.out.println("attempted generation");
 		}
 	}
 }

@@ -84,7 +84,6 @@ public class BlockBlockPlacer extends BlockDispenser {
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
             Block block = Block.getBlockFromItem(stack.getItem());
 
-            System.out.println(block);
             if (block == Blocks.AIR)
                 return stack;
 

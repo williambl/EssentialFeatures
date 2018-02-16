@@ -10,6 +10,5 @@ public class ModWorld {
 	public static void registerWorldGenerators() {
 		if (ModConfig.slateGen)
 			GameRegistry.registerWorldGenerator(SLATE, 0);
-		System.out.println("registering...");
 	}
 }

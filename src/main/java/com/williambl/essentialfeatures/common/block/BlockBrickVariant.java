@@ -63,7 +63,6 @@ public class BlockBrickVariant extends Block {
         for (Integer integer : variant.getAllowedValues())
         {
             list.add(new ItemStack(this, 1, integer));
-            System.out.println(integer);
         }
     }
     
