@@ -103,12 +103,14 @@ public class BlockCryingObsidian extends Block {
     {
     	if (worldIn.isRemote)
     	{
-    		double d0 = (double)pos.getX();
-            double d1 = (double)pos.getY();
-            double d2 = (double)pos.getZ();
+            for (int i = 0; i < 5; i++) {
+                double d0 = (double)pos.getX() + worldIn.rand.nextDouble();
+                double d1 = (double)pos.getY() + worldIn.rand.nextDouble() * 0.5D + 0.5D;
+                double d2 = (double)pos.getZ() + worldIn.rand.nextDouble();
             
-    		worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-    		worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 1.0D, 0.0D, 0.0D);
+    	        worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+    	        worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            }
     	}
     }
 }
