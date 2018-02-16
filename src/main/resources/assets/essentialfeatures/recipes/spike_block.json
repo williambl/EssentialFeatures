@@ -4,7 +4,7 @@
     "count": 8
   },
   "pattern": [
-    "i i",
+    "n n",
     "iii",
     "iii"
   ],
@@ -12,6 +12,9 @@
   "key": {
     "i": {
       "item": "minecraft:iron_ingot"
+    },
+    "n": {
+      "item": "minecraft:iron_nugget"
     }
   }
 }
