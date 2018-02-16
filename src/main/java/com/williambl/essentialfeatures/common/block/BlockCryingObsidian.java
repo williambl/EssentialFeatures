@@ -9,9 +9,11 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -103,13 +105,14 @@ public class BlockCryingObsidian extends Block {
     {
     	if (worldIn.isRemote)
     	{
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 double d0 = (double)pos.getX() + worldIn.rand.nextDouble();
                 double d1 = (double)pos.getY() + worldIn.rand.nextDouble() * 0.5D + 0.5D;
                 double d2 = (double)pos.getZ() + worldIn.rand.nextDouble();
             
     	        worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-    	        worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+    	        worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+    	        worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 0.25f, 1f, false);
             }
     	}
     }
