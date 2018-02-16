@@ -38,8 +38,8 @@ public class BlockBlaze extends EFBlock implements IFuelHandler {
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         if (!entityIn.isImmuneToFire() && entityIn instanceof EntityLivingBase && !EnchantmentHelper.hasFrostWalkerEnchantment((EntityLivingBase)entityIn)) {
-            entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 1.0F);
-            entityIn.setFire(5);
+            entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 5.0F);
+            entityIn.setFire(10);
         }
         particleExplosion(worldIn, pos, worldIn.rand);
         super.onEntityWalk(worldIn, pos, entityIn);
