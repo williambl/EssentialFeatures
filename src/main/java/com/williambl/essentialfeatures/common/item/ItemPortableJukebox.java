@@ -14,6 +14,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -41,13 +43,21 @@ public class ItemPortableJukebox extends EFItem {
 
             player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
             player.addItemStackToInventory(new ItemStack(record));
-            Minecraft.getMinecraft().getSoundHandler().stopSounds();
+
+            if (worldIn.isRemote)
+                Minecraft.getMinecraft().getSoundHandler().stopSounds();
+
             return EnumActionResult.SUCCESS;
         }
 
         if (worldIn.isRemote)
-            Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(player, record.getSound()));
+            playSound(player, record);
         return EnumActionResult.SUCCESS;
+    }
+
+    @SideOnly(Side.CLIENT)
+    private void playSound(EntityPlayer playerIn, ItemRecord recordIn) {
+        Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(playerIn, recordIn.getSound()));
     }
 
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
