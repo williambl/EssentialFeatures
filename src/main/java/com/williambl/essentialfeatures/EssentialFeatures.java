@@ -16,7 +16,7 @@ public class EssentialFeatures {
 	
     public static final String MODID = "essentialfeatures";
     public static final String NAME = "Essential Features";
-    public static final String VERSION = "2.0.0";
+    public static final String VERSION = "2.0.1";
     
     @SidedProxy(
     		clientSide="com.williambl.essentialfeatures.client.ClientProxy",
