@@ -3,6 +3,8 @@ package com.williambl.essentialfeatures.common.item;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockNote;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -11,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.lwjgl.input.Mouse;
 
 import java.util.List;
 
@@ -24,7 +27,46 @@ public class ItemPortableNoteBlock extends EFItem {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        Mouse.setGrabbed(false);
+        worldIn.playSound((EntityPlayer)null, player.getPosition(), getInstrumentFromBlock(worldIn, pos), SoundCategory.RECORDS, 3.0F, 1.0f);
         return EnumActionResult.SUCCESS;
+    }
+
+    private SoundEvent getInstrumentFromBlock (World worldIn, BlockPos pos) {
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        Material material = iblockstate.getMaterial();
+        int i = 0;
+
+        if (material == Material.ROCK)
+            i = 1;
+
+        if (material == Material.SAND)
+            i = 2;
+
+        if (material == Material.GLASS)
+            i = 3;
+
+        if (material == Material.WOOD)
+            i = 4;
+
+        Block block = iblockstate.getBlock();
+
+        if (block == Blocks.CLAY)
+            i = 5;
+
+        if (block == Blocks.GOLD_BLOCK)
+            i = 6;
+
+        if (block == Blocks.WOOL)
+            i = 7;
+
+        if (block == Blocks.PACKED_ICE)
+            i = 8;
+
+        if (block == Blocks.BONE_BLOCK)
+            i = 9;
+
+        return getInstrument(i);
     }
 
     @Override
