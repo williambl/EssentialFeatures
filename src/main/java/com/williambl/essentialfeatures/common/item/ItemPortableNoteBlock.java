@@ -25,8 +25,9 @@ public class ItemPortableNoteBlock extends EFItem {
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        worldIn.playSound((EntityPlayer)null, player.getPosition(), getInstrumentFromBlock(worldIn, pos), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(pos));
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        worldIn.playSound((EntityPlayer)null, playerIn.getPosition(), getInstrumentFromBlock(worldIn, pos), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(pos));
+        worldIn.spawnParticle(EnumParticleTypes.NOTE, playerIn.posX, playerIn.posY+playerIn.getEyeHeight(), playerIn.posZ, 1.0F, 0F, 0F);
         return EnumActionResult.SUCCESS;
     }
 
@@ -74,6 +75,7 @@ public class ItemPortableNoteBlock extends EFItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         worldIn.playSound((EntityPlayer)null, playerIn.getPosition(), getInstrument(0), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(playerIn.getPosition()));
+        worldIn.spawnParticle(EnumParticleTypes.NOTE, playerIn.posX, playerIn.posY+playerIn.getEyeHeight(), playerIn.posZ, 1.0F, 0F, 0F);
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
