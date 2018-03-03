@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "essentialfeatures:portable_note_block"
+  },
+  "pattern": [
+    "sps",
+    "prp",
+    "sps"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "p": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  }
+}
