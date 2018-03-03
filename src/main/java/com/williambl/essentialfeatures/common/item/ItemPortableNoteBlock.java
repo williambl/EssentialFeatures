@@ -31,7 +31,7 @@ public class ItemPortableNoteBlock extends EFItem {
     }
 
     private float getPitchFromPosition(BlockPos pos) {
-        return (float)pos.getY() / 256;
+        return (float)pos.getY() / 128;
     }
 
     private SoundEvent getInstrumentFromBlock (World worldIn, BlockPos pos) {
