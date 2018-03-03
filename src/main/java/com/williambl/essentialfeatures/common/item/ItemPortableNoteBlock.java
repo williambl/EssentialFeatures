@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.lwjgl.input.Mouse;
 
 import java.util.List;
 
@@ -27,7 +26,6 @@ public class ItemPortableNoteBlock extends EFItem {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        Mouse.setGrabbed(false);
         worldIn.playSound((EntityPlayer)null, player.getPosition(), getInstrumentFromBlock(worldIn, pos), SoundCategory.RECORDS, 3.0F, 1.0f);
         return EnumActionResult.SUCCESS;
     }
