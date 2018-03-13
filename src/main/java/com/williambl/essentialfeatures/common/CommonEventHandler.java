@@ -2,6 +2,7 @@ package com.williambl.essentialfeatures.common;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -9,6 +10,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
+
+import java.util.Random;
 
 public class CommonEventHandler {
 	
@@ -29,6 +32,17 @@ public class CommonEventHandler {
 
 		if (entity instanceof EntityWitch) {
 			System.out.println("witch died! make effects!");
+			Random rand = world.rand;
+			for (int i = 0; i < 10; i++) {
+				EntityBat bat = new EntityBat(world);
+				bat.setPosition(
+						entity.posX+rand.nextDouble()-0.5,
+						entity.posY+rand.nextDouble(),
+						entity.posZ+rand.nextDouble()-0.5
+				);
+
+				world.spawnEntity(bat);
+			}
 		}
 	}
 }
