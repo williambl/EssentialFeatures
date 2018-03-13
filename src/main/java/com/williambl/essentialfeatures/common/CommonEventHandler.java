@@ -34,6 +34,8 @@ public class CommonEventHandler {
 			System.out.println("witch died! make effects!");
 			Random rand = world.rand;
 			for (int i = 0; i < 10; i++) {
+
+				//Spawn a bat
 				EntityBat bat = new EntityBat(world);
 				bat.setPosition(
 						entity.posX+rand.nextDouble()-0.5,
@@ -43,6 +45,9 @@ public class CommonEventHandler {
 
 				world.spawnEntity(bat);
 			}
+			//Play a sound
+
+			world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.HOSTILE, 1f, 1f);
 		}
 	}
 }
