@@ -1,6 +1,7 @@
 package com.williambl.essentialfeatures.common;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -26,6 +27,8 @@ public class CommonEventHandler {
 		if (world.isRemote)
 			return;
 
-		System.out.println("entity " + entity.getDisplayName().getUnformattedText() + " died!");
+		if (entity instanceof EntityWitch) {
+			System.out.println("witch died! make effects!");
+		}
 	}
 }
