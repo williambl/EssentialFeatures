@@ -1,8 +1,11 @@
 package com.williambl.essentialfeatures.common;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
@@ -15,4 +18,14 @@ public class CommonEventHandler {
 		e.player.world.playSound(null, e.player.posX, e.player.posY, e.player.posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.player.world.rand.nextFloat() - e.player.world.rand.nextFloat()) * 0.2F) * 0.7F);
 	}
 
+	@SubscribeEvent
+	public void OnEntityDeath (LivingDeathEvent e) {
+		Entity entity = e.getEntity();
+		World world = entity.world;
+
+		if (world.isRemote)
+			return;
+
+		System.out.println("entity " + entity.getDisplayName().getUnformattedText() + " died!");
+	}
 }
