@@ -3,7 +3,10 @@ package com.williambl.essentialfeatures.common;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
@@ -44,6 +47,16 @@ public class CommonEventHandler {
 				);
 
 				world.spawnEntity(bat);
+			}
+
+			System.out.println(e.getSource().getDamageType());
+			if (rand.nextDouble() < 0.05 && e.getSource().getDamageType().equals("player")) {
+				EntityOcelot ocelot = new EntityOcelot(world);
+				ocelot.setPosition(entity.posX, entity.posY, entity.posZ);
+
+				ocelot.setTamedBy((EntityPlayer) e.getSource().getTrueSource());
+
+				world.spawnEntity(ocelot);
 			}
 			//Play a sound
 
