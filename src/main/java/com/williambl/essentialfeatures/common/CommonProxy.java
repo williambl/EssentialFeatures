@@ -4,6 +4,7 @@ import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.config.ModConfig;
 import com.williambl.essentialfeatures.common.craft.ModRecipes;
+import com.williambl.essentialfeatures.common.entity.ModEntities;
 import com.williambl.essentialfeatures.common.item.ModItems;
 import com.williambl.essentialfeatures.common.world.ModWorld;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,6 +17,7 @@ public class CommonProxy {
 			ModBlocks.addBlocks();
 		if (ModConfig.items)
 			ModItems.addItems();
+		ModEntities.addEntities();
 		ModWorld.registerWorldGenerators();
 	}
 
