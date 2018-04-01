@@ -159,25 +159,34 @@ public class EntitySharpenedArrow extends EntityArrow {
             IBlockState iblockstate = this.world.getBlockState(blockpos);
             this.inTile = iblockstate.getBlock();
             this.inData = this.inTile.getMetaFromState(iblockstate);
-            this.motionX = (double)((float)(raytraceResultIn.hitVec.x - this.posX));
-            this.motionY = (double)((float)(raytraceResultIn.hitVec.y - this.posY));
-            this.motionZ = (double)((float)(raytraceResultIn.hitVec.z - this.posZ));
-            float f2 = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-            this.posX -= this.motionX / (double)f2 * 0.05000000074505806D;
-            this.posY -= this.motionY / (double)f2 * 0.05000000074505806D;
-            this.posZ -= this.motionZ / (double)f2 * 0.05000000074505806D;
-            this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-            this.inGround = true;
-            this.arrowShake = 7;
-            this.setIsCritical(false);
 
-            if (iblockstate.getMaterial() != Material.AIR)
-            {
-                this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
-            }
-            if (Arrays.asList(breakableMaterials).contains(iblockstate.getMaterial())) {
+            if (!Arrays.asList(breakableMaterials).contains(iblockstate.getMaterial())) {
+                this.motionX = (double) ((float) (raytraceResultIn.hitVec.x - this.posX));
+                this.motionY = (double) ((float) (raytraceResultIn.hitVec.y - this.posY));
+                this.motionZ = (double) ((float) (raytraceResultIn.hitVec.z - this.posZ));
+                float f2 = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+                this.posX -= this.motionX / (double) f2 * 0.05000000074505806D;
+                this.posY -= this.motionY / (double) f2 * 0.05000000074505806D;
+                this.posZ -= this.motionZ / (double) f2 * 0.05000000074505806D;
+                this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                this.inGround = true;
+                this.arrowShake = 7;
+
+                if (iblockstate.getMaterial() != Material.AIR)
+                    this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
+            } else {
+                if (iblockstate.getMaterial() != Material.AIR)
+                    this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
+
+                if (iblockstate.getMaterial() == Material.GLASS || iblockstate.getMaterial() == Material.ICE)
+                    this.playSound(SoundEvents.BLOCK_GLASS_BREAK, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                else if (iblockstate.getMaterial() == Material.VINE || iblockstate.getMaterial() == Material.WEB)
+                    this.playSound(SoundEvents.BLOCK_CLOTH_BREAK, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+
                 world.setBlockState(new BlockPos(this.xTile, this.yTile, this.zTile), Blocks.AIR.getDefaultState());
             }
+
+            this.setIsCritical(false);
         }
     }
 
