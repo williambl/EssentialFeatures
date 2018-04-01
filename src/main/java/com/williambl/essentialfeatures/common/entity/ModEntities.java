@@ -1,7 +1,9 @@
 package com.williambl.essentialfeatures.common.entity;
 
 import com.williambl.essentialfeatures.EssentialFeatures;
+import com.williambl.essentialfeatures.client.render.entity.RenderSharpenedArrow;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class ModEntities {
@@ -16,5 +18,6 @@ public class ModEntities {
 	public static void initRenderers ()
 	{
 	    //RenderingRegistry.registerEntityRenderingHandler(EntityPanda.class, new PandaRenderFactory(){});
+		RenderingRegistry.registerEntityRenderingHandler(EntitySharpenedArrow.class, RenderSharpenedArrow.FACTORY);
 	}
 }
