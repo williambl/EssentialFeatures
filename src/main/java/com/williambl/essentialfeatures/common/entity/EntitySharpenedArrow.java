@@ -1,5 +1,6 @@
 package com.williambl.essentialfeatures.common.entity;
 
+import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -192,6 +193,6 @@ public class EntitySharpenedArrow extends EntityArrow {
 
     @Override
     protected ItemStack getArrowStack() {
-        return null;
+        return new ItemStack(ModItems.SHARPENED_ARROW);
     }
 }
