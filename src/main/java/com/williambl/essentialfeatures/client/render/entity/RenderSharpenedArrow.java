@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 public class RenderSharpenedArrow extends RenderArrow<EntitySharpenedArrow> {
 
-    private ResourceLocation texture = new ResourceLocation("essentialfeatures:textures/entity/sharpened_arrow.png");
+    private ResourceLocation texture = new ResourceLocation("essentialfeatures:textures/entity/projectiles/sharpened_arrow.png");
 
     public static final Factory FACTORY = new Factory();
 
