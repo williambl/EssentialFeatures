@@ -3,6 +3,7 @@ package com.williambl.essentialfeatures.client;
 import com.williambl.essentialfeatures.client.render.entity.PandaRenderFactory;
 import com.williambl.essentialfeatures.common.CommonProxy;
 import com.williambl.essentialfeatures.common.entity.EntityPanda;
+import com.williambl.essentialfeatures.common.entity.ModEntities;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -12,7 +13,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit()
 	{
 		super.preInit();
-		RenderingRegistry.registerEntityRenderingHandler(EntityPanda.class, new PandaRenderFactory(){});
+		ModEntities.initRenderers();
 	}
     
 	@Override

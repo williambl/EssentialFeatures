@@ -28,6 +28,7 @@ public class ModItems {
 	public static ItemEFRecord RECORD_SCARLET;
 	public static ItemEFRecord RECORD_LOFI;
 	public static ItemPortableNoteBlock PORTABLE_NOTE_BLOCK;
+	public static ItemSharpenedArrow SHARPENED_ARROW;
 
 	public static ItemPortableJukebox PORTABLE_JUKEBOX;
 	public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<>();
@@ -43,6 +44,7 @@ public class ModItems {
 		RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
 		RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
 		PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
+		SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
 
 		addPortableJukeboxes();
 	}
@@ -94,7 +96,8 @@ public class ModItems {
 					RECORD_SCARLET,
 					RECORD_LOFI,
 					PORTABLE_JUKEBOX,
-					PORTABLE_NOTE_BLOCK
+					PORTABLE_NOTE_BLOCK,
+					SHARPENED_ARROW
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -128,6 +131,7 @@ public class ModItems {
 			RECORD_SCARLET.initModel();
 			RECORD_LOFI.initModel();
 			PORTABLE_NOTE_BLOCK.initModel();
+			SHARPENED_ARROW.initModel();
 
 			PORTABLE_JUKEBOX.initModel();
 			PORTABLE_JUKEBOXES.forEach(EFItem::initModel);

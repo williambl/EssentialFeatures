@@ -81,3 +81,5 @@ item.essentialfeatures:portable_jukebox_lo-fi.name=carryable loud thing
 tile.essentialfeatures:blaze_block.name=fiary blok
 
 item.essentialfeatures:portable_note_block.name=other carryable loud thing
+
+item.essentialfeatures:sharpened_arrow.name=sharp flying thing
