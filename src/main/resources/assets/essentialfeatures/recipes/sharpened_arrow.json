@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "essentialfeatures:sharpened_arrow"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}
