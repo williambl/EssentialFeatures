@@ -34,6 +34,10 @@ public class ModConfig {
     @Config.RequiresWorldRestart
     public static int viewedRange = 50;
 
+    @Config.Comment("Ticks between viewed block checks")
+    @Config.RequiresWorldRestart
+    public static int viewedDelay = 1;
+
     @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
     private static class EventHandler {
 

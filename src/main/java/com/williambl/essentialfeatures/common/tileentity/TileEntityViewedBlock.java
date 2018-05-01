@@ -17,12 +17,20 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 	int radius = ModConfig.viewedRange;
 	boolean wasLookingLastTime;
 
+	int tickCounter = 0;
+
 	@Override
 	public void update() {
 
 		if (world.isRemote)
 			return;
-		
+
+		tickCounter++;
+
+		if (tickCounter != ModConfig.viewedDelay)
+			return;
+		tickCounter = 0;
+
 		IBlockState blockstate = world.getBlockState(getPos());
 		BlockViewedBlock block = (BlockViewedBlock) world.getBlockState(getPos()).getBlock();
 		wasLookingLastTime = block.isPowered(blockstate);
