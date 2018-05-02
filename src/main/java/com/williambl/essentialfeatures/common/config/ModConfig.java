@@ -36,7 +36,7 @@ public class ModConfig {
 
     @Config.Comment("Ticks between viewed block checks")
     @Config.RequiresWorldRestart
-    public static int viewedDelay = 1;
+    public static int viewedDelay = 2;
 
     @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
     private static class EventHandler {
