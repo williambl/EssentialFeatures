@@ -47,7 +47,10 @@ public class ModBlocks {
 	
 	public static BlockSlate SLATE;
 	public static BlockBlaze BLAZE_BLOCK;
-	
+
+	public static EFBlock PACKED_SAND;
+	public static EFBlock PACKED_GRAVEL;
+
 	public static void addBlocks() 
 	{
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
@@ -72,6 +75,10 @@ public class ModBlocks {
         
         SLATE = new BlockSlate("slate", Material.ROCK, 5, 3);
         BLAZE_BLOCK = new BlockBlaze("blaze_block");
+
+        PACKED_SAND = new EFBlock("packed_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
+		PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, CreativeTabs.BUILDING_BLOCKS, SoundType.GROUND, (float) 0.8, 2);
+
     }
 	
 	@Mod.EventBusSubscriber
@@ -107,7 +114,9 @@ public class ModBlocks {
 		    		SMOOTH_DOUBLE_SANDSTONE_SLAB,
 		    		SMOOTH_DOUBLE_RED_SANDSTONE_SLAB,
 		    		SLATE,
-				BLAZE_BLOCK
+					BLAZE_BLOCK,
+					PACKED_SAND,
+					PACKED_GRAVEL
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -141,7 +150,9 @@ public class ModBlocks {
 					new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
 					new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB),
 					new ItemSlate(SLATE),
-					new ItemBlock(BLAZE_BLOCK)
+					new ItemBlock(BLAZE_BLOCK),
+					new ItemBlock(PACKED_SAND),
+					new ItemBlock(PACKED_GRAVEL)
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -180,6 +191,8 @@ public class ModBlocks {
 			SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
 			SLATE.initModel();
 			BLAZE_BLOCK.initModel();
+			PACKED_SAND.initModel();
+			PACKED_GRAVEL.initModel();
 		}
 		
 		public static void registerTileEntities() {
