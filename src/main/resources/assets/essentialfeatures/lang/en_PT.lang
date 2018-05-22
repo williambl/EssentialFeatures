@@ -84,3 +84,6 @@ tile.essentialfeatures:blaze_block.name=Block O' Blaze PowdARR
 item.essentialfeatures:portable_note_block.name=PortARRble Note Block
 
 item.essentialfeatures:sharpened_arrow.name=ShARRpened Arrow
+
+tile.essentialfeatures:packed_sand.name=Packed SARRnd
+tile.essentialfeatures:packed_gravel.name=Packed GrARRvel
