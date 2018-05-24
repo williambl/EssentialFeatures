@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "essentialfeatures:packed_sand"
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:sand",
+      "data": 0
+    }
+  }
+}
