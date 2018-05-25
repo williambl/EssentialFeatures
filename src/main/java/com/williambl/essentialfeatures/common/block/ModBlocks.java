@@ -49,6 +49,7 @@ public class ModBlocks {
 	public static BlockBlaze BLAZE_BLOCK;
 
 	public static EFBlock PACKED_SAND;
+	public static EFBlock PACKED_RED_SAND;
 	public static EFBlock PACKED_GRAVEL;
 
 	public static void addBlocks() 
@@ -77,6 +78,7 @@ public class ModBlocks {
         BLAZE_BLOCK = new BlockBlaze("blaze_block");
 
         PACKED_SAND = new EFBlock("packed_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
+		PACKED_RED_SAND = new EFBlock("packed_red_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
 		PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, CreativeTabs.BUILDING_BLOCKS, SoundType.GROUND, (float) 0.8, 2);
 
     }
@@ -116,6 +118,7 @@ public class ModBlocks {
 		    		SLATE,
 					BLAZE_BLOCK,
 					PACKED_SAND,
+					PACKED_RED_SAND,
 					PACKED_GRAVEL
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
@@ -152,6 +155,7 @@ public class ModBlocks {
 					new ItemSlate(SLATE),
 					new ItemBlock(BLAZE_BLOCK),
 					new ItemBlock(PACKED_SAND),
+					new ItemBlock(PACKED_RED_SAND),
 					new ItemBlock(PACKED_GRAVEL)
 			};
 
@@ -192,6 +196,7 @@ public class ModBlocks {
 			SLATE.initModel();
 			BLAZE_BLOCK.initModel();
 			PACKED_SAND.initModel();
+			PACKED_RED_SAND.initModel();
 			PACKED_GRAVEL.initModel();
 		}
 		
