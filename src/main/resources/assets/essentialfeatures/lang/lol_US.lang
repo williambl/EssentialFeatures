@@ -85,4 +85,5 @@ item.essentialfeatures:portable_note_block.name=other carryable loud thing
 item.essentialfeatures:sharpened_arrow.name=sharp flying thing
 
 tile.essentialfeatures:packed_sand.name=paked sand
+tile.essentialfeatures:packed_red_sand.name=paked red sand
 tile.essentialfeatures:packed_gravel.name=paked gravl

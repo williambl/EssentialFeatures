@@ -86,4 +86,5 @@ item.essentialfeatures:portable_note_block.name=Portable Note Block
 item.essentialfeatures:sharpened_arrow.name=Sharpened Arrow
 
 tile.essentialfeatures:packed_sand.name=Packed Sand
+tile.essentialfeatures:packed_red_sand.name=Packed Red Sand
 tile.essentialfeatures:packed_gravel.name=Packed Gravel
