@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://williambl.com/essentialfeatures",
-  "updateJSON": "",
+  "updateJSON": "https://raw.githubusercontent.com/williambl/EssentialFeatures/master/update.json",
   "authorList": ["Willbl3pic"],
   "credits": "/u/Jake_Jeremy made the smooth glowstone texture. /u/DiamondHammer made the polished glowstone texture. github.com/Palmidence made the ocean music, scarlet music and texture, lo-fi music, the powered viewed block texture and the cereal texture.",
   "logoFile": "",
