@@ -1,0 +1,23 @@
+{
+  "homepage": "https://minecraft.curseforge.com/projects/essential-features",
+
+  "promos": {
+      "1.12.2-latest": "v2.0.1",
+      "1.12.2-recommended": "v2.0.1"
+  },
+
+  "1.12.2": { 
+    "v2.0.1": "Fixes the issue where the mod would crash servers on startup.",  "v2.0.0": "Added background music which plays in ocean biomes, thanks to Palmidence. Added two new records: Scarlet and Lo-Fi (thanks again to Palmidence) Updated to 1.12. Added slate. Found underground, it can be layered much like snow. Added configuration: you can choose which features to turn on or off. Added OreDictionary entries to many blocks, so they should work in other mods' recipes. Added a portable jukebox, which allows you to play records while on the go. Cleaned up the code. Fixed the Block Placer. Fixed smooth double slab recipes. Improved slate generation: it's now more abundant, and generates only near the surface. Renamed some bricks. Lit stained lamps now have brighter textures than unlit ones. Added the blaze block; it sets things on fire, and produces a lot of smoke. Fixed many recipes. Improved crying obsidian effects."
+  },
+
+  "1.11.2": {
+    "v1.3.0": "Updated to Minecraft 1.11. Added Iron-Fortified Cereal. Added Decorative Stone, Granite, Diorite, and Andesite. Added Block Breaker: Provide Redstone and it will break the block in front! Added Decorative Stone. Added Crying Obsidian. It functions like a bed, without having to sleep on it - as soon as you place it, your respawn place is set to it. Added particles and sounds on respawn. Added Spike Block. It takes damage, and also slows you down. You can walk through it. Added Seamless Double Slabs (Stone, Sandstone, and Red Sandstone). Added Block Placer: Provide Redstone and it places blocks from its inventory. Added More Bricks (Cream Bricks, London Bricks, Roman Bricks, Blue Bricks, and Mixed Bricks) as well as items used to craft them. Changed material of Snow Brick to snow (from rock). Changed material of the block breaker to piston (from rock)."
+  },
+
+  "1.10.2": {
+    "v1.2.1": "Fixed a bug with viewed blocks all activating each other, added cereal, and added some more texture credits to mcmod.info.",
+    "v1.2.0": "I've added polished glowstone, made with four smooth glowstone. I've also added snow brick, and stained redstone lamps. We also now have the mechanic villager, who gives you emeralds for redstone and redstone for emeralds.",
+    "v1.1.0": "I've added the smooth glowstone block! It is identical to glowstone, however it has a smoother texture. Make it by smelting glowstone.",
+    "v1.0.0": "1.0 Adds a new block, the Viewed Block. When looked at, the Viewed Block emits a redstone signal."
+  }
+}
