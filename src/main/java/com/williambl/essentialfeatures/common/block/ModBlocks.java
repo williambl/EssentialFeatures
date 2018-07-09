@@ -52,6 +52,8 @@ public class ModBlocks {
 	public static EFBlock PACKED_RED_SAND;
 	public static EFBlock PACKED_GRAVEL;
 
+	public static BlockNettles NETTLES;
+
 	public static void addBlocks() 
 	{
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
@@ -81,6 +83,7 @@ public class ModBlocks {
 		PACKED_RED_SAND = new EFBlock("packed_red_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
 		PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, CreativeTabs.BUILDING_BLOCKS, SoundType.GROUND, (float) 0.8, 2);
 
+		NETTLES = new BlockNettles("stinging_nettles");
     }
 	
 	@Mod.EventBusSubscriber
@@ -119,7 +122,8 @@ public class ModBlocks {
 					BLAZE_BLOCK,
 					PACKED_SAND,
 					PACKED_RED_SAND,
-					PACKED_GRAVEL
+					PACKED_GRAVEL,
+					NETTLES
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -156,7 +160,8 @@ public class ModBlocks {
 					new ItemBlock(BLAZE_BLOCK),
 					new ItemBlock(PACKED_SAND),
 					new ItemBlock(PACKED_RED_SAND),
-					new ItemBlock(PACKED_GRAVEL)
+					new ItemBlock(PACKED_GRAVEL),
+					new ItemBlock(NETTLES)
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -198,6 +203,7 @@ public class ModBlocks {
 			PACKED_SAND.initModel();
 			PACKED_RED_SAND.initModel();
 			PACKED_GRAVEL.initModel();
+			NETTLES.initModel();
 		}
 		
 		public static void registerTileEntities() {
