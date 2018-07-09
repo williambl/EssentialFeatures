@@ -5,11 +5,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -67,11 +71,19 @@ public class BlockNettles extends BlockBush implements IShearable {
         if (!worldIn.isRemote && stack.getItem() == Items.SHEARS)
         {
             player.addStat(StatList.getBlockStats(this));
-            spawnAsEntity(worldIn, pos, new ItemStack(Blocks.DEADBUSH, 1, 0));
+            spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.NETTLES, 1, 0));
         }
         else
         {
             super.harvestBlock(worldIn, player, pos, state, te, stack);
+            player.addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 1));
+        }
+    }
+
+    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
+    {
+        if (entityIn instanceof EntityLivingBase) {
+            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 50, 1));
         }
     }
 
