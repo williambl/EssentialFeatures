@@ -21,6 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IShearable;
 
 import javax.annotation.Nonnull;
@@ -87,6 +88,10 @@ public class BlockNettles extends BlockBush implements IShearable {
         }
     }
 
+    @Override
+    public EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
+        return EnumPlantType.Plains;
+    }
     @Override
     public boolean isShearable(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos) {
         return true;
