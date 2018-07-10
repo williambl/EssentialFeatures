@@ -14,6 +14,8 @@ import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -127,7 +129,7 @@ public class ModBlocks {
 		    		);
 	        GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
 	        GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
-                GameRegistry.registerFuelHandler(BLAZE_BLOCK);
+	        GameRegistry.registerFuelHandler(BLAZE_BLOCK);
 		}
 		
 		/**
@@ -213,6 +215,11 @@ public class ModBlocks {
 		
 		private static void registerTileEntity(Class<? extends TileEntity> tileEntityClass) {
 			GameRegistry.registerTileEntity(tileEntityClass, EssentialFeatures.MODID + ":" + tileEntityClass.getSimpleName().replaceFirst("TileEntity", ""));
+		}
+
+		public static void registerBlockColors() {
+			BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
+			blockColors.registerBlockColorHandler(NETTLES, NETTLES);
 		}
 
 	}

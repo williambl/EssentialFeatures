@@ -2,6 +2,7 @@ package com.williambl.essentialfeatures.client;
 
 import com.williambl.essentialfeatures.client.render.entity.PandaRenderFactory;
 import com.williambl.essentialfeatures.common.CommonProxy;
+import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.entity.EntityPanda;
 import com.williambl.essentialfeatures.common.entity.ModEntities;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,6 +23,7 @@ public class ClientProxy extends CommonProxy {
 		super.init();
 		ClientEventHandler handler = new ClientEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
+		ModBlocks.RegistrationHandler.registerBlockColors();
  	}
 	
 	@Override
