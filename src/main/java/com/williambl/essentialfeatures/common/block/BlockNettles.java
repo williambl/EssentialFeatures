@@ -92,10 +92,6 @@ public class BlockNettles extends BlockBush implements IShearable, IBlockColor {
     }
 
     @Override
-    public EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
-        return EnumPlantType.Plains;
-    }
-    @Override
     public boolean isShearable(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos) {
         return true;
     }
