@@ -22,6 +22,8 @@ public class ModRecipes {
 				Ingredient.fromItem(ModItems.PORTABLE_JUKEBOX),
 				Ingredient.fromItem(jukebox.record)
 		));
+
+		GameRegistry.addSmelting(ModBlocks.NETTLES, new ItemStack(ModItems.COOKED_NETTLES), 1.0F);
 	}
 
 }
