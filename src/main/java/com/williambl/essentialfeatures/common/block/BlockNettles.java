@@ -79,14 +79,14 @@ public class BlockNettles extends BlockBush implements IShearable, IBlockColor {
         else
         {
             super.harvestBlock(worldIn, player, pos, state, te, stack);
-            player.addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 1));
+            player.addPotionEffect(new PotionEffect(MobEffects.POISON, 50, 1));
         }
     }
 
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
     {
         if (entityIn instanceof EntityLivingBase) {
-            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 50, 1));
+            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 25, 1));
         }
     }
 
