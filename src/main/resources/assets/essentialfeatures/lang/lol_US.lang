@@ -87,3 +87,6 @@ item.essentialfeatures:sharpened_arrow.name=sharp flying thing
 tile.essentialfeatures:packed_sand.name=paked sand
 tile.essentialfeatures:packed_red_sand.name=paked red sand
 tile.essentialfeatures:packed_gravel.name=paked gravl
+
+tile.essentialfeatures:stinging_nettles.name=stingy plant
+item.essentialfeatures:cooked_nettles.name=cooked stingy plant
