@@ -1,6 +1,7 @@
 package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -43,6 +44,7 @@ public class BlockNettles extends BlockBush implements IShearable, IBlockColor {
         this.setCreativeTab(CreativeTabs.DECORATIONS);
         this.setHardness(0);
         this.setResistance(0);
+        this.setSoundType(SoundType.PLANT);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
     }
