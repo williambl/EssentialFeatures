@@ -6,11 +6,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.williambl.essentialfeatures.client.music.ModSound;
+import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.config.ModConfig;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemRecord;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +43,8 @@ public class ModItems {
 	public static ItemPortableJukebox PORTABLE_JUKEBOX;
 	public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<>();
 
+	public static ItemCookedNettles COOKED_NETTLES;
+
 	public static void addItems () 
 	{
 		CEREAL = new ItemCereal("cereal", 1, 6, false);
@@ -45,6 +57,7 @@ public class ModItems {
 		RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
 		PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
 		SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
+		COOKED_NETTLES = new ItemCookedNettles("cooked_nettles");
 
 		addPortableJukeboxes();
 	}
@@ -97,7 +110,8 @@ public class ModItems {
 					RECORD_LOFI,
 					PORTABLE_JUKEBOX,
 					PORTABLE_NOTE_BLOCK,
-					SHARPENED_ARROW
+					SHARPENED_ARROW,
+					COOKED_NETTLES
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -132,9 +146,22 @@ public class ModItems {
 			RECORD_LOFI.initModel();
 			PORTABLE_NOTE_BLOCK.initModel();
 			SHARPENED_ARROW.initModel();
+			COOKED_NETTLES.initModel();
 
 			PORTABLE_JUKEBOX.initModel();
 			PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
+		}
+
+		public static void registerItemColors() {
+			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+			BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
+			itemColors.registerItemColorHandler(new IItemColor() {
+				@Override
+				public int colorMultiplier(ItemStack stack, int tintIndex) {
+					IBlockState iblockstate = ((ItemBlock)stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
+					return blockColors.colorMultiplier(iblockstate, (IBlockAccess)null, (BlockPos)null, tintIndex);
+				}
+			}, ModBlocks.NETTLES);
 		}
 	}
 }

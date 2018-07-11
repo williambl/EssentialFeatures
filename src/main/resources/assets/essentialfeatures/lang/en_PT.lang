@@ -88,3 +88,6 @@ item.essentialfeatures:sharpened_arrow.name=ShARRpened Arrow
 tile.essentialfeatures:packed_sand.name=Packed SARRnd
 tile.essentialfeatures:packed_red_sand.name=Packed Red SARRnd
 tile.essentialfeatures:packed_gravel.name=Packed GrARRvel
+
+tile.essentialfeatures:stinging_nettles.name=Stingers
+item.essentialfeatures:cooked_nettles.name=Cooked Stingers
