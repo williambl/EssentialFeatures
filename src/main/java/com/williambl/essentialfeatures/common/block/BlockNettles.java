@@ -64,14 +64,9 @@ public class BlockNettles extends BlockBush implements IShearable, IBlockColor {
         return true;
     }
 
-    public int quantityDropped(Random random)
-    {
-        return random.nextInt(3);
-    }
-
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Items.STICK;
+        return null;
     }
 
     public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
@@ -103,7 +98,7 @@ public class BlockNettles extends BlockBush implements IShearable, IBlockColor {
     @Nonnull
     @Override
     public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-        return java.util.Arrays.asList(new ItemStack(Blocks.DEADBUSH));
+        return java.util.Arrays.asList(new ItemStack(ModBlocks.NETTLES));
     }
 
     public void initModel() {
