@@ -6,11 +6,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.williambl.essentialfeatures.client.music.ModSound;
+import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.config.ModConfig;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemRecord;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -140,6 +150,18 @@ public class ModItems {
 
 			PORTABLE_JUKEBOX.initModel();
 			PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
+		}
+
+		public static void registerItemColors() {
+			ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+			BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
+			itemColors.registerItemColorHandler(new IItemColor() {
+				@Override
+				public int colorMultiplier(ItemStack stack, int tintIndex) {
+					IBlockState iblockstate = ((ItemBlock)stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
+					return blockColors.colorMultiplier(iblockstate, (IBlockAccess)null, (BlockPos)null, tintIndex);
+				}
+			}, ModBlocks.NETTLES);
 		}
 	}
 }

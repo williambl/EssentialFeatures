@@ -5,6 +5,7 @@ import com.williambl.essentialfeatures.common.CommonProxy;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.entity.EntityPanda;
 import com.williambl.essentialfeatures.common.entity.ModEntities;
+import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -24,6 +25,7 @@ public class ClientProxy extends CommonProxy {
 		ClientEventHandler handler = new ClientEventHandler();
 		MinecraftForge.EVENT_BUS.register(handler);
 		ModBlocks.RegistrationHandler.registerBlockColors();
+		ModItems.RegistrationHandler.registerItemColors();
  	}
 	
 	@Override
