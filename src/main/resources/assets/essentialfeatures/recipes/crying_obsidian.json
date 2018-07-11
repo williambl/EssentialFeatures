@@ -3,9 +3,9 @@
     "item": "essentialfeatures:crying_obsidian"
   },
   "pattern": [
-    " l ",
+    "plp",
     "lol",
-    " l "
+    "plp"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
@@ -15,6 +15,9 @@
     },
     "o": {
       "item": "minecraft:obsidian"
+    },
+    "p": {
+      "item":"minecraft:prismarine_shard"
     }
   }
 }
