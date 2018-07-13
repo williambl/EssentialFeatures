@@ -6,9 +6,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModWorld {
 	
 	public static SlateGen SLATE = new SlateGen();
+	public static NettlesGen NETTLES = new NettlesGen();
 	
 	public static void registerWorldGenerators() {
 		if (ModConfig.slateGen)
 			GameRegistry.registerWorldGenerator(SLATE, 0);
+
+		GameRegistry.registerWorldGenerator(NETTLES, 0);
 	}
 }
