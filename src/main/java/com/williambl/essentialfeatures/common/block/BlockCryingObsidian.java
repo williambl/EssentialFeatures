@@ -21,7 +21,7 @@ import net.minecraft.util.EnumHand;
 
 public class BlockCryingObsidian extends Block {
 
-	public BlockCryingObsidian(String registryName, Material material, float hardness, float resistance) {
+    public BlockCryingObsidian(String registryName, Material material, float hardness, float resistance) {
         super(material);
         this.setCreativeTab(CreativeTabs.DECORATIONS);
         this.setHardness(hardness);
@@ -29,29 +29,30 @@ public class BlockCryingObsidian extends Block {
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setLightLevel(0.1F);
-	}
-	
+    }
+
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-    
+
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
     {
-    		if(placer instanceof EntityPlayer) 
-    		{
-    			((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, worldIn.provider.getDimension());
-    		
-    			particleExplosion(worldIn, pos);
-    		}
-    		return this.getStateFromMeta(meta);
+        if(placer instanceof EntityPlayer)
+        {
+            ((EntityPlayer) placer).setSpawnDimension(placer.dimension);
+            ((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, placer.dimension);
+
+            particleExplosion(worldIn, pos);
+        }
+        return this.getStateFromMeta(meta);
     }
-    
-    
+
+
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
-    	EnumFacing enumfacing = EnumFacing.random(rand);
+        EnumFacing enumfacing = EnumFacing.random(rand);
 
         if (enumfacing != EnumFacing.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullCube())
         {
@@ -96,24 +97,24 @@ public class BlockCryingObsidian extends Block {
                     }
                 }
             }
-            
-    	worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+
+            worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
     }
-    
+
     public void particleExplosion (World worldIn, BlockPos pos) 
     {
-    	if (worldIn.isRemote)
-    	{
+        if (worldIn.isRemote)
+        {
             for (int i = 0; i < 10; i++) {
                 double d0 = (double)pos.getX() + worldIn.rand.nextDouble();
                 double d1 = (double)pos.getY() + worldIn.rand.nextDouble() * 0.5D + 0.5D;
                 double d2 = (double)pos.getZ() + worldIn.rand.nextDouble();
-            
-    	        worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-    	        worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-    	        worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 0.25f, 1f, false);
+
+                worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 0.25f, 1f, false);
             }
-    	}
+        }
     }
 }
