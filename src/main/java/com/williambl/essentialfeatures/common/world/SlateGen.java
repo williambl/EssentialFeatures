@@ -14,23 +14,25 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class SlateGen implements IWorldGenerator {
 
+    private WorldGenMinable worldGenMinable;
+
+    public SlateGen () {
+        worldGenMinable = new WorldGenMinable(ModBlocks.SLATE.getDefaultState().withProperty(BlockSlate.LAYERS, 8), 25);
+    }
+
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if (world.provider.getDimension() == 0)
-			generateOre(ModBlocks.SLATE.getDefaultState().withProperty(BlockSlate.LAYERS, 8), world, random, chunkX, chunkZ, 40, 80, 10, 25);
+			generateOre(worldGenMinable, world, random, chunkX, chunkZ, 40, 80, 10 );
 	}
 	
-	public void generateOre(IBlockState block, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn, int veinSize) {
+	private void generateOre(WorldGenMinable worldGen, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn) {
 		int heightRange = maxY - minY;
-		WorldGenMinable worldgen = new WorldGenMinable(block, veinSize);
-		
-		for (int i = 0; i < chancesToSpawn; i++) {
-			int randX = random.nextInt(16);
-			int randY = random.nextInt(heightRange) + minY;
-			int randZ = random.nextInt(16);
-			BlockPos pos = new BlockPos(chunkX+randX, randY, chunkZ+randZ);
 
-			worldgen.generate(world, random, pos);
+		for (int i = 0; i < chancesToSpawn; i++) {
+            int randY = random.nextInt(heightRange) + minY;
+            BlockPos pos = new BlockPos(chunkX*16+8, randY, chunkZ*16+8);
+			worldGen.generate(world, random, pos);
 		}
 	}
 }
