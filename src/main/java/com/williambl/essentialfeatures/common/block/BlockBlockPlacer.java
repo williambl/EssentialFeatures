@@ -1,6 +1,9 @@
 package com.williambl.essentialfeatures.common.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDispenser;
+import net.minecraft.block.BlockSourceImpl;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
@@ -22,52 +25,45 @@ import net.minecraftforge.client.model.ModelLoader;
 import java.util.Collection;
 
 public class BlockBlockPlacer extends BlockDispenser {
-	
-	private final IBehaviorDispenseItem dropBehavior = new BehaviorPlaceBlock();
 
-	protected BlockBlockPlacer(String registryName, Material material, float hardness, float resistance) {
-		super();
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.FALSE));
+    private final IBehaviorDispenseItem dropBehavior = new BehaviorPlaceBlock();
+
+    protected BlockBlockPlacer(String registryName, Material material, float hardness, float resistance) {
+        super();
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.FALSE));
         this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-	}
-	
+    }
+
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-	
+
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta)
-    {
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityDispenser();
     }
 
     @Override
-    protected void dispense(World worldIn, BlockPos pos)
-    {
+    protected void dispense(World worldIn, BlockPos pos) {
         BlockSourceImpl blocksourceimpl = new BlockSourceImpl(worldIn, pos);
         TileEntityDispenser tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
 
-        if (tileentityblockplacer != null)
-        {
+        if (tileentityblockplacer != null) {
             int i = tileentityblockplacer.getDispenseSlot();
 
-            if (i < 0)
-            {
+            if (i < 0) {
                 worldIn.playEvent(1001, pos, 0);
-            }
-            else
-            {
+            } else {
                 ItemStack itemstack = tileentityblockplacer.getStackInSlot(i);
 
-                if (!itemstack.isEmpty())
-                {
+                if (!itemstack.isEmpty()) {
                     ItemStack itemstack1;
 
                     itemstack1 = this.dropBehavior.dispense(blocksourceimpl, itemstack);
@@ -78,8 +74,7 @@ public class BlockBlockPlacer extends BlockDispenser {
         }
     }
 
-    public class BehaviorPlaceBlock implements IBehaviorDispenseItem
-    {
+    public class BehaviorPlaceBlock implements IBehaviorDispenseItem {
         @Override
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
             Block block = Block.getBlockFromItem(stack.getItem());
@@ -93,7 +88,7 @@ public class BlockBlockPlacer extends BlockDispenser {
             BlockPos pos = source.getBlockPos().offset(facing);
             World world = source.getWorld();
 
-            if(world.isAirBlock(pos) && block.canPlaceBlockAt(world, pos)) {
+            if (world.isAirBlock(pos) && block.canPlaceBlockAt(world, pos)) {
                 int meta = stack.getItem().getMetadata(stack.getItemDamage());
                 IBlockState state = block.getStateFromMeta(meta);
                 Collection<IProperty<?>> props = state.getPropertyKeys();

@@ -4,9 +4,11 @@
     "model": "essentialfeatures:snow_brick"
   },
   "variants": {
-
-    	"inventory": [{}],
-		"normal": [{}]
-
-	}
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
 }

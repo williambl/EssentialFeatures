@@ -6,11 +6,9 @@ import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.model.ModelLoader;
 
-public class ItemEFRecord extends ItemRecord
-{
+public class ItemEFRecord extends ItemRecord {
 
-	public ItemEFRecord(String recordName, SoundEvent soundIn)
-    {
+    public ItemEFRecord(String recordName, SoundEvent soundIn) {
         super(recordName, soundIn);
         this.setRegistryName(recordName);
         this.setUnlocalizedName(this.getRegistryName().toString());

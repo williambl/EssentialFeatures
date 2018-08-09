@@ -14,11 +14,11 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 
 public class BlockBrickVariant extends Block {
-	
-    static final String[] names = new String[]{"cream_bricks", "dirty_bricks", "long_bricks", "blue_bricks", "mixed_bricks"};
-	public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
 
-	public BlockBrickVariant(String registryName, Material material, float hardness, float resistance) {
+    static final String[] names = new String[]{"cream_bricks", "dirty_bricks", "long_bricks", "blue_bricks", "mixed_bricks"};
+    public static final PropertyInteger variant = PropertyInteger.create("variant", 0, 4);
+
+    public BlockBrickVariant(String registryName, Material material, float hardness, float resistance) {
         super(material);
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setHardness(hardness);
@@ -27,49 +27,42 @@ public class BlockBrickVariant extends Block {
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(SoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
-	}
-	
+    }
+
     public void initModel() {
-        for (Integer integer : variant.getAllowedValues())
-        {
-        	if (integer == 0)
+        for (Integer integer : variant.getAllowedValues()) {
+            if (integer == 0)
                 ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), integer, new ModelResourceLocation(getRegistryName(), "inventory"));
-        	else
+            else
                 ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), integer, new ModelResourceLocation(getRegistryName(), "inventory_" + integer.toString()));
         }
     }
-    
+
     @Override
-    protected BlockStateContainer createBlockState()
-	{
-		return new BlockStateContainer(this, variant);
-	}
-	
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, variant);
+    }
+
     @Override
-    public IBlockState getStateFromMeta(int meta)
-    {
+    public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(variant, meta);
     }
 
     @Override
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         return state.getValue(variant);
     }
-    
+
     @Override
-    public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
-    {
-        for (Integer integer : variant.getAllowedValues())
-        {
+    public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+        for (Integer integer : variant.getAllowedValues()) {
             list.add(new ItemStack(this, 1, integer));
         }
     }
-    
+
     @Override
-    public int damageDropped(IBlockState state)
-    {
+    public int damageDropped(IBlockState state) {
         return state.getValue(variant);
     }
-	
+
 }

@@ -2,25 +2,31 @@
   "ocean_music": {
     "category": "music",
     "subtitle": "essentialfeatures.subtitle.ocean_music",
-    "sounds": [ {
-        "name":"essentialfeatures:music/ocean/give-up",
-        "stream":true
-        } ]
+    "sounds": [
+      {
+        "name": "essentialfeatures:music/ocean/give-up",
+        "stream": true
+      }
+    ]
   },
   "record_scarlet": {
-      "category": "record",
-      "subtitle": "essentialfeatures.subtitle.record_scarlet",
-      "sounds": [ {
-          "name": "essentialfeatures:music/records/scarlet",
-          "stream": true
-          } ]
+    "category": "record",
+    "subtitle": "essentialfeatures.subtitle.record_scarlet",
+    "sounds": [
+      {
+        "name": "essentialfeatures:music/records/scarlet",
+        "stream": true
+      }
+    ]
   },
   "record_lofi": {
     "category": "record",
     "subtitle": "essentialfeatures.subtitle.record_lofi",
-    "sounds": [ {
+    "sounds": [
+      {
         "name": "essentialfeatures:music/records/lo-fi",
         "stream": true
-    } ]
+      }
+    ]
   }
 }

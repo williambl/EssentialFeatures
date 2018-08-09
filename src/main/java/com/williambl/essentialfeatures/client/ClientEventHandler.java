@@ -10,18 +10,18 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class ClientEventHandler {
-	
-	@SubscribeEvent
-	public void playSoundEvent (PlaySoundEvent event) {
-	    if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
-	    	    ISound result = CustomMusic.PlayMusic(event.getSound());
-	    	    event.setResultSound(result);
-	    }
-	}
 
-	@SubscribeEvent
-	public void playerLoginEvent (PlayerEvent.PlayerLoggedInEvent event) {
-		event.player.sendMessage(new TextComponentString("Thank you for installing Essential Features v" + EssentialFeatures.VERSION + "!"));
-	}
+    @SubscribeEvent
+    public void playSoundEvent(PlaySoundEvent event) {
+        if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
+            ISound result = CustomMusic.PlayMusic(event.getSound());
+            event.setResultSound(result);
+        }
+    }
+
+    @SubscribeEvent
+    public void playerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
+        event.player.sendMessage(new TextComponentString("Thank you for installing Essential Features v" + EssentialFeatures.VERSION + "!"));
+    }
 
 }

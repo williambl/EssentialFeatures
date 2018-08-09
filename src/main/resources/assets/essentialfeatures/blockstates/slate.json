@@ -4,18 +4,34 @@
     "model": "essentialfeatures:slate_height2"
   },
   "variants": {
-    "inventory": [{}],
-    
+    "inventory": [
+      {}
+    ],
     "layers": {
-      "1": {"model": "essentialfeatures:slate_height2"},
-      "2": {"model": "essentialfeatures:slate_height4"},
-      "3": {"model": "essentialfeatures:slate_height6"},
-      "4": {"model": "essentialfeatures:slate_height8"},
-      "5": {"model": "essentialfeatures:slate_height10"},
-      "6": {"model": "essentialfeatures:slate_height12"},
-      "7": {"model": "essentialfeatures:slate_height14"},
-      "8": {"model": "essentialfeatures:slate"}
+      "1": {
+        "model": "essentialfeatures:slate_height2"
+      },
+      "2": {
+        "model": "essentialfeatures:slate_height4"
+      },
+      "3": {
+        "model": "essentialfeatures:slate_height6"
+      },
+      "4": {
+        "model": "essentialfeatures:slate_height8"
+      },
+      "5": {
+        "model": "essentialfeatures:slate_height10"
+      },
+      "6": {
+        "model": "essentialfeatures:slate_height12"
+      },
+      "7": {
+        "model": "essentialfeatures:slate_height14"
+      },
+      "8": {
+        "model": "essentialfeatures:slate"
+      }
     }
-
   }
 }

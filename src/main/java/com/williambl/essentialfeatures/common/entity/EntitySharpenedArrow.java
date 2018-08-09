@@ -48,8 +48,7 @@ public class EntitySharpenedArrow extends EntityArrow {
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(World worldIn, double x, double y, double z)
-    {
+    public EntitySharpenedArrow(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
         this.setIsCritical(true);
     }
@@ -59,80 +58,63 @@ public class EntitySharpenedArrow extends EntityArrow {
         this.setIsCritical(true);
     }
 
-    protected void onHit(RayTraceResult raytraceResultIn)
-    {
+    protected void onHit(RayTraceResult raytraceResultIn) {
         Entity entity = raytraceResultIn.entityHit;
 
-        if (entity != null)
-        {
+        if (entity != null) {
             float f = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-            int i = MathHelper.ceil((double)f * this.damage);
+            int i = MathHelper.ceil((double) f * this.damage);
 
-            if (this.getIsCritical())
-            {
+            if (this.getIsCritical()) {
                 i += this.rand.nextInt(i / 2 + 2);
             }
 
             DamageSource damagesource;
 
-            if (this.shootingEntity == null)
-            {
+            if (this.shootingEntity == null) {
                 damagesource = DamageSource.causeArrowDamage(this, this);
-            }
-            else
-            {
+            } else {
                 damagesource = DamageSource.causeArrowDamage(this, this.shootingEntity);
             }
 
-            if (this.isBurning() && !(entity instanceof EntityEnderman))
-            {
+            if (this.isBurning() && !(entity instanceof EntityEnderman)) {
                 entity.setFire(5);
             }
 
-            if (entity.attackEntityFrom(damagesource, (float)i))
-            {
-                if (entity instanceof EntityLivingBase)
-                {
-                    EntityLivingBase entitylivingbase = (EntityLivingBase)entity;
+            if (entity.attackEntityFrom(damagesource, (float) i)) {
+                if (entity instanceof EntityLivingBase) {
+                    EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
 
-                    if (!this.world.isRemote)
-                    {
+                    if (!this.world.isRemote) {
                         entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
                     }
 
-                    if (this.knockbackStrength > 0)
-                    {
+                    if (this.knockbackStrength > 0) {
                         float f1 = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
-                        if (f1 > 0.0F)
-                        {
-                            entitylivingbase.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)f1, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)f1);
+                        if (f1 > 0.0F) {
+                            entitylivingbase.addVelocity(this.motionX * (double) this.knockbackStrength * 0.6000000238418579D / (double) f1, 0.1D, this.motionZ * (double) this.knockbackStrength * 0.6000000238418579D / (double) f1);
                         }
                     }
 
-                    if (this.shootingEntity instanceof EntityLivingBase)
-                    {
+                    if (this.shootingEntity instanceof EntityLivingBase) {
                         EnchantmentHelper.applyThornEnchantments(entitylivingbase, this.shootingEntity);
-                        EnchantmentHelper.applyArthropodEnchantments((EntityLivingBase)this.shootingEntity, entitylivingbase);
+                        EnchantmentHelper.applyArthropodEnchantments((EntityLivingBase) this.shootingEntity, entitylivingbase);
                     }
 
                     this.arrowHit(entitylivingbase);
 
-                    if (this.shootingEntity != null && entitylivingbase != this.shootingEntity && entitylivingbase instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
-                    {
-                        ((EntityPlayerMP)this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
+                    if (this.shootingEntity != null && entitylivingbase != this.shootingEntity && entitylivingbase instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
+                        ((EntityPlayerMP) this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
                     }
                 }
 
                 this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
-                if (!(entity instanceof EntityEnderman))
-                {
+                if (!(entity instanceof EntityEnderman)) {
                     this.setDead();
                 }
-            }
-            else
-            {
+            } else {
                 this.motionX *= -0.10000000149011612D;
                 this.motionY *= -0.10000000149011612D;
                 this.motionZ *= -0.10000000149011612D;
@@ -140,19 +122,15 @@ public class EntitySharpenedArrow extends EntityArrow {
                 this.prevRotationYaw += 180.0F;
                 this.ticksInAir = 0;
 
-                if (!this.world.isRemote && this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ < 0.0010000000474974513D)
-                {
-                    if (this.pickupStatus == EntityArrow.PickupStatus.ALLOWED)
-                    {
+                if (!this.world.isRemote && this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ < 0.0010000000474974513D) {
+                    if (this.pickupStatus == EntityArrow.PickupStatus.ALLOWED) {
                         this.entityDropItem(this.getArrowStack(), 0.1F);
                     }
 
                     this.setDead();
                 }
             }
-        }
-        else
-        {
+        } else {
             BlockPos blockpos = raytraceResultIn.getBlockPos();
             this.xTile = blockpos.getX();
             this.yTile = blockpos.getY();

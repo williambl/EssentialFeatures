@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "essentialfeatures:blocks/slate_top",
-        "side": "essentialfeatures:blocks/slate_side"
-    }
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "essentialfeatures:blocks/slate_top",
+    "side": "essentialfeatures:blocks/slate_side"
+  }
 }

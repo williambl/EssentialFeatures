@@ -24,16 +24,15 @@ public class ItemPortableJukebox extends EFItem {
 
     public ItemRecord record;
 
-    public ItemPortableJukebox (String registryName, CreativeTabs tab, ItemRecord recordIn) {
+    public ItemPortableJukebox(String registryName, CreativeTabs tab, ItemRecord recordIn) {
         super(registryName, tab);
         record = recordIn;
     }
 
-     /**
+    /**
      * Called when a Block is right-clicked with this Item
      */
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (record == null)
             return EnumActionResult.PASS;
 
@@ -60,8 +59,7 @@ public class ItemPortableJukebox extends EFItem {
         Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(playerIn, recordIn.getSound()));
     }
 
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         if (record != null)
             tooltip.add(record.getRecordNameLocal());
     }

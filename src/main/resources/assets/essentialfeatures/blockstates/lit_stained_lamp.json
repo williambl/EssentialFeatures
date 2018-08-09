@@ -2,27 +2,109 @@
   "forge_marker": 1,
   "defaults": {
     "model": "cube_all",
-    "textures": {"all": "essentialfeatures:blocks/whitelit_stained_lamp"}
+    "textures": {
+      "all": "essentialfeatures:blocks/whitelit_stained_lamp"
+    }
   },
   "variants": {
-
-  		"inventory": [{}],
-
-		"color=white": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/whitelit_stained_lamp"} },
-		"color=orange": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/orangelit_stained_lamp"} },
-		"color=magenta": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/magentalit_stained_lamp"} },
-		"color=light_blue": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/light_bluelit_stained_lamp"} },
-		"color=yellow": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/yellowlit_stained_lamp"} },
-		"color=lime": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/limelit_stained_lamp"} },
-		"color=pink": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/pinklit_stained_lamp"} },
-		"color=gray": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/graylit_stained_lamp"} },
-		"color=silver": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/silverlit_stained_lamp"} },
-		"color=cyan": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/cyanlit_stained_lamp"} },
-		"color=purple": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/purplelit_stained_lamp"} },
-		"color=blue": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/bluelit_stained_lamp"} },
-		"color=brown": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/brownlit_stained_lamp"} },
-		"color=green": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/greenlit_stained_lamp"} },
-		"color=red": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/redlit_stained_lamp"} },
-		"color=black": { "model": "cube_all", "textures": {"all": "essentialfeatures:blocks/blacklit_stained_lamp"} }
-	}
+    "inventory": [
+      {}
+    ],
+    "color=white": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/whitelit_stained_lamp"
+      }
+    },
+    "color=orange": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/orangelit_stained_lamp"
+      }
+    },
+    "color=magenta": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/magentalit_stained_lamp"
+      }
+    },
+    "color=light_blue": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/light_bluelit_stained_lamp"
+      }
+    },
+    "color=yellow": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/yellowlit_stained_lamp"
+      }
+    },
+    "color=lime": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/limelit_stained_lamp"
+      }
+    },
+    "color=pink": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/pinklit_stained_lamp"
+      }
+    },
+    "color=gray": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/graylit_stained_lamp"
+      }
+    },
+    "color=silver": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/silverlit_stained_lamp"
+      }
+    },
+    "color=cyan": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/cyanlit_stained_lamp"
+      }
+    },
+    "color=purple": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/purplelit_stained_lamp"
+      }
+    },
+    "color=blue": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/bluelit_stained_lamp"
+      }
+    },
+    "color=brown": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/brownlit_stained_lamp"
+      }
+    },
+    "color=green": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/greenlit_stained_lamp"
+      }
+    },
+    "color=red": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/redlit_stained_lamp"
+      }
+    },
+    "color=black": {
+      "model": "cube_all",
+      "textures": {
+        "all": "essentialfeatures:blocks/blacklit_stained_lamp"
+      }
+    }
+  }
 }

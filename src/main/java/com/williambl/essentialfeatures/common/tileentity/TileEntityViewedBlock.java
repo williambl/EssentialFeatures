@@ -1,6 +1,5 @@
 package com.williambl.essentialfeatures.common.tileentity;
 
-import java.util.List;
 import com.williambl.essentialfeatures.common.block.BlockViewedBlock;
 import com.williambl.essentialfeatures.common.config.ModConfig;
 import net.minecraft.block.state.IBlockState;
@@ -12,82 +11,80 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 
+import java.util.List;
+
 public class TileEntityViewedBlock extends TileEntity implements ITickable {
-	
-	int radius = ModConfig.viewedRange;
-	boolean wasLookingLastTime;
 
-	int tickCounter = 0;
+    int radius = ModConfig.viewedRange;
+    boolean wasLookingLastTime;
 
-	@Override
-	public void update() {
+    int tickCounter = 0;
 
-		if (world.isRemote)
-			return;
+    @Override
+    public void update() {
 
-		tickCounter++;
+        if (world.isRemote)
+            return;
 
-		if (tickCounter != ModConfig.viewedDelay)
-			return;
-		tickCounter = 0;
+        tickCounter++;
 
-		IBlockState blockstate = world.getBlockState(getPos());
-		BlockViewedBlock block = (BlockViewedBlock) world.getBlockState(getPos()).getBlock();
-		wasLookingLastTime = block.isPowered(blockstate);
-		BlockPos thisPos = getPos();
+        if (tickCounter != ModConfig.viewedDelay)
+            return;
+        tickCounter = 0;
 
-		boolean isNowLooking = false;
-		List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos.getX()-radius,this.pos.getY()-radius,this.pos.getZ()-radius,this.pos.getX()+radius,this.pos.getY()+radius,this.pos.getZ()+radius));
-		
+        IBlockState blockstate = world.getBlockState(getPos());
+        BlockViewedBlock block = (BlockViewedBlock) world.getBlockState(getPos()).getBlock();
+        wasLookingLastTime = block.isPowered(blockstate);
+        BlockPos thisPos = getPos();
 
-		for (EntityPlayer player : players) 
-		{
-			if (!isNowLooking) 
-			{
-			isNowLooking = checkIfLooking(player, thisPos);
-			}
-		}
-		
-		if (wasLookingLastTime != isNowLooking) 
-		{
-			if (isNowLooking) {block.activate(world, thisPos, blockstate);} else {block.deactivate(world, thisPos, blockstate);}
-		}
-	}
-	
-	public boolean checkIfLooking(EntityPlayer player, BlockPos thisPos) {
-		//float playerPitch = player.rotationPitch;
-		//float playerYaw = player.rotationYawHead;
-		
-		RayTraceResult rayPos = rayTrace(player, 50, 1F);
-		BlockPos pos = rayPos.getBlockPos();
+        boolean isNowLooking = false;
+        List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos.getX() - radius, this.pos.getY() - radius, this.pos.getZ() - radius, this.pos.getX() + radius, this.pos.getY() + radius, this.pos.getZ() + radius));
+
+
+        for (EntityPlayer player : players) {
+            if (!isNowLooking) {
+                isNowLooking = checkIfLooking(player, thisPos);
+            }
+        }
+
+        if (wasLookingLastTime != isNowLooking) {
+            if (isNowLooking) {
+                block.activate(world, thisPos, blockstate);
+            } else {
+                block.deactivate(world, thisPos, blockstate);
+            }
+        }
+    }
+
+    public boolean checkIfLooking(EntityPlayer player, BlockPos thisPos) {
+        //float playerPitch = player.rotationPitch;
+        //float playerYaw = player.rotationYawHead;
+
+        RayTraceResult rayPos = rayTrace(player, 50, 1F);
+        BlockPos pos = rayPos.getBlockPos();
 
         return thisPos.equals(pos);
 
     }
-	
-	/*
-	For some reason EntityPlayer.raytrace and EntityPlayer.getPositionEyes
-	are Client Only, so here are two slightly modified functions for use on servers.
-	*/
-    public RayTraceResult rayTrace(EntityPlayer playerIn, double blockReachDistance, float partialTicks)
-    {
+
+    /*
+    For some reason EntityPlayer.raytrace and EntityPlayer.getPositionEyes
+    are Client Only, so here are two slightly modified functions for use on servers.
+    */
+    public RayTraceResult rayTrace(EntityPlayer playerIn, double blockReachDistance, float partialTicks) {
         Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
         Vec3d vec3d2 = vec3d.addVector(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
         return this.world.rayTraceBlocks(vec3d, vec3d2, false, false, true);
     }
-    
-    public Vec3d getPositionEyes(EntityPlayer playerIn, float partialTicks)
-    {
-        if (partialTicks == 1.0F)
-        {
-            return new Vec3d(playerIn.posX, playerIn.posY + (double)playerIn.getEyeHeight(), playerIn.posZ);
-        }
-        else
-        {
-            double d0 = playerIn.prevPosX + (playerIn.posX - playerIn.prevPosX) * (double)partialTicks;
-            double d1 = playerIn.prevPosY + (playerIn.posY - playerIn.prevPosY) * (double)partialTicks + (double)playerIn.getEyeHeight();
-            double d2 = playerIn.prevPosZ + (playerIn.posZ - playerIn.prevPosZ) * (double)partialTicks;
+
+    public Vec3d getPositionEyes(EntityPlayer playerIn, float partialTicks) {
+        if (partialTicks == 1.0F) {
+            return new Vec3d(playerIn.posX, playerIn.posY + (double) playerIn.getEyeHeight(), playerIn.posZ);
+        } else {
+            double d0 = playerIn.prevPosX + (playerIn.posX - playerIn.prevPosX) * (double) partialTicks;
+            double d1 = playerIn.prevPosY + (playerIn.posY - playerIn.prevPosY) * (double) partialTicks + (double) playerIn.getEyeHeight();
+            double d2 = playerIn.prevPosZ + (playerIn.posZ - playerIn.prevPosZ) * (double) partialTicks;
             return new Vec3d(d0, d1, d2);
         }
     }

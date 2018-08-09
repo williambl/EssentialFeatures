@@ -20,10 +20,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockViewedBlock extends Block implements ITileEntityProvider {
-	
-	public static final PropertyBool POWERED = PropertyBool.create("powered");
 
-	public BlockViewedBlock(String registryName, Material material, float hardness, float resistance) {
+    public static final PropertyBool POWERED = PropertyBool.create("powered");
+
+    public BlockViewedBlock(String registryName, Material material, float hardness, float resistance) {
         super(material);
         this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setHardness(hardness);
@@ -34,64 +34,56 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         this.hasTileEntity = true;
     }
 
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityViewedBlock();
-	}
-	
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileEntityViewedBlock();
+    }
+
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
         super.breakBlock(world, pos, state);
         world.removeTileEntity(pos);
     }
-	
+
     @SideOnly(Side.CLIENT)
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-    
+
     @Override
-    public boolean canProvidePower(IBlockState state)
-    {
+    public boolean canProvidePower(IBlockState state) {
         return true;
-    }
-    
-    @Override
-    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
-    {
-    	return blockState.getValue(POWERED) ? 15 : 0;
     }
 
     @Override
-    protected BlockStateContainer createBlockState()
-	{
-		return new BlockStateContainer(this, POWERED);
-	}
-    
+    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+        return blockState.getValue(POWERED) ? 15 : 0;
+    }
+
     @Override
-    public IBlockState getStateFromMeta(int meta)
-    {
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, POWERED);
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(POWERED, (meta & 1) > 0);
     }
 
     @Override
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         return state.getValue(POWERED) ? 1 : 0;
     }
 
-    public void activate (World worldIn, BlockPos pos, IBlockState blockstate)
-    {
-    	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.TRUE));
+    public void activate(World worldIn, BlockPos pos, IBlockState blockstate) {
+        worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.TRUE));
     }
-    
-    public void deactivate (World worldIn, BlockPos pos, IBlockState blockstate) 
-    {
-    	worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.FALSE));
+
+    public void deactivate(World worldIn, BlockPos pos, IBlockState blockstate) {
+        worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.FALSE));
     }
-   
-    public boolean isPowered (IBlockState blockstate)
-    {
-		return blockstate.getValue(POWERED);
+
+    public boolean isPowered(IBlockState blockstate) {
+        return blockstate.getValue(POWERED);
     }
 }

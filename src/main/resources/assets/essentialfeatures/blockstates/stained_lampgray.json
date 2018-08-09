@@ -4,7 +4,8 @@
     "model": "essentialfeatures:gray_stained_lamp"
   },
   "variants": {
-
-  		"inventory": [{}]
-	}
+    "inventory": [
+      {}
+    ]
+  }
 }

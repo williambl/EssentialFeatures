@@ -1,14 +1,18 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "textures": {
-            "all": "essentialfeatures:blocks/polished_glowstone"
-        },
-        "model": "cube_all",
-        "uvlock": true
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "essentialfeatures:blocks/polished_glowstone"
     },
-    "variants": {
-        "normal": [{}],
-        "inventory":[{}]
-    }
+    "model": "cube_all",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {}
+    ]
+  }
 }

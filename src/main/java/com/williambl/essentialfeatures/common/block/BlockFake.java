@@ -13,25 +13,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 
 public class BlockFake extends Block {
-	
-	IBlockState realBlockState;
 
-	//This can be used if you want to place an unplaceable block
-	public BlockFake(String registryName, CreativeTabs tab, IBlockState realBlockState) {
+    IBlockState realBlockState;
+
+    //This can be used if you want to place an unplaceable block
+    public BlockFake(String registryName, CreativeTabs tab, IBlockState realBlockState) {
         super(Material.AIR);
         this.setCreativeTab(tab);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.realBlockState = realBlockState;
-	}
-	
+    }
+
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
-    
+
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-    {
-    		return realBlockState;
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return realBlockState;
     }
 }

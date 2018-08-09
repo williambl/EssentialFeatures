@@ -19,44 +19,37 @@ import net.minecraft.world.World;
 
 public class ItemSlate extends ItemBlock {
 
-	public ItemSlate(Block block) {
-		super(block);
-	}
+    public ItemSlate(Block block) {
+        super(block);
+    }
 
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack itemstack = player.getHeldItem(hand);
 
-        if (!itemstack.isEmpty() && player.canPlayerEdit(pos, facing, itemstack))
-        {
+        if (!itemstack.isEmpty() && player.canPlayerEdit(pos, facing, itemstack)) {
             IBlockState iblockstate = worldIn.getBlockState(pos);
             Block block = iblockstate.getBlock();
             BlockPos blockpos = pos;
 
-            if ((facing != EnumFacing.UP || block != this.block) && !block.isReplaceable(worldIn, pos))
-            {
+            if ((facing != EnumFacing.UP || block != this.block) && !block.isReplaceable(worldIn, pos)) {
                 blockpos = pos.offset(facing);
                 iblockstate = worldIn.getBlockState(blockpos);
                 block = iblockstate.getBlock();
             }
 
-            if (block == this.block)
-            {
+            if (block == this.block) {
                 int i = iblockstate.getValue(BlockSnow.LAYERS);
 
-                if (i < 8)
-                {
+                if (i < 8) {
                     IBlockState iblockstate1 = iblockstate.withProperty(BlockSnow.LAYERS, i + 1);
                     AxisAlignedBB axisalignedbb = iblockstate1.getCollisionBoundingBox(worldIn, blockpos);
 
-                    if (axisalignedbb != Block.NULL_AABB && worldIn.checkNoEntityCollision(axisalignedbb.offset(blockpos)) && worldIn.setBlockState(blockpos, iblockstate1, 10))
-                    {
+                    if (axisalignedbb != Block.NULL_AABB && worldIn.checkNoEntityCollision(axisalignedbb.offset(blockpos)) && worldIn.setBlockState(blockpos, iblockstate1, 10)) {
                         SoundType soundtype = this.block.getSoundType(iblockstate1, worldIn, pos, player);
                         worldIn.playSound(player, blockpos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
-                        if (player instanceof EntityPlayerMP)
-                        {
-                            CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP)player, pos, itemstack);
+                        if (player instanceof EntityPlayerMP) {
+                            CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, itemstack);
                         }
 
                         itemstack.shrink(1);
@@ -66,9 +59,7 @@ public class ItemSlate extends ItemBlock {
             }
 
             return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-        }
-        else
-        {
+        } else {
             return EnumActionResult.FAIL;
         }
     }

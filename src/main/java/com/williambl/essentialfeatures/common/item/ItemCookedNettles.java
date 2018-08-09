@@ -1,6 +1,5 @@
 package com.williambl.essentialfeatures.common.item;
 
-import com.williambl.essentialfeatures.common.block.ModBlocks;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemFood;

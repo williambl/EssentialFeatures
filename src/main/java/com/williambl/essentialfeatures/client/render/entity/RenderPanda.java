@@ -8,26 +8,23 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderPanda extends RenderLiving {
 
-	private ResourceLocation pandaTexture;
+    private ResourceLocation pandaTexture;
 
 
-	public RenderPanda(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
-		super(rendermanagerIn, modelbaseIn, shadowsizeIn);
-		setEntityTexture();
-	}
-	
-    protected void setEntityTexture()
-    {
+    public RenderPanda(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) {
+        super(rendermanagerIn, modelbaseIn, shadowsizeIn);
+        setEntityTexture();
+    }
+
+    protected void setEntityTexture() {
         pandaTexture = new ResourceLocation("textures/entity/wolf/wol.png");
 
     }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
-		return pandaTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity) {
+        return pandaTexture;
+    }
 
-    
-    
 
 }

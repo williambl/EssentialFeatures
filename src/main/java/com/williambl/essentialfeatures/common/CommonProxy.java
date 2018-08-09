@@ -11,26 +11,26 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
 
-	public void preInit() {
-		ModSound.addSounds();
-		if (ModConfig.blocks)
-			ModBlocks.addBlocks();
-		if (ModConfig.items)
-			ModItems.addItems();
-		ModEntities.addEntities();
-		ModWorld.registerWorldGenerators();
-	}
+    public void preInit() {
+        ModSound.addSounds();
+        if (ModConfig.blocks)
+            ModBlocks.addBlocks();
+        if (ModConfig.items)
+            ModItems.addItems();
+        ModEntities.addEntities();
+        ModWorld.registerWorldGenerators();
+    }
 
-	public void init() {
-		if (ModConfig.smelting)
-			ModRecipes.addRecipes();
+    public void init() {
+        if (ModConfig.smelting)
+            ModRecipes.addRecipes();
 
-		CommonEventHandler handler = new CommonEventHandler();
-		MinecraftForge.EVENT_BUS.register(handler);
-	}
+        CommonEventHandler handler = new CommonEventHandler();
+        MinecraftForge.EVENT_BUS.register(handler);
+    }
 
-	public void postInit() {
-		
-	}
+    public void postInit() {
+
+    }
 
 }

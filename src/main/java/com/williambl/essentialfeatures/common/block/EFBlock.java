@@ -10,7 +10,7 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class EFBlock extends Block {
 
-	public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance, float lightLevel) {
+    public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance, float lightLevel) {
         super(material);
         this.setCreativeTab(tab);
         this.setHardness(hardness);
@@ -19,7 +19,7 @@ public class EFBlock extends Block {
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setLightLevel(lightLevel);
         this.setSoundType(soundType);
-	}
+    }
 
     public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance) {
         super(material);

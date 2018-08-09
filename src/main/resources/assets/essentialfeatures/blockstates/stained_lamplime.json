@@ -4,7 +4,8 @@
     "model": "essentialfeatures:lime_stained_lamp"
   },
   "variants": {
-
-  		"inventory": [{}]
-	}
+    "inventory": [
+      {}
+    ]
+  }
 }

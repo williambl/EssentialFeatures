@@ -4,7 +4,8 @@
     "model": "essentialfeatures:silver_stained_lamp"
   },
   "variants": {
-
-  		"inventory": [{}]
-	}
+    "inventory": [
+      {}
+    ]
+  }
 }

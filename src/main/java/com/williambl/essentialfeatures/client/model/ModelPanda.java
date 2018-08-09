@@ -3,10 +3,8 @@ package com.williambl.essentialfeatures.client.model;
 import net.minecraft.client.model.ModelQuadruped;
 import net.minecraft.client.model.ModelRenderer;
 
-public class ModelPanda extends ModelQuadruped
-{
-    public ModelPanda()
-    {
+public class ModelPanda extends ModelQuadruped {
+    public ModelPanda() {
         super(12, 0.0F);
         this.head = new ModelRenderer(this, 0, 0);
         this.head.addBox(-3.0F, -4.0F, -4.0F, 6, 6, 6, 0.6F);
@@ -60,10 +58,9 @@ public class ModelPanda extends ModelQuadruped
         }
     }
     */
-    
-    public ModelPanda(float scale)
-    {
+
+    public ModelPanda(float scale) {
         super(6, scale);
         this.childYOffset = 4.0F;
-    }  
+    }
 }

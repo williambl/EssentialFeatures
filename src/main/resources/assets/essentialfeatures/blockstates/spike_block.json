@@ -1,14 +1,18 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "textures": {
-            "cross": "essentialfeatures:blocks/spike_block"
-        },
-        "model": "cross",
-        "uvlock": true
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "cross": "essentialfeatures:blocks/spike_block"
     },
-    "variants": {
-        "normal": [{}],
-        "inventory":[{}]
-    }
+    "model": "cross",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {}
+    ]
+  }
 }

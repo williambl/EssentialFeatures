@@ -10,35 +10,32 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = EssentialFeatures.MODID, version = EssentialFeatures.VERSION, name = EssentialFeatures.NAME)
 public class EssentialFeatures {
-	
-	@Mod.Instance("essentialfeatures")
-	public static EssentialFeatures instance;
-	
+
+    @Mod.Instance("essentialfeatures")
+    public static EssentialFeatures instance;
+
     public static final String MODID = "essentialfeatures";
     public static final String NAME = "Essential Features";
     public static final String VERSION = "2.0.1";
-    
+
     @SidedProxy(
-    		clientSide="com.williambl.essentialfeatures.client.ClientProxy",
-			serverSide="com.williambl.essentialfeatures.server.ServerProxy")
+            clientSide = "com.williambl.essentialfeatures.client.ClientProxy",
+            serverSide = "com.williambl.essentialfeatures.server.ServerProxy")
     public static CommonProxy proxy;
-    
-    @EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-    	proxy.preInit();
-	}
 
     @EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-    	proxy.init();
-	}
-    
+    public void preInit(FMLPreInitializationEvent event) {
+        proxy.preInit();
+    }
+
     @EventHandler
-	public void Postinit(FMLPostInitializationEvent event)
-	{
-    	proxy.postInit();
-	}
+    public void init(FMLInitializationEvent event) {
+        proxy.init();
+    }
+
+    @EventHandler
+    public void Postinit(FMLPostInitializationEvent event) {
+        proxy.postInit();
+    }
 
 }
