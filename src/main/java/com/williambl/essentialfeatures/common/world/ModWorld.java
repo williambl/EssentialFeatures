@@ -12,6 +12,7 @@ public class ModWorld {
 		if (ModConfig.slateGen)
 			GameRegistry.registerWorldGenerator(SLATE, 0);
 
-		GameRegistry.registerWorldGenerator(NETTLES, 0);
+		if (ModConfig.nettleGen)
+			GameRegistry.registerWorldGenerator(NETTLES, 0);
 	}
 }

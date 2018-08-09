@@ -26,6 +26,10 @@ public class ModConfig {
     @Config.RequiresMcRestart
     public static boolean slateGen = true;
 
+    @Config.Comment("Generate Stinging nettles")
+    @Config.RequiresMcRestart
+    public static boolean nettleGen = true;
+
     @Config.Comment("Add items")
     @Config.RequiresMcRestart
     public static boolean items = true;
