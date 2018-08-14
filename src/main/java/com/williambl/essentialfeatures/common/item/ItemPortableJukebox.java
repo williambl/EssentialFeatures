@@ -49,8 +49,10 @@ public class ItemPortableJukebox extends EFItem {
             return EnumActionResult.SUCCESS;
         }
 
-        if (worldIn.isRemote)
+        if (worldIn.isRemote) {
+            Minecraft.getMinecraft().getSoundHandler().stopSounds();
             playSound(player, record);
+        }
         return EnumActionResult.SUCCESS;
     }
 
