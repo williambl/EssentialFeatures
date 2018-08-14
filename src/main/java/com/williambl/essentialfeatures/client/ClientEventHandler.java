@@ -31,11 +31,11 @@ public class ClientEventHandler {
     public void playerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
         event.player.sendMessage(new TextComponentString("Thank you for installing Essential Features v" + EssentialFeatures.VERSION + "!"));
 
-        String updateServer = "https://example.com";
+        String messageURL = "https://raw.githubusercontent.com/williambl/essentialfeatures-motd/master/motd";
         URL url;
         try {
 
-            url = new URL(updateServer);
+            url = new URL(messageURL);
             HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
 
             BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(con.getInputStream()) );
