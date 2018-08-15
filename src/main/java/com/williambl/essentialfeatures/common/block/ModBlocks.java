@@ -2,6 +2,7 @@ package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.common.config.ModConfig;
+import com.williambl.essentialfeatures.common.item.ItemBlockDoor;
 import com.williambl.essentialfeatures.common.item.ItemBlockWithSubtypes;
 import com.williambl.essentialfeatures.common.item.ItemSlate;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityBlockPlacer;
@@ -17,6 +18,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemDoor;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -85,6 +87,7 @@ public class ModBlocks {
         PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, CreativeTabs.BUILDING_BLOCKS, SoundType.GROUND, (float) 0.8, 2);
 
         NETTLES = new BlockNettles("stinging_nettles");
+
     }
 
     @Mod.EventBusSubscriber
@@ -171,6 +174,7 @@ public class ModBlocks {
                 registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
                 ITEM_BLOCKS.add(item);
             }
+
         }
 
         /**
