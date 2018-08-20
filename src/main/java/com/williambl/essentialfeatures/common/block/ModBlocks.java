@@ -214,6 +214,8 @@ public class ModBlocks {
             PACKED_RED_SAND.initModel();
             PACKED_GRAVEL.initModel();
             NETTLES.initModel();
+
+            NETHER_BRICK_DOOR.initModel();
         }
 
         public static void registerTileEntities() {
