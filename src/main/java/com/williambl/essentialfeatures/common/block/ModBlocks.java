@@ -59,6 +59,7 @@ public class ModBlocks {
     public static BlockNettles NETTLES;
 
     public static BlockEFDoor NETHER_BRICK_DOOR;
+    public static BlockEFDoor PURPUR_DOOR;
 
     public static void addBlocks() {
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
@@ -91,6 +92,7 @@ public class ModBlocks {
         NETTLES = new BlockNettles("stinging_nettles");
 
         NETHER_BRICK_DOOR = new BlockEFDoor("nether_brick_door", Material.ROCK, 1011, 1005);
+        PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1011, 1005);
     }
 
     @Mod.EventBusSubscriber
@@ -131,7 +133,8 @@ public class ModBlocks {
                     PACKED_RED_SAND,
                     PACKED_GRAVEL,
                     NETTLES,
-                    NETHER_BRICK_DOOR
+                    NETHER_BRICK_DOOR,
+                    PURPUR_DOOR
             );
             GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -170,7 +173,8 @@ public class ModBlocks {
                     new ItemBlock(PACKED_RED_SAND),
                     new ItemBlock(PACKED_GRAVEL),
                     new ItemBlock(NETTLES),
-                    new ItemBlockDoor(NETHER_BRICK_DOOR)
+                    new ItemBlockDoor(NETHER_BRICK_DOOR),
+                    new ItemBlockDoor(PURPUR_DOOR)
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -216,6 +220,7 @@ public class ModBlocks {
             NETTLES.initModel();
 
             NETHER_BRICK_DOOR.initModel();
+            PURPUR_DOOR.initModel();
         }
 
         public static void registerTileEntities() {
