@@ -1,5 +1,8 @@
 {
   "variants": {
+    "inventory": {
+      "model": "item/nether_brick_door"
+    },
     "facing=east,half=lower,hinge=left,open=false,powered=false": {
       "model": "iron_door_bottom"
     },
