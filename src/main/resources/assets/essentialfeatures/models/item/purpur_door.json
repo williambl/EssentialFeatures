@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "essentialfeatures:items/purpur_door"
+    "layer0": "essentialfeatures:items/door_purpur"
   },
   "display": {
     "ground": {

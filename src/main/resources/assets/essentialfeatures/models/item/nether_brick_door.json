@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "essentialfeatures:items/nether_brick_door"
+    "layer0": "essentialfeatures:items/door_nether_brick"
   },
   "display": {
     "ground": {
