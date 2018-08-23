@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "essentialfeatures:purpur_door"
+  },
+  "pattern": [
+    "pp",
+    "pp",
+    "pp"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:purpur_block"
+    }
+  }
+}
