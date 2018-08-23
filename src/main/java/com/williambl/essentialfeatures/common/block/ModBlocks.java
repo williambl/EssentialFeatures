@@ -2,6 +2,7 @@ package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.common.config.ModConfig;
+import com.williambl.essentialfeatures.common.item.ItemBlockDoor;
 import com.williambl.essentialfeatures.common.item.ItemBlockWithSubtypes;
 import com.williambl.essentialfeatures.common.item.ItemSlate;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityBlockPlacer;
@@ -17,6 +18,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemDoor;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -56,6 +58,9 @@ public class ModBlocks {
 
     public static BlockNettles NETTLES;
 
+    public static BlockEFDoor NETHER_BRICK_DOOR;
+    public static BlockEFDoor PURPUR_DOOR;
+
     public static void addBlocks() {
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
         SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
@@ -85,6 +90,9 @@ public class ModBlocks {
         PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, CreativeTabs.BUILDING_BLOCKS, SoundType.GROUND, (float) 0.8, 2);
 
         NETTLES = new BlockNettles("stinging_nettles");
+
+        NETHER_BRICK_DOOR = new BlockEFDoor("nether_brick_door", Material.ROCK, 1011, 1005);
+        PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1011, 1005);
     }
 
     @Mod.EventBusSubscriber
@@ -124,7 +132,9 @@ public class ModBlocks {
                     PACKED_SAND,
                     PACKED_RED_SAND,
                     PACKED_GRAVEL,
-                    NETTLES
+                    NETTLES,
+                    NETHER_BRICK_DOOR,
+                    PURPUR_DOOR
             );
             GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -162,7 +172,9 @@ public class ModBlocks {
                     new ItemBlock(PACKED_SAND),
                     new ItemBlock(PACKED_RED_SAND),
                     new ItemBlock(PACKED_GRAVEL),
-                    new ItemBlock(NETTLES)
+                    new ItemBlock(NETTLES),
+                    new ItemBlockDoor(NETHER_BRICK_DOOR),
+                    new ItemBlockDoor(PURPUR_DOOR)
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -171,6 +183,7 @@ public class ModBlocks {
                 registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
                 ITEM_BLOCKS.add(item);
             }
+
         }
 
         /**
@@ -205,6 +218,9 @@ public class ModBlocks {
             PACKED_RED_SAND.initModel();
             PACKED_GRAVEL.initModel();
             NETTLES.initModel();
+
+            NETHER_BRICK_DOOR.initModel();
+            PURPUR_DOOR.initModel();
         }
 
         public static void registerTileEntities() {

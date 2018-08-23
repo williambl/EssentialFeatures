@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_rh",
+    "textures": {
+        "bottom": "essentialfeatures:blocks/door_purpur_lower",
+        "top": "essentialfeatures:blocks/door_purpur_upper"
+    }
+}

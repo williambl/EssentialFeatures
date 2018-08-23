@@ -91,3 +91,6 @@ tile.essentialfeatures:packed_gravel.name=Packed GrARRvel
 
 tile.essentialfeatures:stinging_nettles.name=Stingers
 item.essentialfeatures:cooked_nettles.name=Cooked Stingers
+
+item.essentialfeatures:purpur_door.name=PurpARR Door
+item.essentialfeatures:nether_brick_door.name=NethARR Brick Door
