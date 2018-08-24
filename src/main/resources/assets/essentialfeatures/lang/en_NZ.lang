@@ -92,5 +92,5 @@ tile.essentialfeatures:packed_gravel.name=Packed Gravel
 tile.essentialfeatures:stinging_nettles.name=Stinging Nettles
 item.essentialfeatures:cooked_nettles.name=Cooked Nettles
 
-item.essentialfeatures:purpur_door.name=Purpur Door
-item.essentialfeatures:nether_brick_door.name=Nether Brick Door
+tile.essentialfeatures:purpur_door.name=Purpur Door
+tile.essentialfeatures:nether_brick_door.name=Nether Brick Door
