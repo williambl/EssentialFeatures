@@ -1,6 +1,8 @@
 # EssentialFeatures
 A Minecraft Mod for 1.10.2/1.11/1.12
 
+![](http://cf.way2muchnoise.eu/full_essential-features_downloads.svg)
+
 # Download
 Available here: https://minecraft.curseforge.com/projects/essential-features
 
