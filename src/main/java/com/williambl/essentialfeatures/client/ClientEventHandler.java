@@ -29,8 +29,6 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public void playerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        event.player.sendMessage(new TextComponentString("Thank you for installing Essential Features v" + EssentialFeatures.VERSION + "!"));
-
         String messageURL = "https://raw.githubusercontent.com/williambl/essentialfeatures-motd/master/motd";
         URL url;
         try {
