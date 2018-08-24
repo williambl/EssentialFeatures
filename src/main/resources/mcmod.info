@@ -2,7 +2,7 @@
 {
   "modid": "essentialfeatures",
   "name": "Essential Features",
-  "description": "Essential features mod adds various new features",
+  "description": "Essential features mod adds various vanilla-like features",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://williambl.com/essentialfeatures",
