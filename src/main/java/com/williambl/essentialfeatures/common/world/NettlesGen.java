@@ -21,7 +21,7 @@ public class NettlesGen implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         if (world.provider.getDimension() == 0)
-            generatePlants(worldGenBush, world, random, chunkX, chunkZ, 40, 80, 10);
+            generatePlants(worldGenBush, world, random, chunkX, chunkZ, 40, 80, 2);
     }
 
     private void generatePlants(WorldGenBush worldGen, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn) {
