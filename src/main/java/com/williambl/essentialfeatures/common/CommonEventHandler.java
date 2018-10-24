@@ -1,15 +1,24 @@
 package com.williambl.essentialfeatures.common;
 
+import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.PlayerContainerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
@@ -21,6 +30,23 @@ public class CommonEventHandler {
     public void OnPlayerRespawn(PlayerRespawnEvent e) {
         e.player.world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, e.player.posX, e.player.posY, e.player.posZ, 1.0D, 0.0D, 0.0D);
         e.player.world.playSound(null, e.player.posX, e.player.posY, e.player.posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.player.world.rand.nextFloat() - e.player.world.rand.nextFloat()) * 0.2F) * 0.7F);
+    }
+
+    @SubscribeEvent
+    public void OnPlayerOpenChest(PlayerInteractEvent.RightClickBlock event) {
+        World world = event.getWorld();
+        BlockPos pos = event.getPos();
+        Random rand = world.rand;
+        TileEntity t = world.getTileEntity(pos);
+
+        if (t instanceof TileEntityChest) {
+            System.out.println("opening!");
+            if (world.getBlockState((BlockPos) pos.add(0, 1, 0)).getBlock() instanceof BlockStaticLiquid) {
+                for (int i = 0; i < world.rand.nextInt(5); i++) {
+                    world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, pos.getX()+rand.nextFloat(), pos.getY(), pos.getZ()+rand.nextFloat(), 0, 1, 0);
+                }
+            }
+        }
     }
 
     @SubscribeEvent
