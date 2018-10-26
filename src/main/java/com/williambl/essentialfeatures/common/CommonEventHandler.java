@@ -40,10 +40,9 @@ public class CommonEventHandler {
         TileEntity t = world.getTileEntity(pos);
 
         if (t instanceof TileEntityChest) {
-            System.out.println("opening!");
             if (world.getBlockState((BlockPos) pos.add(0, 1, 0)).getBlock() instanceof BlockStaticLiquid) {
-                for (int i = 0; i < world.rand.nextInt(5); i++) {
-                    world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, pos.getX()+rand.nextFloat(), pos.getY(), pos.getZ()+rand.nextFloat(), 0, 1, 0);
+                for (int i = 0; i < world.rand.nextInt(50); i++) {
+                    world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, pos.getX()+rand.nextFloat(), pos.getY()+0.6, pos.getZ()+rand.nextFloat(), 0, 0.5, 0);
                 }
             }
         }
