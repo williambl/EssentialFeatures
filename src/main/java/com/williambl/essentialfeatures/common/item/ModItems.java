@@ -20,6 +20,8 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
@@ -151,15 +153,13 @@ public class ModItems {
             PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
         }
 
+        @SideOnly(Side.CLIENT)
         public static void registerItemColors() {
             ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
             BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
-            itemColors.registerItemColorHandler(new IItemColor() {
-                @Override
-                public int colorMultiplier(ItemStack stack, int tintIndex) {
-                    IBlockState iblockstate = ((ItemBlock) stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
-                    return blockColors.colorMultiplier(iblockstate, (IBlockAccess) null, (BlockPos) null, tintIndex);
-                }
+            itemColors.registerItemColorHandler((stack, tintIndex) -> {
+                IBlockState iblockstate = ((ItemBlock) stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
+                return blockColors.colorMultiplier(iblockstate, null, null, tintIndex);
             }, ModBlocks.NETTLES);
         }
     }
