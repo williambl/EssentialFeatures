@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
@@ -70,13 +71,13 @@ public class BlockNettles extends BlockBush implements IShearable {
             spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.NETTLES, 1, 0));
         } else {
             super.harvestBlock(worldIn, player, pos, state, te, stack);
-            player.addPotionEffect(new PotionEffect(MobEffects.POISON, 50, 1));
+            player.addPotionEffect(new PotionEffect(MobEffects.POISON, 20, 1));
         }
     }
 
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         if (entityIn instanceof EntityLivingBase) {
-            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 25, 1));
+            entityIn.attackEntityFrom(DamageSource.CACTUS, 1);
         }
     }
 
