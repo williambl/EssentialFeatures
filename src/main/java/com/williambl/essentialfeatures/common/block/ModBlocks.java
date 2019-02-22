@@ -6,6 +6,7 @@ import com.williambl.essentialfeatures.common.item.ItemBlockDoor;
 import com.williambl.essentialfeatures.common.item.ItemBlockWithSubtypes;
 import com.williambl.essentialfeatures.common.item.ItemSlate;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityBlockPlacer;
+import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStoneSlab;
@@ -146,7 +147,9 @@ public class ModBlocks {
             );
             GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
+            GameRegistry.registerTileEntity(TileEntityRedstoneRod.class, REDSTONE_ROD.getRegistryName().toString());
             GameRegistry.registerFuelHandler(BLAZE_BLOCK);
+
         }
 
         /**
@@ -237,6 +240,7 @@ public class ModBlocks {
         public static void registerTileEntities() {
             registerTileEntity(TileEntityViewedBlock.class);
             registerTileEntity(TileEntityBlockPlacer.class);
+            registerTileEntity(TileEntityRedstoneRod.class);
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> tileEntityClass) {
