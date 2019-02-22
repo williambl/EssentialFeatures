@@ -12,19 +12,14 @@ import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemDoor;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -35,7 +30,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import javax.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -70,6 +64,8 @@ public class ModBlocks {
     public static BlockEFDoor NETHER_BRICK_DOOR;
     public static BlockEFDoor PURPUR_DOOR;
 
+    public static BlockRedstoneRod REDSTONE_ROD;
+
     public static void addBlocks() {
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
         SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
@@ -102,6 +98,8 @@ public class ModBlocks {
 
         NETHER_BRICK_DOOR = new BlockEFDoor("nether_brick_door", Material.ROCK, 1011, 1005);
         PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1011, 1005);
+
+        REDSTONE_ROD = new BlockRedstoneRod("redstone_rod", Material.CIRCUITS, CreativeTabs.DECORATIONS, SoundType.METAL, 0.5f, 0);
     }
 
     @Mod.EventBusSubscriber
@@ -143,7 +141,8 @@ public class ModBlocks {
                     PACKED_GRAVEL,
                     NETTLES,
                     NETHER_BRICK_DOOR,
-                    PURPUR_DOOR
+                    PURPUR_DOOR,
+                    REDSTONE_ROD
             );
             GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
@@ -183,7 +182,8 @@ public class ModBlocks {
                     new ItemBlock(PACKED_GRAVEL),
                     new ItemBlock(NETTLES),
                     new ItemBlockDoor(NETHER_BRICK_DOOR),
-                    new ItemBlockDoor(PURPUR_DOOR)
+                    new ItemBlockDoor(PURPUR_DOOR),
+                    new ItemBlock(REDSTONE_ROD)
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -230,6 +230,8 @@ public class ModBlocks {
 
             NETHER_BRICK_DOOR.initModel();
             PURPUR_DOOR.initModel();
+
+            REDSTONE_ROD.initModel();
         }
 
         public static void registerTileEntities() {
