@@ -192,4 +192,19 @@ public class BlockRedstoneRod extends EFBlock implements ITileEntityProvider {
     public boolean isPowered(IBlockState blockstate) {
         return blockstate.getValue(POWERED);
     }
+
+    public void redstoneEffects(World world, BlockPos pos) {
+        IBlockState state = world.getBlockState(pos);
+        EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        double d0 = (double)pos.getX() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
+        double d1 = (double)pos.getY() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
+        double d2 = (double)pos.getZ() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
+        double d3 = (double)(0.4F - (world.rand.nextFloat() + world.rand.nextFloat()) * 0.4F);
+
+        for (int i = 0; i < world.rand.nextInt(10); i++)
+        {
+            world.spawnParticle(EnumParticleTypes.REDSTONE, d0 + (double)enumfacing.getFrontOffsetX() * d3, d1 + (double)enumfacing.getFrontOffsetY() * d3, d2 + (double)enumfacing.getFrontOffsetZ() * d3, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D);
+            world.spawnParticle(EnumParticleTypes.END_ROD, d0 + (double)enumfacing.getFrontOffsetX() * d3, d1 + (double)enumfacing.getFrontOffsetY() * d3, d2 + (double)enumfacing.getFrontOffsetZ() * d3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
+        }
+    }
 }

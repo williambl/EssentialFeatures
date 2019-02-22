@@ -35,6 +35,7 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickable {
 
         EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
         world.addWeatherEffect(bolt);
+        block.redstoneEffects(world, pos);
 
         block.activate(world, pos, blockstate);
     }
