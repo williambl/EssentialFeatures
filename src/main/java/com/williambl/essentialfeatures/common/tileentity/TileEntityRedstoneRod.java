@@ -20,9 +20,10 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickable {
         IBlockState blockstate = world.getBlockState(getPos());
         BlockRedstoneRod block = (BlockRedstoneRod) world.getBlockState(getPos()).getBlock();
 
-        if (block.isPowered(blockstate))
-            block.deactivate(world, pos, blockstate);
-
+        if (tickCounter > 10) {
+            if (block.isPowered(blockstate))
+                block.deactivate(world, pos, blockstate);
+        }
 
         if (!world.isThundering())
             return;
