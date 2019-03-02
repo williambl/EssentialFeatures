@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "essentialfeatures:redstone_rod"
+  },
+  "pattern": [
+    " r ",
+    "rer",
+    " r "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "e": {
+      "item": "minecraft:end_rod"
+    }
+  }
+}
