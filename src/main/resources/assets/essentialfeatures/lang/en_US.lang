@@ -95,3 +95,5 @@ item.essentialfeatures:cooked_nettles.name=Cooked Nettles
 
 tile.essentialfeatures:purpur_door.name=Purpur Door
 tile.essentialfeatures:nether_brick_door.name=Nether Brick Door
+
+tile.essentialfeatures:redstone_rod.name=Redstone Rod
