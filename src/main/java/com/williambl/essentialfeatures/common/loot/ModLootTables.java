@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModLootTables {
 
     public static LootEntry entry = new LootEntryItem(
-            ModItems.PORTABLE_JUKEBOX, 30, 50, new LootFunction[0], new LootCondition[0], "essentialfeatures:loot_portable_jukebox");
+            ModItems.PORTABLE_JUKEBOX, 20, 50, new LootFunction[0], new LootCondition[0], "essentialfeatures:loot_portable_jukebox");
 
     @Mod.EventBusSubscriber
     public static class RegistrationHandler {
