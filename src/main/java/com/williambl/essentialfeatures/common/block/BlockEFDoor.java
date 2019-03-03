@@ -16,11 +16,12 @@ public class BlockEFDoor extends BlockDoor {
     private int closeSound;
     private int openSound;
 
-    public BlockEFDoor(String registryName, Material materialIn, int closeSound, int openSound) {
+    public BlockEFDoor(String registryName, Material materialIn, float hardness, int closeSound, int openSound) {
         super(materialIn);
         this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setHardness(hardness);
         this.closeSound = closeSound;
         this.openSound = openSound;
     }

@@ -97,8 +97,8 @@ public class ModBlocks {
 
         NETTLES = new BlockNettles("stinging_nettles");
 
-        NETHER_BRICK_DOOR = new BlockEFDoor("nether_brick_door", Material.ROCK, 1011, 1005);
-        PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1011, 1005);
+        NETHER_BRICK_DOOR = new BlockEFDoor("nether_brick_door", Material.ROCK, 1f, 1011, 1005);
+        PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1f, 1011, 1005);
 
         REDSTONE_ROD = new BlockRedstoneRod("redstone_rod", Material.CIRCUITS, CreativeTabs.DECORATIONS, SoundType.METAL, 0.5f, 0, 0.95f);
     }
