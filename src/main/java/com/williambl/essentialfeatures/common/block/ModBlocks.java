@@ -69,12 +69,12 @@ public class ModBlocks {
 
     public static void addBlocks() {
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
-        SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
+        SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 0.5f, 2, 1);
         STAINED_LAMP = new BlockStainedLamp("stained_lamp", Material.GLASS, 0.3F, 1.5F, false);
         LIT_STAINED_LAMP = new BlockStainedLamp("lit_stained_lamp", Material.GLASS, 0.3F, 1.5F, true);
         POLISHED_GLOWSTONE = new EFBlock("polished_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
-        SNOW_BRICK = new EFBlock("snow_brick", Material.CRAFTED_SNOW, CreativeTabs.BUILDING_BLOCKS, SoundType.SNOW, 1, 1);
-        BLOCK_BREAKER = new BlockBlockBreaker("block_breaker", Material.PISTON, 5, 5);
+        SNOW_BRICK = new EFBlock("snow_brick", Material.CRAFTED_SNOW, CreativeTabs.BUILDING_BLOCKS, SoundType.SNOW, 0.5f, 1);
+        BLOCK_BREAKER = new BlockBlockBreaker("block_breaker", Material.PISTON, 3, 3);
         CRYING_OBSIDIAN = new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100);
         SPIKE_BLOCK = new BlockSpike("spike_block", Material.IRON, 1, 1);
         BLOCK_PLACER = new BlockBlockPlacer("block_placer", Material.ROCK, 5, 5);
@@ -88,7 +88,7 @@ public class ModBlocks {
         SMOOTH_DOUBLE_RED_SANDSTONE_SLAB = new BlockFake("smooth_double_red_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
                 Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
 
-        SLATE = new BlockSlate("slate", Material.ROCK, 5, 3);
+        SLATE = new BlockSlate("slate", Material.ROCK, 2, 3);
         BLAZE_BLOCK = new BlockBlaze("blaze_block");
 
         PACKED_SAND = new EFBlock("packed_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
