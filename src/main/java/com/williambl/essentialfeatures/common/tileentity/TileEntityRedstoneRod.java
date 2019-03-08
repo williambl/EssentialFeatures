@@ -28,7 +28,7 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickable {
         if (!world.isThundering())
             return;
 
-        if (tickCounter < 200 || world.rand.nextDouble() < 0.9)
+        if (tickCounter < 200 || world.rand.nextDouble() < 0.999)
             return;
 
         tickCounter = 0;
