@@ -67,6 +67,8 @@ public class ModBlocks {
 
     public static BlockRedstoneRod REDSTONE_ROD;
 
+    public static BlockStainedRedstoneTorch[] STAINED_REDSTONE_TORCHES;
+
     public static void addBlocks() {
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
         SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 0.5f, 2, 1);
@@ -101,6 +103,12 @@ public class ModBlocks {
         PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1f, 1011, 1005);
 
         REDSTONE_ROD = new BlockRedstoneRod("redstone_rod", Material.CIRCUITS, CreativeTabs.DECORATIONS, SoundType.METAL, 0.5f, 0, 0.95f);
+
+        STAINED_REDSTONE_TORCHES = new BlockStainedRedstoneTorch[32];
+        for (int i = 0; i < 16; i++) {
+            STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", false);
+            STAINED_REDSTONE_TORCHES[i+16] = new BlockStainedRedstoneTorch("lit_"+BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", true);
+        }
     }
 
     @Mod.EventBusSubscriber
@@ -145,6 +153,7 @@ public class ModBlocks {
                     PURPUR_DOOR,
                     REDSTONE_ROD
             );
+            event.getRegistry().registerAll(STAINED_REDSTONE_TORCHES);
             GameRegistry.registerTileEntity(TileEntityViewedBlock.class, VIEWED_BLOCK.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityBlockPlacer.class, BLOCK_PLACER.getRegistryName().toString());
             GameRegistry.registerTileEntity(TileEntityRedstoneRod.class, REDSTONE_ROD.getRegistryName().toString());
@@ -196,6 +205,14 @@ public class ModBlocks {
                 ITEM_BLOCKS.add(item);
             }
 
+            for (BlockStainedRedstoneTorch torch : STAINED_REDSTONE_TORCHES) {
+                if (torch.isOn) {
+                    final ItemBlock item = new ItemBlock(torch);
+                    registry.register(item.setRegistryName(torch.getRegistryName()));
+                    ITEM_BLOCKS.add(item);
+                }
+            }
+
         }
 
         /**
@@ -235,6 +252,10 @@ public class ModBlocks {
             PURPUR_DOOR.initModel();
 
             REDSTONE_ROD.initModel();
+
+            for (BlockStainedRedstoneTorch torch : STAINED_REDSTONE_TORCHES) {
+                torch.initModel();
+            }
         }
 
         public static void registerTileEntities() {
