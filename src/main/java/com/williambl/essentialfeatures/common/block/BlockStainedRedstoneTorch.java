@@ -1,9 +1,9 @@
 package com.williambl.essentialfeatures.common.block;
 
-import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraft.block.BlockRedstoneTorch;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 
@@ -21,6 +21,7 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
         this.colour = colour;
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setCreativeTab(CreativeTabs.REDSTONE);
     }
 
     public void initModel() {
@@ -37,6 +38,6 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return ModItems.STAINED_REDSTONE_TORCH;
+        return Item.getItemFromBlock(ModBlocks.STAINED_REDSTONE_TORCHES[colour]);
     }
 }
