@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "dyeWhite"
+    },
+    {
+      "type": "minecraft:item",
+      "item": "minecraft:redstone_lamp"
+    }
+  ],
+  "result": {
+    "item": "essentialfeatures:stained_lamp",
+    "data": 0
+  }
+}
