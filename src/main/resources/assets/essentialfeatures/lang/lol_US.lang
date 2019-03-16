@@ -20,6 +20,7 @@ tile.essentialfeatures:stained_lamp.green.name=Green staind glow thing
 tile.essentialfeatures:stained_lamp.red.name=Red staind glow thing
 tile.essentialfeatures:stained_lamp.black.name=Black staind glow thing
 
+
 entity.Villager.mechanic=mecanik
 
 tile.essentialfeatures:snow_brick.name=sno brik
@@ -54,6 +55,7 @@ item.essentialfeatures:dirty_clay.name=londn cly
 item.essentialfeatures:sand_clay_mixture.name=snd-cly mix
 item.essentialfeatures:dirty_brick.name=londn brik
 item.essentialfeatures:cream_brick.name=crem brik
+
 item.essentialfeatures:scarlet.name=Round loud thing
 item.record.scarlet.desc=Palmidence - scarlet
 
@@ -95,3 +97,20 @@ tile.essentialfeatures:purpur_door.name=purple dor
 tile.essentialfeatures:nether_brick_door.name=neter brick dor
 
 tile.essentialfeatures:redstone_rod.name=elektric unikorn horn
+
+tile.essentialfeatures:lit_white_stained_redstone_torch.name=White staind redston glowstick
+tile.essentialfeatures:lit_orange_stained_redstone_torch.name=Orange staind redston glowstick
+tile.essentialfeatures:lit_magenta_stained_redstone_torch.name=Magenta staind redston glowstick
+tile.essentialfeatures:lit_light_blue_stained_redstone_torch.name=Light Blue staind redston glowstick
+tile.essentialfeatures:lit_yellow_stained_redstone_torch.name=Yellow staind redston glowstick
+tile.essentialfeatures:lit_lime_stained_redstone_torch.name=Lime staind redston glowstick
+tile.essentialfeatures:lit_pink_stained_redstone_torch.name=Pink staind redston glowstick
+tile.essentialfeatures:lit_gray_stained_redstone_torch.name=Grey staind redston glowstick
+tile.essentialfeatures:lit_silver_stained_redstone_torch.name=Light Grey staind redston glowstick
+tile.essentialfeatures:lit_cyan_stained_redstone_torch.name=Cyan staind redston glowstick
+tile.essentialfeatures:lit_purple_stained_redstone_torch.name=Purple staind redston glowstick
+tile.essentialfeatures:lit_blue_stained_redstone_torch.name=Blue staind redston glowstick
+tile.essentialfeatures:lit_brown_stained_redstone_torch.name=Brown staind redston glowstick
+tile.essentialfeatures:lit_green_stained_redstone_torch.name=Green staind redston glowstick
+tile.essentialfeatures:lit_red_stained_redstone_torch.name=Red staind redston glowstick
+tile.essentialfeatures:lit_black_stained_redstone_torch.name=Black staind redston glowstick
