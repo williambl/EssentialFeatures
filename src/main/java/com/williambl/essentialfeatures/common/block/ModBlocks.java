@@ -106,8 +106,8 @@ public class ModBlocks {
 
         STAINED_REDSTONE_TORCHES = new BlockStainedRedstoneTorch[32];
         for (int i = 0; i < 16; i++) {
-            STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", false, i);
-            STAINED_REDSTONE_TORCHES[i+16] = new BlockStainedRedstoneTorch("lit_"+BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", true, i);
+            STAINED_REDSTONE_TORCHES[i+16] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", false, i);
+            STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch("lit_"+BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", true, i);
         }
     }
 
