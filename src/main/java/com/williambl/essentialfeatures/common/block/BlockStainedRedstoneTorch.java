@@ -26,11 +26,6 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
 
     public void initModel() {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-        if (!isOn) {
-            for (int x = 1; x < 16; x++) {
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), x, new ModelResourceLocation(getRegistryName() + names[x], "inventory"));
-            }
-        }
     }
 
     /**
