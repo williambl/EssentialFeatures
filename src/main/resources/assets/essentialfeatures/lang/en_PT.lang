@@ -20,6 +20,7 @@ tile.essentialfeatures:stained_lamp.green.name=Green Magic Glow Block
 tile.essentialfeatures:stained_lamp.red.name=Red Magic Glow Block
 tile.essentialfeatures:stained_lamp.black.name=Black Magic Glow Block
 
+
 entity.Villager.mechanic=Magic Circuit Maker
 
 tile.essentialfeatures:snow_brick.name=Bricks O’ Snow
@@ -113,3 +114,6 @@ tile.essentialfeatures:lit_brown_stained_redstone_torch.name=Brown Stained Redst
 tile.essentialfeatures:lit_green_stained_redstone_torch.name=Green Stained Redstone TARRch
 tile.essentialfeatures:lit_red_stained_redstone_torch.name=Red Stained Redstone TARRch
 tile.essentialfeatures:lit_black_stained_redstone_torch.name=Black Stained Redstone TARRch
+
+item.essentialfeatures:redstone_rod_sword.name=Lightning RARRd Sword
+item.essentialfeatures:redstone_rod_arrow.name=Lightning RARRd Arrow

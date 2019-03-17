@@ -114,3 +114,6 @@ tile.essentialfeatures:lit_brown_stained_redstone_torch.name=Brown staind redsto
 tile.essentialfeatures:lit_green_stained_redstone_torch.name=Green staind redston glowstick
 tile.essentialfeatures:lit_red_stained_redstone_torch.name=Red staind redston glowstick
 tile.essentialfeatures:lit_black_stained_redstone_torch.name=Black staind redston glowstick
+
+item.essentialfeatures:redstone_rod_sword.name=elektric sword
+item.essentialfeatures:redstone_rod_arrow.name=elektric arrow

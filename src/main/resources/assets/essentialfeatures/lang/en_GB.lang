@@ -20,6 +20,7 @@ tile.essentialfeatures:stained_lamp.green.name=Green Stained Lamp
 tile.essentialfeatures:stained_lamp.red.name=Red Stained Lamp
 tile.essentialfeatures:stained_lamp.black.name=Black Stained Lamp
 
+
 entity.Villager.mechanic=Mechanic
 
 tile.essentialfeatures:snow_brick.name=Snow Brick
@@ -113,3 +114,6 @@ tile.essentialfeatures:lit_brown_stained_redstone_torch.name=Brown Stained Redst
 tile.essentialfeatures:lit_green_stained_redstone_torch.name=Green Stained Redstone Torch
 tile.essentialfeatures:lit_red_stained_redstone_torch.name=Red Stained Redstone Torch
 tile.essentialfeatures:lit_black_stained_redstone_torch.name=Black Stained Redstone Torch
+
+item.essentialfeatures:redstone_rod_sword.name=Redstone Rod Sword
+item.essentialfeatures:redstone_rod_arrow.name=Redstone Rod Arrow

@@ -20,6 +20,7 @@ tile.essentialfeatures:stained_lamp.green.name=Green Stained Lamp
 tile.essentialfeatures:stained_lamp.red.name=Red Stained Lamp
 tile.essentialfeatures:stained_lamp.black.name=Black Stained Lamp
 
+
 entity.Villager.mechanic=Mechanic
 
 tile.essentialfeatures:snow_brick.name=Snow Brick
@@ -97,19 +98,38 @@ tile.essentialfeatures:nether_brick_door.name=Nether Brick Door
 
 tile.essentialfeatures:redstone_rod.name=Redstone Rod
 
-essentialfeatures:lit_white_stained_redstone_torch.name=White Stained Redstone Torch
-essentialfeatures:lit_orange_stained_redstone_torch.name=Orange Stained Redstone Torch
-essentialfeatures:lit_magenta_stained_redstone_torch.name=Magenta Stained Redstone Torch
-essentialfeatures:lit_light_blue_stained_redstone_torch.name=Light Blue Stained Redstone Torch
-essentialfeatures:lit_yellow_stained_redstone_torch.name=Yellow Stained Redstone Torch
-essentialfeatures:lit_lime_stained_redstone_torch.name=Lime Stained Redstone Torch
-essentialfeatures:lit_pink_stained_redstone_torch.name=Pink Stained Redstone Torch
-essentialfeatures:lit_gray_stained_redstone_torch.name=Grey Stained Redstone Torch
-essentialfeatures:lit_silver_stained_redstone_torch.name=Light Grey Stained Redstone Torch
-essentialfeatures:lit_cyan_stained_redstone_torch.name=Cyan Stained Redstone Torch
-essentialfeatures:lit_purple_stained_redstone_torch.name=Purple Stained Redstone Torch
+tile.essentialfeatures:lit_white_stained_redstone_torch.name=White Stained Redstone Torch
+tile.essentialfeatures:lit_orange_stained_redstone_torch.name=Orange Stained Redstone Torch
+tile.essentialfeatures:lit_magenta_stained_redstone_torch.name=Magenta Stained Redstone Torch
+tile.essentialfeatures:lit_light_blue_stained_redstone_torch.name=Light Blue Stained Redstone Torch
+tile.essentialfeatures:lit_yellow_stained_redstone_torch.name=Yellow Stained Redstone Torch
+tile.essentialfeatures:lit_lime_stained_redstone_torch.name=Lime Stained Redstone Torch
+tile.essentialfeatures:lit_pink_stained_redstone_torch.name=Pink Stained Redstone Torch
+tile.essentialfeatures:lit_gray_stained_redstone_torch.name=Grey Stained Redstone Torch
+tile.essentialfeatures:lit_silver_stained_redstone_torch.name=Light Grey Stained Redstone Torch
+tile.essentialfeatures:lit_cyan_stained_redstone_torch.name=Cyan Stained Redstone Torch
+tile.essentialfeatures:lit_purple_stained_redstone_torch.name=Purple Stained Redstone Torch
+tile.essentialfeatures:lit_blue_stained_redstone_torch.name=Blue Stained Redstone Torch
+tile.essentialfeatures:lit_brown_stained_redstone_torch.name=Brown Stained Redstone Torch
+tile.essentialfeatures:lit_green_stained_redstone_torch.name=Green Stained Redstone Torch
+tile.essentialfeatures:lit_red_stained_redstone_torch.name=Red Stained Redstone Torch
+tile.essentialfeatures:lit_black_stained_redstone_torch.name=Black Stained Redstone Torch
+
+item.essentialfeatures:redstone_rod_sword.name=Redstone Rod Sword
+item.essentialfeatures:redstone_rod_arrow.name=Redstone Rod Arrow
+essentialfeatures:lit_black_stained_redstone_torch.name=Black Stained Redstone Torch
 essentialfeatures:lit_blue_stained_redstone_torch.name=Blue Stained Redstone Torch
 essentialfeatures:lit_brown_stained_redstone_torch.name=Brown Stained Redstone Torch
+essentialfeatures:lit_cyan_stained_redstone_torch.name=Cyan Stained Redstone Torch
+essentialfeatures:lit_gray_stained_redstone_torch.name=Grey Stained Redstone Torch
 essentialfeatures:lit_green_stained_redstone_torch.name=Green Stained Redstone Torch
+essentialfeatures:lit_light_blue_stained_redstone_torch.name=Light Blue Stained Redstone Torch
+essentialfeatures:lit_lime_stained_redstone_torch.name=Lime Stained Redstone Torch
+essentialfeatures:lit_magenta_stained_redstone_torch.name=Magenta Stained Redstone Torch
+essentialfeatures:lit_orange_stained_redstone_torch.name=Orange Stained Redstone Torch
+essentialfeatures:lit_pink_stained_redstone_torch.name=Pink Stained Redstone Torch
+essentialfeatures:lit_purple_stained_redstone_torch.name=Purple Stained Redstone Torch
 essentialfeatures:lit_red_stained_redstone_torch.name=Red Stained Redstone Torch
-essentialfeatures:lit_black_stained_redstone_torch.name=Black Stained Redstone Torch
+essentialfeatures:lit_silver_stained_redstone_torch.name=Light Grey Stained Redstone Torch
+essentialfeatures:lit_white_stained_redstone_torch.name=White Stained Redstone Torch
+essentialfeatures:lit_yellow_stained_redstone_torch.name=Yellow Stained Redstone Torch
