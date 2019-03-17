@@ -44,6 +44,7 @@ public class ModItems {
     public static ItemCookedNettles COOKED_NETTLES;
 
     public static ItemRedstoneRodSword REDSTONE_ROD_SWORD;
+    public static ItemRedstoneRodArrow REDSTONE_ROD_ARROW;
 
     public static void addItems() {
         CEREAL = new ItemCereal("cereal", 1, 6, false);
@@ -58,6 +59,7 @@ public class ModItems {
         SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
         COOKED_NETTLES = new ItemCookedNettles("cooked_nettles");
         REDSTONE_ROD_SWORD = new ItemRedstoneRodSword("redstone_rod_sword", Item.ToolMaterial.GOLD);
+        REDSTONE_ROD_ARROW = new ItemRedstoneRodArrow("redstone_rod_arrow");
 
         addPortableJukeboxes();
     }
@@ -112,7 +114,8 @@ public class ModItems {
                     PORTABLE_NOTE_BLOCK,
                     SHARPENED_ARROW,
                     COOKED_NETTLES,
-                    REDSTONE_ROD_SWORD
+                    REDSTONE_ROD_SWORD,
+                    REDSTONE_ROD_ARROW
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -149,6 +152,7 @@ public class ModItems {
             SHARPENED_ARROW.initModel();
             COOKED_NETTLES.initModel();
             REDSTONE_ROD_SWORD.initModel();
+            REDSTONE_ROD_ARROW.initModel();
 
             PORTABLE_JUKEBOX.initModel();
             PORTABLE_JUKEBOXES.forEach(EFItem::initModel);

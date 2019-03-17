@@ -11,6 +11,7 @@ public class ModEntities {
     public static void addEntities() {
         int id = 1;
         EntityRegistry.registerModEntity(new ResourceLocation(EssentialFeatures.MODID, "sharpened_arrow"), EntitySharpenedArrow.class, "SharpenedArrow", id++, EssentialFeatures.instance, 64, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(EssentialFeatures.MODID, "redstone_rod_arrow"), EntityRedstoneRodArrow.class, "RedstoneRodArrow", id++, EssentialFeatures.instance, 64, 3, true);
     }
 
     public static void initRenderers() {
