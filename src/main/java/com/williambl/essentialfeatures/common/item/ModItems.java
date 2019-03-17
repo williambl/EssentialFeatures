@@ -6,16 +6,12 @@ import com.williambl.essentialfeatures.common.config.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -47,6 +43,8 @@ public class ModItems {
 
     public static ItemCookedNettles COOKED_NETTLES;
 
+    public static ItemRedstoneRodSword REDSTONE_ROD_SWORD;
+
     public static void addItems() {
         CEREAL = new ItemCereal("cereal", 1, 6, false);
         IRON_CEREAL = new ItemCereal("iron_cereal", 3, 6, true);
@@ -59,6 +57,7 @@ public class ModItems {
         PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
         SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
         COOKED_NETTLES = new ItemCookedNettles("cooked_nettles");
+        REDSTONE_ROD_SWORD = new ItemRedstoneRodSword("redstone_rod_sword", Item.ToolMaterial.GOLD);
 
         addPortableJukeboxes();
     }
@@ -112,7 +111,8 @@ public class ModItems {
                     PORTABLE_JUKEBOX,
                     PORTABLE_NOTE_BLOCK,
                     SHARPENED_ARROW,
-                    COOKED_NETTLES
+                    COOKED_NETTLES,
+                    REDSTONE_ROD_SWORD
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -148,6 +148,7 @@ public class ModItems {
             PORTABLE_NOTE_BLOCK.initModel();
             SHARPENED_ARROW.initModel();
             COOKED_NETTLES.initModel();
+            REDSTONE_ROD_SWORD.initModel();
 
             PORTABLE_JUKEBOX.initModel();
             PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
