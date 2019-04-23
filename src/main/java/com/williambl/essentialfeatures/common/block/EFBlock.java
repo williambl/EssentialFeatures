@@ -10,28 +10,20 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class EFBlock extends Block {
 
-    public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance, float lightLevel) {
-        super(material);
-        this.setCreativeTab(tab);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
+    public EFBlock(String registryName, Material material, SoundType soundType, float hardness, float resistance, int lightLevel) {
+        super(Block.Properties.create(
+                material).
+                hardnessAndResistance(hardness, resistance).
+                lightValue(lightLevel).
+                sound(soundType));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setLightLevel(lightLevel);
-        this.setSoundType(soundType);
     }
 
-    public EFBlock(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance) {
-        super(material);
-        this.setCreativeTab(tab);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
+    public EFBlock(String registryName, Material material, SoundType soundType, float hardness, float resistance) {
+         super(Block.Properties.create(
+                material).
+                hardnessAndResistance(hardness, resistance).
+                sound(soundType));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setSoundType(soundType);
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

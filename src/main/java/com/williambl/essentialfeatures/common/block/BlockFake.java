@@ -19,7 +19,6 @@ public class BlockFake extends Block {
     //This can be used if you want to place an unplaceable block
     public BlockFake(String registryName, CreativeTabs tab, IBlockState realBlockState) {
         super(Material.AIR);
-        this.setCreativeTab(tab);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.realBlockState = realBlockState;

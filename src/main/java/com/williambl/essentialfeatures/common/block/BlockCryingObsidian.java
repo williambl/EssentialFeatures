@@ -23,7 +23,6 @@ public class BlockCryingObsidian extends Block {
 
     public BlockCryingObsidian(String registryName, Material material, float hardness, float resistance) {
         super(material);
-        this.setCreativeTab(CreativeTabs.DECORATIONS);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);

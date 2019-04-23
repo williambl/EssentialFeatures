@@ -41,7 +41,6 @@ public class BlockNettles extends BlockBush implements IShearable {
 
     public BlockNettles(String registryName) {
         super(Material.VINE);
-        this.setCreativeTab(CreativeTabs.DECORATIONS);
         this.setHardness(0);
         this.setResistance(0);
         this.setSoundType(SoundType.PLANT);

@@ -9,26 +9,19 @@ import com.williambl.essentialfeatures.common.tileentity.TileEntityBlockPlacer;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockStoneSlab;
-import net.minecraft.block.BlockStoneSlabNew;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.ColorizerFoliage;
-import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.HashSet;
@@ -67,11 +60,11 @@ public class ModBlocks {
 
     public static void addBlocks() {
         VIEWED_BLOCK = new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5);
-        SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 0.5f, 2, 1);
+        SMOOTH_GLOWSTONE = new EFBlock("smooth_glowstone", Material.GLASS, SoundType.GLASS, 0.5f, 2, 1);
         STAINED_LAMP = new BlockStainedLamp("stained_lamp", Material.GLASS, 0.3F, 1.5F, false);
         LIT_STAINED_LAMP = new BlockStainedLamp("lit_stained_lamp", Material.GLASS, 0.3F, 1.5F, true);
-        POLISHED_GLOWSTONE = new EFBlock("polished_glowstone", Material.GLASS, CreativeTabs.BUILDING_BLOCKS, SoundType.GLASS, 1, 2, 1);
-        SNOW_BRICK = new EFBlock("snow_brick", Material.CRAFTED_SNOW, CreativeTabs.BUILDING_BLOCKS, SoundType.SNOW, 0.5f, 1);
+        POLISHED_GLOWSTONE = new EFBlock("polished_glowstone", Material.GLASS, SoundType.GLASS, 1, 2, 1);
+        SNOW_BRICK = new EFBlock("snow_brick", Material.CRAFTED_SNOW, SoundType.SNOW, 0.5f, 1);
         BLOCK_BREAKER = new BlockBlockBreaker("block_breaker", Material.PISTON, 3, 3);
         CRYING_OBSIDIAN = new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100);
         SPIKE_BLOCK = new BlockSpike("spike_block", Material.IRON, 1, 1);
@@ -82,16 +75,16 @@ public class ModBlocks {
         SLATE = new BlockSlate("slate", Material.ROCK, 2, 3);
         BLAZE_BLOCK = new BlockBlaze("blaze_block");
 
-        PACKED_SAND = new EFBlock("packed_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
-        PACKED_RED_SAND = new EFBlock("packed_red_sand", Material.SAND, CreativeTabs.BUILDING_BLOCKS, SoundType.SAND, (float) 0.5, 1);
-        PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, CreativeTabs.BUILDING_BLOCKS, SoundType.GROUND, (float) 0.8, 2);
+        PACKED_SAND = new EFBlock("packed_sand", Material.SAND, SoundType.SAND, (float) 0.5, 1);
+        PACKED_RED_SAND = new EFBlock("packed_red_sand", Material.SAND, SoundType.SAND, (float) 0.5, 1);
+        PACKED_GRAVEL = new EFBlock("packed_gravel", Material.GROUND, SoundType.GROUND, (float) 0.8, 2);
 
         NETTLES = new BlockNettles("stinging_nettles");
 
         NETHER_BRICK_DOOR = new BlockEFDoor("nether_brick_door", Material.ROCK, 1f, 1011, 1005);
         PURPUR_DOOR = new BlockEFDoor("purpur_door", Material.ROCK, 1f, 1011, 1005);
 
-        REDSTONE_ROD = new BlockRedstoneRod("redstone_rod", Material.CIRCUITS, CreativeTabs.DECORATIONS, SoundType.METAL, 0.5f, 0, 0.95f);
+        REDSTONE_ROD = new BlockRedstoneRod("redstone_rod", Material.CIRCUITS, SoundType.METAL, 0.5f, 0, 0.95f);
 
         STAINED_REDSTONE_TORCHES = new BlockStainedRedstoneTorch[32];
         for (int i = 0; i < 16; i++) {
@@ -129,9 +122,6 @@ public class ModBlocks {
                     BLOCK_PLACER,
                     DECORATIVE_STONE,
                     BRICK_VARIANT,
-                    SMOOTH_DOUBLE_STONE_SLAB,
-                    SMOOTH_DOUBLE_SANDSTONE_SLAB,
-                    SMOOTH_DOUBLE_RED_SANDSTONE_SLAB,
                     SLATE,
                     BLAZE_BLOCK,
                     PACKED_SAND,
@@ -173,9 +163,6 @@ public class ModBlocks {
                     new ItemBlock(BLOCK_PLACER),
                     new ItemBlockWithSubtypes(DECORATIVE_STONE, true, BlockDecorativeStone.names),
                     new ItemBlockWithSubtypes(BRICK_VARIANT, true, BlockBrickVariant.names),
-                    new ItemBlock(SMOOTH_DOUBLE_STONE_SLAB),
-                    new ItemBlock(SMOOTH_DOUBLE_SANDSTONE_SLAB),
-                    new ItemBlock(SMOOTH_DOUBLE_RED_SANDSTONE_SLAB),
                     new ItemSlate(SLATE),
                     new ItemBlock(BLAZE_BLOCK),
                     new ItemBlock(PACKED_SAND),

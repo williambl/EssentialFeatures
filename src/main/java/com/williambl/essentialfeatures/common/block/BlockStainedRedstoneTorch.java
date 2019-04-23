@@ -33,7 +33,6 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
         this.colour = colour;
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setCreativeTab(CreativeTabs.REDSTONE);
     }
 
     public void initModel() {

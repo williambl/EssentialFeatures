@@ -25,7 +25,6 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
 
     public BlockViewedBlock(String registryName, Material material, float hardness, float resistance) {
         super(material);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);

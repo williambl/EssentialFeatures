@@ -18,7 +18,6 @@ public class BlockEFDoor extends BlockDoor {
 
     public BlockEFDoor(String registryName, Material materialIn, float hardness, int closeSound, int openSound) {
         super(materialIn);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());
         this.setHardness(hardness);

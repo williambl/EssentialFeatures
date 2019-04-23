@@ -24,7 +24,6 @@ public class BlockSpike extends Block {
 
     public BlockSpike(String registryName, Material material, float hardness, float resistance) {
         super(material);
-        this.setCreativeTab(CreativeTabs.DECORATIONS);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);

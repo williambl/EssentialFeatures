@@ -20,7 +20,6 @@ public class BlockBrickVariant extends Block {
 
     public BlockBrickVariant(String registryName, Material material, float hardness, float resistance) {
         super(material);
-        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);

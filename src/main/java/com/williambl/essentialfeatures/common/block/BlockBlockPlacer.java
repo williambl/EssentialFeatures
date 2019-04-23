@@ -31,7 +31,6 @@ public class BlockBlockPlacer extends BlockDispenser {
     protected BlockBlockPlacer(String registryName, Material material, float hardness, float resistance) {
         super();
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.FALSE));
-        this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);

@@ -30,8 +30,8 @@ public class BlockRedstoneRod extends EFBlock implements ITileEntityProvider {
     protected static final AxisAlignedBB END_ROD_NS_AABB = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
     protected static final AxisAlignedBB END_ROD_EW_AABB = new AxisAlignedBB(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
 
-    public BlockRedstoneRod(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance, float lightlevel) {
-        super(registryName, material, tab, soundType, hardness, resistance, lightlevel);
+    public BlockRedstoneRod(String registryName, Material material, SoundType soundType, float hardness, float resistance, float lightlevel) {
+        super(registryName, material, soundType, hardness, resistance, lightlevel);
         this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(FACING, EnumFacing.UP));
         this.hasTileEntity = true;
     }

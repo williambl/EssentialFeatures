@@ -24,7 +24,7 @@ import java.util.Random;
 public class BlockBlaze extends EFBlock implements IFuelHandler {
 
     public BlockBlaze(String registryName) {
-        super(registryName, Material.IRON, CreativeTabs.BUILDING_BLOCKS, SoundType.METAL, 5f, 15f, 1f);
+        super(registryName, Material.IRON, SoundType.METAL, 5f, 15f, 1f);
     }
 
     @Override

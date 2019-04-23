@@ -26,7 +26,6 @@ public class BlockStainedLamp extends Block {
 
     public BlockStainedLamp(String registryName, Material material, float hardness, float resistance, boolean isOn) {
         super(material);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
