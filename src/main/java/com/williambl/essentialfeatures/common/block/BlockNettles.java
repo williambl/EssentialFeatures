@@ -45,7 +45,6 @@ public class BlockNettles extends BlockBush implements IShearable {
         this.setResistance(0);
         this.setSoundType(SoundType.PLANT);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
     }
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
@@ -90,10 +89,5 @@ public class BlockNettles extends BlockBush implements IShearable {
     public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
         return java.util.Arrays.asList(new ItemStack(ModBlocks.NETTLES));
     }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
 
 }

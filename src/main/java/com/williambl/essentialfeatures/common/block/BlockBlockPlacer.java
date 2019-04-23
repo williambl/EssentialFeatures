@@ -34,11 +34,6 @@ public class BlockBlockPlacer extends BlockDispenser {
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     /**

@@ -29,7 +29,6 @@ public class BlockStainedLamp extends Block {
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(SoundType.GLASS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
         this.isOn = isOn;
@@ -37,18 +36,6 @@ public class BlockStainedLamp extends Block {
             this.setLightLevel(1.0F);
             this.setCreativeTab(null);
         }
-    }
-
-    public void initModel() {
-
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-        if (!isOn) {
-            for (int x = 1; x < 16; x++) {
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), x, new ModelResourceLocation(getRegistryName() + names[x], "inventory"));
-            }
-        }
-
-
     }
 
     @Override

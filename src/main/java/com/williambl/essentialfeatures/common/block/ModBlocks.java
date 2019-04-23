@@ -191,49 +191,6 @@ public class ModBlocks {
 
         }
 
-        /**
-         * Register this mod's ItemBlock Models.
-         *
-         * @param event The event
-         */
-        @SubscribeEvent
-        public static void registerItemBlockModels(ModelRegistryEvent event) {
-            if (!ModConfig.blocks)
-                return;
-
-            VIEWED_BLOCK.initModel();
-            SMOOTH_GLOWSTONE.initModel();
-            STAINED_LAMP.initModel();
-            LIT_STAINED_LAMP.initModel();
-            POLISHED_GLOWSTONE.initModel();
-            SNOW_BRICK.initModel();
-            BLOCK_BREAKER.initModel();
-            CRYING_OBSIDIAN.initModel();
-            SPIKE_BLOCK.initModel();
-            BLOCK_PLACER.initModel();
-            DECORATIVE_STONE.initModel();
-            BRICK_VARIANT.initModel();
-
-            SMOOTH_DOUBLE_STONE_SLAB.initModel();
-            SMOOTH_DOUBLE_SANDSTONE_SLAB.initModel();
-            SMOOTH_DOUBLE_RED_SANDSTONE_SLAB.initModel();
-            SLATE.initModel();
-            BLAZE_BLOCK.initModel();
-            PACKED_SAND.initModel();
-            PACKED_RED_SAND.initModel();
-            PACKED_GRAVEL.initModel();
-            NETTLES.initModel();
-
-            NETHER_BRICK_DOOR.initModel();
-            PURPUR_DOOR.initModel();
-
-            REDSTONE_ROD.initModel();
-
-            for (BlockStainedRedstoneTorch torch : STAINED_REDSTONE_TORCHES) {
-                torch.initModel();
-            }
-        }
-
         public static void registerTileEntities() {
             registerTileEntity(TileEntityViewedBlock.class);
             registerTileEntity(TileEntityBlockPlacer.class);

@@ -19,7 +19,6 @@ public class BlockEFDoor extends BlockDoor {
     public BlockEFDoor(String registryName, Material materialIn, float hardness, int closeSound, int openSound) {
         super(materialIn);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
         this.setHardness(hardness);
         this.closeSound = closeSound;
         this.openSound = openSound;
@@ -38,7 +37,4 @@ public class BlockEFDoor extends BlockDoor {
         return state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER ? Items.AIR : Item.getItemFromBlock(this);
     }
 
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
 }

@@ -23,18 +23,8 @@ public class BlockBrickVariant extends Block {
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
         this.setSoundType(SoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(variant, 0));
-    }
-
-    public void initModel() {
-        for (Integer integer : variant.getAllowedValues()) {
-            if (integer == 0)
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), integer, new ModelResourceLocation(getRegistryName(), "inventory"));
-            else
-                ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), integer, new ModelResourceLocation(getRegistryName(), "inventory_" + integer.toString()));
-        }
     }
 
     @Override

@@ -28,7 +28,6 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
         this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE));
         this.hasTileEntity = true;
     }
@@ -42,11 +41,6 @@ public class BlockViewedBlock extends Block implements ITileEntityProvider {
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
         super.breakBlock(world, pos, state);
         world.removeTileEntity(pos);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

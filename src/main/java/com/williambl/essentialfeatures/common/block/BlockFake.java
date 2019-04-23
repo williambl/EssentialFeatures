@@ -20,12 +20,7 @@ public class BlockFake extends Block {
     public BlockFake(String registryName, CreativeTabs tab, IBlockState realBlockState) {
         super(Material.AIR);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
         this.realBlockState = realBlockState;
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override

@@ -26,12 +26,7 @@ public class BlockCryingObsidian extends Block {
         this.setHardness(hardness);
         this.setResistance(resistance);
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
         this.setLightLevel(0.1F);
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     @Override
