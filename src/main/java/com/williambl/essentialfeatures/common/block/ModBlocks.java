@@ -49,10 +49,6 @@ public class ModBlocks {
     public static BlockDecorativeStone DECORATIVE_STONE;
     public static BlockBrickVariant BRICK_VARIANT;
 
-    public static BlockFake SMOOTH_DOUBLE_STONE_SLAB;
-    public static BlockFake SMOOTH_DOUBLE_SANDSTONE_SLAB;
-    public static BlockFake SMOOTH_DOUBLE_RED_SANDSTONE_SLAB;
-
     public static BlockSlate SLATE;
     public static BlockBlaze BLAZE_BLOCK;
 
@@ -82,13 +78,6 @@ public class ModBlocks {
         BLOCK_PLACER = new BlockBlockPlacer("block_placer", Material.ROCK, 5, 5);
         DECORATIVE_STONE = new BlockDecorativeStone("decorative_stone", Material.ROCK, 3, 3);
         BRICK_VARIANT = new BlockBrickVariant("brick_variant", Material.ROCK, 3, 3);
-
-        SMOOTH_DOUBLE_STONE_SLAB = new BlockFake("smooth_double_stone_slab", CreativeTabs.BUILDING_BLOCKS,
-                Blocks.DOUBLE_STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.STONE));
-        SMOOTH_DOUBLE_SANDSTONE_SLAB = new BlockFake("smooth_double_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
-                Blocks.DOUBLE_STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.SEAMLESS, true).withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.SAND));
-        SMOOTH_DOUBLE_RED_SANDSTONE_SLAB = new BlockFake("smooth_double_red_sandstone_slab", CreativeTabs.BUILDING_BLOCKS,
-                Blocks.DOUBLE_STONE_SLAB2.getDefaultState().withProperty(BlockStoneSlabNew.SEAMLESS, true).withProperty(BlockStoneSlabNew.VARIANT, BlockStoneSlabNew.EnumType.RED_SANDSTONE));
 
         SLATE = new BlockSlate("slate", Material.ROCK, 2, 3);
         BLAZE_BLOCK = new BlockBlaze("blaze_block");
