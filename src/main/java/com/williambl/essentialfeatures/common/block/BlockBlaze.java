@@ -36,8 +36,7 @@ public class BlockBlaze extends EFBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public void randomTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    public void animateTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         for (int i = 0; i < 3; ++i) {
             double d0 = (double) pos.getX() + rand.nextDouble();
             double d1 = (double) pos.getY() + rand.nextDouble() * 0.5D + 0.5D;
