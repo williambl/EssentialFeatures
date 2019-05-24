@@ -3,7 +3,6 @@ package com.williambl.essentialfeatures.common.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -12,7 +11,9 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -20,14 +21,12 @@ import javax.annotation.Nullable;
 public class BlockSpike extends Block {
 
     public BlockSpike(String registryName, Material material, float hardness, float resistance) {
-        super(material);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
+        super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setRegistryName(registryName);
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+    public void onEntityCollision(IBlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
         if (entityIn instanceof EntityLivingBase) {
             ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 1, 1));
@@ -35,22 +34,19 @@ public class BlockSpike extends Block {
     }
 
     @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
+    @SuppressWarnings("deprecation")
     public boolean isFullCube(IBlockState state) {
         return false;
     }
 
-    @Nullable
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-        return NULL_AABB;
+    @SuppressWarnings("deprecation")
+    public VoxelShape getCollisionShape(IBlockState blockState, IBlockReader worldIn, BlockPos pos) {
+        return VoxelShapes.empty();
     }
 
-    public BlockRenderLayer getBlockLayer() {
+    @Override
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
