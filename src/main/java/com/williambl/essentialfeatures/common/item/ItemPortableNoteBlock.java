@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -20,7 +20,7 @@ public class ItemPortableNoteBlock extends EFItem {
     private static final List<SoundEvent> INSTRUMENTS = Lists.newArrayList(SoundEvents.BLOCK_NOTE_HARP, SoundEvents.BLOCK_NOTE_BASEDRUM, SoundEvents.BLOCK_NOTE_SNARE, SoundEvents.BLOCK_NOTE_HAT, SoundEvents.BLOCK_NOTE_BASS, SoundEvents.BLOCK_NOTE_FLUTE, SoundEvents.BLOCK_NOTE_BELL, SoundEvents.BLOCK_NOTE_GUITAR, SoundEvents.BLOCK_NOTE_CHIME, SoundEvents.BLOCK_NOTE_XYLOPHONE);
 
     public ItemPortableNoteBlock(String registryName) {
-        super(registryName, CreativeTabs.TOOLS);
+        super(registryName, ItemGroup.TOOLS);
     }
 
     @Override

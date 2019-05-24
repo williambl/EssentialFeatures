@@ -4,10 +4,8 @@ import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
 
 import java.util.Random;
 

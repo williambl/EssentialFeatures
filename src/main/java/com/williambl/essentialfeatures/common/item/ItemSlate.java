@@ -2,7 +2,7 @@ package com.williambl.essentialfeatures.common.item;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSnow;
+import net.minecraft.block.BlockSnowLayer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,10 +38,10 @@ public class ItemSlate extends ItemBlock {
             }
 
             if (block == this.block) {
-                int i = iblockstate.getValue(BlockSnow.LAYERS);
+                int i = iblockstate.getValue(BlockSnowLayer.LAYERS);
 
                 if (i < 8) {
-                    IBlockState iblockstate1 = iblockstate.withProperty(BlockSnow.LAYERS, i + 1);
+                    IBlockState iblockstate1 = iblockstate.withProperty(BlockSnowLayer.LAYERS, i + 1);
                     AxisAlignedBB axisalignedbb = iblockstate1.getCollisionBoundingBox(worldIn, blockpos);
 
                     if (axisalignedbb != Block.NULL_AABB && worldIn.checkNoEntityCollision(axisalignedbb.offset(blockpos)) && worldIn.setBlockState(blockpos, iblockstate1, 10)) {

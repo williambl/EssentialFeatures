@@ -1,7 +1,7 @@
 package com.williambl.essentialfeatures.common.item;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -19,7 +19,7 @@ public class ItemCereal extends ItemFood {
 
     public ItemCereal(String registryName, float saturation, int healAmount, boolean isIron) {
         super(healAmount, saturation, false);
-        this.setCreativeTab(CreativeTabs.FOOD);
+        this.setCreativeTab(ItemGroup.FOOD);
         this.isIron = isIron;
         this.setRegistryName(registryName);
         this.setUnlocalizedName(this.getRegistryName().toString());

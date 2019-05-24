@@ -4,7 +4,7 @@ import com.williambl.essentialfeatures.client.music.MovingSoundGeneric;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,7 @@ public class ItemPortableJukebox extends EFItem {
 
     public ItemRecord record;
 
-    public ItemPortableJukebox(String registryName, CreativeTabs tab, ItemRecord recordIn) {
+    public ItemPortableJukebox(String registryName, ItemGroup tab, ItemRecord recordIn) {
         super(registryName, tab);
         record = recordIn;
     }

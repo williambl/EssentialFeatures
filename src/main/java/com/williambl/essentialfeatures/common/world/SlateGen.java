@@ -6,17 +6,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.MinableFeature;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
 public class SlateGen implements IWorldGenerator {
 
-    private WorldGenMinable worldGenMinable;
+    private MinableFeature worldGenMinable;
 
     public SlateGen() {
-        worldGenMinable = new WorldGenMinable(ModBlocks.SLATE.getDefaultState().withProperty(BlockSlate.LAYERS, 8), 25);
+        worldGenMinable = new MinableFeature(ModBlocks.SLATE.getDefaultState().withProperty(BlockSlate.LAYERS, 8), 25);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class SlateGen implements IWorldGenerator {
             generateOre(worldGenMinable, world, random, chunkX, chunkZ, 40, 80, 10);
     }
 
-    private void generateOre(WorldGenMinable worldGen, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn) {
+    private void generateOre(MinableFeature worldGen, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn) {
         int heightRange = maxY - minY;
 
         for (int i = 0; i < chancesToSpawn; i++) {

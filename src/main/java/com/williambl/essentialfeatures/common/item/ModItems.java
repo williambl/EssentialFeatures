@@ -7,7 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -52,10 +52,10 @@ public class ModItems {
     public static void addItems() {
         CEREAL = new ItemCereal("cereal", 1, 6, false);
         IRON_CEREAL = new ItemCereal("iron_cereal", 3, 6, true);
-        DIRTY_CLAY = new EFItem("dirty_clay", CreativeTabs.MATERIALS);
-        SAND_CLAY_MIXTURE = new EFItem("sand_clay_mixture", CreativeTabs.MATERIALS);
-        DIRTY_BRICK = new EFItem("dirty_brick", CreativeTabs.MATERIALS);
-        CREAM_BRICK = new EFItem("cream_brick", CreativeTabs.MATERIALS);
+        DIRTY_CLAY = new EFItem("dirty_clay", ItemGroup.MATERIALS);
+        SAND_CLAY_MIXTURE = new EFItem("sand_clay_mixture", ItemGroup.MATERIALS);
+        DIRTY_BRICK = new EFItem("dirty_brick", ItemGroup.MATERIALS);
+        CREAM_BRICK = new EFItem("cream_brick", ItemGroup.MATERIALS);
         RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
         RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
         PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
@@ -68,7 +68,7 @@ public class ModItems {
     }
 
     private static void addPortableJukeboxes() {
-        PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", CreativeTabs.TOOLS, null);
+        PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", ItemGroup.TOOLS, null);
 
         HashMap<String, ItemRecord> discs = new HashMap<>();
         discs.put("13", (ItemRecord) Items.RECORD_13);
@@ -87,7 +87,7 @@ public class ModItems {
         discs.put("scarlet", RECORD_SCARLET);
         discs.put("lo-fi", RECORD_LOFI);
 
-        discs.forEach((name, record) -> PORTABLE_JUKEBOXES.add(new ItemPortableJukebox("portable_jukebox_" + name, CreativeTabs.TOOLS, record)));
+        discs.forEach((name, record) -> PORTABLE_JUKEBOXES.add(new ItemPortableJukebox("portable_jukebox_" + name, ItemGroup.TOOLS, record)));
     }
 
     @Mod.EventBusSubscriber

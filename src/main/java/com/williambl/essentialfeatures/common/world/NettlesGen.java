@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.feature.WorldGenBush;
+import net.minecraft.world.gen.feature.BushFeature;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Arrays;
@@ -16,12 +16,12 @@ import java.util.Random;
 
 public class NettlesGen implements IWorldGenerator {
 
-    private WorldGenBush worldGenBush;
+    private BushFeature worldGenBush;
 
     private List<Biome> biomes = Arrays.asList(Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.BIRCH_FOREST, Biomes.MUTATED_BIRCH_FOREST, Biomes.MUTATED_FOREST, Biomes.MUTATED_ROOFED_FOREST, Biomes.ROOFED_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST_HILLS);
 
     public NettlesGen() {
-        worldGenBush = new WorldGenBush(ModBlocks.NETTLES);
+        worldGenBush = new BushFeature(ModBlocks.NETTLES);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class NettlesGen implements IWorldGenerator {
             generatePlants(worldGenBush, world, random, chunkX, chunkZ, 40, 80, 2);
     }
 
-    private void generatePlants(WorldGenBush worldGen, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn) {
+    private void generatePlants(BushFeature worldGen, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int chancesToSpawn) {
         int heightRange = maxY - minY;
 
         for (int i = 0; i < chancesToSpawn; i++) {
