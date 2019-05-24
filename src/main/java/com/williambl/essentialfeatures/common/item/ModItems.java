@@ -12,8 +12,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemRecord;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -166,6 +169,12 @@ public class ModItems {
                 IBlockState iblockstate = ((ItemBlock) stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
                 return blockColors.colorMultiplier(iblockstate, null, null, tintIndex);
             }, ModBlocks.NETTLES);
+        }
+
+        @SubscribeEvent
+        public static void setBurnTimes(FurnaceFuelBurnTimeEvent e) {
+            if (e.getItemStack().isItemEqual(new ItemStack(ModBlocks.BLAZE_BLOCK)))
+                e.setBurnTime(4800);
         }
     }
 }
