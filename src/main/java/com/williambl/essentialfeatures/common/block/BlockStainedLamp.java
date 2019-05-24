@@ -17,10 +17,12 @@ import java.util.Random;
 public class BlockStainedLamp extends Block {
 
     public static final BooleanProperty LIT = BlockRedstoneLamp.LIT;
+    int colour;
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 
-    public BlockStainedLamp(String registryName, Material material, float hardness, float resistance, boolean isOn) {
-        super(Properties.create(material).hardnessAndResistance(hardness, resistance).sound(SoundType.GLASS));
+    public BlockStainedLamp(String registryName, int colourIn) {
+        super(Properties.create(Material.GLASS).hardnessAndResistance(0.3f, 1.5f).sound(SoundType.GLASS));
+        colour = colourIn;
         this.setRegistryName(registryName);
         this.setDefaultState(this.getStateContainer().getBaseState().with(LIT, false));
     }
