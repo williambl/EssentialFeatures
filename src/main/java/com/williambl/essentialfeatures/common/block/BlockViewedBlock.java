@@ -2,78 +2,63 @@ package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockViewedBlock extends Block implements ITileEntityProvider {
+public class BlockViewedBlock extends Block {
 
-    public static final PropertyBool POWERED = PropertyBool.create("powered");
+    public static final BooleanProperty POWERED = BooleanProperty.create("powered");
 
     public BlockViewedBlock(String registryName, Material material, float hardness, float resistance) {
-        super(material);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
+        super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setRegistryName(registryName);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE));
-        this.hasTileEntity = true;
+        this.setDefaultState(this.getStateContainer().getBaseState().with(POWERED, Boolean.FALSE));
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(IBlockState state, IBlockReader world) {
         return new TileEntityViewedBlock();
     }
 
     @Override
-    public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        super.breakBlock(world, pos, state);
-        world.removeTileEntity(pos);
-    }
-
-    @Override
+    @SuppressWarnings("deprecation")
     public boolean canProvidePower(IBlockState state) {
         return true;
     }
 
     @Override
-    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        return blockState.getValue(POWERED) ? 15 : 0;
+    @SuppressWarnings("deprecation")
+    public int getWeakPower(IBlockState blockState, IBlockReader blockAccess, BlockPos pos, EnumFacing side) {
+        return blockState.get(POWERED) ? 15 : 0;
     }
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, POWERED);
-    }
 
     @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(POWERED, (meta & 1) > 0);
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(POWERED) ? 1 : 0;
+    protected void fillStateContainer(StateContainer.Builder<Block, IBlockState> builder) {
+        builder.add(POWERED);
     }
 
     public void activate(World worldIn, BlockPos pos, IBlockState blockstate) {
-        worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.TRUE));
+        worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.TRUE));
     }
 
     public void deactivate(World worldIn, BlockPos pos, IBlockState blockstate) {
-        worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.FALSE));
+        worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.FALSE));
     }
 
-    public boolean isPowered(IBlockState blockstate) {
-        return blockstate.getValue(POWERED);
+    public boolean isPowered(IBlockState blockstate){
+        return blockstate.get(POWERED);
     }
 }
