@@ -3,13 +3,11 @@ package com.williambl.essentialfeatures.common.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Particles;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -19,27 +17,25 @@ import java.util.Random;
 public class BlockCryingObsidian extends Block {
 
     public BlockCryingObsidian(String registryName, Material material, float hardness, float resistance) {
-        super(material);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
+        super(Properties.create(material).hardnessAndResistance(hardness, resistance).lightValue(2));
         this.setRegistryName(registryName);
-        this.setLightLevel(0.1F);
     }
 
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        if (placer instanceof EntityPlayer) {
-            ((EntityPlayer) placer).setSpawnDimension(placer.dimension);
-            ((EntityPlayer) placer).setSpawnChunk(placer.getPosition(), true, placer.dimension);
+    public IBlockState getStateForPlacement(BlockItemUseContext context) {
+        if (context.getPlayer() != null) {
+            EntityPlayer player = context.getPlayer();
+            player.setSpawnDimenion(player.dimension);
+            player.setSpawnPoint(player.getPosition(), true, player.dimension);
 
-            particleExplosion(worldIn, pos);
+            particleExplosion(context.getWorld(), context.getPos());
         }
-        return this.getStateFromMeta(meta);
+        return super.getStateForPlacement(context);
     }
 
 
     @Override
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    public void animateTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         EnumFacing enumfacing = EnumFacing.random(rand);
 
         if (enumfacing != EnumFacing.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullCube()) {
@@ -73,7 +69,7 @@ public class BlockCryingObsidian extends Block {
                 }
             }
 
-            worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            worldIn.spawnParticle(Particles.DRIPPING_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
     }
 
@@ -84,8 +80,8 @@ public class BlockCryingObsidian extends Block {
                 double d1 = (double) pos.getY() + worldIn.rand.nextDouble() * 0.5D + 0.5D;
                 double d2 = (double) pos.getZ() + worldIn.rand.nextDouble();
 
-                worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-                worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                worldIn.spawnParticle(Particles.PORTAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                worldIn.spawnParticle(Particles.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
                 worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 0.25f, 1f, false);
             }
         }
