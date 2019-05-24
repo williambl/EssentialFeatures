@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -70,6 +71,12 @@ public class BlockNettles extends BlockBush implements IShearable {
         if (entityIn instanceof EntityLivingBase) {
             entityIn.attackEntityFrom(DamageSource.CACTUS, 1);
         }
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public boolean isReplaceable(IBlockState state, BlockItemUseContext useContext) {
+        return true;
     }
 
     @Override
