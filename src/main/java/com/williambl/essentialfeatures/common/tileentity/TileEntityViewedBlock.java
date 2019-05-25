@@ -18,7 +18,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
     int tickCounter = 0;
 
     public TileEntityViewedBlock() {
-        this(ModTileEntities.VIEWED_BLOCK);
+        super(ModTileEntities.VIEWED_BLOCK);
     }
 
     @Override

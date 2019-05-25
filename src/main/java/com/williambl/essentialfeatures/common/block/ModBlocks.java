@@ -199,12 +199,6 @@ public class ModBlocks {
 
         }
 
-        public static void registerTileEntities() {
-            registerTileEntity(TileEntityViewedBlock.class);
-            registerTileEntity(TileEntityBlockPlacer.class);
-            registerTileEntity(TileEntityRedstoneRod.class);
-        }
-
         @OnlyIn(Dist.CLIENT)
         public static void registerBlockColors() {
             BlockColors blockColors = Minecraft.getInstance().getBlockColors();

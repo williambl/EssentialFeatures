@@ -11,7 +11,7 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickable {
     int tickCounter = 0;
 
     public TileEntityRedstoneRod() {
-        this(ModTileEntities.REDSTONE_ROD);
+        super(ModTileEntities.REDSTONE_ROD);
     }
 
     @Override
