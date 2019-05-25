@@ -186,8 +186,14 @@ public class ModBlocks {
             }
 
             for (BlockStainedRedstoneTorch torch : STAINED_REDSTONE_TORCHES) {
-                    final ItemBlock item = new ItemBlock(torch);
+                    final ItemBlock item = new ItemBlock(torch, new Item.Properties());
                     registry.register(item.setRegistryName(torch.getRegistryName()));
+                    ITEM_BLOCKS.add(item);
+            }
+
+            for (BlockStainedLamp lamp : STAINED_LAMPS) {
+                    final ItemBlock item = new ItemBlock(lamp, new Item.Properties());
+                    registry.register(item.setRegistryName(lamp.getRegistryName()));
                     ITEM_BLOCKS.add(item);
             }
 
