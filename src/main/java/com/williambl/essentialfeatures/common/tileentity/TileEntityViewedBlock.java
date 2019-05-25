@@ -6,10 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 
 import java.util.List;
 
@@ -20,8 +17,12 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 
     int tickCounter = 0;
 
+    public TileEntityViewedBlock() {
+        this(ModTileEntities.VIEWED_BLOCK);
+    }
+
     @Override
-    public void update() {
+    public void tick() {
 
         if (world.isRemote)
             return;
@@ -74,8 +75,8 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
     public RayTraceResult rayTrace(EntityPlayer playerIn, double blockReachDistance, float partialTicks) {
         Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
-        Vec3d vec3d2 = vec3d.addVector(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
-        return this.world.rayTraceBlocks(vec3d, vec3d2, false, false, true);
+        Vec3d vec3d2 = vec3d.add(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
+        return this.world.rayTraceBlocks(vec3d, vec3d2, RayTraceFluidMode.NEVER, false, true);
     }
 
     public Vec3d getPositionEyes(EntityPlayer playerIn, float partialTicks) {
