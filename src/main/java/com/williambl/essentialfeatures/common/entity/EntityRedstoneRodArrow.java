@@ -3,6 +3,7 @@ package com.williambl.essentialfeatures.common.entity;
 import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
@@ -22,16 +23,16 @@ public class EntityRedstoneRodArrow extends EntityArrow {
     private double damage;
     private int knockbackStrength;
 
-    public EntityRedstoneRodArrow(World worldIn) {
-        super(worldIn);
+    public EntityRedstoneRodArrow(EntityType type, World worldIn) {
+        super(type, worldIn);
     }
 
-    public EntityRedstoneRodArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z);
+    public EntityRedstoneRodArrow(EntityType type, double x, double y, double z, World worldIn) {
+        super(type, x, y, z, worldIn);
     }
 
-    public EntityRedstoneRodArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter);
+    public EntityRedstoneRodArrow(EntityType type, EntityLivingBase shooter, World worldIn) {
+        super(type, shooter, worldIn);
     }
 
     @Override
