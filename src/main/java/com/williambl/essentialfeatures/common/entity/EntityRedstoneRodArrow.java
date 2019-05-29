@@ -24,19 +24,15 @@ public class EntityRedstoneRodArrow extends EntityArrow {
     private int knockbackStrength;
 
     public EntityRedstoneRodArrow(World worldIn) {
-        this(ModEntities.REDSTONE_ROD_ARROW, worldIn);
+        super(ModEntities.REDSTONE_ROD_ARROW, worldIn);
     }
 
-    public EntityRedstoneRodArrow(EntityType type, World worldIn) {
-        super(type, worldIn);
+    public EntityRedstoneRodArrow(double x, double y, double z, World worldIn) {
+        super(ModEntities.REDSTONE_ROD_ARROW, x, y, z, worldIn);
     }
 
-    public EntityRedstoneRodArrow(EntityType type, double x, double y, double z, World worldIn) {
-        super(type, x, y, z, worldIn);
-    }
-
-    public EntityRedstoneRodArrow(EntityType type, EntityLivingBase shooter, World worldIn) {
-        super(type, shooter, worldIn);
+    public EntityRedstoneRodArrow(EntityLivingBase shooter, World worldIn) {
+        super(ModEntities.REDSTONE_ROD_ARROW, shooter, worldIn);
     }
 
     @Override

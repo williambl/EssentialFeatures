@@ -1,28 +1,23 @@
 package com.williambl.essentialfeatures.common.item;
 
 import com.williambl.essentialfeatures.common.entity.EntitySharpenedArrow;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemArrow;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 
 public class ItemSharpenedArrow extends ItemArrow {
 
     public ItemSharpenedArrow(String registryName) {
-        super();
+        super(new Properties().group(ItemGroup.COMBAT));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
     }
 
+    @Override
     public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
-        EntitySharpenedArrow arrow = new EntitySharpenedArrow(worldIn, shooter);
-        return arrow;
+        return new EntitySharpenedArrow(shooter, worldIn);
     }
 
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
 }

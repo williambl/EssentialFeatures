@@ -44,21 +44,17 @@ public class EntitySharpenedArrow extends EntityArrow {
     };
 
     public EntitySharpenedArrow(World worldIn) {
-        this(ModEntities.SHARPENED_ARROW, worldIn);
-    }
-
-    public EntitySharpenedArrow(EntityType type, World worldIn) {
-        super(type, worldIn);
+        super(ModEntities.SHARPENED_ARROW, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(EntityType type, double x, double y, double z, World worldIn) {
-        super(type, x, y, z, worldIn);
+    public EntitySharpenedArrow(double x, double y, double z, World worldIn) {
+        super(ModEntities.SHARPENED_ARROW, x, y, z, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(EntityType type, EntityLivingBase shooter, World worldIn) {
-        super(type, shooter, worldIn);
+    public EntitySharpenedArrow(EntityLivingBase shooter, World worldIn) {
+        super(ModEntities.SHARPENED_ARROW, shooter, worldIn);
         this.setIsCritical(true);
     }
 
