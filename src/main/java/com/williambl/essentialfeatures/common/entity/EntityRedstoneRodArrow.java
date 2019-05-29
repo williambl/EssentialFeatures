@@ -23,6 +23,10 @@ public class EntityRedstoneRodArrow extends EntityArrow {
     private double damage;
     private int knockbackStrength;
 
+    public EntityRedstoneRodArrow(World worldIn) {
+        this(ModEntities.REDSTONE_ROD_ARROW, worldIn);
+    }
+
     public EntityRedstoneRodArrow(EntityType type, World worldIn) {
         super(type, worldIn);
     }
@@ -48,5 +52,10 @@ public class EntityRedstoneRodArrow extends EntityArrow {
     @Override
     protected ItemStack getArrowStack() {
         return new ItemStack(ModItems.REDSTONE_ROD_ARROW);
+    }
+
+    @Override
+    public EntityType<?> getType() {
+        return ModEntities.REDSTONE_ROD_ARROW;
     }
 }

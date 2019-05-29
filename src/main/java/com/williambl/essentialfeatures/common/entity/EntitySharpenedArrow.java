@@ -43,6 +43,10 @@ public class EntitySharpenedArrow extends EntityArrow {
             Material.WEB
     };
 
+    public EntitySharpenedArrow(World worldIn) {
+        this(ModEntities.SHARPENED_ARROW, worldIn);
+    }
+
     public EntitySharpenedArrow(EntityType type, World worldIn) {
         super(type, worldIn);
         this.setIsCritical(true);
@@ -103,5 +107,10 @@ public class EntitySharpenedArrow extends EntityArrow {
     @Override
     protected ItemStack getArrowStack() {
         return new ItemStack(ModItems.SHARPENED_ARROW);
+    }
+
+    @Override
+    public EntityType<?> getType() {
+        return ModEntities.SHARPENED_ARROW;
     }
 }
