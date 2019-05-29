@@ -1,20 +1,12 @@
 package com.williambl.essentialfeatures.common.item;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemFood;
-import net.minecraftforge.client.model.ModelLoader;
+import net.minecraft.item.ItemGroup;
 
 public class ItemCookedNettles extends ItemFood {
 
     public ItemCookedNettles(String registryName) {
-        super(2, false);
-        this.setCreativeTab(ItemGroup.FOOD);
+        super(2, 2, false, new Properties().group(ItemGroup.FOOD));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }
