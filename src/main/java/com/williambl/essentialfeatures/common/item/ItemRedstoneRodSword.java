@@ -1,19 +1,18 @@
 package com.williambl.essentialfeatures.common.item;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.item.IItemTier;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.client.model.ModelLoader;
 
 public class ItemRedstoneRodSword extends ItemSword {
 
-    public ItemRedstoneRodSword(String registryName, ToolMaterial material) {
-        super(material);
+    public ItemRedstoneRodSword(String registryName, IItemTier material) {
+        super(material, 6, 1f, new Properties().group(ItemGroup.COMBAT));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
     }
 
     @Override
@@ -26,9 +25,5 @@ public class ItemRedstoneRodSword extends ItemSword {
         }
         stack.damageItem(1, attacker);
         return true;
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }
