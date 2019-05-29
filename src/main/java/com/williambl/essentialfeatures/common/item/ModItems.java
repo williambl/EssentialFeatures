@@ -71,18 +71,18 @@ public class ModItems {
         PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", ItemGroup.TOOLS, null);
 
         HashMap<String, ItemRecord> discs = new HashMap<>();
-        discs.put("13", (ItemRecord) Items.RECORD_13);
-        discs.put("cat", (ItemRecord) Items.RECORD_CAT);
-        discs.put("blocks", (ItemRecord) Items.RECORD_BLOCKS);
-        discs.put("chirp", (ItemRecord) Items.RECORD_CHIRP);
-        discs.put("far", (ItemRecord) Items.RECORD_FAR);
-        discs.put("mall", (ItemRecord) Items.RECORD_MALL);
-        discs.put("mellohi", (ItemRecord) Items.RECORD_MELLOHI);
-        discs.put("stal", (ItemRecord) Items.RECORD_STAL);
-        discs.put("strad", (ItemRecord) Items.RECORD_STRAD);
-        discs.put("ward", (ItemRecord) Items.RECORD_WARD);
-        discs.put("11", (ItemRecord) Items.RECORD_11);
-        discs.put("wait", (ItemRecord) Items.RECORD_WAIT);
+        discs.put("13", (ItemRecord) Items.MUSIC_DISC_13);
+        discs.put("cat", (ItemRecord) Items.MUSIC_DISC_CAT);
+        discs.put("blocks", (ItemRecord) Items.MUSIC_DISC_BLOCKS);
+        discs.put("chirp", (ItemRecord) Items.MUSIC_DISC_CHIRP);
+        discs.put("far", (ItemRecord) Items.MUSIC_DISC_FAR);
+        discs.put("mall", (ItemRecord) Items.MUSIC_DISC_MALL);
+        discs.put("mellohi", (ItemRecord) Items.MUSIC_DISC_MELLOHI);
+        discs.put("stal", (ItemRecord) Items.MUSIC_DISC_STAL);
+        discs.put("strad", (ItemRecord) Items.MUSIC_DISC_STRAD);
+        discs.put("ward", (ItemRecord) Items.MUSIC_DISC_WARD);
+        discs.put("11", (ItemRecord) Items.MUSIC_DISC_11);
+        discs.put("wait", (ItemRecord) Items.MUSIC_DISC_WAIT);
 
         discs.put("scarlet", RECORD_SCARLET);
         discs.put("lo-fi", RECORD_LOFI);

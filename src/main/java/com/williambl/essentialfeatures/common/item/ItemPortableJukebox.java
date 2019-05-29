@@ -2,20 +2,17 @@ package com.williambl.essentialfeatures.common.item;
 
 import com.williambl.essentialfeatures.client.music.MovingSoundGeneric;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -32,41 +29,43 @@ public class ItemPortableJukebox extends EFItem {
     /**
      * Called when a Block is right-clicked with this Item
      */
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    @Override
+    public EnumActionResult onItemUse(ItemUseContext context) {
         if (record == null)
             return EnumActionResult.PASS;
 
+        EntityPlayer player = context.getPlayer();
+        World world = context.getWorld();
+
         if (player.isSneaking()) {
-            ItemStack itemstack = player.getHeldItem(hand);
+            ItemStack itemstack = context.getItem();
             itemstack.shrink(1);
 
             player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
             player.addItemStackToInventory(new ItemStack(record));
 
-            if (worldIn.isRemote)
-                Minecraft.getMinecraft().getSoundHandler().stopSounds();
+            if (world.isRemote)
+                Minecraft.getInstance().getSoundHandler().stop();
 
             return EnumActionResult.SUCCESS;
         }
 
-        if (worldIn.isRemote) {
-            Minecraft.getMinecraft().getSoundHandler().stopSounds();
+        if (world.isRemote) {
+            Minecraft.getInstance().getSoundHandler().stop();
             playSound(player, record);
         }
         return EnumActionResult.SUCCESS;
     }
 
-    @SideOnly(Side.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     private void playSound(EntityPlayer playerIn, ItemRecord recordIn) {
-        Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(playerIn, recordIn.getSound()));
+        Minecraft.getInstance().getSoundHandler().play(new MovingSoundGeneric(playerIn, recordIn.getSound()));
     }
 
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (record != null)
-            tooltip.add(record.getRecordNameLocal());
+            tooltip.add(record.getName());
     }
 
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ModItems.PORTABLE_JUKEBOX.getRegistryName(), "inventory"));
-    }
 }
