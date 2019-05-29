@@ -56,8 +56,8 @@ public class ModItems {
         SAND_CLAY_MIXTURE = new EFItem("sand_clay_mixture", ItemGroup.MATERIALS);
         DIRTY_BRICK = new EFItem("dirty_brick", ItemGroup.MATERIALS);
         CREAM_BRICK = new EFItem("cream_brick", ItemGroup.MATERIALS);
-        RECORD_SCARLET = new ItemEFRecord("scarlet", ModSound.RECORD_SCARLET);
-        RECORD_LOFI = new ItemEFRecord("lo-fi", ModSound.RECORD_LOFI);
+        RECORD_SCARLET = new ItemEFRecord("scarlet", 1, ModSound.RECORD_SCARLET);
+        RECORD_LOFI = new ItemEFRecord("lo-fi", 2, ModSound.RECORD_LOFI);
         PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
         SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
         COOKED_NETTLES = new ItemCookedNettles("cooked_nettles");
