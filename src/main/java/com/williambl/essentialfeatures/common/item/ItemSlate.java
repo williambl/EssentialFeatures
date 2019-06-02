@@ -7,46 +7,51 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.World;
 
 public class ItemSlate extends ItemBlock {
 
     public ItemSlate(Block block) {
-        super(block);
+        super(block, new Properties().group(ItemGroup.BUILDING_BLOCKS));
     }
 
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        ItemStack itemstack = player.getHeldItem(hand);
+    @Override
+    public EnumActionResult onItemUse(ItemUseContext context) {
+
+        EntityPlayer player = context.getPlayer();
+        EnumFacing facing = context.getFace();
+        BlockPos pos = context.getPos();
+        World world = context.getWorld();
+        ItemStack itemstack = context.getItem();
 
         if (!itemstack.isEmpty() && player.canPlayerEdit(pos, facing, itemstack)) {
-            IBlockState iblockstate = worldIn.getBlockState(pos);
+            IBlockState iblockstate = world.getBlockState(pos);
             Block block = iblockstate.getBlock();
             BlockPos blockpos = pos;
 
-            if ((facing != EnumFacing.UP || block != this.block) && !block.isReplaceable(worldIn, pos)) {
+            if ((facing != EnumFacing.UP || block != this.getBlock()) && !block.isReplaceable(iblockstate, (BlockItemUseContext) context)) {
                 blockpos = pos.offset(facing);
-                iblockstate = worldIn.getBlockState(blockpos);
+                iblockstate = world.getBlockState(blockpos);
                 block = iblockstate.getBlock();
             }
 
-            if (block == this.block) {
-                int i = iblockstate.getValue(BlockSnowLayer.LAYERS);
+            if (block == this.getBlock()) {
+                int i = iblockstate.get(BlockSnowLayer.LAYERS);
 
                 if (i < 8) {
-                    IBlockState iblockstate1 = iblockstate.withProperty(BlockSnowLayer.LAYERS, i + 1);
-                    AxisAlignedBB axisalignedbb = iblockstate1.getCollisionBoundingBox(worldIn, blockpos);
+                    IBlockState iblockstate1 = iblockstate.with(BlockSnowLayer.LAYERS, i + 1);
+                    VoxelShape shape = iblockstate1.getCollisionShape(world, blockpos);
 
-                    if (axisalignedbb != Block.NULL_AABB && worldIn.checkNoEntityCollision(axisalignedbb.offset(blockpos)) && worldIn.setBlockState(blockpos, iblockstate1, 10)) {
-                        SoundType soundtype = this.block.getSoundType(iblockstate1, worldIn, pos, player);
-                        worldIn.playSound(player, blockpos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                    if (shape != VoxelShapes.empty() && world.checkNoEntityCollision(iblockstate1, blockpos) && world.setBlockState(blockpos, iblockstate1, 10)) {
+                        SoundType soundtype = this.getBlock().getSoundType(iblockstate1, world, pos, player);
+                        world.playSound(player, blockpos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
                         if (player instanceof EntityPlayerMP) {
                             CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, itemstack);
@@ -58,7 +63,7 @@ public class ItemSlate extends ItemBlock {
                 }
             }
 
-            return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+            return super.onItemUse(context);
         } else {
             return EnumActionResult.FAIL;
         }
