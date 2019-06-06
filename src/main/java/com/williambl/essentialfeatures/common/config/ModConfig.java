@@ -5,24 +5,16 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class ModConfig {
 
-    public static final String NAME = "MAIN_CONFIG";
-    public static final ForgeConfigSpec spec;
-    public static final ModConfig INSTANCE;
+    public static final ForgeConfigSpec SPEC;
+    public static final MainConfig INSTANCE;
 
     static {
-        final Pair<ModConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ModConfig::new);
-        spec = specPair.getRight();
+        final Pair<MainConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(MainConfig::new);
+        SPEC = specPair.getRight();
         INSTANCE = specPair.getLeft();
-
     }
 
-    ModConfig(ForgeConfigSpec.Builder builder) {
-        builder.configure(General::new);
-        builder.pop();
-    }
-
-
-    public static class General {
+    public static class MainConfig {
         public final ForgeConfigSpec.ConfigValue<Boolean> villagers;
         public final ForgeConfigSpec.ConfigValue<Boolean> smelting;
         public final ForgeConfigSpec.ConfigValue<Boolean> blocks;
@@ -32,8 +24,8 @@ public class ModConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockRange;
         public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockDelay;
 
-        public General(ForgeConfigSpec.Builder builder) {
-            builder.push("General");
+        public MainConfig(ForgeConfigSpec.Builder builder) {
+            builder.push("MainConfig");
             villagers = builder
                     .comment("Add mechanic villagers [false/true|default:true]")
                     .translation("config.villagers.enable")
