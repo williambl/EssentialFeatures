@@ -12,7 +12,7 @@ import java.util.List;
 
 public class TileEntityViewedBlock extends TileEntity implements ITickable {
 
-    int radius = ModConfig.viewedRange;
+    int radius = ModConfig.INSTANCE.viewedBlockRange.get();
     boolean wasLookingLastTime;
 
     int tickCounter = 0;
@@ -29,7 +29,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
 
         tickCounter++;
 
-        if (tickCounter != ModConfig.viewedDelay)
+        if (tickCounter != ModConfig.INSTANCE.viewedBlockDelay.get())
             return;
         tickCounter = 0;
 
