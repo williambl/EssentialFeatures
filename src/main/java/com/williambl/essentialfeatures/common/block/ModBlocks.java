@@ -1,11 +1,7 @@
 package com.williambl.essentialfeatures.common.block;
 
-import com.williambl.essentialfeatures.common.config.ModConfig;
 import com.williambl.essentialfeatures.common.item.ItemBlockDoor;
 import com.williambl.essentialfeatures.common.item.ItemSlate;
-import com.williambl.essentialfeatures.common.tileentity.TileEntityBlockPlacer;
-import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
-import com.williambl.essentialfeatures.common.tileentity.TileEntityViewedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -119,8 +115,6 @@ public class ModBlocks {
          */
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
-            if (!ModConfig.blocks)
-                return;
             final IForgeRegistry<Block> registry = event.getRegistry();
 
             event.getRegistry().registerAll(
@@ -155,9 +149,6 @@ public class ModBlocks {
          */
         @SubscribeEvent
         public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
-            if (!ModConfig.blocks)
-                return;
-
             final ItemBlock[] items = {
                     new ItemBlock(VIEWED_BLOCK, new Item.Properties()),
                     new ItemBlock(SMOOTH_GLOWSTONE, new Item.Properties()),
