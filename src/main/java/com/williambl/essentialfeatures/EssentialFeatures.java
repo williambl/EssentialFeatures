@@ -4,8 +4,6 @@ import com.williambl.essentialfeatures.client.ClientEventHandler;
 import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.CommonEventHandler;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
-import com.williambl.essentialfeatures.common.config.ModConfig;
-import com.williambl.essentialfeatures.common.craft.ModRecipes;
 import com.williambl.essentialfeatures.common.entity.ModEntities;
 import com.williambl.essentialfeatures.common.item.ModItems;
 import com.williambl.essentialfeatures.common.world.ModWorld;
@@ -24,14 +22,9 @@ public class EssentialFeatures {
     @SubscribeEvent
     public void setup(final FMLCommonSetupEvent event) {
         ModSound.addSounds();
-        if (ModConfig.blocks)
-            ModBlocks.addBlocks();
-        if (ModConfig.items)
-            ModItems.addItems();
-        ModEntities.addEntities();
+        ModBlocks.addBlocks();
+        ModItems.addItems();
         ModWorld.registerWorldGenerators();
-        if (ModConfig.smelting)
-            ModRecipes.addRecipes();
         ModEntities.initRenderers();
 
         CommonEventHandler handler = new CommonEventHandler();
