@@ -17,16 +17,13 @@ public class MovingSoundGeneric extends MovingSound {
         this.volume = 1.0F;
     }
 
-    /**
-     * Like the old updateEntity(), except more generic.
-     */
-    public void update() {
-        if (this.entity.isDead) {
+    public void tick() {
+        if (!this.entity.isAlive()) {
             this.donePlaying = true;
         } else {
-            this.xPosF = (float) this.entity.posX;
-            this.yPosF = (float) this.entity.posY;
-            this.zPosF = (float) this.entity.posZ;
+            this.x = (float) this.entity.posX;
+            this.y = (float) this.entity.posY;
+            this.z = (float) this.entity.posZ;
         }
     }
 }
