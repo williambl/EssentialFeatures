@@ -1,20 +1,17 @@
 package com.williambl.essentialfeatures.client;
 
-import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.client.music.CustomMusic;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ClientEventHandler {
@@ -41,7 +38,7 @@ public class ClientEventHandler {
             String output;
 
             while ((output = bufferedReader.readLine()) != null)
-                event.player.sendMessage(new TextComponentString(output));
+                event.getPlayer().sendMessage(new TextComponentString(output));
             bufferedReader.close();
 
         } catch (IOException e) {
