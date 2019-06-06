@@ -16,7 +16,7 @@ public class ModLootTables {
     public static LootEntry entry = new LootEntryItem(
             ModItems.PORTABLE_JUKEBOX, 20, 50, new LootFunction[0], new LootCondition[0], "essentialfeatures:loot_portable_jukebox");
 
-    @Mod.EventBusSubscriber
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
         @SubscribeEvent
         public static void onLootTableLoad(LootTableLoadEvent event) {

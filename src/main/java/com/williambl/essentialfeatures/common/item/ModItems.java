@@ -83,7 +83,7 @@ public class ModItems {
         discs.forEach((name, record) -> PORTABLE_JUKEBOXES.add(new ItemPortableJukebox("portable_jukebox_" + name, ItemGroup.TOOLS, record)));
     }
 
-    @Mod.EventBusSubscriber
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
         public static final Set<Item> ITEMS = new HashSet<>();
 

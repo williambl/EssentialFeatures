@@ -10,7 +10,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ObjectHolder;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 @ObjectHolder(EssentialFeatures.MODID)
 public class ModEntities {
 

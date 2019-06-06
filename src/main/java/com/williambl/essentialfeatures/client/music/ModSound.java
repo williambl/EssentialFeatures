@@ -28,7 +28,7 @@ public class ModSound {
         RECORD_LOFI.setRegistryName(lofilocation);
     }
 
-    @Mod.EventBusSubscriber
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
         @SubscribeEvent
         public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {

@@ -103,7 +103,7 @@ public class ModBlocks {
         }
     }
 
-    @Mod.EventBusSubscriber
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
 
         public static final Set<ItemBlock> ITEM_BLOCKS = new HashSet<>();
