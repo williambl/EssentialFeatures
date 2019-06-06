@@ -2,25 +2,18 @@ package com.williambl.essentialfeatures.common.item;
 
 import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
-import com.williambl.essentialfeatures.common.config.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraft.item.*;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
@@ -61,7 +54,7 @@ public class ModItems {
         PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
         SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
         COOKED_NETTLES = new ItemCookedNettles("cooked_nettles");
-        REDSTONE_ROD_SWORD = new ItemRedstoneRodSword("redstone_rod_sword", Item.ToolMaterial.GOLD);
+        REDSTONE_ROD_SWORD = new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD);
         REDSTONE_ROD_ARROW = new ItemRedstoneRodArrow("redstone_rod_arrow");
 
         addPortableJukeboxes();
@@ -101,9 +94,6 @@ public class ModItems {
          */
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
-            if (!ModConfig.items)
-                return;
-
             final Item[] items = {
                     CEREAL,
                     IRON_CEREAL,
@@ -133,41 +123,13 @@ public class ModItems {
             }
         }
 
-        /**
-         * Register this mod's Item Models.
-         *
-         * @param event The event
-         */
-        @SubscribeEvent
-        public static void registerItemBlockModels(ModelRegistryEvent event) {
-            if (!ModConfig.items)
-                return;
-
-            CEREAL.initModel();
-            IRON_CEREAL.initModel();
-            DIRTY_CLAY.initModel();
-            SAND_CLAY_MIXTURE.initModel();
-            DIRTY_BRICK.initModel();
-            CREAM_BRICK.initModel();
-            RECORD_SCARLET.initModel();
-            RECORD_LOFI.initModel();
-            PORTABLE_NOTE_BLOCK.initModel();
-            SHARPENED_ARROW.initModel();
-            COOKED_NETTLES.initModel();
-            REDSTONE_ROD_SWORD.initModel();
-            REDSTONE_ROD_ARROW.initModel();
-
-            PORTABLE_JUKEBOX.initModel();
-            PORTABLE_JUKEBOXES.forEach(EFItem::initModel);
-        }
-
-        @SideOnly(Side.CLIENT)
+        @OnlyIn(Dist.CLIENT)
         public static void registerItemColors() {
-            ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-            BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
-            itemColors.registerItemColorHandler((stack, tintIndex) -> {
-                IBlockState iblockstate = ((ItemBlock) stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
-                return blockColors.colorMultiplier(iblockstate, null, null, tintIndex);
+            ItemColors itemColors = Minecraft.getInstance().getItemColors();
+            BlockColors blockColors = Minecraft.getInstance().getBlockColors();
+            itemColors.register((stack, tintIndex) -> {
+                IBlockState iblockstate = ((ItemBlock) stack.getItem()).getBlock().getDefaultState();
+                return blockColors.getColor(iblockstate, null, null, tintIndex);
             }, ModBlocks.NETTLES);
         }
 
