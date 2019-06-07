@@ -75,7 +75,7 @@ public class ModBlocks {
     @ObjectHolder("packed_gravel")
     public static EFBlock PACKED_GRAVEL;
 
-    @ObjectHolder("nettles")
+    @ObjectHolder("stinging_nettles")
     public static BlockNettles NETTLES;
 
     @ObjectHolder("nether_brick_door")
@@ -118,10 +118,10 @@ public class ModBlocks {
                     new BlockSpike("spike_block", Material.IRON, 1, 1),
                     new BlockBlockPlacer("block_placer", Material.ROCK, 5, 5),
 
-                    new EFBlock("decorative_stone", Material.ROCK, SoundType.STONE, 3, 3),
-                    new EFBlock("decorative_andesite", Material.ROCK, SoundType.STONE, 3, 3),
-                    new EFBlock("decorative_diorite", Material.ROCK, SoundType.STONE, 3, 3),
-                    new EFBlock("decorative_granite", Material.ROCK, SoundType.STONE, 3, 3),
+                    new EFBlock("carved_stone", Material.ROCK, SoundType.STONE, 3, 3),
+                    new EFBlock("carved_andesite", Material.ROCK, SoundType.STONE, 3, 3),
+                    new EFBlock("carved_diorite", Material.ROCK, SoundType.STONE, 3, 3),
+                    new EFBlock("carved_granite", Material.ROCK, SoundType.STONE, 3, 3),
 
                     new EFBlock("cream_bricks", Material.ROCK, SoundType.STONE, 3, 3),
                     new EFBlock("dirty_bricks", Material.ROCK, SoundType.STONE, 3, 3),
