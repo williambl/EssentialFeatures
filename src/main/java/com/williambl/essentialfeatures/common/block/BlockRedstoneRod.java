@@ -27,7 +27,7 @@ import java.util.Random;
 public class BlockRedstoneRod extends EFBlock {
 
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
-    public static final DirectionProperty FACING = DirectionProperty.create("facing");
+    public static final DirectionProperty FACING = DirectionProperty.create("facing", EnumFacing.values());
 
     protected static final VoxelShape END_ROD_VERTICAL_AABB = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
     protected static final VoxelShape END_ROD_NS_AABB = Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D);
@@ -144,6 +144,7 @@ public class BlockRedstoneRod extends EFBlock {
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, IBlockState> builder) {
+        builder.add(POWERED);
         builder.add(FACING);
     }
 
