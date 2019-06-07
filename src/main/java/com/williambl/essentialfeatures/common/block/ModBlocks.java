@@ -105,7 +105,7 @@ public class ModBlocks {
 
             for (int i = 0; i < 16; i++) {
                 STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
-                STAINED_LAMPS[i] = new BlockStainedLamp(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
+                STAINED_LAMPS[i] = new BlockStainedLamp(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_lamp", i);
             }
 
             event.getRegistry().registerAll(
