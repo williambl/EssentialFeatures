@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -156,32 +157,32 @@ public class ModBlocks {
         @SubscribeEvent
         public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
             final ItemBlock[] items = {
-                    new ItemBlock(VIEWED_BLOCK, new Item.Properties()),
-                    new ItemBlock(SMOOTH_GLOWSTONE, new Item.Properties()),
-                    new ItemBlock(POLISHED_GLOWSTONE, new Item.Properties()),
-                    new ItemBlock(SNOW_BRICK, new Item.Properties()),
-                    new ItemBlock(BLOCK_BREAKER, new Item.Properties()),
-                    new ItemBlock(CRYING_OBSIDIAN, new Item.Properties()),
-                    new ItemBlock(SPIKE_BLOCK, new Item.Properties()),
-                    new ItemBlock(BLOCK_PLACER, new Item.Properties()),
-                    new ItemBlock(CARVED_STONE, new Item.Properties()),
-                    new ItemBlock(CARVED_ANDESITE, new Item.Properties()),
-                    new ItemBlock(CARVED_DIORITE, new Item.Properties()),
-                    new ItemBlock(CARVED_GRANITE, new Item.Properties()),
-                    new ItemBlock(CREAM_BRICKS, new Item.Properties()),
-                    new ItemBlock(DIRTY_BRICKS, new Item.Properties()),
-                    new ItemBlock(LONG_BRICKS, new Item.Properties()),
-                    new ItemBlock(BLUE_BRICKS, new Item.Properties()),
-                    new ItemBlock(MIXED_BRICKS, new Item.Properties()),
+                    new ItemBlock(VIEWED_BLOCK, new Item.Properties().group(ItemGroup.REDSTONE)),
+                    new ItemBlock(SMOOTH_GLOWSTONE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(POLISHED_GLOWSTONE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(SNOW_BRICK, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(BLOCK_BREAKER, new Item.Properties().group(ItemGroup.REDSTONE)),
+                    new ItemBlock(CRYING_OBSIDIAN, new Item.Properties().group(ItemGroup.DECORATIONS)),
+                    new ItemBlock(SPIKE_BLOCK, new Item.Properties().group(ItemGroup.DECORATIONS)),
+                    new ItemBlock(BLOCK_PLACER, new Item.Properties().group(ItemGroup.REDSTONE)),
+                    new ItemBlock(CARVED_STONE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(CARVED_ANDESITE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(CARVED_DIORITE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(CARVED_GRANITE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(CREAM_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(DIRTY_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(LONG_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(BLUE_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(MIXED_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemSlate(SLATE),
-                    new ItemBlock(BLAZE_BLOCK, new Item.Properties()),
-                    new ItemBlock(PACKED_SAND, new Item.Properties()),
-                    new ItemBlock(PACKED_RED_SAND, new Item.Properties()),
-                    new ItemBlock(PACKED_GRAVEL, new Item.Properties()),
-                    new ItemBlock(NETTLES, new Item.Properties()),
+                    new ItemBlock(BLAZE_BLOCK, new Item.Properties().group(ItemGroup.DECORATIONS)),
+                    new ItemBlock(PACKED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(PACKED_RED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(PACKED_GRAVEL, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
+                    new ItemBlock(NETTLES, new Item.Properties().group(ItemGroup.DECORATIONS)),
                     new ItemBlockDoor(NETHER_BRICK_DOOR),
                     new ItemBlockDoor(PURPUR_DOOR),
-                    new ItemBlock(REDSTONE_ROD, new Item.Properties())
+                    new ItemBlock(REDSTONE_ROD, new Item.Properties().group(ItemGroup.REDSTONE))
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -192,13 +193,13 @@ public class ModBlocks {
             }
 
             for (BlockStainedRedstoneTorch torch : STAINED_REDSTONE_TORCHES) {
-                final ItemBlock item = new ItemBlock(torch, new Item.Properties());
+                final ItemBlock item = new ItemBlock(torch, new Item.Properties().group(ItemGroup.REDSTONE));
                 registry.register(item.setRegistryName(torch.getRegistryName()));
                 ITEM_BLOCKS.add(item);
             }
 
             for (BlockStainedLamp lamp : STAINED_LAMPS) {
-                final ItemBlock item = new ItemBlock(lamp, new Item.Properties());
+                final ItemBlock item = new ItemBlock(lamp, new Item.Properties().group(ItemGroup.REDSTONE));
                 registry.register(item.setRegistryName(lamp.getRegistryName()));
                 ITEM_BLOCKS.add(item);
             }
