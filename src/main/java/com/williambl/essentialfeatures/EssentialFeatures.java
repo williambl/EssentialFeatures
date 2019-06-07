@@ -1,7 +1,6 @@
 package com.williambl.essentialfeatures;
 
 import com.williambl.essentialfeatures.client.ClientEventHandler;
-import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.CommonEventHandler;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.entity.ModEntities;
@@ -21,7 +20,6 @@ public class EssentialFeatures {
 
     @SubscribeEvent
     public void setup(final FMLCommonSetupEvent event) {
-        ModSound.addSounds();
         ModWorld.registerWorldGenerators();
         ModEntities.initRenderers();
 
