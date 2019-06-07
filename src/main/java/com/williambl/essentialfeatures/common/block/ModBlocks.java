@@ -86,17 +86,8 @@ public class ModBlocks {
     @ObjectHolder("redstone_rod")
     public static BlockRedstoneRod REDSTONE_ROD;
 
-    public static BlockStainedRedstoneTorch[] STAINED_REDSTONE_TORCHES;
-    public static BlockStainedLamp[] STAINED_LAMPS;
-
-    public static void addBlocks() {
-        STAINED_LAMPS = new BlockStainedLamp[16];
-        STAINED_REDSTONE_TORCHES = new BlockStainedRedstoneTorch[16];
-        for (int i = 0; i < 16; i++) {
-            STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
-            STAINED_LAMPS[i] = new BlockStainedLamp(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
-        }
-    }
+    public static BlockStainedRedstoneTorch[] STAINED_REDSTONE_TORCHES = new BlockStainedRedstoneTorch[16];
+    public static BlockStainedLamp[] STAINED_LAMPS = new BlockStainedLamp[16];
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
@@ -111,6 +102,11 @@ public class ModBlocks {
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
             final IForgeRegistry<Block> registry = event.getRegistry();
+
+            for (int i = 0; i < 16; i++) {
+                STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
+                STAINED_LAMPS[i] = new BlockStainedLamp(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
+            }
 
             event.getRegistry().registerAll(
                     new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5),
