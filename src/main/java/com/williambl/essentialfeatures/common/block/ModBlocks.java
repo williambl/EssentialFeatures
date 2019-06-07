@@ -44,13 +44,13 @@ public class ModBlocks {
     public static BlockBlockPlacer BLOCK_PLACER;
 
     @ObjectHolder("carved_stone")
-    public static EFBlock DECORATIVE_STONE;
+    public static EFBlock CARVED_STONE;
     @ObjectHolder("carved_andesite")
-    public static EFBlock DECORATIVE_ANDESITE;
+    public static EFBlock CARVED_ANDESITE;
     @ObjectHolder("carved_diorite")
-    public static EFBlock DECORATIVE_DIORITE;
+    public static EFBlock CARVED_DIORITE;
     @ObjectHolder("carved_granite")
-    public static EFBlock DECORATIVE_GRANITE;
+    public static EFBlock CARVED_GRANITE;
 
     @ObjectHolder("cream_bricks")
     public static EFBlock CREAM_BRICKS;
@@ -168,6 +168,15 @@ public class ModBlocks {
                     new ItemBlock(CRYING_OBSIDIAN, new Item.Properties()),
                     new ItemBlock(SPIKE_BLOCK, new Item.Properties()),
                     new ItemBlock(BLOCK_PLACER, new Item.Properties()),
+                    new ItemBlock(CARVED_STONE, new Item.Properties()),
+                    new ItemBlock(CARVED_ANDESITE, new Item.Properties()),
+                    new ItemBlock(CARVED_DIORITE, new Item.Properties()),
+                    new ItemBlock(CARVED_GRANITE, new Item.Properties()),
+                    new ItemBlock(CREAM_BRICKS, new Item.Properties()),
+                    new ItemBlock(DIRTY_BRICKS, new Item.Properties()),
+                    new ItemBlock(LONG_BRICKS, new Item.Properties()),
+                    new ItemBlock(BLUE_BRICKS, new Item.Properties()),
+                    new ItemBlock(MIXED_BRICKS, new Item.Properties()),
                     new ItemSlate(SLATE),
                     new ItemBlock(BLAZE_BLOCK, new Item.Properties()),
                     new ItemBlock(PACKED_SAND, new Item.Properties()),
