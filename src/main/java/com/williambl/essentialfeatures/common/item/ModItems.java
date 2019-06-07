@@ -1,5 +1,6 @@
 package com.williambl.essentialfeatures.common.item;
 
+import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -15,50 +16,48 @@ import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+@ObjectHolder(EssentialFeatures.MODID)
 public class ModItems {
 
+    @ObjectHolder("cereal")
     public static ItemCereal CEREAL;
+    @ObjectHolder("iron_cereal")
     public static ItemCereal IRON_CEREAL;
+    @ObjectHolder("dirty_clay")
     public static EFItem DIRTY_CLAY;
+    @ObjectHolder("dirty_brick")
     public static EFItem DIRTY_BRICK;
+    @ObjectHolder("sand_clay_mixture")
     public static EFItem SAND_CLAY_MIXTURE;
+    @ObjectHolder("cream_brick")
     public static EFItem CREAM_BRICK;
+    @ObjectHolder("scarlet")
     public static ItemEFRecord RECORD_SCARLET;
+    @ObjectHolder("lo-fi")
     public static ItemEFRecord RECORD_LOFI;
+    @ObjectHolder("portable_note_block")
     public static ItemPortableNoteBlock PORTABLE_NOTE_BLOCK;
+    @ObjectHolder("sharpened_arrow")
     public static ItemSharpenedArrow SHARPENED_ARROW;
 
+    @ObjectHolder("portable_jukebox")
     public static ItemPortableJukebox PORTABLE_JUKEBOX;
     public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<>();
 
+    @ObjectHolder("cooked_nettles")
     public static ItemCookedNettles COOKED_NETTLES;
 
+    @ObjectHolder("redstone_rod_sword")
     public static ItemRedstoneRodSword REDSTONE_ROD_SWORD;
+    @ObjectHolder("redstone_rod_arrow")
     public static ItemRedstoneRodArrow REDSTONE_ROD_ARROW;
-
-    public static void addItems() {
-        CEREAL = new ItemCereal("cereal", 1, 6, false);
-        IRON_CEREAL = new ItemCereal("iron_cereal", 3, 6, true);
-        DIRTY_CLAY = new EFItem("dirty_clay", ItemGroup.MATERIALS);
-        SAND_CLAY_MIXTURE = new EFItem("sand_clay_mixture", ItemGroup.MATERIALS);
-        DIRTY_BRICK = new EFItem("dirty_brick", ItemGroup.MATERIALS);
-        CREAM_BRICK = new EFItem("cream_brick", ItemGroup.MATERIALS);
-        RECORD_SCARLET = new ItemEFRecord("scarlet", 1, ModSound.RECORD_SCARLET);
-        RECORD_LOFI = new ItemEFRecord("lo-fi", 2, ModSound.RECORD_LOFI);
-        PORTABLE_NOTE_BLOCK = new ItemPortableNoteBlock("portable_note_block");
-        SHARPENED_ARROW = new ItemSharpenedArrow("sharpened_arrow");
-        COOKED_NETTLES = new ItemCookedNettles("cooked_nettles");
-        REDSTONE_ROD_SWORD = new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD);
-        REDSTONE_ROD_ARROW = new ItemRedstoneRodArrow("redstone_rod_arrow");
-
-        addPortableJukeboxes();
-    }
 
     private static void addPortableJukeboxes() {
         PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", ItemGroup.TOOLS, null);
@@ -94,21 +93,21 @@ public class ModItems {
          */
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
+            addPortableJukeboxes();
             final Item[] items = {
-                    CEREAL,
-                    IRON_CEREAL,
-                    DIRTY_CLAY,
-                    SAND_CLAY_MIXTURE,
-                    DIRTY_BRICK,
-                    CREAM_BRICK,
-                    RECORD_SCARLET,
-                    RECORD_LOFI,
-                    PORTABLE_JUKEBOX,
-                    PORTABLE_NOTE_BLOCK,
-                    SHARPENED_ARROW,
-                    COOKED_NETTLES,
-                    REDSTONE_ROD_SWORD,
-                    REDSTONE_ROD_ARROW
+                    new ItemCereal("cereal", 1, 6, false),
+                    new ItemCereal("iron_cereal", 3, 6, true),
+                    new EFItem("dirty_clay", ItemGroup.MATERIALS),
+                    new EFItem("sand_clay_mixture", ItemGroup.MATERIALS),
+                    new EFItem("dirty_brick", ItemGroup.MATERIALS),
+                    new EFItem("cream_brick", ItemGroup.MATERIALS),
+                    new ItemEFRecord("scarlet", 1, ModSound.RECORD_SCARLET),
+                    new ItemEFRecord("lo-fi", 2, ModSound.RECORD_LOFI),
+                    new ItemPortableNoteBlock("portable_note_block"),
+                    new ItemSharpenedArrow("sharpened_arrow"),
+                    new ItemCookedNettles("cooked_nettles"),
+                    new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD),
+                    new ItemRedstoneRodArrow("redstone_rod_arrow")
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();

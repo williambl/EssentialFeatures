@@ -22,7 +22,6 @@ public class EssentialFeatures {
     @SubscribeEvent
     public void setup(final FMLCommonSetupEvent event) {
         ModSound.addSounds();
-        ModItems.addItems();
         ModWorld.registerWorldGenerators();
         ModEntities.initRenderers();
 
