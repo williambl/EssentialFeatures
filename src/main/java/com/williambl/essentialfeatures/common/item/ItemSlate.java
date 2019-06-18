@@ -36,7 +36,7 @@ public class ItemSlate extends ItemBlock {
             Block block = iblockstate.getBlock();
             BlockPos blockpos = pos;
 
-            if ((facing != EnumFacing.UP || block != this.getBlock()) && !block.isReplaceable(iblockstate, (BlockItemUseContext) context)) {
+            if ((facing != EnumFacing.UP || block != this.getBlock()) && !block.isReplaceable(iblockstate, new BlockItemUseContext(context))) {
                 blockpos = pos.offset(facing);
                 iblockstate = world.getBlockState(blockpos);
                 block = iblockstate.getBlock();
