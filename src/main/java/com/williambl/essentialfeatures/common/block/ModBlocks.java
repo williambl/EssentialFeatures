@@ -1,7 +1,6 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.EssentialFeatures;
-import com.williambl.essentialfeatures.common.item.ItemBlockDoor;
 import com.williambl.essentialfeatures.common.item.ItemSlate;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -10,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockTall;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
@@ -180,8 +180,8 @@ public class ModBlocks {
                     new ItemBlock(PACKED_RED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemBlock(PACKED_GRAVEL, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemBlock(NETTLES, new Item.Properties().group(ItemGroup.DECORATIONS)),
-                    new ItemBlockDoor(NETHER_BRICK_DOOR),
-                    new ItemBlockDoor(PURPUR_DOOR),
+                    new ItemBlockTall(NETHER_BRICK_DOOR, new Item.Properties().group(ItemGroup.REDSTONE)),
+                    new ItemBlockTall(PURPUR_DOOR, new Item.Properties().group(ItemGroup.REDSTONE)),
                     new ItemBlock(REDSTONE_ROD, new Item.Properties().group(ItemGroup.REDSTONE))
             };
 
