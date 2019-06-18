@@ -111,8 +111,8 @@ public class ModBlocks {
 
             event.getRegistry().registerAll(
                     new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5),
-                    new EFBlock("smooth_glowstone", Material.GLASS, SoundType.GLASS, 0.5f, 2, 1),
-                    new EFBlock("polished_glowstone", Material.GLASS, SoundType.GLASS, 1, 2, 1),
+                    new EFBlock("smooth_glowstone", Material.GLASS, SoundType.GLASS, 0.5f, 2, 15),
+                    new EFBlock("polished_glowstone", Material.GLASS, SoundType.GLASS, 1, 2, 15),
                     new EFBlock("snow_brick", Material.CRAFTED_SNOW, SoundType.SNOW, 0.5f, 1),
                     new BlockBlockBreaker("block_breaker", Material.PISTON, 3, 3),
                     new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100),
