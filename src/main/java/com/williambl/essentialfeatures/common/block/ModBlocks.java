@@ -1,7 +1,6 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.EssentialFeatures;
-import com.williambl.essentialfeatures.common.item.ItemSlate;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -174,7 +173,7 @@ public class ModBlocks {
                     new ItemBlock(LONG_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemBlock(BLUE_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemBlock(MIXED_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
-                    new ItemSlate(SLATE),
+                    new ItemBlock(SLATE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemBlock(BLAZE_BLOCK, new Item.Properties().group(ItemGroup.DECORATIONS)),
                     new ItemBlock(PACKED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new ItemBlock(PACKED_RED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
