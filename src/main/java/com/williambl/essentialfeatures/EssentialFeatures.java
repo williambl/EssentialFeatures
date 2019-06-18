@@ -9,6 +9,7 @@ import com.williambl.essentialfeatures.common.world.ModWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
@@ -25,6 +26,16 @@ public class EssentialFeatures {
 
         CommonEventHandler handler = new CommonEventHandler();
         MinecraftForge.EVENT_BUS.register(handler);
+    }
+
+    @SubscribeEvent
+    public void modConfig(ModConfig.ModConfigEvent event)
+    {
+        ModConfig config = event.getConfig();
+        if (config.getSpec() == com.williambl.essentialfeatures.common.config.ModConfig.CLIENT_SPEC)
+            com.williambl.essentialfeatures.common.config.ModConfig.refreshClient();
+        else if (config.getSpec() == com.williambl.essentialfeatures.common.config.ModConfig.SERVER_SPEC)
+            com.williambl.essentialfeatures.common.config.ModConfig.refreshServer();
     }
 
     @SubscribeEvent

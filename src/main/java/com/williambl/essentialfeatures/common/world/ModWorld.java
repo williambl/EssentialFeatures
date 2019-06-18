@@ -16,13 +16,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModWorld {
 
     public static void registerWorldGenerators() {
-        if (ModConfig.INSTANCE.slate.get()) {
+        if (ModConfig.generateSlate) {
             for (Biome biome : new Biome[] {Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DARK_FOREST_HILLS}) {
                 biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createCompositeFeature(Feature.BUSH, new BushConfig(ModBlocks.NETTLES), Biome.TWICE_SURFACE_WITH_CHANCE, new ChanceConfig(2)));
             }
         }
 
-        if (ModConfig.INSTANCE.nettles.get()) {
+        if (ModConfig.generateNettles) {
             ForgeRegistries.BIOMES.forEach(
                     biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createCompositeFeature(Feature.MINABLE, new MinableConfig(MinableConfig.IS_ROCK, ModBlocks.SLATE.getDefaultState().with(BlockSlate.LAYERS, 8), 33), Biome.COUNT_RANGE, new CountRangeConfig(10, 40, 0, 80)))
             );

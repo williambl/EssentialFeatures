@@ -5,27 +5,50 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class ModConfig {
 
-    public static final ForgeConfigSpec SPEC;
-    public static final MainConfig INSTANCE;
+    public static final ServerConfig SERVER;
+    public static final ForgeConfigSpec SERVER_SPEC;
 
-    static {
-        final Pair<MainConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(MainConfig::new);
-        SPEC = specPair.getRight();
-        INSTANCE = specPair.getLeft();
+    static
+    {
+        final Pair<ServerConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
+        SERVER_SPEC = specPair.getRight();
+        SERVER = specPair.getLeft();
     }
 
-    public static class MainConfig {
+    public static final ClientConfig CLIENT;
+    public static final ForgeConfigSpec CLIENT_SPEC;
+
+    static
+    {
+        final Pair<ClientConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
+        CLIENT_SPEC = specPair.getRight();
+        CLIENT = specPair.getLeft();
+    }
+
+    public static boolean addVillagers = true;
+    public static boolean addSmelting = false;
+    public static boolean addBlocks = true;
+    public static boolean addItems = true;
+    public static boolean generateSlate = true;
+    public static boolean generateNettles = true;
+
+    public static int viewedBlockDelay = 2;
+    public static int viewedBlockRange = 50;
+
+    public static class ServerConfig
+    {
         public final ForgeConfigSpec.ConfigValue<Boolean> villagers;
         public final ForgeConfigSpec.ConfigValue<Boolean> smelting;
         public final ForgeConfigSpec.ConfigValue<Boolean> blocks;
+        public final ForgeConfigSpec.ConfigValue<Boolean> items;
         public final ForgeConfigSpec.ConfigValue<Boolean> slate;
         public final ForgeConfigSpec.ConfigValue<Boolean> nettles;
-        public final ForgeConfigSpec.ConfigValue<Boolean> items;
         public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockRange;
         public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockDelay;
 
-        public MainConfig(ForgeConfigSpec.Builder builder) {
-            builder.push("MainConfig");
+        ServerConfig(ForgeConfigSpec.Builder builder)
+        {
+            builder.push("general");
             villagers = builder
                     .comment("Add mechanic villagers [false/true|default:true]")
                     .translation("config.villagers.enable")
@@ -38,6 +61,10 @@ public class ModConfig {
                     .comment("Add blocks [false/true|default:true]")
                     .translation("config.blocks.enable")
                     .define("blocks", true);
+            items = builder
+                    .comment("Add items [false/true|default:true]")
+                    .translation("config.items.enable")
+                    .define("items", true);
             slate = builder
                     .comment("Generate slate [false/true|default:true]")
                     .translation("config.slate.enable")
@@ -46,10 +73,6 @@ public class ModConfig {
                     .comment("Generate nettles [false/true|default:true]")
                     .translation("config.nettles.enable")
                     .define("nettles", true);
-            items = builder
-                    .comment("Add items [false/true|default:true]")
-                    .translation("config.items.enable")
-                    .define("items", true);
             viewedBlockDelay = builder
                     .comment("Ticks between viewed block checks [0..20|default:2]")
                     .translation("config.viewed_block.delay")
@@ -60,7 +83,29 @@ public class ModConfig {
                     .defineInRange("viewed_block_range", 50, 0, 64);
             builder.pop();
         }
-
     }
 
+    public static class ClientConfig
+    {
+
+        ClientConfig(ForgeConfigSpec.Builder builder)
+        {
+        }
+    }
+
+    public static void refreshClient()
+    {
+    }
+
+    public static void refreshServer()
+    {
+        addVillagers = SERVER.villagers.get();
+        addSmelting = SERVER.smelting.get();
+        addItems = SERVER.items.get();
+        addBlocks = SERVER.blocks.get();
+        generateSlate = SERVER.slate.get();
+        generateNettles = SERVER.nettles.get();
+        viewedBlockDelay = SERVER.viewedBlockDelay.get();
+        viewedBlockRange = SERVER.viewedBlockRange.get();
+    }
 }
