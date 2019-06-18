@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "essentialfeatures:items/record_lo-fi"
+    "layer0": "essentialfeatures:items/record_lo_fi"
   },
   "display": {
     "ground": {

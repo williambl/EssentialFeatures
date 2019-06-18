@@ -102,7 +102,7 @@ public class ModItems {
                     new EFItem("dirty_brick", ItemGroup.MATERIALS),
                     new EFItem("cream_brick", ItemGroup.MATERIALS),
                     new ItemEFRecord("scarlet", 1, ModSound.RECORD_SCARLET),
-                    new ItemEFRecord("lo-fi", 2, ModSound.RECORD_LOFI),
+                    new ItemEFRecord("lo_fi", 2, ModSound.RECORD_LOFI),
                     new ItemPortableNoteBlock("portable_note_block"),
                     new ItemSharpenedArrow("sharpened_arrow"),
                     new ItemCookedNettles("cooked_nettles"),
