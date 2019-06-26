@@ -3,13 +3,10 @@
   "defaults": {
     "model": "lit_redstone_torch",
     "textures": {
-      "torch": "essentialfeatures:blocks/magenta_stained_redstone_torch"
+      "torch": "essentialfeatures:block/magenta_stained_redstone_torch"
     }
   },
   "variants": {
-    "inventory": [
-      {}
-    ],
     "facing": {
       "up": {},
       "east": {

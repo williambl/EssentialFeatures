@@ -1,9 +1,9 @@
 package com.williambl.essentialfeatures.common.item;
 
 import com.google.common.collect.Lists;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Particles;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -23,14 +23,14 @@ public class ItemPortableNoteBlock extends EFItem {
     }
 
     @Override
-    public EnumActionResult onItemUse(ItemUseContext context) {
+    public ActionResultType onItemUse(ItemUseContext context) {
         World world = context.getWorld();
-        EntityPlayer player = context.getPlayer();
+        PlayerEntity player = context.getPlayer();
         BlockPos pos = context.getPos();
 
         world.playSound(null, player.getPosition(), getInstrumentFromBlock(world, pos), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(pos));
         world.spawnParticle(Particles.NOTE, player.posX, player.posY + player.getEyeHeight(), player.posZ, 1.0F, 0F, 0F);
-        return EnumActionResult.SUCCESS;
+        return ActionResultType.SUCCESS;
     }
 
     private float getPitchFromPosition(BlockPos pos) {
@@ -42,7 +42,7 @@ public class ItemPortableNoteBlock extends EFItem {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         worldIn.playSound(null, playerIn.getPosition(), getInstrument(0), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(playerIn.getPosition()));
         worldIn.spawnParticle(Particles.NOTE, playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ, 1.0F, 0F, 0F);
         return super.onItemRightClick(worldIn, playerIn, handIn);

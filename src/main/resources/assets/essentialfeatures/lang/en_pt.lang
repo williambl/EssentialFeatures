@@ -1,0 +1,121 @@
+{
+  "block.essentialfeatures.viewed_block": "Magic Block o’ Seeing",
+
+  "block.essentialfeatures.smooth_glowstone": "Smooth Brimstone",
+  "block.essentialfeatures.polished_glowstone": "Polished Glowstone",
+
+  "block.essentialfeatures.stained_lamp.white": "Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.orange": "Orange Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.magenta": "Magenta Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.light_blue": "Light Blue Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.yellow": "Yellow Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.lime": "Lime Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.pink": "Pink Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.gray": "Grey Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.silver": "Light Grey Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.cyan": "Cyan Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.purple": "Purple Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.blue": "Blue Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.brown": "Brown Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.green": "Green Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.red": "Red Magic Glow Block",
+  "block.essentialfeatures.stained_lamp.black": "Black Magic Glow Block",
+
+
+  "entity.Villager.mechanic": "Magic Circuit Maker",
+
+  "block.essentialfeatures.snow_brick": "Bricks O’ Snow",
+
+  "item.essentialfeatures.cereal": "Bowl o’ breakfarrrrst",
+  "item.essentialfeatures.iron_cereal": "Iron-Fortified Breakfaarrst",
+
+  "block.essentialfeatures.block_breaker": "Block Breakarrrrr",
+
+  "block.essentialfeatures.crying_obsidian": "Weepin’ Obsidiarrrrn",
+
+  "block.essentialfeatures.spike_block": "Spikeys",
+
+  "block.essentialfeatures.block_placer": "Block Placarrrrr",
+  "container.block_placer": "Block Placarrrrr",
+  "block.essentialfeatures.decorative_stone.carved_stone": "Caaaaarved Stone",
+  "block.essentialfeatures.decorative_stone.carved_granite": "Caaaaarved Granite",
+  "block.essentialfeatures.decorative_stone.carved_diorite": "Caaaaarved Diorite",
+  "block.essentialfeatures.decorative_stone.carved_andesite": "Caaaaarved Andesite",
+
+  "block.essentialfeatures.smooth_double_stone_slab": "Smooth Double Stone Slarrrrrrb",
+  "block.essentialfeatures.smooth_double_sandstone_slab": "Smooth Double Sandstone Slarrrrrrb",
+  "block.essentialfeatures.smooth_double_red_sandstone_slab": "Smooth Double Red Sandstone Slarrrrrrrb",
+
+  "block.essentialfeatures.brick_variant.cream_bricks": "Cream-Colaarred Bricks",
+  "block.essentialfeatures.brick_variant.dirty_bricks": "Bricks O’ Dirty",
+  "block.essentialfeatures.brick_variant.long_bricks": "Bricks O’ Rome",
+  "block.essentialfeatures.brick_variant.blue_bricks": "Blue-Colaarred Bricks",
+  "block.essentialfeatures.brick_variant.mixed_bricks": "Bricks O’ Many Types",
+
+  "item.essentialfeatures.dirty_clay": "Clay O’ Dirty",
+  "item.essentialfeatures.sand_clay_mixture": "Mixture O’ The Sea Bed",
+  "item.essentialfeatures.dirty_brick": "Brick O’ Dirty",
+  "item.essentialfeatures.cream_brick": "Cream-Colaarred Brick",
+
+  "item.essentialfeatures.scarlet": "Shanty",
+  "item.record.scarlet.desc": "Palmidence - scarlet",
+
+  "block.essentialfeatures.slate": "HorARRzontal Rock",
+
+  "item.essentialfeatures.lo-fi": "Music Disc",
+  "item.record.lo-fi.desc": "Palmidence - lo-fi",
+
+  "item.essentialfeatures.portable_jukebox": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_13": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_cat": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_blocks": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_chirp": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_far": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_mall": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_mellohi": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_stal": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_strad": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_ward": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_11": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_wait": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_scarlet": "PortARRble Music Player",
+  "item.essentialfeatures.portable_jukebox_lo-fi": "PortARRble Music Player",
+
+  "block.essentialfeatures.blaze_block": "Block O' Blaze PowdARR",
+
+  "item.essentialfeatures.portable_note_block": "PortARRble Note Block",
+
+  "item.essentialfeatures.sharpened_arrow": "ShARRpened Arrow",
+
+  "block.essentialfeatures.packed_sand": "Packed SARRnd",
+  "block.essentialfeatures.packed_red_sand": "Packed Red SARRnd",
+  "block.essentialfeatures.packed_gravel": "Packed GrARRvel",
+
+  "block.essentialfeatures.stinging_nettles": "Stingers",
+  "item.essentialfeatures.cooked_nettles": "Cooked Stingers",
+
+  "block.essentialfeatures.purpur_door": "PurpARR Door",
+  "block.essentialfeatures.nether_brick_door": "NethARR Brick Door",
+
+  "block.essentialfeatures.redstone_rod": "Lightning RARRd",
+
+  "block.essentialfeatures.lit_white_stained_redstone_torch": "White Stained Redstone TARRch",
+  "block.essentialfeatures.lit_orange_stained_redstone_torch": "Orange Stained Redstone TARRch",
+  "block.essentialfeatures.lit_magenta_stained_redstone_torch": "Magenta Stained Redstone TARRch",
+  "block.essentialfeatures.lit_light_blue_stained_redstone_torch": "Light Blue Stained Redstone TARRch",
+  "block.essentialfeatures.lit_yellow_stained_redstone_torch": "Yellow Stained Redstone TARRch",
+  "block.essentialfeatures.lit_lime_stained_redstone_torch": "Lime Stained Redstone TARRch",
+  "block.essentialfeatures.lit_pink_stained_redstone_torch": "Pink Stained Redstone TARRch",
+  "block.essentialfeatures.lit_gray_stained_redstone_torch": "Grey Stained Redstone TARRch",
+  "block.essentialfeatures.lit_silver_stained_redstone_torch": "Light Grey Stained Redstone TARRch",
+  "block.essentialfeatures.lit_cyan_stained_redstone_torch": "Cyan Stained Redstone TARRch",
+  "block.essentialfeatures.lit_purple_stained_redstone_torch": "Purple Stained Redstone TARRch",
+  "block.essentialfeatures.lit_blue_stained_redstone_torch": "Blue Stained Redstone TARRch",
+  "block.essentialfeatures.lit_brown_stained_redstone_torch": "Brown Stained Redstone TARRch",
+  "block.essentialfeatures.lit_green_stained_redstone_torch": "Green Stained Redstone TARRch",
+  "block.essentialfeatures.lit_red_stained_redstone_torch": "Red Stained Redstone TARRch",
+  "block.essentialfeatures.lit_black_stained_redstone_torch": "Black Stained Redstone TARRch",
+
+  "item.essentialfeatures.redstone_rod_sword": "Lightning RARRd Sword",
+  "item.essentialfeatures.redstone_rod_arrow": "Lightning RARRd Arrow"
+}

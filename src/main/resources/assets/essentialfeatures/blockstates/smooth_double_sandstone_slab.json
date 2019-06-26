@@ -2,16 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "minecraft:blocks/sandstone_top"
+      "all": "minecraft:block/sandstone_top"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ]
   }

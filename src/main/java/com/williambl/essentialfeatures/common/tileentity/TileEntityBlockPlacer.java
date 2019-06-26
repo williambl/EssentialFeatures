@@ -1,10 +1,10 @@
 package com.williambl.essentialfeatures.common.tileentity;
 
-import net.minecraft.tileentity.TileEntityDispenser;
+import net.minecraft.tileentity.DispenserTileEntity;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public class TileEntityBlockPlacer extends TileEntityDispenser {
+public class TileEntityBlockPlacer extends DispenserTileEntity {
     //TODO: Make this actually work, instead of stacks being full of air...
 
     public TileEntityBlockPlacer() {
@@ -16,6 +16,6 @@ public class TileEntityBlockPlacer extends TileEntityDispenser {
      */
     public ITextComponent getName() {
         ITextComponent itextcomponent = this.getCustomName();
-        return itextcomponent != null ? itextcomponent : new TextComponentTranslation("container.block_placer");
+        return itextcomponent != null ? itextcomponent : new TranslationTextComponent("container.block_placer");
     }
 }

@@ -2,16 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "essentialfeatures:blocks/blaze_block"
+      "all": "essentialfeatures:block/blaze_block"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ]
   }

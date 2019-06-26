@@ -2,70 +2,67 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "essentialfeatures:blocks/cream_bricks"
+      "all": "essentialfeatures:block/cream_bricks"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ],
     "inventory_1": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/dirty_bricks"
+          "all": "essentialfeatures:block/dirty_bricks"
         }
       }
     ],
     "inventory_2": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/long_bricks"
+          "all": "essentialfeatures:block/long_bricks"
         }
       }
     ],
     "inventory_3": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/blue_bricks"
+          "all": "essentialfeatures:block/blue_bricks"
         }
       }
     ],
     "inventory_4": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/mixed_bricks"
+          "all": "essentialfeatures:block/mixed_bricks"
         }
       }
     ],
     "variant": {
       0: {
         "textures": {
-          "all": "essentialfeatures:blocks/cream_bricks"
+          "all": "essentialfeatures:block/cream_bricks"
         }
       },
       1: {
         "textures": {
-          "all": "essentialfeatures:blocks/dirty_bricks"
+          "all": "essentialfeatures:block/dirty_bricks"
         }
       },
       2: {
         "textures": {
-          "all": "essentialfeatures:blocks/long_bricks"
+          "all": "essentialfeatures:block/long_bricks"
         }
       },
       3: {
         "textures": {
-          "all": "essentialfeatures:blocks/blue_bricks"
+          "all": "essentialfeatures:block/blue_bricks"
         }
       },
       4: {
         "textures": {
-          "all": "essentialfeatures:blocks/mixed_bricks"
+          "all": "essentialfeatures:block/mixed_bricks"
         }
       }
     }

@@ -3,11 +3,10 @@
       "defaults": {
         "model": "lit_redstone_torch",
         "textures": {
-          "torch": "essentialfeatures:blocks/lit_yellow_stained_redstone_torch"
+          "torch": "essentialfeatures:block/lit_yellow_stained_redstone_torch"
           }
       },
       "variants": {
-        "inventory": [{}],
         "facing": {
           "up": {},
           "east": {

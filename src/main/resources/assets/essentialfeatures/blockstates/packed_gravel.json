@@ -2,16 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "essentialfeatures:blocks/packed_gravel"
+      "all": "essentialfeatures:block/packed_gravel"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ]
   }

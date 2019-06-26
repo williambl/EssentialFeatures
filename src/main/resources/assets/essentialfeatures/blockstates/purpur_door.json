@@ -1,9 +1,6 @@
 
 {
   "variants": {
-    "inventory": {
-      "model": "item/essentialfeatures:purpur_door"
-    },
     "facing=east,half=lower,hinge=left,open=false,powered=false": {
       "model": "essentialfeatures:purpur_door_bottom"
     },

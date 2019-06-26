@@ -4,9 +4,6 @@
     "model": "essentialfeatures:viewed_block"
   },
   "variants": {
-    "inventory": [
-      {}
-    ],
     "powered=false": [
       {}
     ],

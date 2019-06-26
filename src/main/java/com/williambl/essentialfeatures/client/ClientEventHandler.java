@@ -3,7 +3,7 @@ package com.williambl.essentialfeatures.client;
 import com.williambl.essentialfeatures.client.music.CustomMusic;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -38,7 +38,7 @@ public class ClientEventHandler {
             String output;
 
             while ((output = bufferedReader.readLine()) != null)
-                event.getPlayer().sendMessage(new TextComponentString(output));
+                event.getPlayer().sendMessage(new StringTextComponent(output));
             bufferedReader.close();
 
         } catch (IOException e) {

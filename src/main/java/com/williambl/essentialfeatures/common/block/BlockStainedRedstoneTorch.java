@@ -1,14 +1,14 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.google.common.collect.Lists;
-import net.minecraft.block.BlockRedstoneTorch;
+import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Particles;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.util.Direction;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
+public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
 
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
     int colour;
@@ -32,12 +32,12 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
     /**
      * Get the Item that this Block should drop when harvested.
      */
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    public Item getItemDropped(BlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(ModBlocks.STAINED_REDSTONE_TORCHES[colour]);
     }
 
-    public static void update(IBlockState p_196527_0_, World p_196527_1_, BlockPos p_196527_2_, Random p_196527_3_, boolean p_196527_4_) {
+    public static void update(BlockState p_196527_0_, World p_196527_1_, BlockPos p_196527_2_, Random p_196527_3_, boolean p_196527_4_) {
         List<BlockStainedRedstoneTorch.Toggle> list = BURNED_TORCHES.get(p_196527_1_);
 
         while(list != null && !list.isEmpty() && p_196527_1_.getGameTime() - (list.get(0)).time > 60L) {
@@ -48,7 +48,7 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
             if (p_196527_4_) {
                 p_196527_1_.setBlockState(p_196527_2_, p_196527_0_.with(LIT, Boolean.FALSE), 3);
                 if (isBurnedOut(p_196527_1_, p_196527_2_, true)) {
-                    p_196527_1_.playSound((EntityPlayer)null, p_196527_2_, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 0.5F, 2.6F + (p_196527_1_.rand.nextFloat() - p_196527_1_.rand.nextFloat()) * 0.8F);
+                    p_196527_1_.playSound((PlayerEntity)null, p_196527_2_, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 0.5F, 2.6F + (p_196527_1_.rand.nextFloat() - p_196527_1_.rand.nextFloat()) * 0.8F);
 
                     for(int i = 0; i < 5; ++i) {
                         double d0 = (double)p_196527_2_.getX() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
@@ -67,8 +67,8 @@ public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
     }
 
     @Override
-    protected boolean shouldBeOff(World worldIn, BlockPos pos, IBlockState state) {
-        return worldIn.isSidePowered(pos.down(), EnumFacing.DOWN);
+    protected boolean shouldBeOff(World worldIn, BlockPos pos, BlockState state) {
+        return worldIn.isSidePowered(pos.down(), Direction.DOWN);
     }
 
     private static boolean isBurnedOut(World p_176598_0_, BlockPos worldIn, boolean pos) {

@@ -1,0 +1,137 @@
+{
+  "block.essentialfeatures.viewed_block": "Viewed Block",
+
+  "block.essentialfeatures.smooth_glowstone": "Smooth Glowstone",
+  "block.essentialfeatures.polished_glowstone": "Polished Glowstone",
+
+  "block.essentialfeatures.stained_lamp.white": "Stained Lamp",
+  "block.essentialfeatures.stained_lamp.orange": "Orange Stained Lamp",
+  "block.essentialfeatures.stained_lamp.magenta": "Magenta Stained Lamp",
+  "block.essentialfeatures.stained_lamp.light_blue": "Light Blue Stained Lamp",
+  "block.essentialfeatures.stained_lamp.yellow": "Yellow Stained Lamp",
+  "block.essentialfeatures.stained_lamp.lime": "Lime Stained Lamp",
+  "block.essentialfeatures.stained_lamp.pink": "Pink Stained Lamp",
+  "block.essentialfeatures.stained_lamp.gray": "Grey Stained Lamp",
+  "block.essentialfeatures.stained_lamp.silver": "Light Grey Stained Lamp",
+  "block.essentialfeatures.stained_lamp.cyan": "Cyan Stained Lamp",
+  "block.essentialfeatures.stained_lamp.purple": "Purple Stained Lamp",
+  "block.essentialfeatures.stained_lamp.blue": "Blue Stained Lamp",
+  "block.essentialfeatures.stained_lamp.brown": "Brown Stained Lamp",
+  "block.essentialfeatures.stained_lamp.green": "Green Stained Lamp",
+  "block.essentialfeatures.stained_lamp.red": "Red Stained Lamp",
+  "block.essentialfeatures.stained_lamp.black": "Black Stained Lamp",
+
+
+  "entity.Villager.mechanic": "Mechanic",
+
+  "block.essentialfeatures.snow_brick": "Snow Brick",
+
+  "item.essentialfeatures.cereal": "Cereal",
+  "item.essentialfeatures.iron_cereal": "Iron-Fortified Cereal",
+
+  "block.essentialfeatures.block_breaker": "Block Breaker",
+
+  "block.essentialfeatures.crying_obsidian": "Crying Obsidian",
+
+  "block.essentialfeatures.spike_block": "Spike Block",
+
+  "block.essentialfeatures.block_placer": "Block Placer",
+  "container.block_placer": "Block Placer",
+  "block.essentialfeatures.decorative_stone.carved_stone": "Carved Stone",
+  "block.essentialfeatures.decorative_stone.carved_granite": "Carved Granite",
+  "block.essentialfeatures.decorative_stone.carved_diorite": "Carved Diorite",
+  "block.essentialfeatures.decorative_stone.carved_andesite": "Carved Andesite",
+
+  "block.essentialfeatures.smooth_double_stone_slab": "Smooth Double Stone Slab",
+  "block.essentialfeatures.smooth_double_sandstone_slab": "Smooth Double Sandstone Slab",
+  "block.essentialfeatures.smooth_double_red_sandstone_slab": "Smooth Double Red Sandstone Slab",
+
+  "block.essentialfeatures.brick_variant.cream_bricks": "Cream Bricks",
+  "block.essentialfeatures.brick_variant.dirty_bricks": "Dirty Bricks",
+  "block.essentialfeatures.brick_variant.long_bricks": "Long Bricks",
+  "block.essentialfeatures.brick_variant.blue_bricks": "Blue Bricks",
+  "block.essentialfeatures.brick_variant.mixed_bricks": "Mixed Bricks",
+
+  "item.essentialfeatures.dirty_clay": "Dirty Clay",
+  "item.essentialfeatures.sand_clay_mixture": "Sand-Clay Mixture",
+  "item.essentialfeatures.dirty_brick": "Dirty Brick",
+  "item.essentialfeatures.cream_brick": "Cream Brick",
+
+  "item.essentialfeatures.scarlet": "Music Disc",
+  "item.record.scarlet.desc": "Palmidence - scarlet",
+
+  "block.essentialfeatures.slate": "Slate",
+
+  "item.essentialfeatures.lo-fi": "Music Disc",
+  "item.record.lo-fi.desc": "Palmidence - lo-fi",
+
+  "item.essentialfeatures.portable_jukebox": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_13": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_cat": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_blocks": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_chirp": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_far": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_mall": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_mellohi": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_stal": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_strad": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_ward": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_11": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_wait": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_scarlet": "Portable Jukebox",
+  "item.essentialfeatures.portable_jukebox_lo-fi": "Portable Jukebox",
+
+  "block.essentialfeatures.blaze_block": "Blaze Block",
+
+  "item.essentialfeatures.portable_note_block": "Portable Note Block",
+
+  "item.essentialfeatures.sharpened_arrow": "Sharpened Arrow",
+
+  "block.essentialfeatures.packed_sand": "Packed Sand",
+  "block.essentialfeatures.packed_red_sand": "Packed Red Sand",
+  "block.essentialfeatures.packed_gravel": "Packed Gravel",
+
+  "block.essentialfeatures.stinging_nettles": "Stinging Nettles",
+  "item.essentialfeatures.cooked_nettles": "Cooked Nettles",
+
+  "block.essentialfeatures.purpur_door": "Purpur Door",
+  "block.essentialfeatures.nether_brick_door": "Nether Brick Door",
+
+  "block.essentialfeatures.redstone_rod": "Redstone Rod",
+
+  "block.essentialfeatures.lit_white_stained_redstone_torch": "White Stained Redstone Torch",
+  "block.essentialfeatures.lit_orange_stained_redstone_torch": "Orange Stained Redstone Torch",
+  "block.essentialfeatures.lit_magenta_stained_redstone_torch": "Magenta Stained Redstone Torch",
+  "block.essentialfeatures.lit_light_blue_stained_redstone_torch": "Light Blue Stained Redstone Torch",
+  "block.essentialfeatures.lit_yellow_stained_redstone_torch": "Yellow Stained Redstone Torch",
+  "block.essentialfeatures.lit_lime_stained_redstone_torch": "Lime Stained Redstone Torch",
+  "block.essentialfeatures.lit_pink_stained_redstone_torch": "Pink Stained Redstone Torch",
+  "block.essentialfeatures.lit_gray_stained_redstone_torch": "Grey Stained Redstone Torch",
+  "block.essentialfeatures.lit_silver_stained_redstone_torch": "Light Grey Stained Redstone Torch",
+  "block.essentialfeatures.lit_cyan_stained_redstone_torch": "Cyan Stained Redstone Torch",
+  "block.essentialfeatures.lit_purple_stained_redstone_torch": "Purple Stained Redstone Torch",
+  "block.essentialfeatures.lit_blue_stained_redstone_torch": "Blue Stained Redstone Torch",
+  "block.essentialfeatures.lit_brown_stained_redstone_torch": "Brown Stained Redstone Torch",
+  "block.essentialfeatures.lit_green_stained_redstone_torch": "Green Stained Redstone Torch",
+  "block.essentialfeatures.lit_red_stained_redstone_torch": "Red Stained Redstone Torch",
+  "block.essentialfeatures.lit_black_stained_redstone_torch": "Black Stained Redstone Torch",
+
+  "item.essentialfeatures.redstone_rod_sword": "Redstone Rod Sword",
+  "item.essentialfeatures.redstone_rod_arrow": "Redstone Rod Arrow",
+  "essentialfeatures.lit_black_stained_redstone_torch": "Black Stained Redstone Torch",
+  "essentialfeatures.lit_blue_stained_redstone_torch": "Blue Stained Redstone Torch",
+  "essentialfeatures.lit_brown_stained_redstone_torch": "Brown Stained Redstone Torch",
+  "essentialfeatures.lit_cyan_stained_redstone_torch": "Cyan Stained Redstone Torch",
+  "essentialfeatures.lit_gray_stained_redstone_torch": "Grey Stained Redstone Torch",
+  "essentialfeatures.lit_green_stained_redstone_torch": "Green Stained Redstone Torch",
+  "essentialfeatures.lit_light_blue_stained_redstone_torch": "Light Blue Stained Redstone Torch",
+  "essentialfeatures.lit_lime_stained_redstone_torch": "Lime Stained Redstone Torch",
+  "essentialfeatures.lit_magenta_stained_redstone_torch": "Magenta Stained Redstone Torch",
+  "essentialfeatures.lit_orange_stained_redstone_torch": "Orange Stained Redstone Torch",
+  "essentialfeatures.lit_pink_stained_redstone_torch": "Pink Stained Redstone Torch",
+  "essentialfeatures.lit_purple_stained_redstone_torch": "Purple Stained Redstone Torch",
+  "essentialfeatures.lit_red_stained_redstone_torch": "Red Stained Redstone Torch",
+  "essentialfeatures.lit_silver_stained_redstone_torch": "Light Grey Stained Redstone Torch",
+  "essentialfeatures.lit_white_stained_redstone_torch": "White Stained Redstone Torch",
+  "essentialfeatures.lit_yellow_stained_redstone_torch": "Yellow Stained Redstone Torch"
+}

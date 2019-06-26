@@ -2,58 +2,55 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "essentialfeatures:blocks/carved_stone"
+      "all": "essentialfeatures:block/carved_stone"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ],
     "inventory_1": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_granite"
+          "all": "essentialfeatures:block/carved_granite"
         }
       }
     ],
     "inventory_2": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_diorite"
+          "all": "essentialfeatures:block/carved_diorite"
         }
       }
     ],
     "inventory_3": [
       {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_andesite"
+          "all": "essentialfeatures:block/carved_andesite"
         }
       }
     ],
     "variant": {
       0: {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_stone"
+          "all": "essentialfeatures:block/carved_stone"
         }
       },
       1: {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_granite"
+          "all": "essentialfeatures:block/carved_granite"
         }
       },
       2: {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_diorite"
+          "all": "essentialfeatures:block/carved_diorite"
         }
       },
       3: {
         "textures": {
-          "all": "essentialfeatures:blocks/carved_andesite"
+          "all": "essentialfeatures:block/carved_andesite"
         }
       }
     }

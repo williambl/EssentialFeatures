@@ -2,16 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "minecraft:blocks/stone_slab_top"
+      "all": "minecraft:block/stone_slab_top"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ]
   }

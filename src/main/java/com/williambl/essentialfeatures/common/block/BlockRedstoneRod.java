@@ -2,10 +2,10 @@ package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Particles;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.IParticleData;
@@ -14,7 +14,7 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
@@ -27,7 +27,7 @@ import java.util.Random;
 public class BlockRedstoneRod extends EFBlock {
 
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
-    public static final DirectionProperty FACING = DirectionProperty.create("facing", EnumFacing.values());
+    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.values());
 
     protected static final VoxelShape END_ROD_VERTICAL_AABB = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
     protected static final VoxelShape END_ROD_NS_AABB = Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D);
@@ -35,16 +35,16 @@ public class BlockRedstoneRod extends EFBlock {
 
     public BlockRedstoneRod(String registryName, Material material, SoundType soundType, float hardness, float resistance, int lightlevel) {
         super(registryName, material, soundType, hardness, resistance, lightlevel);
-        this.setDefaultState(this.getStateContainer().getBaseState().with(POWERED, Boolean.FALSE).with(FACING, EnumFacing.UP));
+        this.setDefaultState(this.getStateContainer().getBaseState().with(POWERED, Boolean.FALSE).with(FACING, Direction.UP));
     }
 
     @Override
-    public boolean hasTileEntity(IBlockState state) {
+    public boolean hasTileEntity(BlockState state) {
         return true;
     }
 
     @Override
-    public TileEntity createTileEntity(IBlockState state, IBlockReader world) {
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return new TileEntityRedstoneRod();
     }
 
@@ -54,7 +54,7 @@ public class BlockRedstoneRod extends EFBlock {
      */
     @Override
     @SuppressWarnings("deprecation")
-    public IBlockState rotate(IBlockState state, Rotation rot)
+    public BlockState rotate(BlockState state, Rotation rot)
     {
         return state.with(FACING, rot.rotate(state.get(FACING)));
     }
@@ -65,14 +65,14 @@ public class BlockRedstoneRod extends EFBlock {
      */
     @Override
     @SuppressWarnings("deprecation")
-    public IBlockState mirror(IBlockState state, Mirror mirrorIn)
+    public BlockState mirror(BlockState state, Mirror mirrorIn)
     {
         return state.with(FACING, mirrorIn.mirror(state.get(FACING)));
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public VoxelShape getShape(IBlockState state, IBlockReader source, BlockPos pos)
+    public VoxelShape getShape(BlockState state, IBlockReader source, BlockPos pos)
     {
         switch (state.get(FACING).getAxis())
         {
@@ -88,7 +88,7 @@ public class BlockRedstoneRod extends EFBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    public boolean isFullCube(IBlockState state)
+    public boolean isFullCube(BlockState state)
     {
         return false;
     }
@@ -98,13 +98,13 @@ public class BlockRedstoneRod extends EFBlock {
      * IBlockstate
      */
     @Override
-    public IBlockState getStateForPlacement(BlockItemUseContext context)
+    public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        IBlockState iblockstate = context.getWorld().getBlockState(context.getPos().offset(context.getFace().getOpposite()));
+        BlockState iblockstate = context.getWorld().getBlockState(context.getPos().offset(context.getFace().getOpposite()));
 
         if (iblockstate.getBlock() == ModBlocks.REDSTONE_ROD)
         {
-            EnumFacing enumfacing = iblockstate.get(FACING);
+            Direction enumfacing = iblockstate.get(FACING);
 
             if (enumfacing == context.getFace())
             {
@@ -116,9 +116,9 @@ public class BlockRedstoneRod extends EFBlock {
     }
 
     @Override
-    public void animateTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
-        EnumFacing enumfacing = stateIn.get(FACING);
+        Direction enumfacing = stateIn.get(FACING);
         double d0 = (double)pos.getX() + 0.55D - (double)(rand.nextFloat() * 0.1F);
         double d1 = (double)pos.getY() + 0.55D - (double)(rand.nextFloat() * 0.1F);
         double d2 = (double)pos.getZ() + 0.55D - (double)(rand.nextFloat() * 0.1F);
@@ -132,18 +132,18 @@ public class BlockRedstoneRod extends EFBlock {
 
     @Override
     @SuppressWarnings("deprecated")
-    public boolean canProvidePower(IBlockState state) {
+    public boolean canProvidePower(BlockState state) {
         return true;
     }
 
     @Override
     @SuppressWarnings("deprecated")
-    public int getWeakPower(IBlockState blockState, IBlockReader reader, BlockPos pos, EnumFacing side) {
+    public int getWeakPower(BlockState blockState, IBlockReader reader, BlockPos pos, Direction side) {
         return blockState.get(POWERED) ? 15 : 0;
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, IBlockState> builder) {
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(POWERED);
         builder.add(FACING);
     }
@@ -156,26 +156,26 @@ public class BlockRedstoneRod extends EFBlock {
 
     @Override
     @SuppressWarnings("undefined")
-    public BlockFaceShape getBlockFaceShape(IBlockReader worldIn, IBlockState state, BlockPos pos, EnumFacing face)
+    public BlockFaceShape getBlockFaceShape(IBlockReader worldIn, BlockState state, BlockPos pos, Direction face)
     {
         return BlockFaceShape.UNDEFINED;
     }
 
-    public void activate(World worldIn, BlockPos pos, IBlockState blockstate) {
+    public void activate(World worldIn, BlockPos pos, BlockState blockstate) {
         worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.TRUE));
     }
 
-    public void deactivate(World worldIn, BlockPos pos, IBlockState blockstate) {
+    public void deactivate(World worldIn, BlockPos pos, BlockState blockstate) {
         worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.FALSE));
     }
 
-    public boolean isPowered(IBlockState blockstate) {
+    public boolean isPowered(BlockState blockstate) {
         return blockstate.get(POWERED);
     }
 
     public void redstoneEffects(World world, BlockPos pos) {
-        IBlockState state = world.getBlockState(pos);
-        EnumFacing enumfacing = state.get(FACING);
+        BlockState state = world.getBlockState(pos);
+        Direction enumfacing = state.get(FACING);
         double d0 = (double)pos.getX() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
         double d1 = (double)pos.getY() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
         double d2 = (double)pos.getZ() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);

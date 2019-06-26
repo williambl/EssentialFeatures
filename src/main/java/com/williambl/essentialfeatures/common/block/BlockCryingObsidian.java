@@ -1,13 +1,13 @@
 package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Particles;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.util.Direction;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,9 +22,9 @@ public class BlockCryingObsidian extends Block {
     }
 
     @Override
-    public IBlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
         if (context.getPlayer() != null) {
-            EntityPlayer player = context.getPlayer();
+            PlayerEntity player = context.getPlayer();
             player.setSpawnDimenion(player.dimension);
             player.setSpawnPoint(player.getPosition(), true, player.dimension);
 
@@ -35,25 +35,25 @@ public class BlockCryingObsidian extends Block {
 
 
     @Override
-    public void animateTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        EnumFacing enumfacing = EnumFacing.random(rand);
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        Direction enumfacing = Direction.random(rand);
 
-        if (enumfacing != EnumFacing.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullCube()) {
+        if (enumfacing != Direction.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullCube()) {
             double d0 = (double) pos.getX();
             double d1 = (double) pos.getY();
             double d2 = (double) pos.getZ();
 
-            if (enumfacing == EnumFacing.DOWN) {
+            if (enumfacing == Direction.DOWN) {
                 d1 = d1 - 0.05D;
                 d0 += rand.nextDouble();
                 d2 += rand.nextDouble();
             } else {
                 d1 = d1 + rand.nextDouble() * 0.8D;
 
-                if (enumfacing.getAxis() == EnumFacing.Axis.X) {
+                if (enumfacing.getAxis() == Direction.Axis.X) {
                     d2 += rand.nextDouble();
 
-                    if (enumfacing == EnumFacing.EAST) {
+                    if (enumfacing == Direction.EAST) {
                         ++d0;
                     } else {
                         d0 += 0.05D;
@@ -61,7 +61,7 @@ public class BlockCryingObsidian extends Block {
                 } else {
                     d0 += rand.nextDouble();
 
-                    if (enumfacing == EnumFacing.SOUTH) {
+                    if (enumfacing == Direction.SOUTH) {
                         ++d2;
                     } else {
                         d2 += 0.05D;

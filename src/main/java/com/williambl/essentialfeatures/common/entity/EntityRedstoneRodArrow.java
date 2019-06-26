@@ -2,15 +2,15 @@ package com.williambl.essentialfeatures.common.entity;
 
 import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityRedstoneRodArrow extends EntityArrow {
+public class EntityRedstoneRodArrow extends AbstractArrowEntity {
 
     private int xTile;
     private int yTile;
@@ -31,16 +31,16 @@ public class EntityRedstoneRodArrow extends EntityArrow {
         super(ModEntities.REDSTONE_ROD_ARROW, x, y, z, worldIn);
     }
 
-    public EntityRedstoneRodArrow(EntityLivingBase shooter, World worldIn) {
+    public EntityRedstoneRodArrow(LivingEntity shooter, World worldIn) {
         super(ModEntities.REDSTONE_ROD_ARROW, shooter, worldIn);
     }
 
     @Override
-    protected void arrowHit(EntityLivingBase target) {
+    protected void arrowHit(LivingEntity target) {
         super.arrowHit(target);
 
         if (target.world.canBlockSeeSky(new BlockPos(target.posX, target.posY, target.posZ))) {
-            EntityLightningBolt bolt = new EntityLightningBolt(target.world, target.posX, target.posY, target.posZ, false);
+            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.posX, target.posY, target.posZ, false);
             target.world.addWeatherEffect(bolt);
         }
     }

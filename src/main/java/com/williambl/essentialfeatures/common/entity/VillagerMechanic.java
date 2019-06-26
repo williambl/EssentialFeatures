@@ -1,11 +1,11 @@
 package com.williambl.essentialfeatures.common.entity;
 
 import com.williambl.essentialfeatures.common.block.ModBlocks;
-import net.minecraft.entity.passive.EntityVillager.EmeraldForItems;
-import net.minecraft.entity.passive.EntityVillager.ListItemForEmeralds;
-import net.minecraft.entity.passive.EntityVillager.PriceInfo;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.entity.merchant.villager.VillagerEntity.EmeraldForItems;
+import net.minecraft.entity.merchant.villager.VillagerEntity.ListItemForEmeralds;
+import net.minecraft.entity.merchant.villager.VillagerEntity.PriceInfo;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

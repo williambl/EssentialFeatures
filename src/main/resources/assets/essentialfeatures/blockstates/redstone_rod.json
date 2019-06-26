@@ -3,14 +3,11 @@
   "defaults": {
     "model": "minecraft:end_rod",
     "textures": {
-      "end_rod": "essentialfeatures:blocks/redstone_rod",
-      "particle": "essentialfeatures:blocks/redstone_rod"
+      "end_rod": "essentialfeatures:block/redstone_rod",
+      "particle": "essentialfeatures:block/redstone_rod"
     }
   },
   "variants": {
-    "inventory": [
-      {}
-    ],
     "facing": {
       "up": {
       },

@@ -3,15 +3,15 @@ package com.williambl.essentialfeatures.client.music;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.SimpleSound;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.world.ClientWorld;
 
 public class CustomMusic {
 
     public static ISound PlayMusic(ISound musicIn) {
         Minecraft mc = Minecraft.getInstance();
-        WorldClient world = mc.world;
-        EntityPlayerSP player = mc.player;
+        ClientWorld world = mc.world;
+        ClientPlayerEntity player = mc.player;
 
         if (world.rand.nextFloat() > 0.5) {
             return musicIn;

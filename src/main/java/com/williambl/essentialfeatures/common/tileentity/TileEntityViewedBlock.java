@@ -2,8 +2,8 @@ package com.williambl.essentialfeatures.common.tileentity;
 
 import com.williambl.essentialfeatures.common.block.BlockViewedBlock;
 import com.williambl.essentialfeatures.common.config.ModConfig;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.*;
@@ -33,16 +33,16 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
             return;
         tickCounter = 0;
 
-        IBlockState blockstate = world.getBlockState(getPos());
+        BlockState blockstate = world.getBlockState(getPos());
         BlockViewedBlock block = (BlockViewedBlock) world.getBlockState(getPos()).getBlock();
         wasLookingLastTime = block.isPowered(blockstate);
         BlockPos thisPos = getPos();
 
         boolean isNowLooking = false;
-        List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.pos.getX() - radius, this.pos.getY() - radius, this.pos.getZ() - radius, this.pos.getX() + radius, this.pos.getY() + radius, this.pos.getZ() + radius));
+        List<PlayerEntity> players = world.getEntitiesWithinAABB(PlayerEntity.class, new AxisAlignedBB(this.pos.getX() - radius, this.pos.getY() - radius, this.pos.getZ() - radius, this.pos.getX() + radius, this.pos.getY() + radius, this.pos.getZ() + radius));
 
 
-        for (EntityPlayer player : players) {
+        for (PlayerEntity player : players) {
             if (!isNowLooking) {
                 isNowLooking = checkIfLooking(player, thisPos);
             }
@@ -57,7 +57,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
         }
     }
 
-    public boolean checkIfLooking(EntityPlayer player, BlockPos thisPos) {
+    public boolean checkIfLooking(PlayerEntity player, BlockPos thisPos) {
         //float playerPitch = player.rotationPitch;
         //float playerYaw = player.rotationYawHead;
 
@@ -72,14 +72,14 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
     For some reason EntityPlayer.raytrace and EntityPlayer.getPositionEyes
     are Client Only, so here are two slightly modified functions for use on servers.
     */
-    public RayTraceResult rayTrace(EntityPlayer playerIn, double blockReachDistance, float partialTicks) {
+    public RayTraceResult rayTrace(PlayerEntity playerIn, double blockReachDistance, float partialTicks) {
         Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
         Vec3d vec3d2 = vec3d.add(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
         return this.world.rayTraceBlocks(vec3d, vec3d2, RayTraceFluidMode.NEVER, false, true);
     }
 
-    public Vec3d getPositionEyes(EntityPlayer playerIn, float partialTicks) {
+    public Vec3d getPositionEyes(PlayerEntity playerIn, float partialTicks) {
         if (partialTicks == 1.0F) {
             return new Vec3d(playerIn.posX, playerIn.posY + (double) playerIn.getEyeHeight(), playerIn.posZ);
         } else {

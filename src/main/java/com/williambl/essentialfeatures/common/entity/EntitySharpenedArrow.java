@@ -1,22 +1,14 @@
 package com.williambl.essentialfeatures.common.entity;
 
 import com.williambl.essentialfeatures.common.item.ModItems;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.server.SPacketChangeGameState;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -24,12 +16,12 @@ import net.minecraft.world.World;
 
 import java.util.Arrays;
 
-public class EntitySharpenedArrow extends EntityArrow {
+public class EntitySharpenedArrow extends AbstractArrowEntity {
 
     private int xTile;
     private int yTile;
     private int zTile;
-    private IBlockState inBlockState;
+    private BlockState inBlockState;
 
     private int ticksInAir;
 
@@ -53,7 +45,7 @@ public class EntitySharpenedArrow extends EntityArrow {
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(EntityLivingBase shooter, World worldIn) {
+    public EntitySharpenedArrow(LivingEntity shooter, World worldIn) {
         super(ModEntities.SHARPENED_ARROW, shooter, worldIn);
         this.setIsCritical(true);
     }
@@ -66,7 +58,7 @@ public class EntitySharpenedArrow extends EntityArrow {
             this.xTile = blockpos.getX();
             this.yTile = blockpos.getY();
             this.zTile = blockpos.getZ();
-            IBlockState iblockstate = this.world.getBlockState(blockpos);
+            BlockState iblockstate = this.world.getBlockState(blockpos);
             this.inBlockState = iblockstate;
 
             if (!Arrays.asList(breakableMaterials).contains(iblockstate.getMaterial())) {

@@ -1,10 +1,10 @@
 package com.williambl.essentialfeatures.common.item;
 
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.util.SoundEvent;
 
-public class ItemEFRecord extends ItemRecord {
+public class ItemEFRecord extends MusicDiscItem {
 
     public ItemEFRecord(String registryName, int comparatorValueIn, SoundEvent soundIn) {
         super(comparatorValueIn, soundIn, new Properties().group(ItemGroup.MISC).maxStackSize(1));

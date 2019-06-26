@@ -2,25 +2,17 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "platform": "essentialfeatures:blocks/block_breaker_inner",
-      "side": "essentialfeatures:blocks/block_breaker_side",
-      "bottom": "blocks/piston_bottom"
+      "platform": "essentialfeatures:block/block_breaker_inner",
+      "side": "essentialfeatures:block/block_breaker_side",
+      "bottom": "block/piston_bottom"
     },
     "model": "essentialfeatures:directionable",
     "uvlock": false
   },
   "variants": {
-    "normal": [
+    "": [
       {}
     ],
-    "inventory": {
-      "model": "cube_bottom_top",
-      "textures": {
-        "side": "essentialfeatures:blocks/block_breaker_side",
-        "top": "essentialfeatures:blocks/block_breaker_inner",
-        "bottom": "block/piston_bottom"
-      }
-    },
     "triggered": {
       "true": {},
       "false": {}

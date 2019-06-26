@@ -3,12 +3,12 @@ package com.williambl.essentialfeatures.common.item;
 import com.williambl.essentialfeatures.client.music.MovingSoundGeneric;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,9 +19,9 @@ import java.util.List;
 
 public class ItemPortableJukebox extends EFItem {
 
-    public ItemRecord record;
+    public MusicDiscItem record;
 
-    public ItemPortableJukebox(String registryName, ItemGroup tab, ItemRecord recordIn) {
+    public ItemPortableJukebox(String registryName, ItemGroup tab, MusicDiscItem recordIn) {
         super(registryName, tab);
         record = recordIn;
     }
@@ -30,11 +30,11 @@ public class ItemPortableJukebox extends EFItem {
      * Called when a Block is right-clicked with this Item
      */
     @Override
-    public EnumActionResult onItemUse(ItemUseContext context) {
+    public ActionResultType onItemUse(ItemUseContext context) {
         if (record == null)
-            return EnumActionResult.PASS;
+            return ActionResultType.PASS;
 
-        EntityPlayer player = context.getPlayer();
+        PlayerEntity player = context.getPlayer();
         World world = context.getWorld();
 
         if (player.isSneaking()) {
@@ -47,18 +47,18 @@ public class ItemPortableJukebox extends EFItem {
             if (world.isRemote)
                 Minecraft.getInstance().getSoundHandler().stop();
 
-            return EnumActionResult.SUCCESS;
+            return ActionResultType.SUCCESS;
         }
 
         if (world.isRemote) {
             Minecraft.getInstance().getSoundHandler().stop();
             playSound(player, record);
         }
-        return EnumActionResult.SUCCESS;
+        return ActionResultType.SUCCESS;
     }
 
     @OnlyIn(Dist.CLIENT)
-    private void playSound(EntityPlayer playerIn, ItemRecord recordIn) {
+    private void playSound(PlayerEntity playerIn, MusicDiscItem recordIn) {
         Minecraft.getInstance().getSoundHandler().play(new MovingSoundGeneric(playerIn, recordIn.getSound()));
     }
 

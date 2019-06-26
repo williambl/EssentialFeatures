@@ -1,14 +1,14 @@
 package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -29,7 +29,7 @@ public class BlockSlate extends Block {
 
    @Override
    @SuppressWarnings("deprecation")
-   public boolean allowsMovement(IBlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+   public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
       switch(type) {
          case LAND:
             return state.get(LAYERS) < 5;
@@ -44,41 +44,41 @@ public class BlockSlate extends Block {
 
    @Override
    @SuppressWarnings("deprecation")
-   public boolean isFullCube(IBlockState state) {
+   public boolean isFullCube(BlockState state) {
       return state.get(LAYERS) == 8;
    }
 
    @Override
    @SuppressWarnings("deprecation")
-   public BlockFaceShape getBlockFaceShape(IBlockReader worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-      return face == EnumFacing.DOWN ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
+   public BlockFaceShape getBlockFaceShape(IBlockReader worldIn, BlockState state, BlockPos pos, Direction face) {
+      return face == Direction.DOWN ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
    }
 
    @Override
    @SuppressWarnings("deprecation")
-   public VoxelShape getShape(IBlockState state, IBlockReader worldIn, BlockPos pos) {
+   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
       return SHAPES[state.get(LAYERS)];
    }
 
    @Override
    @SuppressWarnings("deprecation")
-   public VoxelShape getCollisionShape(IBlockState state, IBlockReader worldIn, BlockPos pos) {
+   public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
       return SHAPES[state.get(LAYERS) - 1];
    }
 
    @Override
    @SuppressWarnings("deprecation")
-   public int quantityDropped(IBlockState state, Random random) {
+   public int quantityDropped(BlockState state, Random random) {
       return state.get(LAYERS) + 1;
    }
 
    @Override
    @SuppressWarnings("deprecation")
-   public boolean isReplaceable(IBlockState state, BlockItemUseContext useContext) {
+   public boolean isReplaceable(BlockState state, BlockItemUseContext useContext) {
       int i = state.get(LAYERS);
       if (useContext.getItem().getItem() == this.asItem() && i < 8) {
          if (useContext.replacingClickedOnBlock()) {
-            return useContext.getFace() == EnumFacing.UP;
+            return useContext.getFace() == Direction.UP;
          } else {
             return true;
          }
@@ -89,8 +89,8 @@ public class BlockSlate extends Block {
 
    @Nullable
    @Override
-   public IBlockState getStateForPlacement(BlockItemUseContext context) {
-      IBlockState iblockstate = context.getWorld().getBlockState(context.getPos());
+   public BlockState getStateForPlacement(BlockItemUseContext context) {
+      BlockState iblockstate = context.getWorld().getBlockState(context.getPos());
       if (iblockstate.getBlock() == this) {
          int i = iblockstate.get(LAYERS);
          return iblockstate.with(LAYERS, Integer.valueOf(Math.min(8, i + 1)));
@@ -100,7 +100,7 @@ public class BlockSlate extends Block {
    }
 
    @Override
-   protected void fillStateContainer(StateContainer.Builder<Block, IBlockState> builder) {
+   protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
       builder.add(LAYERS);
    }
 

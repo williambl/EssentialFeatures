@@ -1,15 +1,15 @@
 package com.williambl.essentialfeatures.common;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityOcelot;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.monster.WitchEntity;
+import net.minecraft.entity.passive.BatEntity;
+import net.minecraft.entity.passive.OcelotEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Particles;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.tileentity.ChestTileEntity;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -36,7 +36,7 @@ public class CommonEventHandler {
         Random rand = world.rand;
         TileEntity t = world.getTileEntity(pos);
 
-        if (t instanceof TileEntityChest) {
+        if (t instanceof ChestTileEntity) {
             if (world.getFluidState(pos.add(0, 1, 0)).isTagged(FluidTags.WATER)) {
                 for (int i = 0; i < world.rand.nextInt(50); i++) {
                     world.spawnParticle(Particles.BUBBLE_COLUMN_UP, pos.getX()+rand.nextFloat(), pos.getY()+0.6, pos.getZ()+rand.nextFloat(), 0, 0.5, 0);
@@ -53,13 +53,13 @@ public class CommonEventHandler {
         if (world.isRemote)
             return;
 
-        if (entity instanceof EntityWitch) {
+        if (entity instanceof WitchEntity) {
             System.out.println("witch died! make effects!");
             Random rand = world.rand;
             for (int i = 0; i < 10; i++) {
 
                 //Spawn a bat
-                EntityBat bat = new EntityBat(world);
+                BatEntity bat = new BatEntity(world);
                 bat.setPosition(
                         entity.posX + rand.nextDouble() - 0.5,
                         entity.posY + rand.nextDouble(),
@@ -71,10 +71,10 @@ public class CommonEventHandler {
 
             System.out.println(e.getSource().getDamageType());
             if (rand.nextDouble() < 0.05 && e.getSource().getDamageType().equals("player")) {
-                EntityOcelot ocelot = new EntityOcelot(world);
+                OcelotEntity ocelot = new OcelotEntity(world);
                 ocelot.setPosition(entity.posX, entity.posY, entity.posZ);
 
-                ocelot.setTamedBy((EntityPlayer) Objects.requireNonNull(e.getSource().getTrueSource()));
+                ocelot.setTamedBy((PlayerEntity) Objects.requireNonNull(e.getSource().getTrueSource()));
 
                 world.spawnEntity(ocelot);
             }

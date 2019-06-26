@@ -1,8 +1,5 @@
 {
   "variants": {
-    "inventory": {
-      "model": "item/essentialfeatures:nether_brick_door"
-    },
     "facing=east,half=lower,hinge=left,open=false,powered=false": {
       "model": "essentialfeatures:nether_brick_door_bottom"
     },

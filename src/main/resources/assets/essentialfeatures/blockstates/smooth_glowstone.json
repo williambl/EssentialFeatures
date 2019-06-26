@@ -2,16 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "essentialfeatures:blocks/smooth_glowstone"
+      "all": "essentialfeatures:block/smooth_glowstone"
     },
     "model": "cube_all",
     "uvlock": true
   },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
+    "": [
       {}
     ]
   }

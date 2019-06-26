@@ -3,12 +3,12 @@ package com.williambl.essentialfeatures.common.world;
 import com.williambl.essentialfeatures.common.block.BlockSlate;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.config.ModConfig;
-import net.minecraft.init.Biomes;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.BushConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.MinableConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,7 +24,7 @@ public class ModWorld {
 
         if (ModConfig.generateNettles) {
             ForgeRegistries.BIOMES.forEach(
-                    biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createCompositeFeature(Feature.MINABLE, new MinableConfig(MinableConfig.IS_ROCK, ModBlocks.SLATE.getDefaultState().with(BlockSlate.LAYERS, 8), 33), Biome.COUNT_RANGE, new CountRangeConfig(10, 40, 0, 80)))
+                    biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createCompositeFeature(Feature.MINABLE, new OreFeatureConfig(OreFeatureConfig.IS_ROCK, ModBlocks.SLATE.getDefaultState().with(BlockSlate.LAYERS, 8), 33), Biome.COUNT_RANGE, new CountRangeConfig(10, 40, 0, 80)))
             );
         }
     }

@@ -1,31 +1,31 @@
 package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.dispenser.BlockSourceImpl;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.dispenser.IDispenseItemBehavior;
+import net.minecraft.dispenser.ProxyBlockSource;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.dispenser.IBehaviorDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.DispenserTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityDispenser;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class BlockBlockPlacer extends BlockDispenser {
+public class BlockBlockPlacer extends DispenserBlock {
 
-    private final IBehaviorDispenseItem dropBehavior = new BehaviorPlaceBlock();
+    private final IDispenseItemBehavior dropBehavior = new BehaviorPlaceBlock();
 
     protected BlockBlockPlacer(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance));
-        this.setDefaultState(this.getStateContainer().getBaseState().with(FACING, EnumFacing.NORTH).with(TRIGGERED, Boolean.FALSE));
+        this.setDefaultState(this.getStateContainer().getBaseState().with(FACING, Direction.NORTH).with(TRIGGERED, Boolean.FALSE));
         this.setRegistryName(registryName);
     }
 
@@ -34,13 +34,13 @@ public class BlockBlockPlacer extends BlockDispenser {
      */
     @Override
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return new TileEntityDispenser();
+        return new DispenserTileEntity();
     }
 
     @Override
     protected void dispense(World worldIn, BlockPos pos) {
-        BlockSourceImpl blocksourceimpl = new BlockSourceImpl(worldIn, pos);
-        TileEntityDispenser tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
+        ProxyBlockSource blocksourceimpl = new ProxyBlockSource(worldIn, pos);
+        DispenserTileEntity tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
 
         int i = tileentityblockplacer.getDispenseSlot();
 
@@ -59,7 +59,7 @@ public class BlockBlockPlacer extends BlockDispenser {
         }
     }
 
-    public class BehaviorPlaceBlock implements IBehaviorDispenseItem {
+    public class BehaviorPlaceBlock implements IDispenseItemBehavior {
         @Override
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
             Block block = Block.getBlockFromItem(stack.getItem());
@@ -67,14 +67,14 @@ public class BlockBlockPlacer extends BlockDispenser {
             if (block == Blocks.AIR)
                 return stack;
 
-            EnumFacing facing = source.getBlockState().get(BlockDispenser.FACING);
-            EnumFacing.Axis axis = facing.getAxis();
+            Direction facing = source.getBlockState().get(DispenserBlock.FACING);
+            Direction.Axis axis = facing.getAxis();
 
             BlockPos pos = source.getBlockPos().offset(facing);
             World world = source.getWorld();
 
             if (world.isAirBlock(pos)) {
-                IBlockState state = block.getStateForPlacement(new BlockItemUseContext(world, null, stack, pos, facing, pos.getX(), pos.getY(), pos.getZ()));
+                BlockState state = block.getStateForPlacement(new BlockItemUseContext(world, null, stack, pos, facing, pos.getX(), pos.getY(), pos.getZ()));
 
                 if (state != null) {
                     world.setBlockState(pos, state);

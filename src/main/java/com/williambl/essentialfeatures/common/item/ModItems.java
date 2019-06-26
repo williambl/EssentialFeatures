@@ -3,11 +3,11 @@ package com.williambl.essentialfeatures.common.item;
 import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.init.Items;
+import net.minecraft.item.Items;
 import net.minecraft.item.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -62,19 +62,19 @@ public class ModItems {
     private static void addPortableJukeboxes() {
         PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", ItemGroup.TOOLS, null);
 
-        HashMap<String, ItemRecord> discs = new HashMap<>();
-        discs.put("13", (ItemRecord) Items.MUSIC_DISC_13);
-        discs.put("cat", (ItemRecord) Items.MUSIC_DISC_CAT);
-        discs.put("blocks", (ItemRecord) Items.MUSIC_DISC_BLOCKS);
-        discs.put("chirp", (ItemRecord) Items.MUSIC_DISC_CHIRP);
-        discs.put("far", (ItemRecord) Items.MUSIC_DISC_FAR);
-        discs.put("mall", (ItemRecord) Items.MUSIC_DISC_MALL);
-        discs.put("mellohi", (ItemRecord) Items.MUSIC_DISC_MELLOHI);
-        discs.put("stal", (ItemRecord) Items.MUSIC_DISC_STAL);
-        discs.put("strad", (ItemRecord) Items.MUSIC_DISC_STRAD);
-        discs.put("ward", (ItemRecord) Items.MUSIC_DISC_WARD);
-        discs.put("11", (ItemRecord) Items.MUSIC_DISC_11);
-        discs.put("wait", (ItemRecord) Items.MUSIC_DISC_WAIT);
+        HashMap<String, MusicDiscItem> discs = new HashMap<>();
+        discs.put("13", (MusicDiscItem) Items.MUSIC_DISC_13);
+        discs.put("cat", (MusicDiscItem) Items.MUSIC_DISC_CAT);
+        discs.put("blocks", (MusicDiscItem) Items.MUSIC_DISC_BLOCKS);
+        discs.put("chirp", (MusicDiscItem) Items.MUSIC_DISC_CHIRP);
+        discs.put("far", (MusicDiscItem) Items.MUSIC_DISC_FAR);
+        discs.put("mall", (MusicDiscItem) Items.MUSIC_DISC_MALL);
+        discs.put("mellohi", (MusicDiscItem) Items.MUSIC_DISC_MELLOHI);
+        discs.put("stal", (MusicDiscItem) Items.MUSIC_DISC_STAL);
+        discs.put("strad", (MusicDiscItem) Items.MUSIC_DISC_STRAD);
+        discs.put("ward", (MusicDiscItem) Items.MUSIC_DISC_WARD);
+        discs.put("11", (MusicDiscItem) Items.MUSIC_DISC_11);
+        discs.put("wait", (MusicDiscItem) Items.MUSIC_DISC_WAIT);
 
         discs.put("scarlet", RECORD_SCARLET);
         discs.put("lo-fi", RECORD_LOFI);
@@ -127,7 +127,7 @@ public class ModItems {
             ItemColors itemColors = Minecraft.getInstance().getItemColors();
             BlockColors blockColors = Minecraft.getInstance().getBlockColors();
             itemColors.register((stack, tintIndex) -> {
-                IBlockState iblockstate = ((ItemBlock) stack.getItem()).getBlock().getDefaultState();
+                BlockState iblockstate = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
                 return blockColors.getColor(iblockstate, null, null, tintIndex);
             }, ModBlocks.NETTLES);
         }

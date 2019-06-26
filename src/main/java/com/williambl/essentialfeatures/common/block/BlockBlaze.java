@@ -2,18 +2,15 @@ package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.init.Particles;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
+import net.minecraft.util.Direction;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -27,7 +24,7 @@ public class BlockBlaze extends EFBlock {
 
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.isImmuneToFire() && entityIn instanceof EntityLivingBase && !EnchantmentHelper.hasFrostWalker((EntityLivingBase) entityIn)) {
+        if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entityIn)) {
             entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 5.0F);
             entityIn.setFire(10);
         }
@@ -36,7 +33,7 @@ public class BlockBlaze extends EFBlock {
     }
 
     @Override
-    public void animateTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         for (int i = 0; i < 3; ++i) {
             double d0 = (double) pos.getX() + rand.nextDouble();
             double d1 = (double) pos.getY() + rand.nextDouble() * 0.5D + 0.5D;
@@ -50,7 +47,7 @@ public class BlockBlaze extends EFBlock {
     }
 
     private boolean isTouchingWater(World worldIn, BlockPos pos) {
-        for (EnumFacing facing : EnumFacing.values())
+        for (Direction facing : Direction.values())
             if (worldIn.getBlockState(pos.offset(facing)).getBlock() == Blocks.WATER)
                 return true;
         return false;

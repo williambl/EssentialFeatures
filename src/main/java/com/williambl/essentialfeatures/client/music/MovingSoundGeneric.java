@@ -1,11 +1,11 @@
 package com.williambl.essentialfeatures.client.music;
 
-import net.minecraft.client.audio.MovingSound;
+import net.minecraft.client.audio.TickableSound;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 
-public class MovingSoundGeneric extends MovingSound {
+public class MovingSoundGeneric extends TickableSound {
 
     private final Entity entity;
 
