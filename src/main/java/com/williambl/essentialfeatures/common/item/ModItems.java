@@ -7,8 +7,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.item.Items;
 import net.minecraft.item.*;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
@@ -52,7 +53,7 @@ public class ModItems {
     public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<>();
 
     @ObjectHolder("cooked_nettles")
-    public static ItemCookedNettles COOKED_NETTLES;
+    public static EFItem COOKED_NETTLES;
 
     @ObjectHolder("redstone_rod_sword")
     public static ItemRedstoneRodSword REDSTONE_ROD_SWORD;
@@ -95,8 +96,8 @@ public class ModItems {
         public static void registerItems(RegistryEvent.Register<Item> event) {
             addPortableJukeboxes();
             final Item[] items = {
-                    new ItemCereal("cereal", 1, 6, false),
-                    new ItemCereal("iron_cereal", 3, 6, true),
+                    new ItemCereal("cereal", new Food.Builder().hunger(6).saturation(1).build(), false),
+                    new ItemCereal("iron_cereal", new Food.Builder().hunger(6).saturation(3).effect(new EffectInstance(Effects.RESISTANCE, 600, 1), 1).effect(new EffectInstance(Effects.REGENERATION, 200, 1), 1).build(), true),
                     new EFItem("dirty_clay", ItemGroup.MATERIALS),
                     new EFItem("sand_clay_mixture", ItemGroup.MATERIALS),
                     new EFItem("dirty_brick", ItemGroup.MATERIALS),
@@ -105,7 +106,7 @@ public class ModItems {
                     new ItemEFRecord("lo_fi", 2, ModSound.RECORD_LOFI),
                     new ItemPortableNoteBlock("portable_note_block"),
                     new ItemSharpenedArrow("sharpened_arrow"),
-                    new ItemCookedNettles("cooked_nettles"),
+                    new EFItem("cooked_nettles", new Item.Properties().group(ItemGroup.FOOD)),
                     new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD),
                     new ItemRedstoneRodArrow("redstone_rod_arrow")
             };

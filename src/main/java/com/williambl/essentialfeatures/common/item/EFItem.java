@@ -14,4 +14,8 @@ public class EFItem extends Item {
         this.setRegistryName(registryName);
     }
 
+    public EFItem(String registryName, Properties properties) {
+        super(properties);
+        this.setRegistryName(registryName);
+    }
 }
