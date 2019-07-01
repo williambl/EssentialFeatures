@@ -7,6 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ServerWorld;
 
 public class ItemRedstoneRodSword extends SwordItem {
 
@@ -19,11 +20,11 @@ public class ItemRedstoneRodSword extends SwordItem {
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
     {
         if (target.world.canBlockSeeSky(new BlockPos(target.posX, target.posY, target.posZ))) {
-            stack.damageItem(5, attacker);
+            stack.damageItem(5, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
             LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.posX, target.posY, target.posZ, false);
-            target.world.addWeatherEffect(bolt);
+            ((ServerWorld) target.world).addLightningBolt(bolt);
         }
-        stack.damageItem(1, attacker);
+        stack.damageItem(1, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
         return true;
     }
 }

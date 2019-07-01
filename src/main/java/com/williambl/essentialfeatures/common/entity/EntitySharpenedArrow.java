@@ -2,13 +2,13 @@ package com.williambl.essentialfeatures.common.entity;
 
 import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -31,7 +31,7 @@ public class EntitySharpenedArrow extends AbstractArrowEntity {
     private Material[] breakableMaterials = {
             Material.GLASS,
             Material.ICE,
-            Material.VINE,
+            Material.PLANTS,
             Material.WEB
     };
 
