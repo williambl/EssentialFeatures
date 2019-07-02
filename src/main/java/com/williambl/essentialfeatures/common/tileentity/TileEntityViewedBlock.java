@@ -4,13 +4,13 @@ import com.williambl.essentialfeatures.common.block.BlockViewedBlock;
 import com.williambl.essentialfeatures.common.config.ModConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.*;
 
 import java.util.List;
 
-public class TileEntityViewedBlock extends TileEntity implements ITickable {
+public class TileEntityViewedBlock extends TileEntity implements ITickableTileEntity {
 
     int radius = ModConfig.viewedBlockRange;
     boolean wasLookingLastTime;
@@ -61,10 +61,10 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
         //float playerPitch = player.rotationPitch;
         //float playerYaw = player.rotationYawHead;
 
-        RayTraceResult rayPos = rayTrace(player, 50, 1F);
-        BlockPos pos = rayPos.getBlockPos();
+        RayTraceResult rayResult = rayTrace(player, 50, 1F);
+        BlockPos rayPos = new BlockPos(rayResult.getHitVec());
 
-        return thisPos.equals(pos);
+        return thisPos.equals(rayPos);
 
     }
 
@@ -76,7 +76,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickable {
         Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
         Vec3d vec3d2 = vec3d.add(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
-        return this.world.rayTraceBlocks(vec3d, vec3d2, RayTraceFluidMode.NEVER, false, true);
+        return this.world.rayTraceBlocks(new RayTraceContext(vec3d, vec3d2, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, playerIn));
     }
 
     public Vec3d getPositionEyes(PlayerEntity playerIn, float partialTicks) {

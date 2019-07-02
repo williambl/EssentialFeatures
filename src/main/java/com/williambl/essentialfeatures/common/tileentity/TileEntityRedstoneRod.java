@@ -3,10 +3,11 @@ package com.williambl.essentialfeatures.common.tileentity;
 import com.williambl.essentialfeatures.common.block.BlockRedstoneRod;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
+import net.minecraft.world.ServerWorld;
 
-public class TileEntityRedstoneRod extends TileEntity implements ITickable {
+public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEntity {
 
     int tickCounter = 0;
 
@@ -41,7 +42,7 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickable {
         tickCounter = 0;
 
         LightningBoltEntity bolt = new LightningBoltEntity(world, pos.getX(), pos.getY(), pos.getZ(), false);
-        world.addWeatherEffect(bolt);
+        ((ServerWorld) world).addLightningBolt(bolt);
         block.redstoneEffects(world, pos);
 
         block.activate(world, pos, blockstate);
