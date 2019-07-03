@@ -6,9 +6,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.init.Particles;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.IParticleData;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
@@ -126,7 +126,7 @@ public class BlockRedstoneRod extends EFBlock {
 
         if (rand.nextInt(5) == 0)
         {
-            worldIn.spawnParticle(Particles.END_ROD, d0 + (double)enumfacing.getXOffset() * d3, d1 + (double)enumfacing.getYOffset() * d3, d2 + (double)enumfacing.getZOffset() * d3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+            worldIn.addParticle(ParticleTypes.END_ROD, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
         }
     }
 
@@ -183,8 +183,8 @@ public class BlockRedstoneRod extends EFBlock {
 
         for (int i = 0; i < world.rand.nextInt(10); i++)
         {
-            world.spawnParticle((IParticleData) Particles.DUST, d0 + (double)enumfacing.getXOffset() * d3, d1 + (double)enumfacing.getYOffset() * d3, d2 + (double)enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D);
-            world.spawnParticle(Particles.END_ROD, d0 + (double)enumfacing.getXOffset() * d3, d1 + (double)enumfacing.getYOffset() * d3, d2 + (double)enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
+            world.addParticle((IParticleData) ParticleTypes.DUST, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D);
+            world.addParticle(ParticleTypes.END_ROD, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
         }
     }
 }

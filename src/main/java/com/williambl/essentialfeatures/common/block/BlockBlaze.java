@@ -1,15 +1,16 @@
 package com.williambl.essentialfeatures.common.block;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.block.Blocks;
-import net.minecraft.init.Particles;
-import net.minecraft.util.*;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -39,7 +40,7 @@ public class BlockBlaze extends EFBlock {
             double d1 = (double) pos.getY() + rand.nextDouble() * 0.5D + 0.5D;
             double d2 = (double) pos.getZ() + rand.nextDouble();
 
-            worldIn.spawnParticle(Particles.LARGE_SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            worldIn.addParticle(ParticleTypes.LARGE_SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
         if (rand.nextDouble() < 0.01 || isTouchingWater(worldIn, pos)) {
             particleExplosion(worldIn, pos, rand);
@@ -59,9 +60,9 @@ public class BlockBlaze extends EFBlock {
             double d1 = (double) pos.getY() + rand.nextDouble() * 0.5D + 0.5D;
             double d2 = (double) pos.getZ() + rand.nextDouble();
 
-            worldIn.spawnParticle(Particles.LARGE_SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            worldIn.spawnParticle(Particles.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            worldIn.spawnParticle(Particles.LAVA, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            worldIn.addParticle(ParticleTypes.LARGE_SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            worldIn.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            worldIn.addParticle(ParticleTypes.LAVA, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
 
         double d0 = (double) pos.getX();

@@ -2,11 +2,10 @@ package com.williambl.essentialfeatures.common.item;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.init.Particles;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.properties.NoteBlockInstrument;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +28,7 @@ public class ItemPortableNoteBlock extends EFItem {
         BlockPos pos = context.getPos();
 
         world.playSound(null, player.getPosition(), getInstrumentFromBlock(world, pos), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(pos));
-        world.spawnParticle(Particles.NOTE, player.posX, player.posY + player.getEyeHeight(), player.posZ, 1.0F, 0F, 0F);
+        world.addParticle(ParticleTypes.NOTE, player.posX, player.posY + player.getEyeHeight(), player.posZ, 1.0F, 0F, 0F);
         return ActionResultType.SUCCESS;
     }
 
@@ -44,7 +43,7 @@ public class ItemPortableNoteBlock extends EFItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         worldIn.playSound(null, playerIn.getPosition(), getInstrument(0), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(playerIn.getPosition()));
-        worldIn.spawnParticle(Particles.NOTE, playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ, 1.0F, 0F, 0F);
+        worldIn.addParticle(ParticleTypes.NOTE, playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ, 1.0F, 0F, 0F);
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 

@@ -5,12 +5,12 @@ import net.minecraft.entity.monster.WitchEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.init.Particles;
-import net.minecraft.tileentity.ChestTileEntity;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -25,7 +25,7 @@ public class CommonEventHandler {
 
     @SubscribeEvent
     public void OnPlayerRespawn(PlayerRespawnEvent e) {
-        e.getPlayer().world.spawnParticle(Particles.EXPLOSION, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, 1.0D, 0.0D, 0.0D);
+        e.getPlayer().world.addParticle(ParticleTypes.EXPLOSION, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, 1.0D, 0.0D, 0.0D);
         e.getPlayer().world.playSound(null, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.getPlayer().world.rand.nextFloat() - e.getPlayer().world.rand.nextFloat()) * 0.2F) * 0.7F);
     }
 
@@ -39,7 +39,7 @@ public class CommonEventHandler {
         if (t instanceof ChestTileEntity) {
             if (world.getFluidState(pos.add(0, 1, 0)).isTagged(FluidTags.WATER)) {
                 for (int i = 0; i < world.rand.nextInt(50); i++) {
-                    world.spawnParticle(Particles.BUBBLE_COLUMN_UP, pos.getX()+rand.nextFloat(), pos.getY()+0.6, pos.getZ()+rand.nextFloat(), 0, 0.5, 0);
+                    world.addParticle(ParticleTypes.BUBBLE_COLUMN_UP, pos.getX() + rand.nextFloat(), pos.getY() + 0.6, pos.getZ() + rand.nextFloat(), 0, 0.5, 0);
                 }
             }
         }
@@ -66,7 +66,7 @@ public class CommonEventHandler {
                         entity.posZ + rand.nextDouble() - 0.5
                 );
 
-                world.spawnEntity(bat);
+                world.addEntity(bat);
             }
 
             System.out.println(e.getSource().getDamageType());
@@ -76,7 +76,7 @@ public class CommonEventHandler {
 
                 ocelot.setTamedBy((PlayerEntity) Objects.requireNonNull(e.getSource().getTrueSource()));
 
-                world.spawnEntity(ocelot);
+                world.addEntity(ocelot);
             }
             //Play a sound
 

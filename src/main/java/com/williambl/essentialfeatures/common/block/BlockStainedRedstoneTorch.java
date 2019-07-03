@@ -1,15 +1,14 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.google.common.collect.Lists;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.init.Particles;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -48,13 +47,13 @@ public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
             if (p_196527_4_) {
                 p_196527_1_.setBlockState(p_196527_2_, p_196527_0_.with(LIT, Boolean.FALSE), 3);
                 if (isBurnedOut(p_196527_1_, p_196527_2_, true)) {
-                    p_196527_1_.playSound((PlayerEntity)null, p_196527_2_, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 0.5F, 2.6F + (p_196527_1_.rand.nextFloat() - p_196527_1_.rand.nextFloat()) * 0.8F);
+                    p_196527_1_.playSound(null, p_196527_2_, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 0.5F, 2.6F + (p_196527_1_.rand.nextFloat() - p_196527_1_.rand.nextFloat()) * 0.8F);
 
                     for(int i = 0; i < 5; ++i) {
                         double d0 = (double)p_196527_2_.getX() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
                         double d1 = (double)p_196527_2_.getY() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
                         double d2 = (double)p_196527_2_.getZ() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
-                        p_196527_1_.spawnParticle(Particles.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                        p_196527_1_.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
                     }
 
                     p_196527_1_.getPendingBlockTicks().scheduleTick(p_196527_2_, p_196527_1_.getBlockState(p_196527_2_).getBlock(), 160);
