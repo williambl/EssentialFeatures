@@ -1,10 +1,11 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/essential-features",
   "promos": {
-    "1.12.2-latest": "v2.2.0",
-    "1.12.2-recommended": "v2.2.0"
+    "1.12.2-latest": "v2.2.1",
+    "1.12.2-recommended": "v2.2.1"
   },
   "1.12.2": {
+    "v2.2.1": "Quick fix for zombie mechanic villagers having a missing texture, causing them to be invisible and cause logspam, and also crashing when punched.",
     "v2.2.0": "Makes stinging nettles only give 1 damage point rather than poisoning. Removes unused code for panda mob. Adds redstone rod block, which attracts lightning and gives off a redstone signal when struck, and also has a sword and arrow which can be made from it. Tweaks hardness of some blocks. Fixes various door-related issues. Reduces frequency of portable jukebox as loot. Add stained redstone torches. Limits biomes in which nettles can spawn. Add stained redstone lamp recipes.",
     "v2.1.1": "Fixes crash on server startup, reduces amount of nettles spawning and also adds bubbles when a chest opens underwater.",
     "v2.1.0": "#### Additions:\n    - Add portable note block item\n    - Add feature where a swarm of bats will spawn on a witch's death\n    - Add feature where a tamed cat rarely spawns when a witch dies\n    - Add sharpened arrow, which breaks through glass and always crits (unless it's broken through glass)\n    - Add packed sand, red sand, and gravel, which don't fall\n    - Add stinging nettles, which poison you on touch or punch. They can also be cooked and eaten.\n    - Add MOTD taken from the net on login\n    - Add Nether Brick and Purpur Doors\n    #### Improvements:\n    - Viewed Block Optimisations:\n    - Make Viewed Block only check on server side\n    - Make Viewed Block only check every other tick by default\n    - Add a config value for how often the Viewed Block checks for players\n    - Make Crying Obsidian work in the nether or the end, but only once\n    #### Fixes:\n    - Localised Crying Obsidian in en_US\n    - Fixed cascading worldgen",
