@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 
 public class VillagerMechanic {
 
-    protected static final VillagerRegistry.VillagerProfession MECHANIC_PROFESSION = new VillagerRegistry.VillagerProfession("mechanic", "minecraft:textures/entity/villager/villager.png", "");
+    protected static final VillagerRegistry.VillagerProfession MECHANIC_PROFESSION = new VillagerRegistry.VillagerProfession("mechanic", "minecraft:textures/entity/villager/villager.png", "minecraft:textures/entity/zombie_villager/zombie_villager.png");
     protected static final VillagerRegistry.VillagerCareer MECHANIC_CAREER = new VillagerRegistry.VillagerCareer(MECHANIC_PROFESSION, "mechanic")
             .addTrade(1, new EmeraldForItems(Items.REDSTONE, new PriceInfo(20, 1)))
             .addTrade(2, new ListItemForEmeralds(new ItemStack(Blocks.REDSTONE_LAMP), new PriceInfo(1, 3)))
