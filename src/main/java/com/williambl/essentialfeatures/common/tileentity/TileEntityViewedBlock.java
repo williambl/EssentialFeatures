@@ -23,6 +23,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickableTileEn
 
     @Override
     public void tick() {
+        //TODO: Fix this only working when looking at North and West sides
 
         if (world.isRemote)
             return;

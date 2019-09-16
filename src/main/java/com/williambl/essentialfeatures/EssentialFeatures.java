@@ -16,6 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 @Mod(EssentialFeatures.MODID)
 @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EssentialFeatures {
+    //TODO: Move recipes into JSONs
 
     public static final String MODID = "essentialfeatures";
 

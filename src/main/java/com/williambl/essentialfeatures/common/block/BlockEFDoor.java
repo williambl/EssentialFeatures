@@ -2,12 +2,6 @@ package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.Items;
-import net.minecraft.item.Item;
-import net.minecraft.state.properties.DoubleBlockHalf;
-
-import java.util.Random;
 
 public class BlockEFDoor extends DoorBlock {
 
@@ -29,8 +23,10 @@ public class BlockEFDoor extends DoorBlock {
         return this.openSound;
     }
 
+    //TODO: Loot tables
+    /*@Override
     public Item getItemDropped(BlockState state, Random rand, int fortune) {
         return state.get(HALF) == DoubleBlockHalf.UPPER ? Items.AIR : Item.getItemFromBlock(this);
-    }
+    }*/
 
 }

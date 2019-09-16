@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
+    //TODO: Add wall-torch variant
 
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
     int colour;

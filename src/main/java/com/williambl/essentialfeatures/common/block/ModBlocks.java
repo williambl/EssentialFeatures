@@ -25,6 +25,7 @@ import java.util.Set;
 
 @ObjectHolder(EssentialFeatures.MODID)
 public class ModBlocks {
+    //TODO: Add tags to all blocks
 
     @ObjectHolder("viewed_block")
     public static BlockViewedBlock VIEWED_BLOCK;

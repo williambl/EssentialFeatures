@@ -135,6 +135,7 @@ public class ModItems {
 
         @SubscribeEvent
         public static void setBurnTimes(FurnaceFuelBurnTimeEvent e) {
+            //TODO: Fix blaze block not being accepted into the furnace in the first place
             if (e.getItemStack().isItemEqual(new ItemStack(ModBlocks.BLAZE_BLOCK)))
                 e.setBurnTime(4800);
         }

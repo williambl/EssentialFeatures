@@ -169,6 +169,7 @@ public class BlockRedstoneRod extends EFBlock {
 
         for (int i = 0; i < world.rand.nextInt(10); i++)
         {
+            //TODO: Fix this crash
             world.addParticle((IParticleData) ParticleTypes.DUST, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D);
             world.addParticle(ParticleTypes.END_ROD, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
         }

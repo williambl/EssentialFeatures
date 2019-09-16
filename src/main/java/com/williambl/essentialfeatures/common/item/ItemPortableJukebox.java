@@ -5,9 +5,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -30,6 +30,7 @@ public class ItemPortableJukebox extends EFItem {
      * Called when a Block is right-clicked with this Item
      */
     @Override
+    //TODO: Fix looping sound
     public ActionResultType onItemUse(ItemUseContext context) {
         if (record == null)
             return ActionResultType.PASS;

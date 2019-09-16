@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 public class ItemSharpenedArrow extends ArrowItem {
 
+    //TODO: Fix this just firing regular arrows
     public ItemSharpenedArrow(String registryName) {
         super(new Properties().group(ItemGroup.COMBAT));
         this.setRegistryName(registryName);
