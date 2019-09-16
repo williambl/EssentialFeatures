@@ -13,7 +13,6 @@ public class ItemCereal extends EFItem {
     public ItemCereal(String registryName, Food food, boolean isIron) {
         super(registryName, new Item.Properties().group(ItemGroup.FOOD).food(food));
         this.isIron = isIron;
-        this.setRegistryName(registryName);
     }
 
     @Override
