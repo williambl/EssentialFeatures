@@ -5,8 +5,8 @@ import net.minecraft.client.audio.ISound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;

@@ -1,9 +1,10 @@
 package com.williambl.essentialfeatures.common.block;
 
-import net.minecraft.block.*;
-import net.minecraft.block.RedstoneLampBlock;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RedstoneLampBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -45,7 +46,7 @@ public class BlockStainedLamp extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (!worldIn.isRemote) {
             boolean flag = state.get(LIT);
             if (flag != worldIn.isBlockPowered(pos)) {

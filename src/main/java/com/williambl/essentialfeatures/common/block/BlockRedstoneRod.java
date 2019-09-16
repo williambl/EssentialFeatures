@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
@@ -18,6 +17,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -72,7 +72,7 @@ public class BlockRedstoneRod extends EFBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, IBlockReader source, BlockPos pos)
+    public VoxelShape getShape(BlockState state, IBlockReader source, BlockPos pos, ISelectionContext context)
     {
         switch (state.get(FACING).getAxis())
         {
@@ -84,13 +84,6 @@ public class BlockRedstoneRod extends EFBlock {
             case Y:
                 return END_ROD_VERTICAL_AABB;
         }
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public boolean isFullCube(BlockState state)
-    {
-        return false;
     }
 
     /**
@@ -122,7 +115,7 @@ public class BlockRedstoneRod extends EFBlock {
         double d0 = (double)pos.getX() + 0.55D - (double)(rand.nextFloat() * 0.1F);
         double d1 = (double)pos.getY() + 0.55D - (double)(rand.nextFloat() * 0.1F);
         double d2 = (double)pos.getZ() + 0.55D - (double)(rand.nextFloat() * 0.1F);
-        double d3 = (double)(0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F);
+        double d3 = 0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F;
 
         if (rand.nextInt(5) == 0)
         {
@@ -154,13 +147,6 @@ public class BlockRedstoneRod extends EFBlock {
         return BlockRenderLayer.CUTOUT;
     }
 
-    @Override
-    @SuppressWarnings("undefined")
-    public BlockFaceShape getBlockFaceShape(IBlockReader worldIn, BlockState state, BlockPos pos, Direction face)
-    {
-        return BlockFaceShape.UNDEFINED;
-    }
-
     public void activate(World worldIn, BlockPos pos, BlockState blockstate) {
         worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.TRUE));
     }
@@ -179,7 +165,7 @@ public class BlockRedstoneRod extends EFBlock {
         double d0 = (double)pos.getX() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
         double d1 = (double)pos.getY() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
         double d2 = (double)pos.getZ() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
-        double d3 = (double)(0.4F - (world.rand.nextFloat() + world.rand.nextFloat()) * 0.4F);
+        double d3 = 0.4F - (world.rand.nextFloat() + world.rand.nextFloat()) * 0.4F;
 
         for (int i = 0; i < world.rand.nextInt(10); i++)
         {

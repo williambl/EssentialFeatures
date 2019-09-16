@@ -8,8 +8,8 @@ import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class EntityRedstoneRodArrow extends AbstractArrowEntity {
 
@@ -23,6 +23,10 @@ public class EntityRedstoneRodArrow extends AbstractArrowEntity {
 
     private double damage;
     private int knockbackStrength;
+
+    public EntityRedstoneRodArrow(EntityType entityType, World world) {
+        super(entityType, world);
+    }
 
     public EntityRedstoneRodArrow(World worldIn) {
         super(ModEntities.REDSTONE_ROD_ARROW, worldIn);

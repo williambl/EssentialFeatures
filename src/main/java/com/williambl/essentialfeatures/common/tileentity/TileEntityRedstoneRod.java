@@ -5,7 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.ServerWorld;
+import net.minecraft.world.server.ServerWorld;
 
 public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEntity {
 

@@ -1,15 +1,10 @@
 package com.williambl.essentialfeatures.common.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.dispenser.IDispenseItemBehavior;
-import net.minecraft.dispenser.ProxyBlockSource;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.dispenser.IDispenseItemBehavior;
+import net.minecraft.dispenser.ProxyBlockSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.DispenserTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -62,6 +57,7 @@ public class BlockBlockPlacer extends DispenserBlock {
     public class BehaviorPlaceBlock implements IDispenseItemBehavior {
         @Override
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
+            //TODO: Get this to work properly, it never actually did
             Block block = Block.getBlockFromItem(stack.getItem());
 
             if (block == Blocks.AIR)
@@ -74,11 +70,11 @@ public class BlockBlockPlacer extends DispenserBlock {
             World world = source.getWorld();
 
             if (world.isAirBlock(pos)) {
-                BlockState state = block.getStateForPlacement(new BlockItemUseContext(world, null, stack, pos, facing, pos.getX(), pos.getY(), pos.getZ()));
+                BlockState state = block.getDefaultState()/*getStateForPlacement(new BlockItemUseContext(new ItemUseContext(world, null, stack, pos, facing, pos.getX(), pos.getY(), pos.getZ())))*/;
 
                 if (state != null) {
                     world.setBlockState(pos, state);
-                    SoundType soundtype = block.getSoundType();
+                    SoundType soundtype = block.getSoundType(state);
                     world.playSound(null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                     stack.shrink(1);
                 }

@@ -19,7 +19,7 @@ public class CustomMusic {
 
         switch (world.getBiome(player.getPosition()).getCategory()) {
             case OCEAN:
-                musicIn = SimpleSound.getMusicRecord(ModSound.OCEAN);
+                musicIn = SimpleSound.music(ModSound.OCEAN);
                 return musicIn;
             default:
                 return musicIn;

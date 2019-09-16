@@ -2,21 +2,19 @@ package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
@@ -34,13 +32,13 @@ public class BlockNettles extends BushBlock implements IShearable {
     protected static final VoxelShape NETTLES_SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
     public BlockNettles(String registryName) {
-        super(Properties.create(Material.VINE).hardnessAndResistance(0, 0).sound(SoundType.PLANT).doesNotBlockMovement());
+        super(Properties.create(Material.PLANTS).hardnessAndResistance(0, 0).sound(SoundType.PLANT).doesNotBlockMovement());
         this.setRegistryName(registryName);
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return NETTLES_SHAPE;
     }
 
@@ -49,10 +47,11 @@ public class BlockNettles extends BushBlock implements IShearable {
         return state.getBlock() == Blocks.GRASS;
     }
 
-    @Override
+    //TODO: Make loot table
+    /*@Override
     public Item getItemDropped(BlockState state, World world, BlockPos pos, int fortune) {
         return null;
-    }
+    }*/
 
     public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
         if (!worldIn.isRemote && stack.getItem() == Items.SHEARS) {

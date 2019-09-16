@@ -24,7 +24,7 @@ public class BlockBlockBreaker extends DirectionalBlock {
     }
 
     @Override
-    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (!worldIn.isRemote) {
             if (worldIn.isBlockPowered(pos) && state.get(TRIGGERED) == Boolean.valueOf(false)) {
                 destroy(pos, state, worldIn);

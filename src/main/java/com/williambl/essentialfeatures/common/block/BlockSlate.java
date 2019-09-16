@@ -9,12 +9,12 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class BlockSlate extends Block {
 
@@ -43,33 +43,22 @@ public class BlockSlate extends Block {
 
    @Override
    @SuppressWarnings("deprecation")
-   public boolean isFullCube(BlockState state) {
-      return state.get(LAYERS) == 8;
-   }
-
-   @Override
-   @SuppressWarnings("deprecation")
-   public BlockFaceShape getBlockFaceShape(IBlockReader worldIn, BlockState state, BlockPos pos, Direction face) {
-      return face == Direction.DOWN ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
-   }
-
-   @Override
-   @SuppressWarnings("deprecation")
-   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
       return SHAPES[state.get(LAYERS)];
    }
 
    @Override
    @SuppressWarnings("deprecation")
-   public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+   public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
       return SHAPES[state.get(LAYERS) - 1];
    }
 
-   @Override
+   //TODO: Make loot table
+   /*@Override
    @SuppressWarnings("deprecation")
    public int quantityDropped(BlockState state, Random random) {
       return state.get(LAYERS) + 1;
-   }
+   }*/
 
    @Override
    @SuppressWarnings("deprecation")

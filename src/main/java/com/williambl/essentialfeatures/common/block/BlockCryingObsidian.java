@@ -38,10 +38,10 @@ public class BlockCryingObsidian extends Block {
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         Direction enumfacing = Direction.random(rand);
 
-        if (enumfacing != Direction.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isFullCube()) {
-            double d0 = (double) pos.getX();
-            double d1 = (double) pos.getY();
-            double d2 = (double) pos.getZ();
+        if (enumfacing != Direction.UP && !worldIn.getBlockState(pos.offset(enumfacing)).isSolid()) {
+            double d0 = pos.getX();
+            double d1 = pos.getY();
+            double d2 = pos.getZ();
 
             if (enumfacing == Direction.DOWN) {
                 d1 = d1 - 0.05D;

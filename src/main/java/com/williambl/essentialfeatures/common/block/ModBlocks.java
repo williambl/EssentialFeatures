@@ -8,8 +8,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.TallBlockItem;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.TallBlockItem;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -112,7 +112,7 @@ public class ModBlocks {
                     new BlockViewedBlock("viewed_block", Material.ROCK, 5, 5),
                     new EFBlock("smooth_glowstone", Material.GLASS, SoundType.GLASS, 0.5f, 2, 15),
                     new EFBlock("polished_glowstone", Material.GLASS, SoundType.GLASS, 1, 2, 15),
-                    new EFBlock("snow_brick", Material.CRAFTED_SNOW, SoundType.SNOW, 0.5f, 1),
+                    new EFBlock("snow_brick", Material.SNOW_BLOCK, SoundType.SNOW, 0.5f, 1),
                     new BlockBlockBreaker("block_breaker", Material.PISTON, 3, 3),
                     new BlockCryingObsidian("crying_obsidian", Material.ROCK, 100, 100),
                     new BlockSpike("spike_block", Material.IRON, 1, 1),
@@ -134,14 +134,14 @@ public class ModBlocks {
 
                     new EFBlock("packed_sand", Material.SAND, SoundType.SAND, (float) 0.5, 1),
                     new EFBlock("packed_red_sand", Material.SAND, SoundType.SAND, (float) 0.5, 1),
-                    new EFBlock("packed_gravel", Material.GROUND, SoundType.GROUND, (float) 0.8, 2),
+                    new EFBlock("packed_gravel", Material.SAND, SoundType.GROUND, (float) 0.8, 2),
 
                     new BlockNettles("stinging_nettles"),
 
                     new BlockEFDoor("nether_brick_door", Material.ROCK, 1f, 1011, 1005),
                     new BlockEFDoor("purpur_door", Material.ROCK, 1f, 1011, 1005),
 
-                    new BlockRedstoneRod("redstone_rod", Material.CIRCUITS, SoundType.METAL, 0.5f, 0, 13)
+                    new BlockRedstoneRod("redstone_rod", Material.MISCELLANEOUS, SoundType.METAL, 0.5f, 0, 13)
             );
             event.getRegistry().registerAll(STAINED_REDSTONE_TORCHES);
             event.getRegistry().registerAll(STAINED_LAMPS);
