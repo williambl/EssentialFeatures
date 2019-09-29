@@ -13,7 +13,6 @@ import net.minecraft.potion.Effects;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -131,13 +130,6 @@ public class ModItems {
                 BlockState iblockstate = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
                 return blockColors.getColor(iblockstate, null, null, tintIndex);
             }, ModBlocks.NETTLES);
-        }
-
-        @SubscribeEvent
-        public static void setBurnTimes(FurnaceFuelBurnTimeEvent e) {
-            //TODO: Fix blaze block not being accepted into the furnace in the first place
-            if (e.getItemStack().isItemEqual(new ItemStack(ModBlocks.BLAZE_BLOCK)))
-                e.setBurnTime(4800);
         }
     }
 }

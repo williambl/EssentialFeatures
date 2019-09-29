@@ -6,10 +6,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.TallBlockItem;
+import net.minecraft.item.*;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
@@ -175,7 +172,9 @@ public class ModBlocks {
                     new BlockItem(BLUE_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new BlockItem(MIXED_BRICKS, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new BlockItem(SLATE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
-                    new BlockItem(BLAZE_BLOCK, new Item.Properties().group(ItemGroup.DECORATIONS)),
+                    new BlockItem(BLAZE_BLOCK, new Item.Properties().group(ItemGroup.DECORATIONS)) {
+                        @Override public int getBurnTime(ItemStack itemStack) { return 4800; }
+                    },
                     new BlockItem(PACKED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new BlockItem(PACKED_RED_SAND, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new BlockItem(PACKED_GRAVEL, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
