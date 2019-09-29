@@ -23,8 +23,6 @@ public class TileEntityViewedBlock extends TileEntity implements ITickableTileEn
 
     @Override
     public void tick() {
-        //TODO: Fix this only working when looking at North and West sides
-
         if (world.isRemote)
             return;
 
@@ -59,25 +57,19 @@ public class TileEntityViewedBlock extends TileEntity implements ITickableTileEn
     }
 
     public boolean checkIfLooking(PlayerEntity player, BlockPos thisPos) {
-        //float playerPitch = player.rotationPitch;
-        //float playerYaw = player.rotationYawHead;
-
-        RayTraceResult rayResult = rayTrace(player, 50, 1F);
-        BlockPos rayPos = new BlockPos(rayResult.getHitVec());
-
-        return thisPos.equals(rayPos);
-
+        BlockRayTraceResult rayResult = rayTrace(player, 50, 1F);
+        return thisPos.equals(rayResult.getPos());
     }
 
     /*
     For some reason EntityPlayer.raytrace and EntityPlayer.getPositionEyes
     are Client Only, so here are two slightly modified functions for use on servers.
     */
-    public RayTraceResult rayTrace(PlayerEntity playerIn, double blockReachDistance, float partialTicks) {
+    public BlockRayTraceResult rayTrace(PlayerEntity playerIn, double blockReachDistance, float partialTicks) {
         Vec3d vec3d = getPositionEyes(playerIn, partialTicks);
         Vec3d vec3d1 = playerIn.getLook(partialTicks);
         Vec3d vec3d2 = vec3d.add(vec3d1.x * blockReachDistance, vec3d1.y * blockReachDistance, vec3d1.z * blockReachDistance);
-        return this.world.rayTraceBlocks(new RayTraceContext(vec3d, vec3d2, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, playerIn));
+        return this.world.rayTraceBlocks(new RayTraceContext(vec3d, vec3d2, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE, playerIn));
     }
 
     public Vec3d getPositionEyes(PlayerEntity playerIn, float partialTicks) {
