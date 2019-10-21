@@ -16,6 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -84,7 +85,7 @@ public class ModBlocks {
     @ObjectHolder("redstone_rod")
     public static BlockRedstoneRod REDSTONE_ROD;
 
-    public static BlockStainedRedstoneTorch[] STAINED_REDSTONE_TORCHES = new BlockStainedRedstoneTorch[16];
+    public static Pair[] STAINED_REDSTONE_TORCHES = new Pair[16];
     public static BlockStainedLamp[] STAINED_LAMPS = new BlockStainedLamp[16];
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -102,7 +103,10 @@ public class ModBlocks {
             final IForgeRegistry<Block> registry = event.getRegistry();
 
             for (int i = 0; i < 16; i++) {
-                STAINED_REDSTONE_TORCHES[i] = new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_torch", i);
+                STAINED_REDSTONE_TORCHES[i] = Pair.of(
+                        new BlockStainedRedstoneTorch(BlockStainedRedstoneTorch.names[i] + "_stained_redstone_torch", i),
+                        new BlockStainedRedstoneWallTorch(BlockStainedRedstoneWallTorch.names[i] + "_stained_redstone_wall_torch", i)
+                );
                 STAINED_LAMPS[i] = new BlockStainedLamp(BlockStainedRedstoneTorch.names[i]+"_stained_redstone_lamp", i);
             }
 
@@ -141,7 +145,12 @@ public class ModBlocks {
 
                     new BlockRedstoneRod("redstone_rod", Material.MISCELLANEOUS, SoundType.METAL, 0.5f, 0, 13)
             );
-            event.getRegistry().registerAll(STAINED_REDSTONE_TORCHES);
+
+            for (Pair torchPair :
+                    STAINED_REDSTONE_TORCHES) {
+                event.getRegistry().register((Block) torchPair.getLeft());
+                event.getRegistry().register((Block) torchPair.getRight());
+            }
             event.getRegistry().registerAll(STAINED_LAMPS);
 
         }
@@ -191,9 +200,9 @@ public class ModBlocks {
                 ITEM_BLOCKS.add(item);
             }
 
-            for (BlockStainedRedstoneTorch torch : STAINED_REDSTONE_TORCHES) {
-                final BlockItem item = new BlockItem(torch, new Item.Properties().group(ItemGroup.REDSTONE));
-                registry.register(item.setRegistryName(torch.getRegistryName()));
+            for (Pair<BlockStainedRedstoneTorch, BlockStainedRedstoneWallTorch> torchPair : STAINED_REDSTONE_TORCHES) {
+                final BlockItem item = new WallOrFloorItem(torchPair.getLeft(), torchPair.getRight(), new Item.Properties().group(ItemGroup.REDSTONE));
+                registry.register(item.setRegistryName(torchPair.getLeft().getRegistryName()));
                 ITEM_BLOCKS.add(item);
             }
 

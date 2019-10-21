@@ -1,6 +1,7 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.google.common.collect.Lists;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.block.material.Material;
@@ -17,7 +18,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
-    //TODO: Add wall-torch variant
 
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
     int colour;
@@ -34,7 +34,7 @@ public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
      */
     public Item getItemDropped(BlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(ModBlocks.STAINED_REDSTONE_TORCHES[colour]);
+        return Item.getItemFromBlock((Block) ModBlocks.STAINED_REDSTONE_TORCHES[colour].getLeft());
     }
 
     public static void update(BlockState p_196527_0_, World p_196527_1_, BlockPos p_196527_2_, Random p_196527_3_, boolean p_196527_4_) {
