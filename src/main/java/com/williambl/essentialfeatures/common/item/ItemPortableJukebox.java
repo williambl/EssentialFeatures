@@ -38,7 +38,6 @@ public class ItemPortableJukebox extends EFItem {
         World world = context.getWorld();
 
         if (player.isSneaking()) {
-            //TODO: Fix this from giving air
             ItemStack itemstack = context.getItem();
             itemstack.shrink(1);
 
