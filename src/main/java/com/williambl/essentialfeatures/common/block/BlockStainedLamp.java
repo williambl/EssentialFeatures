@@ -29,9 +29,8 @@ public class BlockStainedLamp extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    //TODO: Fix this
     public int getLightValue(BlockState state) {
-        return state.get(LIT) ? super.getLightValue(state) : 0;
+        return state.get(LIT) ? 15 : 0;
     }
 
     @Override
