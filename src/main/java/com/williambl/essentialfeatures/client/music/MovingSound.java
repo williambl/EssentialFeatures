@@ -5,14 +5,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 
-public class MovingSoundGeneric extends TickableSound {
+public class MovingSound extends TickableSound {
 
     private final Entity entity;
+    private float distance = 0.0F;
 
-    public MovingSoundGeneric(Entity entityIn, SoundEvent soundIn) {
+    public MovingSound(Entity entityIn, SoundEvent soundIn) {
         super(soundIn, SoundCategory.NEUTRAL);
         this.entity = entityIn;
-        this.repeat = true;
+        this.repeat = false;
         this.repeatDelay = 0;
         this.volume = 1.0F;
     }

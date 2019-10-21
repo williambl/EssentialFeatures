@@ -1,6 +1,6 @@
 package com.williambl.essentialfeatures.common.item;
 
-import com.williambl.essentialfeatures.client.music.MovingSoundGeneric;
+import com.williambl.essentialfeatures.client.music.MovingSound;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,7 +30,6 @@ public class ItemPortableJukebox extends EFItem {
      * Called when a Block is right-clicked with this Item
      */
     @Override
-    //TODO: Fix looping sound
     public ActionResultType onItemUse(ItemUseContext context) {
         if (record == null)
             return ActionResultType.PASS;
@@ -39,6 +38,7 @@ public class ItemPortableJukebox extends EFItem {
         World world = context.getWorld();
 
         if (player.isSneaking()) {
+            //TODO: Fix this from giving air
             ItemStack itemstack = context.getItem();
             itemstack.shrink(1);
 
@@ -60,7 +60,7 @@ public class ItemPortableJukebox extends EFItem {
 
     @OnlyIn(Dist.CLIENT)
     private void playSound(PlayerEntity playerIn, MusicDiscItem recordIn) {
-        Minecraft.getInstance().getSoundHandler().play(new MovingSoundGeneric(playerIn, recordIn.getSound()));
+        Minecraft.getInstance().getSoundHandler().play(new MovingSound(playerIn, recordIn.getSound()));
     }
 
     @Override
