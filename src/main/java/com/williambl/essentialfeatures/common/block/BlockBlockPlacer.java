@@ -57,7 +57,6 @@ public class BlockBlockPlacer extends DispenserBlock {
     public class BehaviorPlaceBlock implements IDispenseItemBehavior {
         @Override
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
-            //TODO: Get this to work properly, it never actually did
             Block block = Block.getBlockFromItem(stack.getItem());
 
             if (block == Blocks.AIR)

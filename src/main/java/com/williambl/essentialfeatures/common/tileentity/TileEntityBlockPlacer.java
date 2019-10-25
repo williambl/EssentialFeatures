@@ -5,7 +5,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class TileEntityBlockPlacer extends DispenserTileEntity {
-    //TODO: Make this actually work, instead of stacks being full of air...
 
     public TileEntityBlockPlacer() {
         super(ModTileEntities.BLOCK_PLACER);
