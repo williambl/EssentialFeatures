@@ -60,6 +60,7 @@ public class ModItems {
     public static ItemRedstoneRodArrow REDSTONE_ROD_ARROW;
 
     private static void addPortableJukeboxes() {
+        ModSound.addSoundEvents(); //This is ugly but soundevents are done after items so this must be done :/
         PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", ItemGroup.TOOLS, null);
 
         HashMap<String, MusicDiscItem> discs = new HashMap<>();
