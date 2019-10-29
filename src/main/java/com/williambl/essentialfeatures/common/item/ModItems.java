@@ -107,7 +107,8 @@ public class ModItems {
                     new ItemSharpenedArrow("sharpened_arrow"),
                     new EFItem("cooked_nettles", new Item.Properties().group(ItemGroup.FOOD)),
                     new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD),
-                    new ItemRedstoneRodArrow("redstone_rod_arrow")
+                    new ItemRedstoneRodArrow("redstone_rod_arrow"),
+                    PORTABLE_JUKEBOX
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
