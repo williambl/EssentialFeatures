@@ -9,13 +9,13 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "essentialfeatures:purpur_door",
+              "block": "essentialfeatures:nether_brick_door",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "essentialfeatures:purpur_door"
+          "name": "essentialfeatures:nether_brick_door"
         }
       ],
       "conditions": [

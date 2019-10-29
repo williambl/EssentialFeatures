@@ -23,10 +23,4 @@ public class BlockEFDoor extends DoorBlock {
         return this.openSound;
     }
 
-    //TODO: Loot tables
-    /*@Override
-    public Item getItemDropped(BlockState state, Random rand, int fortune) {
-        return state.get(HALF) == DoubleBlockHalf.UPPER ? Items.AIR : Item.getItemFromBlock(this);
-    }*/
-
 }
