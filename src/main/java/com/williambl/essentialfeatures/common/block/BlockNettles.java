@@ -8,7 +8,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.tileentity.TileEntity;
@@ -47,17 +46,9 @@ public class BlockNettles extends BushBlock implements IShearable {
         return state.getBlock() == Blocks.GRASS;
     }
 
-    //TODO: Make loot table
-    /*@Override
-    public Item getItemDropped(BlockState state, World world, BlockPos pos, int fortune) {
-        return null;
-    }*/
-
     public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
-        if (!worldIn.isRemote && stack.getItem() == Items.SHEARS) {
-            spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.NETTLES, 1, new CompoundNBT()));
-        } else {
-            super.harvestBlock(worldIn, player, pos, state, te, stack);
+        super.harvestBlock(worldIn, player, pos, state, te, stack);
+        if (!worldIn.isRemote && !(stack.getItem() == Items.SHEARS)) {
             player.addPotionEffect(new EffectInstance(Effects.POISON, 20, 1));
         }
     }
