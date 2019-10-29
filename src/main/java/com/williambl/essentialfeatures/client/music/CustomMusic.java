@@ -12,6 +12,9 @@ public class CustomMusic {
         Minecraft mc = Minecraft.getInstance();
         ClientWorld world = mc.world;
         ClientPlayerEntity player = mc.player;
+        if (world == null) {
+            return musicIn;
+        }
 
         if (world.rand.nextFloat() > 0.5) {
             return musicIn;
