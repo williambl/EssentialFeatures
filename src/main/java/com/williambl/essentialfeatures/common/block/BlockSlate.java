@@ -53,13 +53,6 @@ public class BlockSlate extends Block {
       return SHAPES[state.get(LAYERS) - 1];
    }
 
-   //TODO: Make loot table
-   /*@Override
-   @SuppressWarnings("deprecation")
-   public int quantityDropped(BlockState state, Random random) {
-      return state.get(LAYERS) + 1;
-   }*/
-
    @Override
    @SuppressWarnings("deprecation")
    public boolean isReplaceable(BlockState state, BlockItemUseContext useContext) {
