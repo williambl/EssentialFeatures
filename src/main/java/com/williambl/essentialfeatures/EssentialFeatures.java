@@ -7,21 +7,31 @@ import com.williambl.essentialfeatures.common.entity.ModEntities;
 import com.williambl.essentialfeatures.common.item.ModItems;
 import com.williambl.essentialfeatures.common.world.ModWorld;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(EssentialFeatures.MODID)
-@Mod.EventBusSubscriber(modid = EssentialFeatures.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EssentialFeatures {
     //TODO: Move recipes into JSONs
 
     public static final String MODID = "essentialfeatures";
 
-    @SubscribeEvent
-    public void setup(final FMLCommonSetupEvent event) {
+    public EssentialFeatures() {
+        // Register the setup method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        // Register the config method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modConfig);
+        // Register the doClientStuff method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void setup(final FMLCommonSetupEvent event) {
         ModWorld.registerWorldGenerators();
         ModEntities.initRenderers();
 
@@ -29,8 +39,7 @@ public class EssentialFeatures {
         MinecraftForge.EVENT_BUS.register(handler);
     }
 
-    @SubscribeEvent
-    public void modConfig(ModConfig.ModConfigEvent event)
+    private void modConfig(ModConfig.ModConfigEvent event)
     {
         ModConfig config = event.getConfig();
         if (config.getSpec() == com.williambl.essentialfeatures.common.config.ModConfig.CLIENT_SPEC)
@@ -39,8 +48,7 @@ public class EssentialFeatures {
             com.williambl.essentialfeatures.common.config.ModConfig.refreshServer();
     }
 
-    @SubscribeEvent
-    public void clientSetup(final FMLClientSetupEvent event) {
+    private void clientSetup(final FMLClientSetupEvent event) {
         ClientEventHandler handler = new ClientEventHandler();
         MinecraftForge.EVENT_BUS.register(handler);
         ModBlocks.RegistrationHandler.registerBlockColors();
