@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "essentialfeatures:nether_brick_door"
+  },
+  "pattern": [
+    "bb",
+    "bb",
+    "bb"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:nether_brick"
+    }
+  }
+}

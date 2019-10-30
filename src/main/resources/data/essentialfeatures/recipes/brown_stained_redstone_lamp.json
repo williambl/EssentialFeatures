@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dyes/brown"
+    },
+    {
+      "item": "minecraft:redstone_lamp"
+    }
+  ],
+  "result": {
+    "item": "essentialfeatures:brown_stained_redstone_lamp"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "essentialfeatures:blue_bricks"
+  },
+  "pattern": [
+    "bl",
+    "lb"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:brick"
+    },
+    "l": {
+      "tag": "forge:dyes/blue"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "essentialfeatures:blaze_block"
+  },
+  "pattern": [
+    "bb",
+    "bb"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:blaze_powder"
+    }
+  }
+}
