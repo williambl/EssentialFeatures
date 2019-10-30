@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "essentialfeatures:stinging_nettles"
+  },
+  "result": "essentialfeatures:cooked_nettles",
+  "experience": 0.35,
+  "cookingtime": 100
+}
