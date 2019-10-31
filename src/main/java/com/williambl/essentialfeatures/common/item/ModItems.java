@@ -18,8 +18,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,7 +47,6 @@ public class ModItems {
 
     @ObjectHolder("portable_jukebox")
     public static ItemPortableJukebox PORTABLE_JUKEBOX;
-    public static ArrayList<ItemPortableJukebox> PORTABLE_JUKEBOXES = new ArrayList<>();
 
     @ObjectHolder("cooked_nettles")
     public static EFItem COOKED_NETTLES;
@@ -58,30 +55,6 @@ public class ModItems {
     public static ItemRedstoneRodSword REDSTONE_ROD_SWORD;
     @ObjectHolder("redstone_rod_arrow")
     public static ItemRedstoneRodArrow REDSTONE_ROD_ARROW;
-
-    private static void addPortableJukeboxes() {
-        ModSound.addSoundEvents(); //This is ugly but soundevents are done after items so this must be done :/
-        PORTABLE_JUKEBOX = new ItemPortableJukebox("portable_jukebox", ItemGroup.TOOLS, null);
-
-        HashMap<String, MusicDiscItem> discs = new HashMap<>();
-        discs.put("13", (MusicDiscItem) Items.MUSIC_DISC_13);
-        discs.put("cat", (MusicDiscItem) Items.MUSIC_DISC_CAT);
-        discs.put("blocks", (MusicDiscItem) Items.MUSIC_DISC_BLOCKS);
-        discs.put("chirp", (MusicDiscItem) Items.MUSIC_DISC_CHIRP);
-        discs.put("far", (MusicDiscItem) Items.MUSIC_DISC_FAR);
-        discs.put("mall", (MusicDiscItem) Items.MUSIC_DISC_MALL);
-        discs.put("mellohi", (MusicDiscItem) Items.MUSIC_DISC_MELLOHI);
-        discs.put("stal", (MusicDiscItem) Items.MUSIC_DISC_STAL);
-        discs.put("strad", (MusicDiscItem) Items.MUSIC_DISC_STRAD);
-        discs.put("ward", (MusicDiscItem) Items.MUSIC_DISC_WARD);
-        discs.put("11", (MusicDiscItem) Items.MUSIC_DISC_11);
-        discs.put("wait", (MusicDiscItem) Items.MUSIC_DISC_WAIT);
-
-        discs.put("scarlet", RECORD_SCARLET);
-        discs.put("lo-fi", RECORD_LOFI);
-
-        discs.forEach((name, record) -> PORTABLE_JUKEBOXES.add(new ItemPortableJukebox("portable_jukebox_" + name, ItemGroup.TOOLS, record)));
-    }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
@@ -94,7 +67,7 @@ public class ModItems {
          */
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
-            addPortableJukeboxes();
+            ModSound.addSoundEvents(); //This is ugly but soundevents are done after items so this must be done :/
             final Item[] items = {
                     new ItemCereal("cereal", new Food.Builder().hunger(6).saturation(1).build(), false),
                     new ItemCereal("iron_cereal", new Food.Builder().hunger(6).saturation(3).effect(new EffectInstance(Effects.RESISTANCE, 600, 1), 1).effect(new EffectInstance(Effects.REGENERATION, 200, 1), 1).build(), true),
@@ -109,7 +82,7 @@ public class ModItems {
                     new EFItem("cooked_nettles", new Item.Properties().group(ItemGroup.FOOD)),
                     new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD),
                     new ItemRedstoneRodArrow("redstone_rod_arrow"),
-                    PORTABLE_JUKEBOX
+                    new ItemPortableJukebox("portable_jukebox", ItemGroup.MISC)
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
@@ -117,10 +90,6 @@ public class ModItems {
             for (final Item item : items) {
                 registry.register(item);
                 ITEMS.add(item);
-            }
-            for (final Item jukebox : PORTABLE_JUKEBOXES) {
-                registry.register(jukebox);
-                ITEMS.add(jukebox);
             }
         }
 

@@ -4,26 +4,28 @@ import com.williambl.essentialfeatures.client.music.MovingSound;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.MusicDiscItem;
+import net.minecraft.item.*;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemPortableJukebox extends EFItem {
 
-    public MusicDiscItem record;
+    private List<ItemStack> jukeboxes = null;
 
-    public ItemPortableJukebox(String registryName, ItemGroup tab, MusicDiscItem recordIn) {
+    public ItemPortableJukebox(String registryName, ItemGroup tab) {
         super(registryName, tab);
-        record = recordIn;
     }
 
     /**
@@ -31,18 +33,20 @@ public class ItemPortableJukebox extends EFItem {
      */
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
-        if (record == null)
+        CompoundNBT tag = context.getItem().getOrCreateChildTag("Disc");
+
+        MusicDiscItem disc = (MusicDiscItem) ItemStack.read(tag).getItem();
+
+        if (disc == Items.AIR)
             return ActionResultType.PASS;
 
         PlayerEntity player = context.getPlayer();
         World world = context.getWorld();
 
         if (player.isSneaking()) {
-            ItemStack itemstack = context.getItem();
-            itemstack.shrink(1);
-
-            player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
-            player.addItemStackToInventory(new ItemStack(record));
+            context.getItem().removeChildTag("Disc");
+            context.getItem().getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
+            player.addItemStackToInventory(new ItemStack(disc));
 
             if (world.isRemote)
                 Minecraft.getInstance().getSoundHandler().stop();
@@ -52,7 +56,7 @@ public class ItemPortableJukebox extends EFItem {
 
         if (world.isRemote) {
             Minecraft.getInstance().getSoundHandler().stop();
-            playSound(player, record);
+            playSound(player, disc);
         }
         return ActionResultType.SUCCESS;
     }
@@ -64,8 +68,40 @@ public class ItemPortableJukebox extends EFItem {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if (record != null)
-            tooltip.add(record.getName());
+        CompoundNBT tag = stack.getOrCreateChildTag("Disc");
+
+        ItemStack discStack = ItemStack.read(tag);
+
+        if (discStack.getItem() != Items.AIR)
+            tooltip.add(new StringTextComponent("Disc: ").appendSibling(((MusicDiscItem) discStack.getItem()).getRecordDescription()));
+        else
+            tooltip.add(new StringTextComponent("Empty"));
+    }
+
+    @Override
+    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+        if (this.isInGroup(group)) {
+            items.add(new ItemStack(this));
+            items.addAll(getJukeboxes());
+        }
+    }
+
+
+    private List<ItemStack> getJukeboxes() {
+        if (jukeboxes == null) {
+            jukeboxes = new ArrayList<>();
+            ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).getAllElements().forEach(it -> {
+                System.out.println(it.getName());
+                ItemStack stack = new ItemStack(ModItems.PORTABLE_JUKEBOX);
+                stack.getOrCreateTag().put("Disc", new ItemStack(it).serializeNBT());
+                jukeboxes.add(stack);
+            });
+        }
+        if (jukeboxes.size() == 0) {
+            jukeboxes = null;
+            return new ArrayList<>();
+        }
+        return jukeboxes;
     }
 
 }
