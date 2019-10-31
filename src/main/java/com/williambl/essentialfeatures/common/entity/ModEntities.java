@@ -21,13 +21,12 @@ public class ModEntities {
     public static EntityType<EntityRedstoneRodArrow> REDSTONE_ROD_ARROW;
 
     public static void initRenderers() {
-        RenderingRegistry.registerEntityRenderingHandler(EntitySharpenedArrow.class, RenderSharpenedArrow.FACTORY);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneRodArrow.class, RenderRedstoneRodArrow.FACTORY);
+        RenderingRegistry.registerEntityRenderingHandler(EntitySharpenedArrow.class, RenderSharpenedArrow::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneRodArrow.class, RenderRedstoneRodArrow::new);
     }
 
     @SubscribeEvent
     public static void registerEntities(final RegistryEvent.Register<EntityType<?>> e) {
-
         e.getRegistry().registerAll(
                 EntityType.Builder.create(EntitySharpenedArrow::new, EntityClassification.MISC).size(0.5f, 0.5f).setCustomClientFactory(EntitySharpenedArrow::new).build(EssentialFeatures.MODID + ":sharpened_arrow").setRegistryName("sharpened_arrow"),
                 EntityType.Builder.create(EntityRedstoneRodArrow::new, EntityClassification.MISC).size(0.5f, 0.5f).setCustomClientFactory(EntityRedstoneRodArrow::new).build(EssentialFeatures.MODID + ":redstone_rod_arrow").setRegistryName("redstone_rod_arrow")
