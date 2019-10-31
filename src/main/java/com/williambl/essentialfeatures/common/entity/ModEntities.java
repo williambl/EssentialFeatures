@@ -29,8 +29,8 @@ public class ModEntities {
     public static void registerEntities(final RegistryEvent.Register<EntityType<?>> e) {
 
         e.getRegistry().registerAll(
-                EntityType.Builder.create(EntitySharpenedArrow::new, EntityClassification.MISC).build(EssentialFeatures.MODID + ":sharpened_arrow").setRegistryName("sharpened_arrow"),
-                EntityType.Builder.create(EntityRedstoneRodArrow::new, EntityClassification.MISC).build(EssentialFeatures.MODID + ":redstone_rod_arrow").setRegistryName("redstone_rod_arrow")
+                EntityType.Builder.create(EntitySharpenedArrow::new, EntityClassification.MISC).size(0.5f, 0.5f).setCustomClientFactory(EntitySharpenedArrow::new).build(EssentialFeatures.MODID + ":sharpened_arrow").setRegistryName("sharpened_arrow"),
+                EntityType.Builder.create(EntityRedstoneRodArrow::new, EntityClassification.MISC).size(0.5f, 0.5f).setCustomClientFactory(EntityRedstoneRodArrow::new).build(EssentialFeatures.MODID + ":redstone_rod_arrow").setRegistryName("redstone_rod_arrow")
         );
     }
 }

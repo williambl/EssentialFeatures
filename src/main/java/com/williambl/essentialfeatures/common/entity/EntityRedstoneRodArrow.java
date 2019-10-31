@@ -7,9 +7,12 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.network.FMLPlayMessages;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class EntityRedstoneRodArrow extends AbstractArrowEntity {
 
@@ -36,6 +39,14 @@ public class EntityRedstoneRodArrow extends AbstractArrowEntity {
         super(ModEntities.REDSTONE_ROD_ARROW, x, y, z, worldIn);
     }
 
+    public EntityRedstoneRodArrow(FMLPlayMessages.SpawnEntity packet, World world) {
+        this(packet.getPosX(), packet.getPosY(), packet.getPosZ(), world);
+        this.setHeadRotation(packet.getHeadYaw(), packet.getPitch());
+        this.setUniqueId(packet.getUuid());
+        this.setEntityId(packet.getEntityId());
+        this.setVelocity(packet.getVelX(), packet.getVelY(), packet.getVelZ());
+    }
+
     public EntityRedstoneRodArrow(LivingEntity shooter, World worldIn) {
         super(ModEntities.REDSTONE_ROD_ARROW, shooter, worldIn);
     }
@@ -58,5 +69,10 @@ public class EntityRedstoneRodArrow extends AbstractArrowEntity {
     @Override
     public EntityType<?> getType() {
         return ModEntities.REDSTONE_ROD_ARROW;
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

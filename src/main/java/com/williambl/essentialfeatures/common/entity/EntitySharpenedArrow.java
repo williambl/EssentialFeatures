@@ -8,9 +8,12 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.FMLPlayMessages;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.Arrays;
 
@@ -51,6 +54,14 @@ public class EntitySharpenedArrow extends AbstractArrowEntity {
     public EntitySharpenedArrow(LivingEntity shooter, World worldIn) {
         super(ModEntities.SHARPENED_ARROW, shooter, worldIn);
         this.setIsCritical(true);
+    }
+
+    public EntitySharpenedArrow(FMLPlayMessages.SpawnEntity packet, World world) {
+        this(packet.getPosX(), packet.getPosY(), packet.getPosZ(), world);
+        this.setHeadRotation(packet.getHeadYaw(), packet.getPitch());
+        this.setUniqueId(packet.getUuid());
+        this.setEntityId(packet.getEntityId());
+        this.setVelocity(packet.getVelX(), packet.getVelY(), packet.getVelZ());
     }
 
     @Override
@@ -101,5 +112,10 @@ public class EntitySharpenedArrow extends AbstractArrowEntity {
     @Override
     public EntityType<?> getType() {
         return ModEntities.SHARPENED_ARROW;
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }
