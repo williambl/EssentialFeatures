@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "tag": "minecraft:glowstone"
+    "item": "minecraft:glowstone"
   },
   "result": "essentialfeatures:smooth_glowstone",
   "experience": 0.15,
