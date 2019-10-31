@@ -15,7 +15,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(EssentialFeatures.MODID)
 public class EssentialFeatures {
-    //TODO: Move recipes into JSONs
 
     public static final String MODID = "essentialfeatures";
 
