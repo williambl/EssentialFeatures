@@ -1,10 +1,17 @@
 package com.williambl.essentialfeatures.common.loot;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.storage.loot.LootEntry;
+import net.minecraft.world.storage.loot.LootPool;
+import net.minecraft.world.storage.loot.LootTables;
+import net.minecraft.world.storage.loot.TableLootEntry;
+import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
 public class ModLootTables {
 
-    //TODO: Move this into a datapack or however it's done now
-   /*public static ILootGenerator entry = ItemLootEntry.builder(
-            ModItems.PORTABLE_JUKEBOX, 20, 50, new ILootFunction[0], new ILootCondition[0], "essentialfeatures:loot_portable_jukebox");
+    private static LootEntry.Builder entry = TableLootEntry.builder(new ResourceLocation("essentialfeatures:inject/loot_chests")).weight(3);
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
@@ -16,9 +23,11 @@ public class ModLootTables {
                     || name.equals(LootTables.CHESTS_JUNGLE_TEMPLE)
                     || name.equals(LootTables.CHESTS_SIMPLE_DUNGEON)
                     || name.equals(LootTables.CHESTS_NETHER_BRIDGE)
-                    ) {
-                event.getTable().getPool("main").addEntry(entry);
+                    || name.equals(LootTables.CHESTS_IGLOO_CHEST)
+            ) {
+                LootPool pool = LootPool.builder().addEntry(entry).name("injected_loot_chests").build();
+                event.getTable().addPool(pool);
             }
         }
-    }*/
+    }
 }
