@@ -84,7 +84,7 @@ public class EntitySharpenedArrow extends AbstractArrowEntity {
                 this.inGround = true;
                 this.arrowShake = 7;
                 this.setIsCritical(false);
-                this.func_213872_b((byte) 0);
+                this.setPierceLevel((byte) 0);
                 this.setHitSound(SoundEvents.ENTITY_ARROW_HIT);
                 this.func_213865_o(false);
                 blockstate.onProjectileCollision(this.world, blockstate, blockraytraceresult, this);
