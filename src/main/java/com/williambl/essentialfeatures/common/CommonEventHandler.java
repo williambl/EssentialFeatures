@@ -4,7 +4,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.WitchEntity;
 import net.minecraft.entity.passive.BatEntity;
-import net.minecraft.entity.passive.OcelotEntity;
+import net.minecraft.entity.passive.CatEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.ChestTileEntity;
@@ -18,6 +19,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class CommonEventHandler {
@@ -68,18 +70,15 @@ public class CommonEventHandler {
                 world.addEntity(bat);
             }
 
-            System.out.println(e.getSource().getDamageType());
             if (rand.nextDouble() < 0.05 && e.getSource().getDamageType().equals("player")) {
-                OcelotEntity ocelot = new OcelotEntity(EntityType.OCELOT, world);
-                ocelot.setPosition(entity.posX, entity.posY, entity.posZ);
+                CatEntity cat = new CatEntity(EntityType.CAT, world);
+                cat.setPosition(entity.posX, entity.posY, entity.posZ);
 
-                //TODO: Get this to work, the method is gone, might need an AT
-                //ocelot.setTamed((PlayerEntity) Objects.requireNonNull(e.getSource().getTrueSource()));
+                cat.setTamedBy((PlayerEntity) Objects.requireNonNull(e.getSource().getTrueSource()));
+                cat.setSitting(true);
 
-                world.addEntity(ocelot);
+                world.addEntity(cat);
             }
-            //Play a sound
-
             world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.HOSTILE, 1f, 1f);
         }
     }
