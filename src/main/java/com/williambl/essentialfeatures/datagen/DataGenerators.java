@@ -152,7 +152,7 @@ public class DataGenerators {
             makeItemModelFromBlock(ModBlocks.SMOOTH_GLOWSTONE);
             makeItemModelFromBlock(ModBlocks.POLISHED_GLOWSTONE);
             makeItemModelFromBlock(ModBlocks.SNOW_BRICK);
-            makeItemModelFromBlock(ModBlocks.BLOCK_BREAKER);
+            makeBlockBreakerItemModel(ModBlocks.BLOCK_BREAKER);
             makeItemModelFromBlock(ModBlocks.CRYING_OBSIDIAN);
             makeFlatItemModelFromBlock(ModBlocks.SPIKE_BLOCK);
             makeItemModelFromBlock(ModBlocks.BLOCK_PLACER);
@@ -165,7 +165,7 @@ public class DataGenerators {
             makeItemModelFromBlock(ModBlocks.LONG_BRICKS);
             makeItemModelFromBlock(ModBlocks.BLUE_BRICKS);
             makeItemModelFromBlock(ModBlocks.MIXED_BRICKS);
-            makeItemModelFromBlock(ModBlocks.SLATE);
+            makeSlateItemModel(ModBlocks.SLATE);
             makeItemModelFromBlock(ModBlocks.BLAZE_BLOCK);
             makeItemModelFromBlock(ModBlocks.PACKED_SAND);
             makeItemModelFromBlock(ModBlocks.PACKED_RED_SAND);
@@ -203,6 +203,7 @@ public class DataGenerators {
                     .parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
         }
 
+
         private void makeFlatItemModelFromTorchBlock(Block block) {
             String path = block.getRegistryName().getPath();
             makeItemModel(path, modLoc("block/lit_" + path));
@@ -222,6 +223,22 @@ public class DataGenerators {
             getBuilder(path)
                     .parent(new ModelFile.UncheckedModelFile(mcLoc("item/generated")))
                     .texture("layer0", texture);
+        }
+
+        private void makeBlockBreakerItemModel(BlockBreakerBlock block) {
+            String path = block.getRegistryName().getPath();
+            getBuilder(path)
+                    .parent(new ModelFile.UncheckedModelFile(mcLoc("block/cube_bottom_top")))
+                    .texture("bottom", mcLoc("block/piston_bottom"))
+                    .texture("side", modLoc("block/block_breaker_side"))
+                    .texture("top", modLoc("block/block_breaker_inner"));
+        }
+
+        private void makeSlateItemModel(SlateBlock block) {
+            String path = block.getRegistryName().getPath();
+
+            getBuilder(path)
+                    .parent(new ModelFile.UncheckedModelFile(modLoc("block/slate_height2")));
         }
 
         @Override

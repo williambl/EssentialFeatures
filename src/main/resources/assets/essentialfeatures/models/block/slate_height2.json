@@ -1,4 +1,5 @@
 {
+  "parent": "block/thin_block",
   "textures": {
     "particle": "essentialfeatures:block/slate_top",
     "top": "essentialfeatures:block/slate_top",

@@ -1,3 +1,8 @@
 {
-  "parent": "essentialfeatures:block/block_breaker"
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "block/piston_bottom",
+    "side": "essentialfeatures:block/block_breaker_side",
+    "top": "essentialfeatures:block/block_breaker_inner"
+  }
 }
