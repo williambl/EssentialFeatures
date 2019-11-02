@@ -14,9 +14,9 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCryingObsidian extends Block {
+public class CryingObsidianBlock extends Block {
 
-    public BlockCryingObsidian(String registryName, Material material, float hardness, float resistance) {
+    public CryingObsidianBlock(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance).lightValue(2));
         this.setRegistryName(registryName);
     }

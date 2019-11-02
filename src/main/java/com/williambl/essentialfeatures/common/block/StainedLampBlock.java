@@ -14,13 +14,13 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BlockStainedLamp extends Block {
+public class StainedLampBlock extends Block {
 
     public static final BooleanProperty LIT = RedstoneLampBlock.LIT;
     int colour;
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 
-    public BlockStainedLamp(String registryName, int colourIn) {
+    public StainedLampBlock(String registryName, int colourIn) {
         super(Properties.create(Material.GLASS).hardnessAndResistance(0.3f, 1.5f).sound(SoundType.GLASS));
         colour = colourIn;
         this.setRegistryName(registryName);

@@ -8,12 +8,12 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class BlockStainedRedstoneWallTorch extends RedstoneWallTorchBlock {
+public class StainedRedstoneWallTorchBlock extends RedstoneWallTorchBlock {
 
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
     int colour;
 
-    public BlockStainedRedstoneWallTorch(String registryName, int colourIn) {
+    public StainedRedstoneWallTorchBlock(String registryName, int colourIn) {
         super(Properties.create(Material.REDSTONE_LIGHT));
         colour = colourIn;
         this.setRegistryName(registryName);

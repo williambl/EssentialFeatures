@@ -17,13 +17,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
+public class StainedRedstoneTorchBlock extends RedstoneTorchBlock {
 
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
     int colour;
     private static final Map<World, List<Toggle>> BURNED_TORCHES = new java.util.WeakHashMap<World, List<Toggle>>(); // FORGE - fix vanilla MC-101233
 
-    public BlockStainedRedstoneTorch(String registryName, int colourIn) {
+    public StainedRedstoneTorchBlock(String registryName, int colourIn) {
         super(Properties.create(Material.REDSTONE_LIGHT));
         colour = colourIn;
         this.setRegistryName(registryName);
@@ -38,7 +38,7 @@ public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
     }
 
     public static void update(BlockState p_196527_0_, World p_196527_1_, BlockPos p_196527_2_, Random p_196527_3_, boolean p_196527_4_) {
-        List<BlockStainedRedstoneTorch.Toggle> list = BURNED_TORCHES.get(p_196527_1_);
+        List<StainedRedstoneTorchBlock.Toggle> list = BURNED_TORCHES.get(p_196527_1_);
 
         while(list != null && !list.isEmpty() && p_196527_1_.getGameTime() - (list.get(0)).time > 60L) {
             list.remove(0);
@@ -72,16 +72,16 @@ public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
     }
 
     private static boolean isBurnedOut(World p_176598_0_, BlockPos worldIn, boolean pos) {
-        List<BlockStainedRedstoneTorch.Toggle> list = BURNED_TORCHES.computeIfAbsent(p_176598_0_, k -> Lists.newArrayList());
+        List<StainedRedstoneTorchBlock.Toggle> list = BURNED_TORCHES.computeIfAbsent(p_176598_0_, k -> Lists.newArrayList());
 
         if (pos) {
-         list.add(new BlockStainedRedstoneTorch.Toggle(worldIn.toImmutable(), p_176598_0_.getGameTime()));
+            list.add(new StainedRedstoneTorchBlock.Toggle(worldIn.toImmutable(), p_176598_0_.getGameTime()));
       }
 
       int i = 0;
 
       for(int j = 0; j < list.size(); ++j) {
-         BlockStainedRedstoneTorch.Toggle blockredstonetorch$toggle = list.get(j);
+          StainedRedstoneTorchBlock.Toggle blockredstonetorch$toggle = list.get(j);
          if (blockredstonetorch$toggle.pos.equals(worldIn)) {
             ++i;
             if (i >= 8) {

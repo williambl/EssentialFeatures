@@ -26,11 +26,11 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public class BlockNettles extends BushBlock implements IShearable {
+public class NettlesBlock extends BushBlock implements IShearable {
 
     protected static final VoxelShape NETTLES_SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public BlockNettles(String registryName) {
+    public NettlesBlock(String registryName) {
         super(Properties.create(Material.PLANTS).hardnessAndResistance(0, 0).sound(SoundType.PLANT).doesNotBlockMovement());
         this.setRegistryName(registryName);
     }

@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockRedstoneRod extends EFBlock {
+public class RedstoneRodBlock extends EFBlock {
 
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.values());
@@ -33,7 +33,7 @@ public class BlockRedstoneRod extends EFBlock {
     protected static final VoxelShape END_ROD_NS_AABB = Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D);
     protected static final VoxelShape END_ROD_EW_AABB = Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D);
 
-    public BlockRedstoneRod(String registryName, Material material, SoundType soundType, float hardness, float resistance, int lightlevel) {
+    public RedstoneRodBlock(String registryName, Material material, SoundType soundType, float hardness, float resistance, int lightlevel) {
         super(registryName, material, soundType, hardness, resistance, lightlevel);
         this.setDefaultState(this.getStateContainer().getBaseState().with(POWERED, Boolean.FALSE).with(FACING, Direction.UP));
     }

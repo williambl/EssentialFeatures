@@ -17,9 +17,9 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockBlaze extends EFBlock {
+public class BlazeBlock extends EFBlock {
 
-    public BlockBlaze(String registryName) {
+    public BlazeBlock(String registryName) {
         super(registryName, Material.IRON, SoundType.METAL, 5f, 15f, 15);
     }
 
@@ -65,9 +65,9 @@ public class BlockBlaze extends EFBlock {
             worldIn.addParticle(ParticleTypes.LAVA, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
 
-        double d0 = (double) pos.getX();
-        double d1 = (double) pos.getY();
-        double d2 = (double) pos.getZ();
+        double d0 = pos.getX();
+        double d1 = pos.getY();
+        double d2 = pos.getZ();
         worldIn.playSound(d0, d1, d2, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f, 1f, false);
     }
 }

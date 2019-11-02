@@ -17,7 +17,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.Arrays;
 
-public class EntitySharpenedArrow extends AbstractArrowEntity {
+public class SharpenedArrowEntity extends AbstractArrowEntity {
 
     private int xTile;
     private int yTile;
@@ -36,27 +36,27 @@ public class EntitySharpenedArrow extends AbstractArrowEntity {
             Material.WEB
     };
 
-    public EntitySharpenedArrow(EntityType entityType, World world) {
+    public SharpenedArrowEntity(EntityType entityType, World world) {
         super(entityType, world);
         setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(World worldIn) {
+    public SharpenedArrowEntity(World worldIn) {
         super(ModEntities.SHARPENED_ARROW, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(double x, double y, double z, World worldIn) {
+    public SharpenedArrowEntity(double x, double y, double z, World worldIn) {
         super(ModEntities.SHARPENED_ARROW, x, y, z, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(LivingEntity shooter, World worldIn) {
+    public SharpenedArrowEntity(LivingEntity shooter, World worldIn) {
         super(ModEntities.SHARPENED_ARROW, shooter, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(FMLPlayMessages.SpawnEntity packet, World world) {
+    public SharpenedArrowEntity(FMLPlayMessages.SpawnEntity packet, World world) {
         this(packet.getPosX(), packet.getPosY(), packet.getPosZ(), world);
         this.setHeadRotation(packet.getHeadYaw(), packet.getPitch());
         this.setUniqueId(packet.getUuid());

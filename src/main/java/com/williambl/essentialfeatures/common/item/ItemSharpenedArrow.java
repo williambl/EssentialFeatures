@@ -1,6 +1,6 @@
 package com.williambl.essentialfeatures.common.item;
 
-import com.williambl.essentialfeatures.common.entity.EntitySharpenedArrow;
+import com.williambl.essentialfeatures.common.entity.SharpenedArrowEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ArrowItem;
@@ -17,7 +17,7 @@ public class ItemSharpenedArrow extends ArrowItem {
 
     @Override
     public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
-        return new EntitySharpenedArrow(shooter, worldIn);
+        return new SharpenedArrowEntity(shooter, worldIn);
     }
 
 }

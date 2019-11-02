@@ -1,7 +1,7 @@
 package com.williambl.essentialfeatures.common.item.crafting;
 
-import com.williambl.essentialfeatures.common.item.ItemPortableJukebox;
 import com.williambl.essentialfeatures.common.item.ModItems;
+import com.williambl.essentialfeatures.common.item.PortableJukeboxItem;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -57,7 +57,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
             ItemStack stackInSlot = inv.getStackInSlot(i);
             if (!stackInSlot.isEmpty()) {
                 Item item = stackInSlot.getItem();
-                if (item instanceof ItemPortableJukebox) {
+                if (item instanceof PortableJukeboxItem) {
                     if (!jukebox.isEmpty()) {
                         return ItemStack.EMPTY;
                     }

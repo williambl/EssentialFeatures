@@ -14,11 +14,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class BlockBlockPlacer extends DispenserBlock {
+public class BlockPlacerBlock extends DispenserBlock {
 
     private final IDispenseItemBehavior dropBehavior = new BehaviorPlaceBlock();
 
-    protected BlockBlockPlacer(String registryName, Material material, float hardness, float resistance) {
+    protected BlockPlacerBlock(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setDefaultState(this.getStateContainer().getBaseState().with(FACING, Direction.NORTH).with(TRIGGERED, Boolean.FALSE));
         this.setRegistryName(registryName);

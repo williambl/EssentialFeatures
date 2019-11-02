@@ -13,17 +13,17 @@ import net.minecraftforge.registries.ObjectHolder;
 public class ModTileEntities {
 
     @ObjectHolder("viewed_block")
-    public static TileEntityType<TileEntityViewedBlock> VIEWED_BLOCK;
+    public static TileEntityType<ViewedBlockTileEntity> VIEWED_BLOCK;
     @ObjectHolder("block_placer")
-    public static TileEntityType<TileEntityBlockPlacer> BLOCK_PLACER;
+    public static TileEntityType<BlockPlacerTileEntity> BLOCK_PLACER;
     @ObjectHolder("redstone_rod")
     public static TileEntityType<TileEntityRedstoneRod> REDSTONE_ROD;
 
     @SubscribeEvent
     public static void registerTileEntities(RegistryEvent.Register<TileEntityType<?>> e) {
         e.getRegistry().registerAll(
-                TileEntityType.Builder.create(TileEntityViewedBlock::new, ModBlocks.VIEWED_BLOCK).build(null).setRegistryName("viewed_block"),
-                TileEntityType.Builder.create(TileEntityBlockPlacer::new, ModBlocks.BLOCK_PLACER).build(null).setRegistryName("block_placer"),
+                TileEntityType.Builder.create(ViewedBlockTileEntity::new, ModBlocks.VIEWED_BLOCK).build(null).setRegistryName("viewed_block"),
+                TileEntityType.Builder.create(BlockPlacerTileEntity::new, ModBlocks.BLOCK_PLACER).build(null).setRegistryName("block_placer"),
                 TileEntityType.Builder.create(TileEntityRedstoneRod::new, ModBlocks.REDSTONE_ROD).build(null).setRegistryName("redstone_rod")
         );
 

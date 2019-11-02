@@ -1,6 +1,6 @@
 package com.williambl.essentialfeatures.common.entity;
 
-public class VillagerMechanic {
+public class MechanicVillager {
 
     //TODO: Get all this to actually *work*, I've never actually played 1.14 so I have no clue what all this new villager stuff is. Leaving it be for now.
 /*

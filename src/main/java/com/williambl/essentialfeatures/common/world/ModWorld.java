@@ -1,7 +1,7 @@
 package com.williambl.essentialfeatures.common.world;
 
-import com.williambl.essentialfeatures.common.block.BlockSlate;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
+import com.williambl.essentialfeatures.common.block.SlateBlock;
 import com.williambl.essentialfeatures.common.config.ModConfig;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
@@ -25,7 +25,7 @@ public class ModWorld {
 
         if (ModConfig.generateNettles) {
             ForgeRegistries.BIOMES.forEach(
-                    biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ModBlocks.SLATE.getDefaultState().with(BlockSlate.LAYERS, 8), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 40, 0, 80)))
+                    biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ModBlocks.SLATE.getDefaultState().with(SlateBlock.LAYERS, 8), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 40, 0, 80)))
             );
         }
     }

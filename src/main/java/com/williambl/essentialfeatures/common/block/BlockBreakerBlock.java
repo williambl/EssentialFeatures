@@ -13,11 +13,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockBlockBreaker extends DirectionalBlock {
+public class BlockBreakerBlock extends DirectionalBlock {
 
     public static final BooleanProperty TRIGGERED = BooleanProperty.create("triggered");
 
-    protected BlockBlockBreaker(String registryName, Material material, float hardness, float resistance) {
+    protected BlockBreakerBlock(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setDefaultState(this.getStateContainer().getBaseState().with(FACING, Direction.NORTH).with(TRIGGERED, Boolean.FALSE));
         this.setRegistryName(registryName);

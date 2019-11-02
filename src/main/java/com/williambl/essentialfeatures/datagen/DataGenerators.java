@@ -129,13 +129,13 @@ public class DataGenerators {
             lootTables.put(ModBlocks.PACKED_RED_SAND, createStandardTable("packed_red_sand", ModBlocks.PACKED_RED_SAND));
             lootTables.put(ModBlocks.PACKED_GRAVEL, createStandardTable("packed_gravel", ModBlocks.PACKED_GRAVEL));
             lootTables.put(ModBlocks.REDSTONE_ROD, createStandardTable("redstone_rod", ModBlocks.REDSTONE_ROD));
-            for (Pair<BlockStainedRedstoneTorch, BlockStainedRedstoneWallTorch> torchPair :
+            for (Pair<StainedRedstoneTorchBlock, StainedRedstoneWallTorchBlock> torchPair :
                     ModBlocks.STAINED_REDSTONE_TORCHES) {
                 lootTables.put(torchPair.getLeft(), createStandardTable(torchPair.getLeft().getRegistryName().getPath(), torchPair.getLeft()));
                 lootTables.put(torchPair.getRight(), createStandardTable(torchPair.getLeft().getRegistryName().getPath(), torchPair.getLeft()));
             }
 
-            for (BlockStainedLamp lamp : ModBlocks.STAINED_LAMPS) {
+            for (StainedLampBlock lamp : ModBlocks.STAINED_LAMPS) {
                 lootTables.put(lamp, createStandardTable(lamp.getRegistryName().getPath(), lamp));
             }
         }
@@ -173,11 +173,11 @@ public class DataGenerators {
             makeFlatItemModelFromBlock(ModBlocks.NETTLES);
             makeItemModelFromBlock(ModBlocks.REDSTONE_ROD);
 
-            for (Pair<BlockStainedRedstoneTorch, BlockStainedRedstoneWallTorch> torchPair :
+            for (Pair<StainedRedstoneTorchBlock, StainedRedstoneWallTorchBlock> torchPair :
                     ModBlocks.STAINED_REDSTONE_TORCHES) {
                 makeFlatItemModelFromTorchBlock(torchPair.getLeft());
             }
-            for (BlockStainedLamp lamp : ModBlocks.STAINED_LAMPS) {
+            for (StainedLampBlock lamp : ModBlocks.STAINED_LAMPS) {
                 makeItemModelFromBlock(lamp);
             }
 
@@ -255,13 +255,13 @@ public class DataGenerators {
             makeSimpleBlockState(ModBlocks.PACKED_RED_SAND, modLoc("block/packed_red_sand"));
             makeSimpleBlockState(ModBlocks.PACKED_GRAVEL, modLoc("block/packed_gravel"));
 
-            for (Pair<BlockStainedRedstoneTorch, BlockStainedRedstoneWallTorch> torchPair :
+            for (Pair<StainedRedstoneTorchBlock, StainedRedstoneWallTorchBlock> torchPair :
                     ModBlocks.STAINED_REDSTONE_TORCHES) {
                 makeStandingTorchBlockState(torchPair.getLeft(), modLoc("block/lit_" + torchPair.getLeft().getRegistryName().getPath()), modLoc("block/" + torchPair.getLeft().getRegistryName().getPath()));
                 makeWallTorchBlockState(torchPair.getRight(), modLoc("block/lit_" + torchPair.getLeft().getRegistryName().getPath()), modLoc("block/" + torchPair.getLeft().getRegistryName().getPath()));
             }
 
-            for (BlockStainedLamp lamp : ModBlocks.STAINED_LAMPS) {
+            for (StainedLampBlock lamp : ModBlocks.STAINED_LAMPS) {
                 makeLampBlockState(lamp, modLoc("block/lit_" + lamp.getRegistryName().getPath()), modLoc("block/" + lamp.getRegistryName().getPath()));
             }
 
@@ -283,17 +283,17 @@ public class DataGenerators {
             getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
         }
 
-        private void makeLampBlockState(BlockStainedLamp block, ResourceLocation onTexture, ResourceLocation offTexture) {
+        private void makeLampBlockState(StainedLampBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
             ModelFile modelOn = getBuilder(block.getRegistryName().getPath() + "_powered")
                     .parent(getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", onTexture);
             ModelFile modelOff = getBuilder(block.getRegistryName().getPath())
                     .parent(getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", offTexture);
-            getVariantBuilder(block).forAllStates(state -> state.get(BlockStainedLamp.LIT) ? ConfiguredModel.builder().modelFile(modelOn).build() : ConfiguredModel.builder().modelFile(modelOff).build());
+            getVariantBuilder(block).forAllStates(state -> state.get(StainedLampBlock.LIT) ? ConfiguredModel.builder().modelFile(modelOn).build() : ConfiguredModel.builder().modelFile(modelOff).build());
         }
 
-        private void makeStandingTorchBlockState(BlockStainedRedstoneTorch block, ResourceLocation onTexture, ResourceLocation offTexture) {
+        private void makeStandingTorchBlockState(StainedRedstoneTorchBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
             ModelFile modelStandingOn = getBuilder(block.getRegistryName().getPath() + "_powered")
                     .parent(getExistingFile(mcLoc("block/template_torch")))
                     .texture("torch", onTexture);
@@ -304,7 +304,7 @@ public class DataGenerators {
             getVariantBuilder(block).forAllStates(state -> state.get(RedstoneTorchBlock.LIT) ? ConfiguredModel.builder().modelFile(modelStandingOn).build() : ConfiguredModel.builder().modelFile(modelStandingOff).build());
         }
 
-        private void makeWallTorchBlockState(BlockStainedRedstoneWallTorch block, ResourceLocation onTexture, ResourceLocation offTexture) {
+        private void makeWallTorchBlockState(StainedRedstoneWallTorchBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
             ModelFile modelWallOn = getBuilder(block.getRegistryName().getPath() + "powered")
                     .parent(getExistingFile(mcLoc("block/torch_wall")))
                     .texture("torch", onTexture);
@@ -320,7 +320,7 @@ public class DataGenerators {
                 else
                     builder.modelFile(modelWallOff);
 
-                switch (state.get(BlockStainedRedstoneWallTorch.FACING)) {
+                switch (state.get(StainedRedstoneWallTorchBlock.FACING)) {
                     case NORTH:
                         builder.rotationY(270);
                         break;
@@ -336,7 +336,7 @@ public class DataGenerators {
             });
         }
 
-        private void makeBlockBreakerBlockState(BlockBlockBreaker block, ResourceLocation platformTexture, ResourceLocation sideTexture, ResourceLocation bottomTexture) {
+        private void makeBlockBreakerBlockState(BlockBreakerBlock block, ResourceLocation platformTexture, ResourceLocation sideTexture, ResourceLocation bottomTexture) {
             ModelFile model = getBuilder(block.getRegistryName().getPath())
                     .parent(getExistingFile(mcLoc("block/template_piston")))
                     .texture("platform", platformTexture)
@@ -346,7 +346,7 @@ public class DataGenerators {
             getVariantBuilder(block).forAllStates(state -> {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder().modelFile(model);
 
-                switch (state.get(BlockBlockBreaker.FACING)) {
+                switch (state.get(BlockBreakerBlock.FACING)) {
                     case WEST:
                         builder.rotationY(270);
                         break;
@@ -368,7 +368,7 @@ public class DataGenerators {
             });
         }
 
-        private void makeBlockPlacerBlockState(BlockBlockPlacer block, ResourceLocation frontTexture, ResourceLocation frontVerticalTexture, ResourceLocation sideTexture, ResourceLocation topTexture) {
+        private void makeBlockPlacerBlockState(BlockPlacerBlock block, ResourceLocation frontTexture, ResourceLocation frontVerticalTexture, ResourceLocation sideTexture, ResourceLocation topTexture) {
             ModelFile horizontalModel = getBuilder(block.getRegistryName().getPath())
                     .parent(getExistingFile(mcLoc("block/orientable")))
                     .texture("front", frontTexture)
@@ -382,7 +382,7 @@ public class DataGenerators {
             getVariantBuilder(block).forAllStates(state -> {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder();
 
-                switch (state.get(BlockBlockBreaker.FACING)) {
+                switch (state.get(BlockBreakerBlock.FACING)) {
                     case WEST:
                         builder.rotationY(270);
                         builder.modelFile(horizontalModel);
@@ -412,7 +412,7 @@ public class DataGenerators {
             });
         }
 
-        private void makeDoorBlockState(BlockEFDoor block, ResourceLocation topTexture, ResourceLocation bottomTexture) {
+        private void makeDoorBlockState(EFDoorBlock block, ResourceLocation topTexture, ResourceLocation bottomTexture) {
             ModelFile bottomModel = getBuilder(block.getRegistryName().getPath() + "_bottom")
                     .parent(getExistingFile(mcLoc("block/door_bottom")))
                     .texture("top", topTexture)
@@ -433,44 +433,44 @@ public class DataGenerators {
             getVariantBuilder(block).forAllStates(state -> {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder();
 
-                if (state.get(BlockEFDoor.HINGE) == DoorHingeSide.LEFT) {
-                    if (state.get(BlockEFDoor.HALF) == DoubleBlockHalf.LOWER)
+                if (state.get(EFDoorBlock.HINGE) == DoorHingeSide.LEFT) {
+                    if (state.get(EFDoorBlock.HALF) == DoubleBlockHalf.LOWER)
                         builder.modelFile(bottomModel);
                     else
                         builder.modelFile(topModel);
 
-                    switch (state.get(BlockEFDoor.FACING)) {
+                    switch (state.get(EFDoorBlock.FACING)) {
                         case EAST:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 90 : 0);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 90 : 0);
                             break;
                         case SOUTH:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 180 : 90);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 180 : 90);
                             break;
                         case WEST:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 270 : 180);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 270 : 180);
                             break;
                         case NORTH:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 0 : 270);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 0 : 270);
                             break;
                     }
                 } else {
-                    if (state.get(BlockEFDoor.HALF) == DoubleBlockHalf.LOWER)
+                    if (state.get(EFDoorBlock.HALF) == DoubleBlockHalf.LOWER)
                         builder.modelFile(bottomHingeModel);
                     else
                         builder.modelFile(topHingeModel);
 
-                    switch (state.get(BlockEFDoor.FACING)) {
+                    switch (state.get(EFDoorBlock.FACING)) {
                         case EAST:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 270 : 0);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 270 : 0);
                             break;
                         case SOUTH:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 0 : 90);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 0 : 90);
                             break;
                         case WEST:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 90 : 180);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 90 : 180);
                             break;
                         case NORTH:
-                            builder.rotationY(state.get(BlockEFDoor.OPEN) ? 180 : 270);
+                            builder.rotationY(state.get(EFDoorBlock.OPEN) ? 180 : 270);
                             break;
                     }
                 }
@@ -479,7 +479,7 @@ public class DataGenerators {
             });
         }
 
-        private void makeRedstoneRodBlockState(BlockRedstoneRod block, ResourceLocation texture) {
+        private void makeRedstoneRodBlockState(RedstoneRodBlock block, ResourceLocation texture) {
             ModelFile model = getBuilder(block.getRegistryName().getPath())
                     .parent(getExistingFile(mcLoc("block/end_rod")))
                     .texture("end_rod", texture)
@@ -489,7 +489,7 @@ public class DataGenerators {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder();
                 builder.modelFile(model);
 
-                switch (state.get(BlockRedstoneRod.FACING)) {
+                switch (state.get(RedstoneRodBlock.FACING)) {
                     case DOWN:
                         builder.rotationX(180);
                         break;
@@ -514,7 +514,7 @@ public class DataGenerators {
             });
         }
 
-        private void makeSlateBlockState(BlockSlate block, ResourceLocation sideTexture, ResourceLocation topTexture) {
+        private void makeSlateBlockState(SlateBlock block, ResourceLocation sideTexture, ResourceLocation topTexture) {
             //Other models are manually made in models/block folder. Don't delete them.
             ModelFile fullModel = getBuilder(block.getRegistryName().getPath())
                     .parent(getExistingFile(mcLoc("block/cube_column")))
@@ -523,7 +523,7 @@ public class DataGenerators {
 
             getVariantBuilder(block).forAllStates(state -> {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder();
-                switch (state.get(BlockSlate.LAYERS)) {
+                switch (state.get(SlateBlock.LAYERS)) {
                     case 1:
                         builder.modelFile(getExistingFile(modLoc("block/slate_height2")));
                         break;
@@ -570,14 +570,14 @@ public class DataGenerators {
             getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
         }
 
-        private void makeViewedBlockModel(BlockViewedBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
+        private void makeViewedBlockModel(ViewedBlockBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
             ModelFile modelOn = getBuilder(block.getRegistryName().getPath() + "_powered")
                     .parent(getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", onTexture);
             ModelFile modelOff = getBuilder(block.getRegistryName().getPath())
                     .parent(getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", offTexture);
-            getVariantBuilder(block).forAllStates(state -> state.get(BlockViewedBlock.POWERED) ? ConfiguredModel.builder().modelFile(modelOn).build() : ConfiguredModel.builder().modelFile(modelOff).build());
+            getVariantBuilder(block).forAllStates(state -> state.get(ViewedBlockBlock.POWERED) ? ConfiguredModel.builder().modelFile(modelOn).build() : ConfiguredModel.builder().modelFile(modelOff).build());
         }
     }
 }

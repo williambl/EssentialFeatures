@@ -1,6 +1,6 @@
 package com.williambl.essentialfeatures.common.block;
 
-import com.williambl.essentialfeatures.common.tileentity.TileEntityViewedBlock;
+import com.williambl.essentialfeatures.common.tileentity.ViewedBlockTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -12,11 +12,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class BlockViewedBlock extends Block {
+public class ViewedBlockBlock extends Block {
 
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
 
-    public BlockViewedBlock(String registryName, Material material, float hardness, float resistance) {
+    public ViewedBlockBlock(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setRegistryName(registryName);
         this.setDefaultState(this.getStateContainer().getBaseState().with(POWERED, Boolean.FALSE));
@@ -29,7 +29,7 @@ public class BlockViewedBlock extends Block {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new TileEntityViewedBlock();
+        return new ViewedBlockTileEntity();
     }
 
     @Override

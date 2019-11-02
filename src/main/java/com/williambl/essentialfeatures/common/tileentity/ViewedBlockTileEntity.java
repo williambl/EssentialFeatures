@@ -1,6 +1,6 @@
 package com.williambl.essentialfeatures.common.tileentity;
 
-import com.williambl.essentialfeatures.common.block.BlockViewedBlock;
+import com.williambl.essentialfeatures.common.block.ViewedBlockBlock;
 import com.williambl.essentialfeatures.common.config.ModConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,14 +10,14 @@ import net.minecraft.util.math.*;
 
 import java.util.List;
 
-public class TileEntityViewedBlock extends TileEntity implements ITickableTileEntity {
+public class ViewedBlockTileEntity extends TileEntity implements ITickableTileEntity {
 
     int radius = ModConfig.viewedBlockRange;
     boolean wasLookingLastTime;
 
     int tickCounter = 0;
 
-    public TileEntityViewedBlock() {
+    public ViewedBlockTileEntity() {
         super(ModTileEntities.VIEWED_BLOCK);
     }
 
@@ -33,7 +33,7 @@ public class TileEntityViewedBlock extends TileEntity implements ITickableTileEn
         tickCounter = 0;
 
         BlockState blockstate = world.getBlockState(getPos());
-        BlockViewedBlock block = (BlockViewedBlock) world.getBlockState(getPos()).getBlock();
+        ViewedBlockBlock block = (ViewedBlockBlock) world.getBlockState(getPos()).getBlock();
         wasLookingLastTime = block.isPowered(blockstate);
         BlockPos thisPos = getPos();
 

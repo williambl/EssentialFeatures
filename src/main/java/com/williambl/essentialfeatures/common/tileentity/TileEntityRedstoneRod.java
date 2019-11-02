@@ -1,6 +1,6 @@
 package com.williambl.essentialfeatures.common.tileentity;
 
-import com.williambl.essentialfeatures.common.block.BlockRedstoneRod;
+import com.williambl.essentialfeatures.common.block.RedstoneRodBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -23,7 +23,7 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEn
 
         tickCounter++;
         BlockState blockstate = world.getBlockState(getPos());
-        BlockRedstoneRod block = (BlockRedstoneRod) world.getBlockState(getPos()).getBlock();
+        RedstoneRodBlock block = (RedstoneRodBlock) world.getBlockState(getPos()).getBlock();
 
         if (tickCounter > 10) {
             if (block.isPowered(blockstate))

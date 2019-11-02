@@ -13,11 +13,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemPortableNoteBlock extends EFItem {
+public class PortableNoteBlockItem extends EFItem {
 
     private static final List<SoundEvent> INSTRUMENTS = Lists.newArrayList(SoundEvents.BLOCK_NOTE_BLOCK_HARP, SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM, SoundEvents.BLOCK_NOTE_BLOCK_SNARE, SoundEvents.BLOCK_NOTE_BLOCK_HAT, SoundEvents.BLOCK_NOTE_BLOCK_BASS, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE, SoundEvents.BLOCK_NOTE_BLOCK_BELL, SoundEvents.BLOCK_NOTE_BLOCK_GUITAR, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundEvents.BLOCK_NOTE_BLOCK_XYLOPHONE);
 
-    public ItemPortableNoteBlock(String registryName) {
+    public PortableNoteBlockItem(String registryName) {
         super(registryName, ItemGroup.TOOLS);
     }
 

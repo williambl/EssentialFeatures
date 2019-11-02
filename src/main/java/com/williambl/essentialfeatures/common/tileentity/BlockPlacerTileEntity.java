@@ -4,9 +4,9 @@ import net.minecraft.tileentity.DispenserTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class TileEntityBlockPlacer extends DispenserTileEntity {
+public class BlockPlacerTileEntity extends DispenserTileEntity {
 
-    public TileEntityBlockPlacer() {
+    public BlockPlacerTileEntity() {
         super(ModTileEntities.BLOCK_PLACER);
     }
 

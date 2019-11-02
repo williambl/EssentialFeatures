@@ -16,9 +16,9 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class BlockSpike extends Block {
+public class SpikeBlock extends Block {
 
-    public BlockSpike(String registryName, Material material, float hardness, float resistance) {
+    public SpikeBlock(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setRegistryName(registryName);
     }

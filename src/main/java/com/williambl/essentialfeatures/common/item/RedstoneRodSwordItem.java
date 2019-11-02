@@ -9,9 +9,9 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 
-public class ItemRedstoneRodSword extends SwordItem {
+public class RedstoneRodSwordItem extends SwordItem {
 
-    public ItemRedstoneRodSword(String registryName, IItemTier material) {
+    public RedstoneRodSwordItem(String registryName, IItemTier material) {
         super(material, 6, 1f, new Properties().group(ItemGroup.COMBAT));
         this.setRegistryName(registryName);
     }

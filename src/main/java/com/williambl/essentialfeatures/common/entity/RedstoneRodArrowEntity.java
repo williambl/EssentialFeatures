@@ -14,7 +14,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class EntityRedstoneRodArrow extends AbstractArrowEntity {
+public class RedstoneRodArrowEntity extends AbstractArrowEntity {
 
     private int xTile;
     private int yTile;
@@ -27,19 +27,19 @@ public class EntityRedstoneRodArrow extends AbstractArrowEntity {
     private double damage;
     private int knockbackStrength;
 
-    public EntityRedstoneRodArrow(EntityType entityType, World world) {
+    public RedstoneRodArrowEntity(EntityType entityType, World world) {
         super(entityType, world);
     }
 
-    public EntityRedstoneRodArrow(World worldIn) {
+    public RedstoneRodArrowEntity(World worldIn) {
         super(ModEntities.REDSTONE_ROD_ARROW, worldIn);
     }
 
-    public EntityRedstoneRodArrow(double x, double y, double z, World worldIn) {
+    public RedstoneRodArrowEntity(double x, double y, double z, World worldIn) {
         super(ModEntities.REDSTONE_ROD_ARROW, x, y, z, worldIn);
     }
 
-    public EntityRedstoneRodArrow(FMLPlayMessages.SpawnEntity packet, World world) {
+    public RedstoneRodArrowEntity(FMLPlayMessages.SpawnEntity packet, World world) {
         this(packet.getPosX(), packet.getPosY(), packet.getPosZ(), world);
         this.setHeadRotation(packet.getHeadYaw(), packet.getPitch());
         this.setUniqueId(packet.getUuid());
@@ -47,7 +47,7 @@ public class EntityRedstoneRodArrow extends AbstractArrowEntity {
         this.setVelocity(packet.getVelX(), packet.getVelY(), packet.getVelZ());
     }
 
-    public EntityRedstoneRodArrow(LivingEntity shooter, World worldIn) {
+    public RedstoneRodArrowEntity(LivingEntity shooter, World worldIn) {
         super(ModEntities.REDSTONE_ROD_ARROW, shooter, worldIn);
     }
 

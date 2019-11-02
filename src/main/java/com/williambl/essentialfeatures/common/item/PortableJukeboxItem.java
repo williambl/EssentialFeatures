@@ -20,11 +20,11 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemPortableJukebox extends EFItem {
+public class PortableJukeboxItem extends EFItem {
 
     private List<ItemStack> jukeboxes = null;
 
-    public ItemPortableJukebox(String registryName, ItemGroup tab) {
+    public PortableJukeboxItem(String registryName, ItemGroup tab) {
         super(registryName, tab);
     }
 

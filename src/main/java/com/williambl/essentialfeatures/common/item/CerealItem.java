@@ -6,11 +6,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class ItemCereal extends EFItem {
+public class CerealItem extends EFItem {
 
     boolean isIron;
 
-    public ItemCereal(String registryName, Food food, boolean isIron) {
+    public CerealItem(String registryName, Food food, boolean isIron) {
         super(registryName, new Item.Properties().group(ItemGroup.FOOD).food(food));
         this.isIron = isIron;
     }

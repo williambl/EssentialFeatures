@@ -25,9 +25,9 @@ import java.util.Set;
 public class ModItems {
 
     @ObjectHolder("cereal")
-    public static ItemCereal CEREAL;
+    public static CerealItem CEREAL;
     @ObjectHolder("iron_cereal")
-    public static ItemCereal IRON_CEREAL;
+    public static CerealItem IRON_CEREAL;
     @ObjectHolder("dirty_clay")
     public static EFItem DIRTY_CLAY;
     @ObjectHolder("dirty_brick")
@@ -37,22 +37,22 @@ public class ModItems {
     @ObjectHolder("cream_brick")
     public static EFItem CREAM_BRICK;
     @ObjectHolder("scarlet")
-    public static ItemEFRecord RECORD_SCARLET;
+    public static EFRecordItem RECORD_SCARLET;
     @ObjectHolder("lo_fi")
-    public static ItemEFRecord RECORD_LOFI;
+    public static EFRecordItem RECORD_LOFI;
     @ObjectHolder("portable_note_block")
-    public static ItemPortableNoteBlock PORTABLE_NOTE_BLOCK;
+    public static PortableNoteBlockItem PORTABLE_NOTE_BLOCK;
     @ObjectHolder("sharpened_arrow")
     public static ItemSharpenedArrow SHARPENED_ARROW;
 
     @ObjectHolder("portable_jukebox")
-    public static ItemPortableJukebox PORTABLE_JUKEBOX;
+    public static PortableJukeboxItem PORTABLE_JUKEBOX;
 
     @ObjectHolder("cooked_nettles")
     public static EFItem COOKED_NETTLES;
 
     @ObjectHolder("redstone_rod_sword")
-    public static ItemRedstoneRodSword REDSTONE_ROD_SWORD;
+    public static RedstoneRodSwordItem REDSTONE_ROD_SWORD;
     @ObjectHolder("redstone_rod_arrow")
     public static ItemRedstoneRodArrow REDSTONE_ROD_ARROW;
 
@@ -69,20 +69,20 @@ public class ModItems {
         public static void registerItems(RegistryEvent.Register<Item> event) {
             ModSound.addSoundEvents(); //This is ugly but soundevents are done after items so this must be done :/
             final Item[] items = {
-                    new ItemCereal("cereal", new Food.Builder().hunger(6).saturation(1).build(), false),
-                    new ItemCereal("iron_cereal", new Food.Builder().hunger(6).saturation(3).effect(new EffectInstance(Effects.RESISTANCE, 600, 1), 1).effect(new EffectInstance(Effects.REGENERATION, 200, 1), 1).build(), true),
+                    new CerealItem("cereal", new Food.Builder().hunger(6).saturation(1).build(), false),
+                    new CerealItem("iron_cereal", new Food.Builder().hunger(6).saturation(3).effect(new EffectInstance(Effects.RESISTANCE, 600, 1), 1).effect(new EffectInstance(Effects.REGENERATION, 200, 1), 1).build(), true),
                     new EFItem("dirty_clay", ItemGroup.MATERIALS),
                     new EFItem("sand_clay_mixture", ItemGroup.MATERIALS),
                     new EFItem("dirty_brick", ItemGroup.MATERIALS),
                     new EFItem("cream_brick", ItemGroup.MATERIALS),
-                    new ItemEFRecord("scarlet", 1, ModSound.RECORD_SCARLET),
-                    new ItemEFRecord("lo_fi", 2, ModSound.RECORD_LOFI),
-                    new ItemPortableNoteBlock("portable_note_block"),
+                    new EFRecordItem("scarlet", 1, ModSound.RECORD_SCARLET),
+                    new EFRecordItem("lo_fi", 2, ModSound.RECORD_LOFI),
+                    new PortableNoteBlockItem("portable_note_block"),
                     new ItemSharpenedArrow("sharpened_arrow"),
                     new EFItem("cooked_nettles", new Item.Properties().group(ItemGroup.FOOD)),
-                    new ItemRedstoneRodSword("redstone_rod_sword", ItemTier.GOLD),
+                    new RedstoneRodSwordItem("redstone_rod_sword", ItemTier.GOLD),
                     new ItemRedstoneRodArrow("redstone_rod_arrow"),
-                    new ItemPortableJukebox("portable_jukebox", ItemGroup.MISC)
+                    new PortableJukeboxItem("portable_jukebox", ItemGroup.MISC)
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
