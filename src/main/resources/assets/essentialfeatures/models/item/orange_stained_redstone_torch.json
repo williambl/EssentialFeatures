@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "essentialfeatures:block/lit_orange_stained_redstone_torch"
+  }
+}

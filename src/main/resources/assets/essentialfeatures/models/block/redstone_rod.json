@@ -1,0 +1,7 @@
+{
+  "parent": "block/end_rod",
+  "textures": {
+    "end_rod": "essentialfeatures:block/redstone_rod",
+    "particle": "essentialfeatures:block/redstone_rod"
+  }
+}

@@ -1,7 +1,7 @@
 {
-    "parent": "block/door_bottom",
-    "textures": {
-        "bottom": "essentialfeatures:blocks/door_purpur_lower",
-        "top": "essentialfeatures:blocks/door_purpur_upper"
-    }
+  "parent": "block/door_bottom",
+  "textures": {
+    "top": "essentialfeatures:block/door_purpur_upper",
+    "bottom": "essentialfeatures:block/door_purpur_lower"
+  }
 }

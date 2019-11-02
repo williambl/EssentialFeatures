@@ -1,6 +1,6 @@
 {
-  "parent": "builtin/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "essentialfeatures:blocks/stinging_nettles"
+    "layer0": "essentialfeatures:block/stinging_nettles"
   }
 }

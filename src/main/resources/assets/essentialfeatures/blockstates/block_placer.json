@@ -1,47 +1,50 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "textures": {
-      "top": "block/furnace_top",
-      "front": "essentialfeatures:block/block_placer",
-      "side": "block/furnace_side"
-    },
-    "model": "orientable",
-    "uvlock": false
-  },
   "variants": {
-    "": [
-      {}
-    ],
-    "triggered": {
-      "true": {},
-      "false": {}
+    "facing=down,triggered=false": {
+      "model": "essentialfeatures:block/block_placer_vertical",
+      "x": 270
     },
-    "facing": {
-      "north": {},
-      "south": {
-        "y": 180
-      },
-      "west": {
-        "y": 270
-      },
-      "east": {
-        "y": 90
-      },
-      "down": {
-        "x": 90,
-        "textures": {
-          "front": "essentialfeatures:block/block_placer_vertical",
-          "side": "block/furnace_top"
-        }
-      },
-      "up": {
-        "x": 270,
-        "textures": {
-          "front": "essentialfeatures:block/block_placer_vertical",
-          "side": "block/furnace_top"
-        }
-      }
+    "facing=up,triggered=false": {
+      "model": "essentialfeatures:block/block_placer_vertical",
+      "x": 90
+    },
+    "facing=north,triggered=false": {
+      "model": "essentialfeatures:block/block_placer"
+    },
+    "facing=south,triggered=false": {
+      "model": "essentialfeatures:block/block_placer",
+      "y": 180
+    },
+    "facing=west,triggered=false": {
+      "model": "essentialfeatures:block/block_placer",
+      "y": 270
+    },
+    "facing=east,triggered=false": {
+      "model": "essentialfeatures:block/block_placer",
+      "y": 90
+    },
+    "facing=down,triggered=true": {
+      "model": "essentialfeatures:block/block_placer_vertical",
+      "x": 270
+    },
+    "facing=up,triggered=true": {
+      "model": "essentialfeatures:block/block_placer_vertical",
+      "x": 90
+    },
+    "facing=north,triggered=true": {
+      "model": "essentialfeatures:block/block_placer"
+    },
+    "facing=south,triggered=true": {
+      "model": "essentialfeatures:block/block_placer",
+      "y": 180
+    },
+    "facing=west,triggered=true": {
+      "model": "essentialfeatures:block/block_placer",
+      "y": 270
+    },
+    "facing=east,triggered=true": {
+      "model": "essentialfeatures:block/block_placer",
+      "y": 90
     }
   }
 }

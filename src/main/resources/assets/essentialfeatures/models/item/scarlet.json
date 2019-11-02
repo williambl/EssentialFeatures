@@ -1,6 +1,6 @@
 {
-  "parent": "builtin/generated",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "essentialfeatures:item/record_scarlet"
+    "layer0": "essentialfeatures:item/scarlet"
   }
 }

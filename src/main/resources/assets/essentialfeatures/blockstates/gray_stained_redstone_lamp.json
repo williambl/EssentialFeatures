@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "essentialfeatures:block/gray_stained_redstone_lamp"
+    },
+    "lit=true": {
+      "model": "essentialfeatures:block/gray_stained_redstone_lamp_powered"
+    }
+  }
+}

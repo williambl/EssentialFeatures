@@ -6,6 +6,7 @@ import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.SpecialRecipe;
 import net.minecraft.tags.ItemTags;
@@ -35,7 +36,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
                     }
                     jukebox = stackInSlot;
                 } else {
-                    if (ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem())) {
+                    if (ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
                         if (!disc.isEmpty()) { //There can only be one!
                             return false;
                         }

@@ -1,39 +1,50 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "textures": {
-      "platform": "essentialfeatures:block/block_breaker_inner",
-      "side": "essentialfeatures:block/block_breaker_side",
-      "bottom": "block/piston_bottom"
-    },
-    "model": "essentialfeatures:directionable",
-    "uvlock": false
-  },
   "variants": {
-    "": [
-      {}
-    ],
-    "triggered": {
-      "true": {},
-      "false": {}
+    "facing=down,triggered=false": {
+      "model": "essentialfeatures:block/block_breaker",
+      "x": 270
     },
-    "facing": {
-      "north": {},
-      "south": {
-        "y": 180
-      },
-      "west": {
-        "y": 270
-      },
-      "east": {
-        "y": 90
-      },
-      "down": {
-        "x": 90
-      },
-      "up": {
-        "x": 270
-      }
+    "facing=up,triggered=false": {
+      "model": "essentialfeatures:block/block_breaker",
+      "x": 90
+    },
+    "facing=north,triggered=false": {
+      "model": "essentialfeatures:block/block_breaker"
+    },
+    "facing=south,triggered=false": {
+      "model": "essentialfeatures:block/block_breaker",
+      "y": 180
+    },
+    "facing=west,triggered=false": {
+      "model": "essentialfeatures:block/block_breaker",
+      "y": 270
+    },
+    "facing=east,triggered=false": {
+      "model": "essentialfeatures:block/block_breaker",
+      "y": 90
+    },
+    "facing=down,triggered=true": {
+      "model": "essentialfeatures:block/block_breaker",
+      "x": 270
+    },
+    "facing=up,triggered=true": {
+      "model": "essentialfeatures:block/block_breaker",
+      "x": 90
+    },
+    "facing=north,triggered=true": {
+      "model": "essentialfeatures:block/block_breaker"
+    },
+    "facing=south,triggered=true": {
+      "model": "essentialfeatures:block/block_breaker",
+      "y": 180
+    },
+    "facing=west,triggered=true": {
+      "model": "essentialfeatures:block/block_breaker",
+      "y": 270
+    },
+    "facing=east,triggered=true": {
+      "model": "essentialfeatures:block/block_breaker",
+      "y": 90
     }
   }
 }
