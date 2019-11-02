@@ -17,9 +17,6 @@ import net.minecraft.state.properties.DoorHingeSide;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.*;
-import net.minecraft.world.storage.loot.functions.CopyName;
-import net.minecraft.world.storage.loot.functions.CopyNbt;
-import net.minecraft.world.storage.loot.functions.SetContents;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -66,14 +63,7 @@ public class DataGenerators {
             LootPool.Builder builder = LootPool.builder()
                     .name(name)
                     .rolls(ConstantRange.of(1))
-                    .addEntry(ItemLootEntry.builder(block)
-                            .acceptFunction(CopyName.builder(CopyName.Source.BLOCK_ENTITY))
-                            .acceptFunction(CopyNbt.func_215881_a(CopyNbt.Source.BLOCK_ENTITY)
-                                    .func_216055_a("inv", "BlockEntityTag.inv", CopyNbt.Action.REPLACE)
-                                    .func_216055_a("energy", "BlockEntityTag.energy", CopyNbt.Action.REPLACE))
-                            .acceptFunction(SetContents.func_215920_b()
-                                    .func_216075_a(DynamicLootEntry.func_216162_a(new ResourceLocation("minecraft", "contents"))))
-                    );
+                    .addEntry(ItemLootEntry.builder(block));
             return LootTable.builder().addLootPool(builder);
         }
 
