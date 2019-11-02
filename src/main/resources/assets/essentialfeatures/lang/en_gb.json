@@ -52,11 +52,11 @@
   "item.essentialfeatures.cream_brick": "Cream Brick",
 
   "item.essentialfeatures.scarlet": "Music Disc",
-  "item.record.scarlet.desc": "Palmidence - scarlet",
+  "item.essentialfeatures.scarlet.desc": "Palmidence - scarlet",
 
   "block.essentialfeatures.slate": "Slate",
   "item.essentialfeatures.lo_fi": "Music Disc",
-  "item.record.lo_fi.desc": "Palmidence - lo-fi",
+  "item.essentialfeatures.lo_fi.desc": "Palmidence - lo-fi",
 
   "item.essentialfeatures.portable_jukebox": "Portable Jukebox",
 
