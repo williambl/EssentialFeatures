@@ -38,7 +38,7 @@ public class ModItems {
     public static EFItem CREAM_BRICK;
     @ObjectHolder("scarlet")
     public static ItemEFRecord RECORD_SCARLET;
-    @ObjectHolder("lo-fi")
+    @ObjectHolder("lo_fi")
     public static ItemEFRecord RECORD_LOFI;
     @ObjectHolder("portable_note_block")
     public static ItemPortableNoteBlock PORTABLE_NOTE_BLOCK;
