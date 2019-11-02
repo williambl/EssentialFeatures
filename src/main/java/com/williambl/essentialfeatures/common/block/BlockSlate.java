@@ -1,118 +1,88 @@
 package com.williambl.essentialfeatures.common.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.BlockStateContainer;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.pathfinding.PathType;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class BlockSlate extends Block {
 
-    public static final PropertyInteger LAYERS = PropertyInteger.create("layers", 1, 8);
-    protected static final AxisAlignedBB[] SNOW_AABB = new AxisAlignedBB[]{new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
+   public static final IntegerProperty LAYERS = IntegerProperty.create("layers", 1, 8);
+   protected static final VoxelShape[] SHAPES = new VoxelShape[]{VoxelShapes.empty(), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
-    public BlockSlate(String registryName, Material material, float hardness, float resistance) {
-        super(material);
-        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
-    }
+   public BlockSlate(String registryName, Material material, float hardness, float resistance) {
+      super(Properties.create(material).hardnessAndResistance(hardness, resistance));
+      this.setRegistryName(registryName);
+   }
 
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        return SNOW_AABB[state.getValue(LAYERS)];
-    }
+   @Override
+   @SuppressWarnings("deprecation")
+   public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+      switch(type) {
+         case LAND:
+            return state.get(LAYERS) < 5;
+         case WATER:
+            return false;
+         case AIR:
+            return false;
+         default:
+            return false;
+      }
+   }
 
-    /**
-     * Determines if an entity can path through this block
-     */
-    public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
-        return worldIn.getBlockState(pos).getValue(LAYERS) < 5;
-    }
+   @Override
+   @SuppressWarnings("deprecation")
+   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+      return SHAPES[state.get(LAYERS)];
+   }
 
-    /**
-     * Determines if the block is solid enough on the top side to support other blocks, like redstone components.
-     */
-    public boolean isTopSolid(IBlockState state) {
-        return state.getValue(LAYERS) == 8;
-    }
+   @Override
+   @SuppressWarnings("deprecation")
+   public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+      return SHAPES[state.get(LAYERS) - 1];
+   }
 
-    public BlockFaceShape getBlockFaceShape(IBlockAccess p_193383_1_, IBlockState p_193383_2_, BlockPos p_193383_3_, EnumFacing p_193383_4_) {
-        return p_193383_4_ == EnumFacing.DOWN ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
-    }
-
-    @Nullable
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-        int i = blockState.getValue(LAYERS) - 1;
-        float f = 0.125F;
-        AxisAlignedBB axisalignedbb = blockState.getBoundingBox(worldIn, pos);
-        return new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.maxX, (double) ((float) i * 0.125F), axisalignedbb.maxZ);
-    }
-
-    /**
-     * Used to determine ambient occlusion and culling when rebuilding chunks for render
-     */
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
-    @Override
-    public int quantityDropped(IBlockState state, int fortune, Random random) {
-        return state.getValue(LAYERS);
-    }
-
-
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        if (side == EnumFacing.UP) {
+   @Override
+   @SuppressWarnings("deprecation")
+   public boolean isReplaceable(BlockState state, BlockItemUseContext useContext) {
+      int i = state.get(LAYERS);
+      if (useContext.getItem().getItem() == this.asItem() && i < 8) {
+         if (useContext.replacingClickedOnBlock()) {
+            return useContext.getFace() == Direction.UP;
+         } else {
             return true;
-        } else {
-            IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
-            return (iblockstate.getBlock() != this || iblockstate.getValue(LAYERS) < blockState.getValue(LAYERS)) && super.shouldSideBeRendered(blockState, blockAccess, pos, side);
-        }
-    }
+         }
+      } else {
+         return false;
+      }
+   }
 
-    /**
-     * Convert the given metadata into a BlockState for this Block
-     */
-    public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(LAYERS, (meta & 7) + 1);
-    }
+   @Nullable
+   @Override
+   public BlockState getStateForPlacement(BlockItemUseContext context) {
+      BlockState iblockstate = context.getWorld().getBlockState(context.getPos());
+      if (iblockstate.getBlock() == this) {
+         int i = iblockstate.get(LAYERS);
+         return iblockstate.with(LAYERS, Integer.valueOf(Math.min(8, i + 1)));
+      } else {
+         return super.getStateForPlacement(context);
+      }
+   }
 
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(LAYERS) - 1;
-    }
+   @Override
+   protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+      builder.add(LAYERS);
+   }
 
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, LAYERS);
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
 }

@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "essentialfeatures:packed_sand"
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "tag": "forge:sand/colorless"
+    }
+  }
+}

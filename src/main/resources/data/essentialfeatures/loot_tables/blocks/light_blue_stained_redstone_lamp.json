@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "light_blue_stained_redstone_lamp",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "essentialfeatures:light_blue_stained_redstone_lamp"
+        }
+      ]
+    }
+  ]
+}

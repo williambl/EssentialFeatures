@@ -1,8 +1,8 @@
 {
   "textures": {
-    "particle": "essentialfeatures:blocks/slate_top",
-    "top": "essentialfeatures:blocks/slate_top",
-    "side": "essentialfeatures:blocks/slate_side"
+    "particle": "essentialfeatures:block/slate_top",
+    "top": "essentialfeatures:block/slate_top",
+    "side": "essentialfeatures:block/slate_side"
   },
   "elements": [
     {

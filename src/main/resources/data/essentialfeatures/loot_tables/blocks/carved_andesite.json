@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "carved_andesite",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "essentialfeatures:carved_andesite"
+        }
+      ]
+    }
+  ]
+}

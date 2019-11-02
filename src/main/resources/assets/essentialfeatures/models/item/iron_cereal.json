@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "essentialfeatures:items/iron_cereal"
+    "layer0": "essentialfeatures:item/iron_cereal"
   }
 }

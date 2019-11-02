@@ -1,60 +1,111 @@
 package com.williambl.essentialfeatures.common.config;
 
-import com.williambl.essentialfeatures.EssentialFeatures;
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.ConfigManager;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.common.ForgeConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
 
-@Config(modid = EssentialFeatures.MODID)
 public class ModConfig {
 
-    @Config.Comment("Add mechanic villagers")
-    @Config.RequiresMcRestart
-    public static boolean villagers = true;
+    public static final ServerConfig SERVER;
+    public static final ForgeConfigSpec SERVER_SPEC;
 
-    @Config.Comment("Add smelting recipes")
-    @Config.RequiresMcRestart
-    public static boolean smelting = true;
+    static
+    {
+        final Pair<ServerConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
+        SERVER_SPEC = specPair.getRight();
+        SERVER = specPair.getLeft();
+    }
 
-    @Config.Comment("Add blocks")
-    @Config.RequiresMcRestart
-    public static boolean blocks = true;
+    public static final ClientConfig CLIENT;
+    public static final ForgeConfigSpec CLIENT_SPEC;
 
-    @Config.Comment("Generate slate")
-    @Config.RequiresMcRestart
-    public static boolean slateGen = true;
+    static
+    {
+        final Pair<ClientConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ClientConfig::new);
+        CLIENT_SPEC = specPair.getRight();
+        CLIENT = specPair.getLeft();
+    }
 
-    @Config.Comment("Generate Stinging nettles")
-    @Config.RequiresMcRestart
-    public static boolean nettleGen = true;
+    public static boolean addVillagers = true;
+    public static boolean addSmelting = false;
+    public static boolean addBlocks = true;
+    public static boolean addItems = true;
+    public static boolean generateSlate = true;
+    public static boolean generateNettles = true;
 
-    @Config.Comment("Add items")
-    @Config.RequiresMcRestart
-    public static boolean items = true;
+    public static int viewedBlockDelay = 2;
+    public static int viewedBlockRange = 50;
 
-    @Config.Comment("Range for viewed block")
-    @Config.RequiresWorldRestart
-    public static int viewedRange = 50;
+    public static class ServerConfig
+    {
+        public final ForgeConfigSpec.ConfigValue<Boolean> villagers;
+        public final ForgeConfigSpec.ConfigValue<Boolean> smelting;
+        public final ForgeConfigSpec.ConfigValue<Boolean> blocks;
+        public final ForgeConfigSpec.ConfigValue<Boolean> items;
+        public final ForgeConfigSpec.ConfigValue<Boolean> slate;
+        public final ForgeConfigSpec.ConfigValue<Boolean> nettles;
+        public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockRange;
+        public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockDelay;
 
-    @Config.Comment("Ticks between viewed block checks")
-    @Config.RequiresWorldRestart
-    public static int viewedDelay = 2;
-
-    @Mod.EventBusSubscriber(modid = EssentialFeatures.MODID)
-    private static class EventHandler {
-
-        /**
-         * Inject the new values and save to the config file when the config has been changed from the GUI.
-         *
-         * @param event The event
-         */
-        @SubscribeEvent
-        public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent event) {
-            if (event.getModID().equals(EssentialFeatures.MODID)) {
-                ConfigManager.sync(EssentialFeatures.MODID, Config.Type.INSTANCE);
-            }
+        ServerConfig(ForgeConfigSpec.Builder builder)
+        {
+            builder.push("general");
+            villagers = builder
+                    .comment("Add mechanic villagers [false/true|default:true]")
+                    .translation("config.villagers.enable")
+                    .define("villagers", true);
+            smelting = builder
+                    .comment("Add smelting recipes [false/true|default:true]")
+                    .translation("config.smelting.enable")
+                    .define("smelting", true);
+            blocks = builder
+                    .comment("Add blocks [false/true|default:true]")
+                    .translation("config.blocks.enable")
+                    .define("blocks", true);
+            items = builder
+                    .comment("Add items [false/true|default:true]")
+                    .translation("config.items.enable")
+                    .define("items", true);
+            slate = builder
+                    .comment("Generate slate [false/true|default:true]")
+                    .translation("config.slate.enable")
+                    .define("slate", true);
+            nettles = builder
+                    .comment("Generate nettles [false/true|default:true]")
+                    .translation("config.nettles.enable")
+                    .define("nettles", true);
+            viewedBlockDelay = builder
+                    .comment("Ticks between viewed block checks [0..20|default:2]")
+                    .translation("config.viewed_block.delay")
+                    .defineInRange("viewed_block_delay", 2, 0, 20);
+            viewedBlockRange = builder
+                    .comment("Range in which viewed block checks [0..64|default:50]")
+                    .translation("config.viewed_block.range")
+                    .defineInRange("viewed_block_range", 50, 0, 64);
+            builder.pop();
         }
+    }
+
+    public static class ClientConfig
+    {
+
+        ClientConfig(ForgeConfigSpec.Builder builder)
+        {
+        }
+    }
+
+    public static void refreshClient()
+    {
+    }
+
+    public static void refreshServer()
+    {
+        addVillagers = SERVER.villagers.get();
+        addSmelting = SERVER.smelting.get();
+        addItems = SERVER.items.get();
+        addBlocks = SERVER.blocks.get();
+        generateSlate = SERVER.slate.get();
+        generateNettles = SERVER.nettles.get();
+        viewedBlockDelay = SERVER.viewedBlockDelay.get();
+        viewedBlockRange = SERVER.viewedBlockRange.get();
     }
 }

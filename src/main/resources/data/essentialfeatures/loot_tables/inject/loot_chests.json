@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "essentialfeatures:portable_jukebox",
+          "weight": 20
+        },
+        {
+          "type": "item",
+          "name": "essentialfeatures:scarlet",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "essentialfeatures:lo_fi",
+          "weight": 10
+        }
+      ]
+    }
+  ]
+}

@@ -1,37 +1,28 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "essentialfeatures:slate_height2"
-  },
   "variants": {
-    "inventory": [
-      {}
-    ],
-    "layers": {
-      "1": {
-        "model": "essentialfeatures:slate_height2"
-      },
-      "2": {
-        "model": "essentialfeatures:slate_height4"
-      },
-      "3": {
-        "model": "essentialfeatures:slate_height6"
-      },
-      "4": {
-        "model": "essentialfeatures:slate_height8"
-      },
-      "5": {
-        "model": "essentialfeatures:slate_height10"
-      },
-      "6": {
-        "model": "essentialfeatures:slate_height12"
-      },
-      "7": {
-        "model": "essentialfeatures:slate_height14"
-      },
-      "8": {
-        "model": "essentialfeatures:slate"
-      }
+    "layers=1": {
+      "model": "essentialfeatures:block/slate_height2"
+    },
+    "layers=2": {
+      "model": "essentialfeatures:block/slate_height4"
+    },
+    "layers=3": {
+      "model": "essentialfeatures:block/slate_height6"
+    },
+    "layers=4": {
+      "model": "essentialfeatures:block/slate_height8"
+    },
+    "layers=5": {
+      "model": "essentialfeatures:block/slate_height10"
+    },
+    "layers=6": {
+      "model": "essentialfeatures:block/slate_height12"
+    },
+    "layers=7": {
+      "model": "essentialfeatures:block/slate_height14"
+    },
+    "layers=8": {
+      "model": "essentialfeatures:block/slate"
     }
   }
 }

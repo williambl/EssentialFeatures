@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "essentialfeatures:dirty_clay"
+  },
+  "result": "essentialfeatures:dirty_brick",
+  "experience": 0.3,
+  "cookingtime": 200
+}

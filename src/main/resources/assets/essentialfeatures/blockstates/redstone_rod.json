@@ -1,43 +1,56 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "minecraft:end_rod",
-    "textures": {
-      "end_rod": "essentialfeatures:blocks/redstone_rod",
-      "particle": "essentialfeatures:blocks/redstone_rod"
-    }
-  },
   "variants": {
-    "inventory": [
-      {}
-    ],
-    "facing": {
-      "up": {
-      },
-      "down": {
-        "x": 180
-      },
-      "east": {
-        "y": 90,
-        "x": 90
-      },
-      "south": {
-        "y": 180,
-        "x": 90
-      },
-      "west": {
-        "y": 270,
-        "x": 90
-      },
-      "north": {
-        "y": 0,
-        "x": 90
-      }
+    "facing=down,powered=false": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 180
     },
-    "powered": {
-      "true": {},
-      "false": {}
+    "facing=up,powered=false": {
+      "model": "essentialfeatures:block/redstone_rod"
+    },
+    "facing=north,powered=false": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90
+    },
+    "facing=south,powered=false": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,powered=false": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east,powered=false": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90,
+      "y": 90
+    },
+    "facing=down,powered=true": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 180
+    },
+    "facing=up,powered=true": {
+      "model": "essentialfeatures:block/redstone_rod"
+    },
+    "facing=north,powered=true": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90
+    },
+    "facing=south,powered=true": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,powered=true": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east,powered=true": {
+      "model": "essentialfeatures:block/redstone_rod",
+      "x": 90,
+      "y": 90
     }
   }
 }
-

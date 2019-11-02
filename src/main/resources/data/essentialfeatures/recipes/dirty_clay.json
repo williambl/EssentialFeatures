@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "essentialfeatures:dirty_clay",
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:clay_ball",
+      "count": 2
+    },
+    {
+      "tag": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "block/torch_wall",
+  "textures": {
+    "torch": "essentialfeatures:block/lit_black_stained_redstone_torch"
+  }
+}

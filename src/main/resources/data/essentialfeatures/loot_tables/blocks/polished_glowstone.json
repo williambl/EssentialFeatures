@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "polished_glowstone",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "essentialfeatures:polished_glowstone"
+        }
+      ]
+    }
+  ]
+}

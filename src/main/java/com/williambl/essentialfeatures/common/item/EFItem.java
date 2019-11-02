@@ -1,9 +1,7 @@
 package com.williambl.essentialfeatures.common.item;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
+import net.minecraft.item.ItemGroup;
 
 public class EFItem extends Item {
 
@@ -11,14 +9,13 @@ public class EFItem extends Item {
      * This can be used if you just want an item that does nothing special,
      * instead of creating a new class for it.
      */
-    public EFItem(String registryName, CreativeTabs tab) {
-        super();
-        this.setCreativeTab(tab);
+    public EFItem(String registryName, ItemGroup itemGroup) {
+        super(new Properties().group(itemGroup));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
     }
 
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    public EFItem(String registryName, Properties properties) {
+        super(properties);
+        this.setRegistryName(registryName);
     }
 }

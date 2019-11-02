@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "essentialfeatures:block_placer"
+  },
+  "pattern": [
+    "ccc",
+    "cpc",
+    "crc"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    },
+    "c": {
+      "tag": "forge:cobblestone"
+    }
+  }
+}

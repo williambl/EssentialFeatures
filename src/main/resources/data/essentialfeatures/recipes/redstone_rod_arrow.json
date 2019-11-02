@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "essentialfeatures:redstone_rod_arrow"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "essentialfeatures:redstone_rod"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

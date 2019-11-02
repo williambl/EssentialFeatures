@@ -1,35 +1,28 @@
 package com.williambl.essentialfeatures.common.entity;
 
 import com.williambl.essentialfeatures.common.item.ModItems;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.server.SPacketChangeGameState;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.network.IPacket;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.FMLPlayMessages;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.Arrays;
 
-public class EntitySharpenedArrow extends EntityArrow {
+public class EntitySharpenedArrow extends AbstractArrowEntity {
 
     private int xTile;
     private int yTile;
     private int zTile;
-    private Block inTile;
-    private int inData;
+    private BlockState inBlockState;
 
     private int ticksInAir;
 
@@ -39,128 +32,70 @@ public class EntitySharpenedArrow extends EntityArrow {
     private Material[] breakableMaterials = {
             Material.GLASS,
             Material.ICE,
-            Material.VINE,
+            Material.PLANTS,
             Material.WEB
     };
 
+    public EntitySharpenedArrow(EntityType entityType, World world) {
+        super(entityType, world);
+        setIsCritical(true);
+    }
+
     public EntitySharpenedArrow(World worldIn) {
-        super(worldIn);
+        super(ModEntities.SHARPENED_ARROW, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(World worldIn, double x, double y, double z) {
-        super(worldIn, x, y, z);
+    public EntitySharpenedArrow(double x, double y, double z, World worldIn) {
+        super(ModEntities.SHARPENED_ARROW, x, y, z, worldIn);
         this.setIsCritical(true);
     }
 
-    public EntitySharpenedArrow(World worldIn, EntityLivingBase shooter) {
-        super(worldIn, shooter);
+    public EntitySharpenedArrow(LivingEntity shooter, World worldIn) {
+        super(ModEntities.SHARPENED_ARROW, shooter, worldIn);
         this.setIsCritical(true);
     }
 
+    public EntitySharpenedArrow(FMLPlayMessages.SpawnEntity packet, World world) {
+        this(packet.getPosX(), packet.getPosY(), packet.getPosZ(), world);
+        this.setHeadRotation(packet.getHeadYaw(), packet.getPitch());
+        this.setUniqueId(packet.getUuid());
+        this.setEntityId(packet.getEntityId());
+        this.setVelocity(packet.getVelX(), packet.getVelY(), packet.getVelZ());
+    }
+
+    @Override
     protected void onHit(RayTraceResult raytraceResultIn) {
-        Entity entity = raytraceResultIn.entityHit;
-
-        if (entity != null) {
-            float f = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-            int i = MathHelper.ceil((double) f * this.damage);
-
-            if (this.getIsCritical()) {
-                i += this.rand.nextInt(i / 2 + 2);
-            }
-
-            DamageSource damagesource;
-
-            if (this.shootingEntity == null) {
-                damagesource = DamageSource.causeArrowDamage(this, this);
-            } else {
-                damagesource = DamageSource.causeArrowDamage(this, this.shootingEntity);
-            }
-
-            if (this.isBurning() && !(entity instanceof EntityEnderman)) {
-                entity.setFire(5);
-            }
-
-            if (entity.attackEntityFrom(damagesource, (float) i)) {
-                if (entity instanceof EntityLivingBase) {
-                    EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
-
-                    if (!this.world.isRemote) {
-                        entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
-                    }
-
-                    if (this.knockbackStrength > 0) {
-                        float f1 = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
-                        if (f1 > 0.0F) {
-                            entitylivingbase.addVelocity(this.motionX * (double) this.knockbackStrength * 0.6000000238418579D / (double) f1, 0.1D, this.motionZ * (double) this.knockbackStrength * 0.6000000238418579D / (double) f1);
-                        }
-                    }
-
-                    if (this.shootingEntity instanceof EntityLivingBase) {
-                        EnchantmentHelper.applyThornEnchantments(entitylivingbase, this.shootingEntity);
-                        EnchantmentHelper.applyArthropodEnchantments((EntityLivingBase) this.shootingEntity, entitylivingbase);
-                    }
-
-                    this.arrowHit(entitylivingbase);
-
-                    if (this.shootingEntity != null && entitylivingbase != this.shootingEntity && entitylivingbase instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
-                        ((EntityPlayerMP) this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6, 0.0F));
-                    }
-                }
-
-                this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-
-                if (!(entity instanceof EntityEnderman)) {
-                    this.setDead();
-                }
-            } else {
-                this.motionX *= -0.10000000149011612D;
-                this.motionY *= -0.10000000149011612D;
-                this.motionZ *= -0.10000000149011612D;
-                this.rotationYaw += 180.0F;
-                this.prevRotationYaw += 180.0F;
-                this.ticksInAir = 0;
-
-                if (!this.world.isRemote && this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ < 0.0010000000474974513D) {
-                    if (this.pickupStatus == EntityArrow.PickupStatus.ALLOWED) {
-                        this.entityDropItem(this.getArrowStack(), 0.1F);
-                    }
-
-                    this.setDead();
-                }
-            }
-        } else {
-            BlockPos blockpos = raytraceResultIn.getBlockPos();
-            this.xTile = blockpos.getX();
-            this.yTile = blockpos.getY();
-            this.zTile = blockpos.getZ();
-            IBlockState iblockstate = this.world.getBlockState(blockpos);
-            this.inTile = iblockstate.getBlock();
-            this.inData = this.inTile.getMetaFromState(iblockstate);
-
-            if (!Arrays.asList(breakableMaterials).contains(iblockstate.getMaterial())) {
-                this.motionX = (double) ((float) (raytraceResultIn.hitVec.x - this.posX));
-                this.motionY = (double) ((float) (raytraceResultIn.hitVec.y - this.posY));
-                this.motionZ = (double) ((float) (raytraceResultIn.hitVec.z - this.posZ));
-                float f2 = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-                this.posX -= this.motionX / (double) f2 * 0.05000000074505806D;
-                this.posY -= this.motionY / (double) f2 * 0.05000000074505806D;
-                this.posZ -= this.motionZ / (double) f2 * 0.05000000074505806D;
-                this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+        RayTraceResult.Type raytraceresult$type = raytraceResultIn.getType();
+        if (raytraceresult$type == RayTraceResult.Type.ENTITY) {
+            this.func_213868_a((EntityRayTraceResult) raytraceResultIn);
+        } else if (raytraceresult$type == RayTraceResult.Type.BLOCK) {
+            BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) raytraceResultIn;
+            BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
+            this.inBlockState = blockstate;
+            if (!Arrays.asList(breakableMaterials).contains(blockstate.getMaterial())) {
+                Vec3d vec3d = blockraytraceresult.getHitVec().subtract(this.posX, this.posY, this.posZ);
+                this.setMotion(vec3d);
+                Vec3d vec3d1 = vec3d.normalize().scale(0.05F);
+                this.posX -= vec3d1.x;
+                this.posY -= vec3d1.y;
+                this.posZ -= vec3d1.z;
+                this.playSound(this.getHitGroundSound(), 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
                 this.inGround = true;
                 this.arrowShake = 7;
-
-                if (iblockstate.getMaterial() != Material.AIR)
-                    this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
+                this.setIsCritical(false);
+                this.setPierceLevel((byte) 0);
+                this.setHitSound(SoundEvents.ENTITY_ARROW_HIT);
+                this.func_213865_o(false);
+                blockstate.onProjectileCollision(this.world, blockstate, blockraytraceresult, this);
             } else {
-                if (iblockstate.getMaterial() != Material.AIR)
-                    this.inTile.onEntityCollidedWithBlock(this.world, blockpos, iblockstate, this);
+                if (blockstate.getMaterial() != Material.AIR)
+                    this.inBlockState.onEntityCollision(this.world, blockraytraceresult.getPos(), this);
 
-                if (iblockstate.getMaterial() == Material.GLASS || iblockstate.getMaterial() == Material.ICE)
+                if (blockstate.getMaterial() == Material.GLASS || blockstate.getMaterial() == Material.ICE)
                     this.playSound(SoundEvents.BLOCK_GLASS_BREAK, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-                else if (iblockstate.getMaterial() == Material.VINE || iblockstate.getMaterial() == Material.WEB)
-                    this.playSound(SoundEvents.BLOCK_CLOTH_BREAK, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                else if (blockstate.getMaterial() == Material.PLANTS || blockstate.getMaterial() == Material.WEB)
+                    this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
                 world.setBlockState(new BlockPos(this.xTile, this.yTile, this.zTile), Blocks.AIR.getDefaultState());
             }
@@ -172,5 +107,15 @@ public class EntitySharpenedArrow extends EntityArrow {
     @Override
     protected ItemStack getArrowStack() {
         return new ItemStack(ModItems.SHARPENED_ARROW);
+    }
+
+    @Override
+    public EntityType<?> getType() {
+        return ModEntities.SHARPENED_ARROW;
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

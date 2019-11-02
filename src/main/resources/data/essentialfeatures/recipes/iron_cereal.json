@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "essentialfeatures:iron_cereal"
+  },
+  "pattern": [
+    "iii",
+    "ici",
+    "iii"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "item": "essentialfeatures:cereal"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  }
+}

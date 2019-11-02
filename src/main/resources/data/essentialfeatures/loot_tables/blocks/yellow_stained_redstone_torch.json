@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "yellow_stained_redstone_torch",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "essentialfeatures:yellow_stained_redstone_torch"
+        }
+      ]
+    }
+  ]
+}

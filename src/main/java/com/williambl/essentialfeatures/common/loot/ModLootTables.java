@@ -1,33 +1,32 @@
 package com.williambl.essentialfeatures.common.loot;
 
-import com.williambl.essentialfeatures.common.item.ModItems;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootEntry;
-import net.minecraft.world.storage.loot.LootEntryItem;
-import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraft.world.storage.loot.conditions.LootCondition;
-import net.minecraft.world.storage.loot.functions.LootFunction;
+import net.minecraft.world.storage.loot.LootPool;
+import net.minecraft.world.storage.loot.LootTables;
+import net.minecraft.world.storage.loot.TableLootEntry;
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModLootTables {
 
-    public static LootEntry entry = new LootEntryItem(
-            ModItems.PORTABLE_JUKEBOX, 20, 50, new LootFunction[0], new LootCondition[0], "essentialfeatures:loot_portable_jukebox");
+    private static LootEntry.Builder entry = TableLootEntry.builder(new ResourceLocation("essentialfeatures:inject/loot_chests")).weight(3);
 
-    @Mod.EventBusSubscriber
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
         @SubscribeEvent
         public static void onLootTableLoad(LootTableLoadEvent event) {
             ResourceLocation name = event.getName();
-            if (name.equals(LootTableList.CHESTS_DESERT_PYRAMID)
-                    || name.equals(LootTableList.CHESTS_ABANDONED_MINESHAFT)
-                    || name.equals(LootTableList.CHESTS_JUNGLE_TEMPLE)
-                    || name.equals(LootTableList.CHESTS_SIMPLE_DUNGEON)
-                    || name.equals(LootTableList.CHESTS_NETHER_BRIDGE)
-                    ) {
-                event.getTable().getPool("main").addEntry(entry);
+            if (name.equals(LootTables.CHESTS_DESERT_PYRAMID)
+                    || name.equals(LootTables.CHESTS_ABANDONED_MINESHAFT)
+                    || name.equals(LootTables.CHESTS_JUNGLE_TEMPLE)
+                    || name.equals(LootTables.CHESTS_SIMPLE_DUNGEON)
+                    || name.equals(LootTables.CHESTS_NETHER_BRIDGE)
+                    || name.equals(LootTables.CHESTS_IGLOO_CHEST)
+            ) {
+                LootPool pool = LootPool.builder().addEntry(entry).name("injected_loot_chests").build();
+                event.getTable().addPool(pool);
             }
         }
     }

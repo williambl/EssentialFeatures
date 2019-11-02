@@ -1,41 +1,57 @@
 package com.williambl.essentialfeatures;
 
-import com.williambl.essentialfeatures.common.CommonProxy;
+import com.williambl.essentialfeatures.client.ClientEventHandler;
+import com.williambl.essentialfeatures.common.CommonEventHandler;
+import com.williambl.essentialfeatures.common.block.ModBlocks;
+import com.williambl.essentialfeatures.common.entity.ModEntities;
+import com.williambl.essentialfeatures.common.item.ModItems;
+import com.williambl.essentialfeatures.common.world.ModWorld;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(modid = EssentialFeatures.MODID, version = EssentialFeatures.VERSION, name = EssentialFeatures.NAME)
+@Mod(EssentialFeatures.MODID)
 public class EssentialFeatures {
 
-    @Mod.Instance("essentialfeatures")
-    public static EssentialFeatures instance;
-
     public static final String MODID = "essentialfeatures";
-    public static final String NAME = "Essential Features";
-    public static final String VERSION = "2.2.1";
 
-    @SidedProxy(
-            clientSide = "com.williambl.essentialfeatures.client.ClientProxy",
-            serverSide = "com.williambl.essentialfeatures.server.ServerProxy")
-    public static CommonProxy proxy;
+    public EssentialFeatures() {
+        // Register the setup method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        // Register the config method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modConfig);
+        // Register the doClientStuff method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        proxy.preInit();
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        proxy.init();
+    private void setup(final FMLCommonSetupEvent event) {
+        ModWorld.registerWorldGenerators();
+        ModEntities.initRenderers();
+
+        CommonEventHandler handler = new CommonEventHandler();
+        MinecraftForge.EVENT_BUS.register(handler);
     }
 
-    @EventHandler
-    public void Postinit(FMLPostInitializationEvent event) {
-        proxy.postInit();
+    private void modConfig(ModConfig.ModConfigEvent event)
+    {
+        ModConfig config = event.getConfig();
+        if (config.getSpec() == com.williambl.essentialfeatures.common.config.ModConfig.CLIENT_SPEC)
+            com.williambl.essentialfeatures.common.config.ModConfig.refreshClient();
+        else if (config.getSpec() == com.williambl.essentialfeatures.common.config.ModConfig.SERVER_SPEC)
+            com.williambl.essentialfeatures.common.config.ModConfig.refreshServer();
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        ClientEventHandler handler = new ClientEventHandler();
+        MinecraftForge.EVENT_BUS.register(handler);
+        ModBlocks.RegistrationHandler.registerBlockColors();
+        ModItems.RegistrationHandler.registerItemColors();
     }
 
 }

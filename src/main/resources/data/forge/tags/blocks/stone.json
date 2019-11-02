@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "essentialfeatures:carved_stone",
+    "essentialfeatures:carved_andesite",
+    "essentialfeatures:carved_diorite",
+    "essentialfeatures:carved_granite",
+    "essentialfeatures:slate"
+  ]
+}

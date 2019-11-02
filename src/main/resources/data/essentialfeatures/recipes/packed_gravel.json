@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "essentialfeatures:packed_gravel"
+  },
+  "pattern": [
+    "ggg",
+    "ggg",
+    "ggg"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "g": {
+      "tag": "forge:gravel"
+    }
+  }
+}

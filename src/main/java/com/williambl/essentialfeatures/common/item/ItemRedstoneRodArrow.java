@@ -1,28 +1,23 @@
 package com.williambl.essentialfeatures.common.item;
 
 import com.williambl.essentialfeatures.common.entity.EntityRedstoneRodArrow;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.ItemArrow;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.ArrowItem;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 
-public class ItemRedstoneRodArrow extends ItemArrow {
+public class ItemRedstoneRodArrow extends ArrowItem {
 
     public ItemRedstoneRodArrow(String registryName) {
-        super();
+        super(new Properties().group(ItemGroup.COMBAT));
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
     }
 
-    public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
-        EntityRedstoneRodArrow arrow = new EntityRedstoneRodArrow(worldIn, shooter);
-        return arrow;
+    @Override
+    public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
+        return new EntityRedstoneRodArrow(shooter, worldIn);
     }
 
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
 }

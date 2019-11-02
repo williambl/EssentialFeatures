@@ -1,7 +1,7 @@
 {
-    "parent": "block/door_top",
-    "textures": {
-        "bottom": "essentialfeatures:blocks/door_nether_brick_lower",
-        "top": "essentialfeatures:blocks/door_nether_brick_upper"
-    }
+  "parent": "block/door_top",
+  "textures": {
+    "top": "essentialfeatures:block/door_nether_brick_upper",
+    "bottom": "essentialfeatures:block/door_nether_brick_lower"
+  }
 }

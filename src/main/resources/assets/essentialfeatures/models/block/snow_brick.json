@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "essentialfeatures:blocks/snow_brick"
+    "all": "essentialfeatures:block/snow_brick"
   }
 }

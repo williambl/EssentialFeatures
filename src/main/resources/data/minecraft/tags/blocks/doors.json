@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "essentialfeatures:nether_brick_door",
+    "essentialfeatures:purpur_door"
+  ]
+}

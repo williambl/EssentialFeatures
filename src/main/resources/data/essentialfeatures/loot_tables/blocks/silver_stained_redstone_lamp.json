@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "silver_stained_redstone_lamp",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "essentialfeatures:silver_stained_redstone_lamp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,72 +1,107 @@
 package com.williambl.essentialfeatures.common.item;
 
-import com.williambl.essentialfeatures.client.music.MovingSoundGeneric;
+import com.williambl.essentialfeatures.client.music.MovingSound;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemPortableJukebox extends EFItem {
 
-    public ItemRecord record;
+    private List<ItemStack> jukeboxes = null;
 
-    public ItemPortableJukebox(String registryName, CreativeTabs tab, ItemRecord recordIn) {
+    public ItemPortableJukebox(String registryName, ItemGroup tab) {
         super(registryName, tab);
-        record = recordIn;
     }
 
     /**
      * Called when a Block is right-clicked with this Item
      */
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (record == null)
-            return EnumActionResult.PASS;
+    @Override
+    public ActionResultType onItemUse(ItemUseContext context) {
+        CompoundNBT tag = context.getItem().getOrCreateChildTag("Disc");
+
+        MusicDiscItem disc = (MusicDiscItem) ItemStack.read(tag).getItem();
+
+        if (disc == Items.AIR)
+            return ActionResultType.PASS;
+
+        PlayerEntity player = context.getPlayer();
+        World world = context.getWorld();
 
         if (player.isSneaking()) {
-            ItemStack itemstack = player.getHeldItem(hand);
-            itemstack.shrink(1);
+            context.getItem().removeChildTag("Disc");
+            context.getItem().getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
+            player.addItemStackToInventory(new ItemStack(disc));
 
-            player.addItemStackToInventory(new ItemStack(ModItems.PORTABLE_JUKEBOX));
-            player.addItemStackToInventory(new ItemStack(record));
+            if (world.isRemote)
+                Minecraft.getInstance().getSoundHandler().stop();
 
-            if (worldIn.isRemote)
-                Minecraft.getMinecraft().getSoundHandler().stopSounds();
-
-            return EnumActionResult.SUCCESS;
+            return ActionResultType.SUCCESS;
         }
 
-        if (worldIn.isRemote) {
-            Minecraft.getMinecraft().getSoundHandler().stopSounds();
-            playSound(player, record);
+        if (world.isRemote) {
+            Minecraft.getInstance().getSoundHandler().stop();
+            playSound(player, disc);
         }
-        return EnumActionResult.SUCCESS;
+        return ActionResultType.SUCCESS;
     }
 
-    @SideOnly(Side.CLIENT)
-    private void playSound(EntityPlayer playerIn, ItemRecord recordIn) {
-        Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundGeneric(playerIn, recordIn.getSound()));
+    @OnlyIn(Dist.CLIENT)
+    private void playSound(PlayerEntity playerIn, MusicDiscItem recordIn) {
+        Minecraft.getInstance().getSoundHandler().play(new MovingSound(playerIn, recordIn.getSound()));
     }
 
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        if (record != null)
-            tooltip.add(record.getRecordNameLocal());
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        CompoundNBT tag = stack.getOrCreateChildTag("Disc");
+
+        ItemStack discStack = ItemStack.read(tag);
+
+        if (discStack.getItem() != Items.AIR)
+            tooltip.add(new StringTextComponent("Disc: ").appendSibling(((MusicDiscItem) discStack.getItem()).getRecordDescription()));
+        else
+            tooltip.add(new StringTextComponent("Empty"));
     }
 
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ModItems.PORTABLE_JUKEBOX.getRegistryName(), "inventory"));
+    @Override
+    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+        if (this.isInGroup(group)) {
+            items.add(new ItemStack(this));
+            items.addAll(getJukeboxes());
+        }
     }
+
+
+    private List<ItemStack> getJukeboxes() {
+        if (jukeboxes == null) {
+            jukeboxes = new ArrayList<>();
+            ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).getAllElements().forEach(it -> {
+                System.out.println(it.getName());
+                ItemStack stack = new ItemStack(ModItems.PORTABLE_JUKEBOX);
+                stack.getOrCreateTag().put("Disc", new ItemStack(it).serializeNBT());
+                jukeboxes.add(stack);
+            });
+        }
+        if (jukeboxes.size() == 0) {
+            jukeboxes = null;
+            return new ArrayList<>();
+        }
+        return jukeboxes;
+    }
+
 }

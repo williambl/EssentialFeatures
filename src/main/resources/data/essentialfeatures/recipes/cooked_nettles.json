@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "essentialfeatures:stinging_nettles"
+  },
+  "result": "essentialfeatures:cooked_nettles",
+  "experience": 0.35,
+  "cookingtime": 200
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:glowstone"
+  },
+  "result": "essentialfeatures:smooth_glowstone",
+  "experience": 0.15,
+  "cookingtime": 200
+}

@@ -1,135 +1,97 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.google.common.collect.Lists;
-import net.minecraft.block.BlockRedstoneTorch;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.RedstoneTorchBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class BlockStainedRedstoneTorch extends BlockRedstoneTorch {
+public class BlockStainedRedstoneTorch extends RedstoneTorchBlock {
 
     static final String[] names = new String[]{"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
-    public final boolean isOn;
-    public int colour;
-    private static final Map<World, List<Toggle>> toggles = new java.util.WeakHashMap<World, List<Toggle>>(); // FORGE - fix vanilla MC-101233
+    int colour;
+    private static final Map<World, List<Toggle>> BURNED_TORCHES = new java.util.WeakHashMap<World, List<Toggle>>(); // FORGE - fix vanilla MC-101233
 
-    public BlockStainedRedstoneTorch(String registryName, boolean isOn, int colour) {
-        super(isOn);
-        this.isOn = isOn;
-        this.colour = colour;
+    public BlockStainedRedstoneTorch(String registryName, int colourIn) {
+        super(Properties.create(Material.REDSTONE_LIGHT));
+        colour = colourIn;
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
-        this.setCreativeTab(CreativeTabs.REDSTONE);
-    }
-
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 
     /**
      * Get the Item that this Block should drop when harvested.
      */
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    public Item getItemDropped(BlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(ModBlocks.STAINED_REDSTONE_TORCHES[colour]);
+        return Item.getItemFromBlock((Block) ModBlocks.STAINED_REDSTONE_TORCHES[colour].getLeft());
     }
 
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-        boolean flag = this.shouldBeOff(worldIn, pos, state);
-        List<Toggle> list = (List)toggles.get(worldIn);
+    public static void update(BlockState p_196527_0_, World p_196527_1_, BlockPos p_196527_2_, Random p_196527_3_, boolean p_196527_4_) {
+        List<BlockStainedRedstoneTorch.Toggle> list = BURNED_TORCHES.get(p_196527_1_);
 
-        while (list != null && !list.isEmpty() && worldIn.getTotalWorldTime() - (list.get(0)).time > 60L)
-        {
+        while(list != null && !list.isEmpty() && p_196527_1_.getGameTime() - (list.get(0)).time > 60L) {
             list.remove(0);
         }
 
-        if (this.isOn)
-        {
-            if (flag)
-            {
-                worldIn.setBlockState(pos, ModBlocks.STAINED_REDSTONE_TORCHES[colour+16].getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+        if (p_196527_0_.get(LIT)) {
+            if (p_196527_4_) {
+                p_196527_1_.setBlockState(p_196527_2_, p_196527_0_.with(LIT, Boolean.FALSE), 3);
+                if (isBurnedOut(p_196527_1_, p_196527_2_, true)) {
+                    p_196527_1_.playSound(null, p_196527_2_, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 0.5F, 2.6F + (p_196527_1_.rand.nextFloat() - p_196527_1_.rand.nextFloat()) * 0.8F);
 
-                if (this.isBurnedOut(worldIn, pos, true))
-                {
-                    worldIn.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 0.5F, 2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
-
-                    for (int i = 0; i < 5; ++i)
-                    {
-                        double d0 = (double)pos.getX() + rand.nextDouble() * 0.6D + 0.2D;
-                        double d1 = (double)pos.getY() + rand.nextDouble() * 0.6D + 0.2D;
-                        double d2 = (double)pos.getZ() + rand.nextDouble() * 0.6D + 0.2D;
-                        worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                    for(int i = 0; i < 5; ++i) {
+                        double d0 = (double)p_196527_2_.getX() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
+                        double d1 = (double)p_196527_2_.getY() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
+                        double d2 = (double)p_196527_2_.getZ() + p_196527_3_.nextDouble() * 0.6D + 0.2D;
+                        p_196527_1_.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
                     }
 
-                    worldIn.scheduleUpdate(pos, worldIn.getBlockState(pos).getBlock(), 160);
+                    p_196527_1_.getPendingBlockTicks().scheduleTick(p_196527_2_, p_196527_1_.getBlockState(p_196527_2_).getBlock(), 160);
                 }
             }
+        } else if (!p_196527_4_ && !isBurnedOut(p_196527_1_, p_196527_2_, false)) {
+            p_196527_1_.setBlockState(p_196527_2_, p_196527_0_.with(LIT, Boolean.TRUE), 3);
         }
-        else if (!flag && !this.isBurnedOut(worldIn, pos, false))
-        {
-            worldIn.setBlockState(pos, ModBlocks.STAINED_REDSTONE_TORCHES[colour].getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
-        }
+
     }
 
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
-    {
-        return new ItemStack(Item.getItemFromBlock(ModBlocks.STAINED_REDSTONE_TORCHES[colour]));
+    @Override
+    protected boolean shouldBeOff(World worldIn, BlockPos pos, BlockState state) {
+        return worldIn.isSidePowered(pos.down(), Direction.DOWN);
     }
 
-    private boolean shouldBeOff(World worldIn, BlockPos pos, IBlockState state)
-    {
-        EnumFacing enumfacing = ((EnumFacing)state.getValue(FACING)).getOpposite();
-        return worldIn.isSidePowered(pos.offset(enumfacing), enumfacing);
-    }
+    private static boolean isBurnedOut(World p_176598_0_, BlockPos worldIn, boolean pos) {
+        List<BlockStainedRedstoneTorch.Toggle> list = BURNED_TORCHES.computeIfAbsent(p_176598_0_, k -> Lists.newArrayList());
 
-    private boolean isBurnedOut(World worldIn, BlockPos pos, boolean turnOff)
-    {
-        if (!toggles.containsKey(worldIn))
-        {
-            toggles.put(worldIn, Lists.newArrayList());
-        }
+        if (pos) {
+         list.add(new BlockStainedRedstoneTorch.Toggle(worldIn.toImmutable(), p_176598_0_.getGameTime()));
+      }
 
-        List<Toggle> list = (List)toggles.get(worldIn);
+      int i = 0;
 
-        if (turnOff)
-        {
-            list.add(new Toggle(pos, worldIn.getTotalWorldTime()));
-        }
-
-        int i = 0;
-
-        for (int j = 0; j < list.size(); ++j)
-        {
-            Toggle blockredstonetorch$toggle = list.get(j);
-
-            if (blockredstonetorch$toggle.pos.equals(pos))
-            {
-                ++i;
-
-                if (i >= 8)
-                {
-                    return true;
-                }
+      for(int j = 0; j < list.size(); ++j) {
+         BlockStainedRedstoneTorch.Toggle blockredstonetorch$toggle = list.get(j);
+         if (blockredstonetorch$toggle.pos.equals(worldIn)) {
+            ++i;
+            if (i >= 8) {
+               return true;
             }
-        }
+         }
+      }
 
-        return false;
-    }
+      return false;
+   }
 
     static class Toggle
     {

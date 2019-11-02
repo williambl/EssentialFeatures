@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "essentialfeatures:block/pink_stained_redstone_lamp"
+  }
+}

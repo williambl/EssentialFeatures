@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "essentialfeatures:redstone_rod_sword"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:golden_sword"
+    },
+    {
+      "item": "essentialfeatures:redstone_rod"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

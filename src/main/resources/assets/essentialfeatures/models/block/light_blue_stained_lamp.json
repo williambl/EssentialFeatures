@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "essentialfeatures:blocks/light_blue_stained_lamp"
-  }
-}

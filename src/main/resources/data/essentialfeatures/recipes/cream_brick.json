@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "essentialfeatures:sand_clay_mixture"
+  },
+  "result": "essentialfeatures:cream_brick",
+  "experience": 0.3,
+  "cookingtime": 200
+}

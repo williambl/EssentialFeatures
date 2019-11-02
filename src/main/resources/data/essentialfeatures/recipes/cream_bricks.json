@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "essentialfeatures:cream_bricks"
+  },
+  "pattern": [
+    "bb",
+    "bb"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "essentialfeatures:cream_brick"
+    }
+  }
+}

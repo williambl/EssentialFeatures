@@ -1,20 +1,7 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "textures": {
-      "cross": "essentialfeatures:blocks/stinging_nettles"
-    },
-    "model": "tinted_cross",
-    "uvlock": true
-  },
   "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
-      {
-        "model": "essentialfeatures:item/stinging_nettles"
-      }
-    ]
+    "": {
+      "model": "essentialfeatures:block/stinging_nettles"
+    }
   }
 }

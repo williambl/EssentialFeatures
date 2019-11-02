@@ -1,0 +1,33 @@
+{
+  "result": {
+    "item": "essentialfeatures:long_bricks",
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    },
+    {
+      "item": "minecraft:brick"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,32 +1,10 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "lit_redstone_torch",
-    "textures": {
-      "torch": "essentialfeatures:blocks/gray_stained_redstone_torch"
-    }
-  },
   "variants": {
-    "inventory": [
-      {}
-    ],
-    "facing": {
-      "up": {},
-      "east": {
-        "model": "lit_redstone_torch_wall"
-      },
-      "south": {
-        "model": "lit_redstone_torch_wall",
-        "y": 90
-      },
-      "west": {
-        "model": "lit_redstone_torch_wall",
-        "y": 180
-      },
-      "north": {
-        "model": "lit_redstone_torch_wall",
-        "y": 270
-      }
+    "lit=false": {
+      "model": "essentialfeatures:block/gray_stained_redstone_torch"
+    },
+    "lit=true": {
+      "model": "essentialfeatures:block/gray_stained_redstone_torch_powered"
     }
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "block/template_torch",
+  "textures": {
+    "torch": "essentialfeatures:block/red_stained_redstone_torch"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "essentialfeatures:block_breaker"
+  },
+  "pattern": [
+    "cpc",
+    "crc",
+    "crc"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "item": "minecraft:diamond_pickaxe"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    },
+    "c": {
+      "tag": "forge:cobblestone"
+    }
+  }
+}

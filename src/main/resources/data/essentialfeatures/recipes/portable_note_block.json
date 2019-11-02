@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "essentialfeatures:portable_note_block"
+  },
+  "pattern": [
+    "sps",
+    "prp",
+    "sps"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    }
+  }
+}

@@ -1,75 +1,80 @@
 package com.williambl.essentialfeatures.common.block;
 
 import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
-import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.BlockStateContainer;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.particles.RedstoneParticleData;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BlockRedstoneRod extends EFBlock implements ITileEntityProvider {
+public class BlockRedstoneRod extends EFBlock {
 
-    public static final PropertyBool POWERED = PropertyBool.create("powered");
-    public static final PropertyDirection FACING = PropertyDirection.create("facing");
+    public static final BooleanProperty POWERED = BooleanProperty.create("powered");
+    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.values());
 
-    protected static final AxisAlignedBB END_ROD_VERTICAL_AABB = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
-    protected static final AxisAlignedBB END_ROD_NS_AABB = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
-    protected static final AxisAlignedBB END_ROD_EW_AABB = new AxisAlignedBB(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
+    protected static final VoxelShape END_ROD_VERTICAL_AABB = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+    protected static final VoxelShape END_ROD_NS_AABB = Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D);
+    protected static final VoxelShape END_ROD_EW_AABB = Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D);
 
-    public BlockRedstoneRod(String registryName, Material material, CreativeTabs tab, SoundType soundType, float hardness, float resistance, float lightlevel) {
-        super(registryName, material, tab, soundType, hardness, resistance, lightlevel);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(POWERED, Boolean.FALSE).withProperty(FACING, EnumFacing.UP));
-        this.hasTileEntity = true;
+    public BlockRedstoneRod(String registryName, Material material, SoundType soundType, float hardness, float resistance, int lightlevel) {
+        super(registryName, material, soundType, hardness, resistance, lightlevel);
+        this.setDefaultState(this.getStateContainer().getBaseState().with(POWERED, Boolean.FALSE).with(FACING, Direction.UP));
     }
 
-    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return new TileEntityRedstoneRod();
-    }
-
-    @Override
-    public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        super.breakBlock(world, pos, state);
-        world.removeTileEntity(pos);
     }
 
     /**
      * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
-    public IBlockState withRotation(IBlockState state, Rotation rot)
+    @Override
+    @SuppressWarnings("deprecation")
+    public BlockState rotate(BlockState state, Rotation rot)
     {
-        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+        return state.with(FACING, rot.rotate(state.get(FACING)));
     }
 
     /**
      * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
+    @Override
+    @SuppressWarnings("deprecation")
+    public BlockState mirror(BlockState state, Mirror mirrorIn)
     {
-        return state.withProperty(FACING, mirrorIn.mirror((EnumFacing)state.getValue(FACING)));
+        return state.with(FACING, mirrorIn.mirror(state.get(FACING)));
     }
 
     @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    @SuppressWarnings("deprecation")
+    public VoxelShape getShape(BlockState state, IBlockReader source, BlockPos pos, ISelectionContext context)
     {
-        switch (((EnumFacing)state.getValue(FACING)).getAxis())
+        switch (state.get(FACING).getAxis())
         {
             case X:
             default:
@@ -82,129 +87,90 @@ public class BlockRedstoneRod extends EFBlock implements ITileEntityProvider {
     }
 
     /**
-     * Used to determine ambient occlusion and culling when rebuilding chunks for render
-     */
-    @Override
-    public boolean isOpaqueCube(IBlockState state)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
-
-    /**
      * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
      * IBlockstate
      */
     @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
+    public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        IBlockState iblockstate = world.getBlockState(pos.offset(facing.getOpposite()));
+        BlockState iblockstate = context.getWorld().getBlockState(context.getPos().offset(context.getFace().getOpposite()));
 
         if (iblockstate.getBlock() == ModBlocks.REDSTONE_ROD)
         {
-            EnumFacing enumfacing = (EnumFacing)iblockstate.getValue(FACING);
+            Direction enumfacing = iblockstate.get(FACING);
 
-            if (enumfacing == facing)
+            if (enumfacing == context.getFace())
             {
-                return this.getDefaultState().withProperty(FACING, facing.getOpposite());
+                return this.getDefaultState().with(FACING, context.getFace().getOpposite());
             }
         }
 
-        return this.getDefaultState().withProperty(FACING, facing);
+        return this.getDefaultState().with(FACING, context.getFace());
     }
 
     @Override
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
-        EnumFacing enumfacing = (EnumFacing)stateIn.getValue(FACING);
+        Direction enumfacing = stateIn.get(FACING);
         double d0 = (double)pos.getX() + 0.55D - (double)(rand.nextFloat() * 0.1F);
         double d1 = (double)pos.getY() + 0.55D - (double)(rand.nextFloat() * 0.1F);
         double d2 = (double)pos.getZ() + 0.55D - (double)(rand.nextFloat() * 0.1F);
-        double d3 = (double)(0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F);
+        double d3 = 0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F;
 
         if (rand.nextInt(5) == 0)
         {
-            worldIn.spawnParticle(EnumParticleTypes.END_ROD, d0 + (double)enumfacing.getFrontOffsetX() * d3, d1 + (double)enumfacing.getFrontOffsetY() * d3, d2 + (double)enumfacing.getFrontOffsetZ() * d3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+            worldIn.addParticle(ParticleTypes.END_ROD, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
         }
     }
 
     @Override
-    public boolean canProvidePower(IBlockState state) {
+    @SuppressWarnings("deprecated")
+    public boolean canProvidePower(BlockState state) {
         return true;
     }
 
     @Override
-    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        return blockState.getValue(POWERED) ? 15 : 0;
+    @SuppressWarnings("deprecated")
+    public int getWeakPower(BlockState blockState, IBlockReader reader, BlockPos pos, Direction side) {
+        return blockState.get(POWERED) ? 15 : 0;
     }
 
     @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, POWERED, FACING);
-    }
-
-    public IBlockState getStateFromMeta(int meta)
-    {
-        IBlockState iblockstate = this.getDefaultState();
-
-        if (meta > 5) {
-            meta -= 6;
-            iblockstate = iblockstate.withProperty(POWERED, true);
-        }
-
-        iblockstate = iblockstate.withProperty(FACING, EnumFacing.getFront(meta));
-        return iblockstate;
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(POWERED);
+        builder.add(FACING);
     }
 
     @Override
-    public int getMetaFromState(IBlockState state) {
-        int meta = state.getValue(FACING).getIndex();
-        if (state.getValue(POWERED))
-            meta += 6;
-        return meta;
-    }
-
-    @Override
-    public BlockRenderLayer getBlockLayer()
+    public BlockRenderLayer getRenderLayer()
     {
         return BlockRenderLayer.CUTOUT;
     }
 
-    @Override
-    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
-    {
-        return BlockFaceShape.UNDEFINED;
+    public void activate(World worldIn, BlockPos pos, BlockState blockstate) {
+        worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.TRUE));
     }
 
-    public void activate(World worldIn, BlockPos pos, IBlockState blockstate) {
-        worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.TRUE));
+    public void deactivate(World worldIn, BlockPos pos, BlockState blockstate) {
+        worldIn.setBlockState(pos, blockstate.with(POWERED, Boolean.FALSE));
     }
 
-    public void deactivate(World worldIn, BlockPos pos, IBlockState blockstate) {
-        worldIn.setBlockState(pos, blockstate.withProperty(POWERED, Boolean.FALSE));
-    }
-
-    public boolean isPowered(IBlockState blockstate) {
-        return blockstate.getValue(POWERED);
+    public boolean isPowered(BlockState blockstate) {
+        return blockstate.get(POWERED);
     }
 
     public void redstoneEffects(World world, BlockPos pos) {
-        IBlockState state = world.getBlockState(pos);
-        EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        BlockState state = world.getBlockState(pos);
+        Direction enumfacing = state.get(FACING);
         double d0 = (double)pos.getX() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
         double d1 = (double)pos.getY() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
         double d2 = (double)pos.getZ() + 0.55D - (double)(world.rand.nextFloat() * 0.1F);
-        double d3 = (double)(0.4F - (world.rand.nextFloat() + world.rand.nextFloat()) * 0.4F);
+        double d3 = 0.4F - (world.rand.nextFloat() + world.rand.nextFloat()) * 0.4F;
 
         for (int i = 0; i < world.rand.nextInt(10); i++)
         {
-            world.spawnParticle(EnumParticleTypes.REDSTONE, d0 + (double)enumfacing.getFrontOffsetX() * d3, d1 + (double)enumfacing.getFrontOffsetY() * d3, d2 + (double)enumfacing.getFrontOffsetZ() * d3, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D);
-            world.spawnParticle(EnumParticleTypes.END_ROD, d0 + (double)enumfacing.getFrontOffsetX() * d3, d1 + (double)enumfacing.getFrontOffsetY() * d3, d2 + (double)enumfacing.getFrontOffsetZ() * d3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
+            world.addParticle(RedstoneParticleData.REDSTONE_DUST, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D, world.rand.nextGaussian() * 0.01D);
+            world.addParticle(ParticleTypes.END_ROD, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
         }
     }
 }
