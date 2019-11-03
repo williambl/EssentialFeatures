@@ -7,9 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
@@ -31,34 +29,33 @@ public class PortableJukeboxItem extends EFItem {
      * Called when a Block is right-clicked with this Item
      */
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
-        CompoundNBT tag = context.getItem().getOrCreateChildTag("Disc");
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand handIn) {
 
-        Item item = ItemStack.read(tag).getItem();
+        ItemStack stack = player.getHeldItem(handIn);
 
-        if (!(item instanceof MusicDiscItem))
-            return ActionResultType.PASS;
-        MusicDiscItem disc = (MusicDiscItem) item;
+        CompoundNBT tag = stack.getOrCreateChildTag("Disc");
+        Item discItem = ItemStack.read(tag).getItem();
 
-        PlayerEntity player = context.getPlayer();
-        World world = context.getWorld();
+        if (!(discItem instanceof MusicDiscItem))
+            return ActionResult.newResult(ActionResultType.PASS, player.getHeldItem(handIn));
+        MusicDiscItem disc = (MusicDiscItem) discItem;
 
         if (player.isSneaking()) {
-            context.getItem().removeChildTag("Disc");
-            context.getItem().getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
+            stack.removeChildTag("Disc");
+            stack.getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
             player.addItemStackToInventory(new ItemStack(disc));
 
             if (!world.isRemote) {
-                ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(context::getPlayer), new PortableJukeboxMessage(false, context.getPlayer().getUniqueID(), disc.getSound().getRegistryName()));
+                ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(false, player.getUniqueID(), disc.getSound().getRegistryName()));
             }
 
-            return ActionResultType.SUCCESS;
+            return new ActionResult<>(ActionResultType.SUCCESS, stack);
         }
 
         if (!world.isRemote) {
-            ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(context::getPlayer), new PortableJukeboxMessage(true, context.getPlayer().getUniqueID(), disc.getSound().getRegistryName()));
+            ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(true, player.getUniqueID(), disc.getSound().getRegistryName()));
         }
-        return ActionResultType.SUCCESS;
+        return new ActionResult<>(ActionResultType.SUCCESS, stack);
     }
 
     @Override
