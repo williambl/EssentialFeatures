@@ -1,7 +1,7 @@
 package com.williambl.essentialfeatures.common.item;
 
-import com.williambl.essentialfeatures.client.music.MovingSound;
-import net.minecraft.client.Minecraft;
+import com.williambl.essentialfeatures.common.networking.ModPackets;
+import com.williambl.essentialfeatures.common.networking.PortableJukeboxMessage;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -13,8 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.network.PacketDistributor;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -35,10 +34,11 @@ public class PortableJukeboxItem extends EFItem {
     public ActionResultType onItemUse(ItemUseContext context) {
         CompoundNBT tag = context.getItem().getOrCreateChildTag("Disc");
 
-        MusicDiscItem disc = (MusicDiscItem) ItemStack.read(tag).getItem();
+        Item item = ItemStack.read(tag).getItem();
 
-        if (disc == Items.AIR)
+        if (!(item instanceof MusicDiscItem))
             return ActionResultType.PASS;
+        MusicDiscItem disc = (MusicDiscItem) item;
 
         PlayerEntity player = context.getPlayer();
         World world = context.getWorld();
@@ -48,22 +48,17 @@ public class PortableJukeboxItem extends EFItem {
             context.getItem().getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
             player.addItemStackToInventory(new ItemStack(disc));
 
-            if (world.isRemote)
-                Minecraft.getInstance().getSoundHandler().stop();
+            if (!world.isRemote) {
+                ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(context::getPlayer), new PortableJukeboxMessage(false, context.getPlayer().getUniqueID(), disc.getSound().getRegistryName()));
+            }
 
             return ActionResultType.SUCCESS;
         }
 
-        if (world.isRemote) {
-            Minecraft.getInstance().getSoundHandler().stop();
-            playSound(player, disc);
+        if (!world.isRemote) {
+            ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(context::getPlayer), new PortableJukeboxMessage(true, context.getPlayer().getUniqueID(), disc.getSound().getRegistryName()));
         }
         return ActionResultType.SUCCESS;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private void playSound(PlayerEntity playerIn, MusicDiscItem recordIn) {
-        Minecraft.getInstance().getSoundHandler().play(new MovingSound(playerIn, recordIn.getSound()));
     }
 
     @Override

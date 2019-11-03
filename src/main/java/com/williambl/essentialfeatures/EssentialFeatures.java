@@ -5,6 +5,7 @@ import com.williambl.essentialfeatures.common.CommonEventHandler;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.entity.ModEntities;
 import com.williambl.essentialfeatures.common.item.ModItems;
+import com.williambl.essentialfeatures.common.networking.ModPackets;
 import com.williambl.essentialfeatures.common.world.ModWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +34,7 @@ public class EssentialFeatures {
     private void setup(final FMLCommonSetupEvent event) {
         ModWorld.registerWorldGenerators();
         ModEntities.initRenderers();
+        ModPackets.registerPackets();
 
         CommonEventHandler handler = new CommonEventHandler();
         MinecraftForge.EVENT_BUS.register(handler);
