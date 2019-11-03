@@ -30,7 +30,6 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
                         return false;
                     }
                     if (jukebox.hasTag()) {
-                        System.out.println(ItemStack.read(jukebox.getOrCreateChildTag("Disc")).getItem().getName());
                         if (ItemStack.read(jukebox.getOrCreateChildTag("Disc")).getItem() != Items.AIR)
                             return false;
                     }
@@ -68,7 +67,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
 
                     jukebox = stackInSlot.copy();
                 } else {
-                    if (ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem())) {
+                    if (ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
                         if (!disc.isEmpty()) { //There can only be one!
                             return ItemStack.EMPTY;
                         }
