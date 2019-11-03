@@ -2,11 +2,10 @@
   "variants": {
     "facing=down,triggered=false": {
       "model": "essentialfeatures:block/block_placer_vertical",
-      "x": 270
+      "x": 180
     },
     "facing=up,triggered=false": {
-      "model": "essentialfeatures:block/block_placer_vertical",
-      "x": 90
+      "model": "essentialfeatures:block/block_placer_vertical"
     },
     "facing=north,triggered=false": {
       "model": "essentialfeatures:block/block_placer"
@@ -25,11 +24,10 @@
     },
     "facing=down,triggered=true": {
       "model": "essentialfeatures:block/block_placer_vertical",
-      "x": 270
+      "x": 180
     },
     "facing=up,triggered=true": {
-      "model": "essentialfeatures:block/block_placer_vertical",
-      "x": 90
+      "model": "essentialfeatures:block/block_placer_vertical"
     },
     "facing=north,triggered=true": {
       "model": "essentialfeatures:block/block_placer"

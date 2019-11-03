@@ -413,12 +413,11 @@ public class DataGenerators {
                         builder.modelFile(horizontalModel);
                         break;
                     case UP:
-                        builder.rotationX(90);
                         builder.modelFile(verticalModel);
                         break;
                     case DOWN:
-                        builder.rotationX(270);
                         builder.modelFile(verticalModel);
+                        builder.rotationX(180);
                         break;
                     default:
                         builder.modelFile(horizontalModel);
