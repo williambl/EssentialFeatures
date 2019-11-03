@@ -35,6 +35,8 @@ public class ModConfig {
     public static int viewedBlockDelay = 2;
     public static int viewedBlockRange = 50;
 
+    public static boolean showMOTD = true;
+
     public static class ServerConfig
     {
         public final ForgeConfigSpec.ConfigValue<Boolean> villagers;
@@ -85,16 +87,21 @@ public class ModConfig {
         }
     }
 
+    public static void refreshClient() {
+        showMOTD = CLIENT.motd.get();
+    }
+
     public static class ClientConfig
     {
+        public final ForgeConfigSpec.BooleanValue motd;
 
         ClientConfig(ForgeConfigSpec.Builder builder)
         {
+            motd = builder
+                    .comment("Whether or not to get the MOTD from the net")
+                    .translation("config.motd")
+                    .define("motd", true);
         }
-    }
-
-    public static void refreshClient()
-    {
     }
 
     public static void refreshServer()
