@@ -450,10 +450,10 @@ public class DataGenerators {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder();
 
                 if (state.get(EFDoorBlock.HINGE) == DoorHingeSide.LEFT) {
-                    if (state.get(EFDoorBlock.HALF) == DoubleBlockHalf.LOWER)
-                        builder.modelFile(bottomModel);
+                    if ((state.get(EFDoorBlock.HALF) == DoubleBlockHalf.LOWER))
+                        builder.modelFile(state.get(EFDoorBlock.OPEN) ? bottomHingeModel : bottomModel);
                     else
-                        builder.modelFile(topModel);
+                        builder.modelFile(state.get(EFDoorBlock.OPEN) ? topHingeModel : topModel);
 
                     switch (state.get(EFDoorBlock.FACING)) {
                         case EAST:
@@ -471,9 +471,9 @@ public class DataGenerators {
                     }
                 } else {
                     if (state.get(EFDoorBlock.HALF) == DoubleBlockHalf.LOWER)
-                        builder.modelFile(bottomHingeModel);
+                        builder.modelFile(state.get(EFDoorBlock.OPEN) ? bottomModel : bottomHingeModel);
                     else
-                        builder.modelFile(topHingeModel);
+                        builder.modelFile(state.get(EFDoorBlock.OPEN) ? topModel : topHingeModel);
 
                     switch (state.get(EFDoorBlock.FACING)) {
                         case EAST:
