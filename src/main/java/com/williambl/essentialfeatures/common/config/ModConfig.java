@@ -25,10 +25,6 @@ public class ModConfig {
         CLIENT = specPair.getLeft();
     }
 
-    public static boolean addVillagers = true;
-    public static boolean addSmelting = false;
-    public static boolean addBlocks = true;
-    public static boolean addItems = true;
     public static boolean generateSlate = true;
     public static boolean generateNettles = true;
 
@@ -39,10 +35,6 @@ public class ModConfig {
 
     public static class ServerConfig
     {
-        public final ForgeConfigSpec.ConfigValue<Boolean> villagers;
-        public final ForgeConfigSpec.ConfigValue<Boolean> smelting;
-        public final ForgeConfigSpec.ConfigValue<Boolean> blocks;
-        public final ForgeConfigSpec.ConfigValue<Boolean> items;
         public final ForgeConfigSpec.ConfigValue<Boolean> slate;
         public final ForgeConfigSpec.ConfigValue<Boolean> nettles;
         public final ForgeConfigSpec.ConfigValue<Integer> viewedBlockRange;
@@ -51,22 +43,6 @@ public class ModConfig {
         ServerConfig(ForgeConfigSpec.Builder builder)
         {
             builder.push("general");
-            villagers = builder
-                    .comment("Add mechanic villagers [false/true|default:true]")
-                    .translation("config.villagers.enable")
-                    .define("villagers", true);
-            smelting = builder
-                    .comment("Add smelting recipes [false/true|default:true]")
-                    .translation("config.smelting.enable")
-                    .define("smelting", true);
-            blocks = builder
-                    .comment("Add blocks [false/true|default:true]")
-                    .translation("config.blocks.enable")
-                    .define("blocks", true);
-            items = builder
-                    .comment("Add items [false/true|default:true]")
-                    .translation("config.items.enable")
-                    .define("items", true);
             slate = builder
                     .comment("Generate slate [false/true|default:true]")
                     .translation("config.slate.enable")
@@ -106,10 +82,6 @@ public class ModConfig {
 
     public static void refreshServer()
     {
-        addVillagers = SERVER.villagers.get();
-        addSmelting = SERVER.smelting.get();
-        addItems = SERVER.items.get();
-        addBlocks = SERVER.blocks.get();
         generateSlate = SERVER.slate.get();
         generateNettles = SERVER.nettles.get();
         viewedBlockDelay = SERVER.viewedBlockDelay.get();
