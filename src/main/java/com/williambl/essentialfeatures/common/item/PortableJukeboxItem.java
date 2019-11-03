@@ -83,7 +83,6 @@ public class PortableJukeboxItem extends EFItem {
         if (jukeboxes == null) {
             jukeboxes = new ArrayList<>();
             ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).getAllElements().forEach(it -> {
-                System.out.println(it.getName());
                 ItemStack stack = new ItemStack(ModItems.PORTABLE_JUKEBOX);
                 stack.getOrCreateTag().put("Disc", new ItemStack(it).serializeNBT());
                 jukeboxes.add(stack);
