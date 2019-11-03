@@ -26,10 +26,10 @@ public class BlockBreakerBlock extends DirectionalBlock {
     @Override
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (!worldIn.isRemote) {
-            if (worldIn.isBlockPowered(pos) && state.get(TRIGGERED) == Boolean.valueOf(false)) {
+            if (worldIn.isBlockPowered(pos)) {
                 destroy(pos, state, worldIn);
                 worldIn.setBlockState(pos, state.cycle(TRIGGERED), 6);
-            } else if (!worldIn.isBlockPowered(pos) && !state.get(TRIGGERED) == Boolean.FALSE) {
+            } else if (!worldIn.isBlockPowered(pos)) {
                 worldIn.setBlockState(pos, state.cycle(TRIGGERED), 6);
             }
         }
@@ -37,11 +37,8 @@ public class BlockBreakerBlock extends DirectionalBlock {
 
     public void destroy(BlockPos pos, BlockState state, World worldIn) {
         BlockPos offsetPos = pos.offset(state.get(FACING));
-        Block offsetBlock = worldIn.getBlockState(offsetPos).getBlock();
-
         worldIn.destroyBlock(offsetPos, true);
     }
-
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
