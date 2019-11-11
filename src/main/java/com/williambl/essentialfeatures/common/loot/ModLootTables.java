@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 
 public class ModLootTables {
 
-    private static LootEntry.Builder entry = TableLootEntry.builder(new ResourceLocation("essentialfeatures:inject/loot_chests")).weight(3);
+    private static LootEntry.Builder entry = TableLootEntry.builder(new ResourceLocation("essentialfeatures:inject/loot_chests")).weight(15);
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistrationHandler {
