@@ -34,6 +34,7 @@ public class EssentialFeatures {
     private void setup(final FMLCommonSetupEvent event) {
         ModWorld.registerWorldGenerators();
         ModPackets.registerPackets();
+        ModItems.RegistrationHandler.registerDispenseBehaviours();
 
         CommonEventHandler handler = new CommonEventHandler();
         MinecraftForge.EVENT_BUS.register(handler);

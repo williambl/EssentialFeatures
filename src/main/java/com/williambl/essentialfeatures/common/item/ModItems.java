@@ -3,13 +3,20 @@ package com.williambl.essentialfeatures.common.item;
 import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.client.music.ModSound;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
+import com.williambl.essentialfeatures.common.entity.RedstoneRodArrowEntity;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
+import net.minecraft.dispenser.IPosition;
+import net.minecraft.dispenser.ProjectileDispenseBehavior;
+import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
@@ -91,6 +98,16 @@ public class ModItems {
                 registry.register(item);
                 ITEMS.add(item);
             }
+        }
+
+        public static void registerDispenseBehaviours() {
+            DispenserBlock.registerDispenseBehavior(ModItems.REDSTONE_ROD_ARROW, new ProjectileDispenseBehavior() {
+                protected IProjectile getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                    RedstoneRodArrowEntity arrowentity = new RedstoneRodArrowEntity(position.getX(), position.getY(), position.getZ(), worldIn);
+                    arrowentity.pickupStatus = AbstractArrowEntity.PickupStatus.ALLOWED;
+                    return arrowentity;
+                }
+            });
         }
 
         @OnlyIn(Dist.CLIENT)
