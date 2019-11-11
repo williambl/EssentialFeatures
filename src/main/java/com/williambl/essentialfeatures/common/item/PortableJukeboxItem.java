@@ -46,14 +46,14 @@ public class PortableJukeboxItem extends EFItem {
             player.addItemStackToInventory(new ItemStack(disc));
 
             if (!world.isRemote) {
-                ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(false, player.getUniqueID(), disc.getSound().getRegistryName()));
+                ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(false, player.getUniqueID(), disc.getRegistryName()));
             }
 
             return new ActionResult<>(ActionResultType.SUCCESS, stack);
         }
 
         if (!world.isRemote) {
-            ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(true, player.getUniqueID(), disc.getSound().getRegistryName()));
+            ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(true, player.getUniqueID(), disc.getRegistryName()));
         }
         return new ActionResult<>(ActionResultType.SUCCESS, stack);
     }

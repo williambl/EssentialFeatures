@@ -33,7 +33,6 @@ public class EssentialFeatures {
 
     private void setup(final FMLCommonSetupEvent event) {
         ModWorld.registerWorldGenerators();
-        ModEntities.initRenderers();
         ModPackets.registerPackets();
 
         CommonEventHandler handler = new CommonEventHandler();
@@ -50,10 +49,12 @@ public class EssentialFeatures {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        ClientEventHandler handler = new ClientEventHandler();
-        MinecraftForge.EVENT_BUS.register(handler);
         ModBlocks.RegistrationHandler.registerBlockColors();
         ModItems.RegistrationHandler.registerItemColors();
+        ModEntities.initRenderers();
+
+        ClientEventHandler handler = new ClientEventHandler();
+        MinecraftForge.EVENT_BUS.register(handler);
     }
 
 }

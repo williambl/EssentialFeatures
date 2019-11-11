@@ -26,9 +26,9 @@ public class ModSound {
         @SubscribeEvent
         public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
             event.getRegistry().registerAll(
-                    OCEAN.setRegistryName(OCEAN.getName()),
-                    RECORD_SCARLET.setRegistryName(RECORD_SCARLET.getName()),
-                    RECORD_LOFI.setRegistryName(RECORD_LOFI.getName())
+                    OCEAN.setRegistryName("ocean_music"),
+                    RECORD_SCARLET.setRegistryName("record_scarlet"),
+                    RECORD_LOFI.setRegistryName("record_lofi")
             );
         }
     }

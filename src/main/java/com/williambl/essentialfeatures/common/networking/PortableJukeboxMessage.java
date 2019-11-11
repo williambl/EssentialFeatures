@@ -1,12 +1,9 @@
 package com.williambl.essentialfeatures.common.networking;
 
-import com.williambl.essentialfeatures.client.music.MovingSound;
-import net.minecraft.client.Minecraft;
+import com.williambl.essentialfeatures.client.DistHelper;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
 import net.minecraftforge.fml.network.NetworkEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.UUID;
 import java.util.function.Supplier;
@@ -15,12 +12,12 @@ public class PortableJukeboxMessage {
 
     private boolean startOrStop;
     private UUID playerUUID;
-    private ResourceLocation soundEvent;
+    private ResourceLocation disc;
 
-    public PortableJukeboxMessage(boolean startOrStopIn, UUID entityUUIDIn, ResourceLocation soundEventIn) {
+    public PortableJukeboxMessage(boolean startOrStopIn, UUID entityUUIDIn, ResourceLocation discIn) {
         this.startOrStop = startOrStopIn;
         this.playerUUID = entityUUIDIn;
-        this.soundEvent = soundEventIn;
+        this.disc = discIn;
     }
 
     PortableJukeboxMessage(PacketBuffer buf) {
@@ -30,7 +27,7 @@ public class PortableJukeboxMessage {
     void encode(PacketBuffer buf) {
         buf.writeBoolean(startOrStop);
         buf.writeUniqueId(playerUUID);
-        buf.writeResourceLocation(soundEvent);
+        buf.writeResourceLocation(disc);
     }
 
     void handle(Supplier<NetworkEvent.Context> ctx) {
@@ -38,18 +35,9 @@ public class PortableJukeboxMessage {
             return;
 
         if (this.startOrStop) {
-            ctx.get().enqueueWork(() -> {
-                System.out.println("recieved message!");
-                Minecraft.getInstance().getSoundHandler().stop();
-                Minecraft.getInstance().getSoundHandler().play(
-                        new MovingSound(
-                                Minecraft.getInstance().world.getPlayerByUuid(this.playerUUID),
-                                ForgeRegistries.SOUND_EVENTS.getValue(this.soundEvent)
-                        )
-                );
-            });
+            ctx.get().enqueueWork(() -> DistHelper.playDiscToPlayer(this.playerUUID, this.disc));
         } else {
-            ctx.get().enqueueWork(() -> Minecraft.getInstance().getSoundHandler().stop(this.soundEvent, SoundCategory.NEUTRAL));
+            ctx.get().enqueueWork(() -> DistHelper.stopDisc(this.disc));
         }
     }
 }
