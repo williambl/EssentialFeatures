@@ -1,6 +1,8 @@
 package com.williambl.essentialfeatures.common.entity;
 
+import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.item.ModItems;
+import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -9,10 +11,14 @@ import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
+
+import java.util.Objects;
 
 public class RedstoneRodArrowEntity extends AbstractArrowEntity {
 
@@ -58,6 +64,16 @@ public class RedstoneRodArrowEntity extends AbstractArrowEntity {
         if (target.world.canBlockSeeSky(new BlockPos(target.posX, target.posY, target.posZ))) {
             LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.posX, target.posY, target.posZ, false);
             ((ServerWorld) target.world).addLightningBolt(bolt);
+        }
+    }
+
+    @Override
+    protected void onHit(RayTraceResult raytraceResultIn) {
+        super.onHit(raytraceResultIn);
+        if (raytraceResultIn.getType() == RayTraceResult.Type.BLOCK) {
+            if (world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()).getBlock() == ModBlocks.REDSTONE_ROD) {
+                ((TileEntityRedstoneRod) Objects.requireNonNull(world.getTileEntity(((BlockRayTraceResult) raytraceResultIn).getPos()))).makeLightning(world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()));
+            }
         }
     }
 

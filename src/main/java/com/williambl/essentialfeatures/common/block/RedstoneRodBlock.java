@@ -1,10 +1,12 @@
 package com.williambl.essentialfeatures.common.block;
 
+import com.williambl.essentialfeatures.common.item.ModItems;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.particles.RedstoneParticleData;
@@ -12,16 +14,14 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class RedstoneRodBlock extends EFBlock {
@@ -120,6 +120,14 @@ public class RedstoneRodBlock extends EFBlock {
         if (rand.nextInt(5) == 0)
         {
             worldIn.addParticle(ParticleTypes.END_ROD, d0 + (double) enumfacing.getXOffset() * d3, d1 + (double) enumfacing.getYOffset() * d3, d2 + (double) enumfacing.getZOffset() * d3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+        }
+    }
+
+    @Override
+    public void onBlockClicked(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
+        super.onBlockClicked(state, worldIn, pos, player);
+        if (player.getHeldItem(Hand.MAIN_HAND).getItem() == ModItems.REDSTONE_ROD_SWORD) {
+            ((TileEntityRedstoneRod) Objects.requireNonNull(worldIn.getTileEntity(pos))).makeLightning(state);
         }
     }
 
