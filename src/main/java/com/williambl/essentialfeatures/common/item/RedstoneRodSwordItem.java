@@ -12,7 +12,7 @@ import net.minecraft.world.server.ServerWorld;
 public class RedstoneRodSwordItem extends SwordItem {
 
     public RedstoneRodSwordItem(String registryName, IItemTier material) {
-        super(material, 6, 1f, new Properties().group(ItemGroup.COMBAT));
+        super(material, 7, -2.7f, new Properties().group(ItemGroup.COMBAT));
         this.setRegistryName(registryName);
     }
 
@@ -20,7 +20,7 @@ public class RedstoneRodSwordItem extends SwordItem {
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
     {
         if (target.world.canBlockSeeSky(new BlockPos(target.posX, target.posY, target.posZ))) {
-            stack.damageItem(5, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
+            stack.damageItem(2, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
             LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.posX, target.posY, target.posZ, false);
             ((ServerWorld) target.world).addLightningBolt(bolt);
         }
