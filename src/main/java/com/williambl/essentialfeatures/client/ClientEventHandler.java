@@ -2,9 +2,11 @@ package com.williambl.essentialfeatures.client;
 
 import com.williambl.essentialfeatures.EssentialFeatures;
 import com.williambl.essentialfeatures.client.music.CustomMusic;
-import com.williambl.essentialfeatures.common.config.ModConfig;
+import com.williambl.essentialfeatures.common.config.Config;
 import net.minecraft.client.audio.ISound;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -21,15 +23,25 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public void playSoundEvent(PlaySoundEvent event) {
-        if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
-            ISound result = CustomMusic.PlayMusic(event.getSound());
-            event.setResultSound(result);
+        if (Config.customMusic) {
+            if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
+                ISound result = CustomMusic.PlayMusic(event.getSound());
+                event.setResultSound(result);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void OnPlayerRespawn(PlayerEvent.PlayerRespawnEvent e) {
+        if (Config.spawnExplosion) {
+            e.getPlayer().world.addParticle(ParticleTypes.EXPLOSION, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, 1.0D, 0.0D, 0.0D);
+            e.getPlayer().world.playSound(null, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.getPlayer().world.rand.nextFloat() - e.getPlayer().world.rand.nextFloat()) * 0.2F) * 0.7F);
         }
     }
 
     @SubscribeEvent
     public void playerLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        if (ModConfig.showMOTD) {
+        if (Config.motd) {
             String messageURL = "https://raw.githubusercontent.com/williambl/essentialfeatures-motd/master/motd-" + ModList.get().getModContainerById(EssentialFeatures.MODID).get().getModInfo().getVersion();
             URL url;
             try {

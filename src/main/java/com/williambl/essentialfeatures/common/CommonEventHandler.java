@@ -1,5 +1,6 @@
 package com.williambl.essentialfeatures.common;
 
+import com.williambl.essentialfeatures.common.config.Config;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.WitchEntity;
@@ -15,7 +16,6 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -23,12 +23,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class CommonEventHandler {
-
-    @SubscribeEvent
-    public void OnPlayerRespawn(PlayerEvent.PlayerRespawnEvent e) {
-        e.getPlayer().world.addParticle(ParticleTypes.EXPLOSION, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, 1.0D, 0.0D, 0.0D);
-        e.getPlayer().world.playSound(null, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.getPlayer().world.rand.nextFloat() - e.getPlayer().world.rand.nextFloat()) * 0.2F) * 0.7F);
-    }
 
     @SubscribeEvent
     public void OnPlayerOpenChest(PlayerInteractEvent.RightClickBlock event) {
@@ -55,22 +49,23 @@ public class CommonEventHandler {
             return;
 
         if (entity instanceof WitchEntity) {
-            System.out.println("witch died! make effects!");
             Random rand = world.rand;
-            for (int i = 0; i < 10; i++) {
+            if (Config.witchBats) {
+                for (int i = 0; i < 10; i++) {
 
-                //Spawn a bat
-                BatEntity bat = new BatEntity(EntityType.BAT, world);
-                bat.setPosition(
-                        entity.posX + rand.nextDouble() - 0.5,
-                        entity.posY + rand.nextDouble(),
-                        entity.posZ + rand.nextDouble() - 0.5
-                );
+                    //Spawn a bat
+                    BatEntity bat = new BatEntity(EntityType.BAT, world);
+                    bat.setPosition(
+                            entity.posX + rand.nextDouble() - 0.5,
+                            entity.posY + rand.nextDouble(),
+                            entity.posZ + rand.nextDouble() - 0.5
+                    );
 
-                world.addEntity(bat);
+                    world.addEntity(bat);
+                }
             }
 
-            if (rand.nextDouble() < 0.05 && e.getSource().getDamageType().equals("player")) {
+            if (rand.nextDouble() < Config.witchCatChance && e.getSource().getDamageType().equals("player")) {
                 CatEntity cat = new CatEntity(EntityType.CAT, world);
                 cat.setPosition(entity.posX, entity.posY, entity.posZ);
 

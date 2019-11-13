@@ -1,7 +1,7 @@
 package com.williambl.essentialfeatures.common.tileentity;
 
 import com.williambl.essentialfeatures.common.block.ViewedBlockBlock;
-import com.williambl.essentialfeatures.common.config.ModConfig;
+import com.williambl.essentialfeatures.common.config.Config;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ViewedBlockTileEntity extends TileEntity implements ITickableTileEntity {
 
-    int radius = ModConfig.viewedBlockRange;
+    int radius = Config.viewedBlockRange;
     boolean wasLookingLastTime;
 
     int tickCounter = 0;
@@ -28,7 +28,7 @@ public class ViewedBlockTileEntity extends TileEntity implements ITickableTileEn
 
         tickCounter++;
 
-        if (tickCounter != ModConfig.viewedBlockDelay)
+        if (tickCounter != Config.viewedBlockDelay)
             return;
         tickCounter = 0;
 
