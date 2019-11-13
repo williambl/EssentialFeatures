@@ -1,12 +1,13 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/essential-features",
   "promos": {
-    "1.14.4-latest": "v3.0.0",
-    "1.14.4-recommended": "v3.0.0",
+    "1.14.4-latest": "v3.0.1",
+    "1.14.4-recommended": "v3.0.1",
     "1.12.2-latest": "v2.2.1",
     "1.12.2-recommended": "v2.2.1"
   },
   "1.14.4": {
+    "v3.0.1": "- Increased weight of injected loot table\n - Rebalanced redstone rod sword\n - Fixed server crashes\n - Added dispenser support to the redstone arrow\n - Made redstone rod activate when hit by redstone rod sword or arrow\n - Improved configurability",
     "v3.0.0": "- Updated to Minecraft 1.14.4\n- This means recipes, loot tables, etc. are now customisable with datapacks\n- Also means that there are now loads of tags instead of oredict\n- Removed smooth double slabs (they exist in vanilla now)\n- Given portable jukeboxes an overhaul\n- Now they work with modded discs\n- And they don't need to be right-clicked on a block to work\n- And they're properly networked\n- The MOTD is now specific to different versions (and can be turned off)\n- Fixed a few bugs"
   },
   "1.12.2": {
