@@ -71,7 +71,7 @@ public class RedstoneRodArrowEntity extends AbstractArrowEntity {
     protected void onHit(RayTraceResult raytraceResultIn) {
         super.onHit(raytraceResultIn);
         if (raytraceResultIn.getType() == RayTraceResult.Type.BLOCK) {
-            if (world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()).getBlock() == ModBlocks.REDSTONE_ROD) {
+            if (world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()).getBlock() == ModBlocks.REDSTONE_ROD && world.canBlockSeeSky(((BlockRayTraceResult) raytraceResultIn).getPos())) {
                 ((TileEntityRedstoneRod) Objects.requireNonNull(world.getTileEntity(((BlockRayTraceResult) raytraceResultIn).getPos()))).makeLightning(world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()));
             }
         }

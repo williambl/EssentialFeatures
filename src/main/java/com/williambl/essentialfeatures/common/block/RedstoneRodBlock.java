@@ -126,7 +126,7 @@ public class RedstoneRodBlock extends EFBlock {
     @Override
     public void onBlockClicked(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
         super.onBlockClicked(state, worldIn, pos, player);
-        if (player.getHeldItem(Hand.MAIN_HAND).getItem() == ModItems.REDSTONE_ROD_SWORD) {
+        if (player.getHeldItem(Hand.MAIN_HAND).getItem() == ModItems.REDSTONE_ROD_SWORD && worldIn.canBlockSeeSky(pos)) {
             ((TileEntityRedstoneRod) Objects.requireNonNull(worldIn.getTileEntity(pos))).makeLightning(state);
         }
     }
