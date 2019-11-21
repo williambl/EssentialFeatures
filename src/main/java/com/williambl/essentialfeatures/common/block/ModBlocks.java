@@ -84,6 +84,9 @@ public class ModBlocks {
     @ObjectHolder("redstone_rod")
     public static RedstoneRodBlock REDSTONE_ROD;
 
+    @ObjectHolder("lightning_forge")
+    public static LightningForgeBlock LIGHTNING_FORGE;
+
     public static Pair[] STAINED_REDSTONE_TORCHES = new Pair[16];
     public static StainedLampBlock[] STAINED_LAMPS = new StainedLampBlock[16];
 
@@ -142,7 +145,8 @@ public class ModBlocks {
                     new EFDoorBlock("nether_brick_door", Material.ROCK, 1f, 1011, 1005),
                     new EFDoorBlock("purpur_door", Material.ROCK, 1f, 1011, 1005),
 
-                    new RedstoneRodBlock("redstone_rod", Material.MISCELLANEOUS, SoundType.METAL, 0.5f, 0, 13)
+                    new RedstoneRodBlock("redstone_rod", Material.MISCELLANEOUS, SoundType.METAL, 0.5f, 0, 13),
+                    new LightningForgeBlock(Block.Properties.create(Material.ROCK)).setRegistryName("lightning_forge")
             );
 
             for (Pair torchPair :
@@ -189,7 +193,8 @@ public class ModBlocks {
                     new BlockItem(NETTLES, new Item.Properties().group(ItemGroup.DECORATIONS)),
                     new TallBlockItem(NETHER_BRICK_DOOR, new Item.Properties().group(ItemGroup.REDSTONE)),
                     new TallBlockItem(PURPUR_DOOR, new Item.Properties().group(ItemGroup.REDSTONE)),
-                    new BlockItem(REDSTONE_ROD, new Item.Properties().group(ItemGroup.REDSTONE))
+                    new BlockItem(REDSTONE_ROD, new Item.Properties().group(ItemGroup.REDSTONE)),
+                    new BlockItem(LIGHTNING_FORGE, new Item.Properties().group(ItemGroup.DECORATIONS))
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
