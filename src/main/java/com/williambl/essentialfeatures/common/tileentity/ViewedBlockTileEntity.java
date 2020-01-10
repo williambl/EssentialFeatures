@@ -74,11 +74,11 @@ public class ViewedBlockTileEntity extends TileEntity implements ITickableTileEn
 
     public Vec3d getPositionEyes(PlayerEntity playerIn, float partialTicks) {
         if (partialTicks == 1.0F) {
-            return new Vec3d(playerIn.posX, playerIn.posY + (double) playerIn.getEyeHeight(), playerIn.posZ);
+            return new Vec3d(playerIn.getX(), playerIn.getY() + (double) playerIn.getEyeHeight(), playerIn.getZ());
         } else {
-            double d0 = playerIn.prevPosX + (playerIn.posX - playerIn.prevPosX) * (double) partialTicks;
-            double d1 = playerIn.prevPosY + (playerIn.posY - playerIn.prevPosY) * (double) partialTicks + (double) playerIn.getEyeHeight();
-            double d2 = playerIn.prevPosZ + (playerIn.posZ - playerIn.prevPosZ) * (double) partialTicks;
+            double d0 = playerIn.prevPosX + (playerIn.getX() - playerIn.prevPosX) * (double) partialTicks;
+            double d1 = playerIn.prevPosY + (playerIn.getY() - playerIn.prevPosY) * (double) partialTicks + (double) playerIn.getEyeHeight();
+            double d2 = playerIn.prevPosZ + (playerIn.getZ() - playerIn.prevPosZ) * (double) partialTicks;
             return new Vec3d(d0, d1, d2);
         }
     }

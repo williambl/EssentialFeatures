@@ -17,7 +17,7 @@ public class SharpenedArrowRenderer extends ArrowRenderer<SharpenedArrowEntity> 
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(SharpenedArrowEntity entity) {
+    public ResourceLocation getEntityTexture(SharpenedArrowEntity entity) {
         return texture;
     }
 

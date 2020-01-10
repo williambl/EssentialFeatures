@@ -1,35 +1,6 @@
 package com.williambl.essentialfeatures.datagen;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.williambl.essentialfeatures.EssentialFeatures;
-import com.williambl.essentialfeatures.common.block.*;
-import com.williambl.essentialfeatures.common.item.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.RedstoneTorchBlock;
-import net.minecraft.block.RedstoneWallTorchBlock;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DirectoryCache;
-import net.minecraft.data.IDataProvider;
-import net.minecraft.data.LootTableProvider;
-import net.minecraft.item.Item;
-import net.minecraft.state.properties.DoorHingeSide;
-import net.minecraft.state.properties.DoubleBlockHalf;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.*;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-
+/*
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
@@ -597,3 +568,4 @@ public class DataGenerators {
         }
     }
 }
+*/

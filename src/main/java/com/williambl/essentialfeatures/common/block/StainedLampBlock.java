@@ -10,6 +10,7 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -62,7 +63,7 @@ public class StainedLampBlock extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    public void scheduledTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isRemote) {
             if (state.get(LIT) && !worldIn.isBlockPowered(pos)) {
                 worldIn.setBlockState(pos, state.cycle(LIT), 2);

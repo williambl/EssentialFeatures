@@ -14,7 +14,10 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -147,12 +150,6 @@ public class RedstoneRodBlock extends EFBlock {
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(POWERED);
         builder.add(FACING);
-    }
-
-    @Override
-    public BlockRenderLayer getRenderLayer()
-    {
-        return BlockRenderLayer.CUTOUT;
     }
 
     public void activate(World worldIn, BlockPos pos, BlockState blockstate) {

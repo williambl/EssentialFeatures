@@ -22,9 +22,9 @@ public class MovingSound extends TickableSound {
         if (!this.entity.isAlive()) {
             this.donePlaying = true;
         } else {
-            this.x = (float) this.entity.posX;
-            this.y = (float) this.entity.posY;
-            this.z = (float) this.entity.posZ;
+            this.x = (float) this.entity.getX();
+            this.y = (float) this.entity.getY();
+            this.z = (float) this.entity.getZ();
         }
     }
 }

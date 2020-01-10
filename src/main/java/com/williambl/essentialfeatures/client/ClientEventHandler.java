@@ -34,8 +34,8 @@ public class ClientEventHandler {
     @SubscribeEvent
     public void OnPlayerRespawn(PlayerEvent.PlayerRespawnEvent e) {
         if (Config.spawnExplosion) {
-            e.getPlayer().world.addParticle(ParticleTypes.EXPLOSION, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, 1.0D, 0.0D, 0.0D);
-            e.getPlayer().world.playSound(null, e.getPlayer().posX, e.getPlayer().posY, e.getPlayer().posZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.getPlayer().world.rand.nextFloat() - e.getPlayer().world.rand.nextFloat()) * 0.2F) * 0.7F);
+            e.getPlayer().world.addParticle(ParticleTypes.EXPLOSION, e.getPlayer().getX(), e.getPlayer().getY(), e.getPlayer().getZ(), 1.0D, 0.0D, 0.0D);
+            e.getPlayer().world.playSound(null, e.getPlayer().getX(), e.getPlayer().getY(), e.getPlayer().getZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 4.0F, (1.0F + (e.getPlayer().world.rand.nextFloat() - e.getPlayer().world.rand.nextFloat()) * 0.2F) * 0.7F);
         }
     }
 

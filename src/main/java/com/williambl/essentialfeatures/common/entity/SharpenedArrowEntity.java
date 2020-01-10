@@ -68,25 +68,23 @@ public class SharpenedArrowEntity extends AbstractArrowEntity {
     protected void onHit(RayTraceResult raytraceResultIn) {
         RayTraceResult.Type raytraceresult$type = raytraceResultIn.getType();
         if (raytraceresult$type == RayTraceResult.Type.ENTITY) {
-            this.func_213868_a((EntityRayTraceResult) raytraceResultIn);
+            this.onEntityHit((EntityRayTraceResult) raytraceResultIn);
         } else if (raytraceresult$type == RayTraceResult.Type.BLOCK) {
             BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) raytraceResultIn;
             BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
             this.inBlockState = blockstate;
             if (!Arrays.asList(breakableMaterials).contains(blockstate.getMaterial())) {
-                Vec3d vec3d = blockraytraceresult.getHitVec().subtract(this.posX, this.posY, this.posZ);
+                Vec3d vec3d = blockraytraceresult.getHitVec().subtract(this.getX(), this.getY(), this.getZ());
                 this.setMotion(vec3d);
                 Vec3d vec3d1 = vec3d.normalize().scale(0.05F);
-                this.posX -= vec3d1.x;
-                this.posY -= vec3d1.y;
-                this.posZ -= vec3d1.z;
+                this.setPos(this.getX() - vec3d1.x, this.getY() - vec3d1.y, this.getZ() - vec3d1.z);
                 this.playSound(this.getHitGroundSound(), 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
                 this.inGround = true;
                 this.arrowShake = 7;
                 this.setIsCritical(false);
                 this.setPierceLevel((byte) 0);
                 this.setHitSound(SoundEvents.ENTITY_ARROW_HIT);
-                this.func_213865_o(false);
+                this.setShotFromCrossbow(false);
                 blockstate.onProjectileCollision(this.world, blockstate, blockraytraceresult, this);
             } else {
                 if (blockstate.getMaterial() != Material.AIR)

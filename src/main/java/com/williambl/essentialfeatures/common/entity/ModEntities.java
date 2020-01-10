@@ -21,8 +21,8 @@ public class ModEntities {
     public static EntityType<RedstoneRodArrowEntity> REDSTONE_ROD_ARROW;
 
     public static void initRenderers() {
-        RenderingRegistry.registerEntityRenderingHandler(SharpenedArrowEntity.class, SharpenedArrowRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(RedstoneRodArrowEntity.class, RedstoneRodArrowRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.SHARPENED_ARROW, SharpenedArrowRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.REDSTONE_ROD_ARROW, RedstoneRodArrowRenderer::new);
     }
 
     @SubscribeEvent

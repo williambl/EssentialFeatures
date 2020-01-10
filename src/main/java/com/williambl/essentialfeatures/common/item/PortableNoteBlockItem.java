@@ -28,7 +28,7 @@ public class PortableNoteBlockItem extends EFItem {
         BlockPos pos = context.getPos();
 
         world.playSound(null, player.getPosition(), getInstrumentFromBlock(world, pos), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(pos));
-        world.addParticle(ParticleTypes.NOTE, player.posX, player.posY + player.getEyeHeight(), player.posZ, 1.0F, 0F, 0F);
+        world.addParticle(ParticleTypes.NOTE, player.getX(), player.getY() + player.getEyeHeight(), player.getZ(), 1.0F, 0F, 0F);
         return ActionResultType.SUCCESS;
     }
 
@@ -43,7 +43,7 @@ public class PortableNoteBlockItem extends EFItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         worldIn.playSound(null, playerIn.getPosition(), getInstrument(0), SoundCategory.RECORDS, 3.0F, getPitchFromPosition(playerIn.getPosition()));
-        worldIn.addParticle(ParticleTypes.NOTE, playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ, 1.0F, 0F, 0F);
+        worldIn.addParticle(ParticleTypes.NOTE, playerIn.getX(), playerIn.getY() + playerIn.getEyeHeight(), playerIn.getZ(), 1.0F, 0F, 0F);
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 

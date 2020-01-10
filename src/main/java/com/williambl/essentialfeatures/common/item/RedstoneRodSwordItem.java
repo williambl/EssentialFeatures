@@ -19,9 +19,9 @@ public class RedstoneRodSwordItem extends SwordItem {
     @Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
     {
-        if (target.world.canBlockSeeSky(new BlockPos(target.posX, target.posY, target.posZ))) {
+        if (target.world.canBlockSeeSky(new BlockPos(target.getX(), target.getY(), target.getZ()))) {
             stack.damageItem(2, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
-            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.posX, target.posY, target.posZ, false);
+            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.getX(), target.getY(), target.getZ(), false);
             ((ServerWorld) target.world).addLightningBolt(bolt);
         }
         stack.damageItem(1, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));

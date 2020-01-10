@@ -26,7 +26,7 @@ public class CryingObsidianBlock extends Block {
         if (context.getPlayer() != null) {
             PlayerEntity player = context.getPlayer();
             player.setSpawnDimenion(player.dimension);
-            player.setSpawnPoint(player.getPosition(), true, player.dimension);
+            player.setSpawnPoint(player.getPosition(), true, true, player.dimension);
 
             particleExplosion(context.getWorld(), context.getPos());
         }

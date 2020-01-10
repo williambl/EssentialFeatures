@@ -17,7 +17,7 @@ public class RedstoneRodArrowRenderer extends ArrowRenderer<RedstoneRodArrowEnti
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(RedstoneRodArrowEntity entity) {
+    public ResourceLocation getEntityTexture(RedstoneRodArrowEntity entity) {
         return texture;
     }
 

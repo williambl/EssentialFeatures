@@ -5,6 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.item.*;
 import net.minecraft.world.FoliageColors;
@@ -222,6 +224,12 @@ public class ModBlocks {
         public static void registerBlockColors() {
             BlockColors blockColors = Minecraft.getInstance().getBlockColors();
             blockColors.register((state, worldIn, pos, tintIndex) -> worldIn != null && pos != null ? BiomeColors.getFoliageColor(worldIn, pos) : FoliageColors.getDefault(), NETTLES);
+        }
+
+        @OnlyIn(Dist.CLIENT)
+        public static void registerBlockRenderTypes() {
+            RenderTypeLookup.setRenderLayer(REDSTONE_ROD, RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(SPIKE_BLOCK, RenderType.getCutoutMipped());
         }
 
     }
