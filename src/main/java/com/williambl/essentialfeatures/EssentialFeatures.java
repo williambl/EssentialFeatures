@@ -62,6 +62,7 @@ public class EssentialFeatures {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         ModBlocks.RegistrationHandler.registerBlockColors();
+        ModBlocks.RegistrationHandler.registerBlockRenderTypes();
         ModItems.RegistrationHandler.registerItemColors();
         ModEntities.initRenderers();
 
