@@ -19,26 +19,19 @@ public class ModTileEntities {
     public static TileEntityType<BlockPlacerTileEntity> BLOCK_PLACER;
     @ObjectHolder("redstone_rod")
     public static TileEntityType<TileEntityRedstoneRod> REDSTONE_ROD;
-    @ObjectHolder("lightning_forge")
-    public static TileEntityType<LightningForgeTileEntity> LIGHTNING_FORGE;
-
-    @ObjectHolder("lightning_forge")
-    public static ContainerType<LightningForgeTileEntity.LightningForgeContainer> LIGHTNING_FORGE_CONTAINER;
 
     @SubscribeEvent
     public static void registerTileEntities(RegistryEvent.Register<TileEntityType<?>> e) {
         e.getRegistry().registerAll(
                 TileEntityType.Builder.create(ViewedBlockTileEntity::new, ModBlocks.VIEWED_BLOCK).build(null).setRegistryName("viewed_block"),
                 TileEntityType.Builder.create(BlockPlacerTileEntity::new, ModBlocks.BLOCK_PLACER).build(null).setRegistryName("block_placer"),
-                TileEntityType.Builder.create(TileEntityRedstoneRod::new, ModBlocks.REDSTONE_ROD).build(null).setRegistryName("redstone_rod"),
-                TileEntityType.Builder.create(LightningForgeTileEntity::new, ModBlocks.LIGHTNING_FORGE).build(null).setRegistryName("lightning_forge")
+                TileEntityType.Builder.create(TileEntityRedstoneRod::new, ModBlocks.REDSTONE_ROD).build(null).setRegistryName("redstone_rod")
         );
     }
 
     @SubscribeEvent
     public static void registerContainers(RegistryEvent.Register<ContainerType<?>> e) {
         e.getRegistry().registerAll(
-                new ContainerType<>(LightningForgeTileEntity.LightningForgeContainer::new).setRegistryName("lightning_forge")
         );
     }
 }
