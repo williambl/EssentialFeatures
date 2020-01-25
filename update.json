@@ -1,10 +1,15 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/essential-features",
   "promos": {
+    "1.15.2-latest": "v3.1.0",
+    "1.15.2-recommended": "v3.1.0",
     "1.14.4-latest": "v3.0.1",
     "1.14.4-recommended": "v3.0.1",
     "1.12.2-latest": "v2.2.1",
     "1.12.2-recommended": "v2.2.1"
+  },
+  "1.15.2": {
+    "v3.1.0": "- Updated to 1.15.2.\n - Added waterlogging to slate and spikes.\n - Added redstone rod-based smelting."
   },
   "1.14.4": {
     "v3.0.1": "- Increased weight of injected loot table\n - Rebalanced redstone rod sword\n - Fixed server crashes\n - Added dispenser support to the redstone arrow\n - Made redstone rod activate when hit by redstone rod sword or arrow\n - Improved configurability",
