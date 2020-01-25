@@ -3,9 +3,20 @@ package com.williambl.essentialfeatures.common.tileentity;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.BlastingRecipe;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+
+import java.util.List;
+import java.util.Optional;
 
 public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEntity {
 
@@ -53,5 +64,20 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEn
         ModBlocks.REDSTONE_ROD.redstoneEffects(world, pos);
 
         ModBlocks.REDSTONE_ROD.activate(world, pos, blockstate);
+        smeltItems(world, pos);
+    }
+
+    private void smeltItems(World world, BlockPos pos) {
+        List<ItemEntity> itemEntities = world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(pos).grow(3.0));
+
+        for (ItemEntity itemEntity : itemEntities) {
+            Optional<BlastingRecipe> optional = world.getRecipeManager().getRecipe(IRecipeType.BLASTING, new Inventory(itemEntity.getItem()), world);
+            if (optional.isPresent()) {
+                ItemStack result = optional.get().getRecipeOutput().copy();
+                result.setCount(result.getCount() * itemEntity.getItem().getCount());
+                itemEntity.setItem(result);
+                itemEntity.setInvulnerable(true);
+            }
+        }
     }
 }
