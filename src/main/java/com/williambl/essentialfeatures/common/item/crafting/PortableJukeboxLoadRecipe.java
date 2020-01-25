@@ -93,6 +93,6 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
     }
 
     public IRecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.PORTABLE_JUKEBOX_LOAD;
+        return ModCrafting.PORTABLE_JUKEBOX_LOAD;
     }
 }

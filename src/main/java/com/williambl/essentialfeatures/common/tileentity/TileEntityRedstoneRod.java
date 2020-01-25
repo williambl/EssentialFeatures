@@ -1,6 +1,8 @@
 package com.williambl.essentialfeatures.common.tileentity;
 
 import com.williambl.essentialfeatures.common.block.ModBlocks;
+import com.williambl.essentialfeatures.common.item.crafting.LightningRecipe;
+import com.williambl.essentialfeatures.common.item.crafting.ModCrafting;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -71,9 +73,12 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEn
         List<ItemEntity> itemEntities = world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(pos).grow(3.0));
 
         for (ItemEntity itemEntity : itemEntities) {
-            Optional<BlastingRecipe> optional = world.getRecipeManager().getRecipe(IRecipeType.BLASTING, new Inventory(itemEntity.getItem()), world);
-            if (optional.isPresent()) {
-                ItemStack result = optional.get().getRecipeOutput().copy();
+            Optional<LightningRecipe> optionalLightningRecipe = world.getRecipeManager().getRecipe(ModCrafting.LIGHTNING_SMELTING_TYPE, new Inventory(itemEntity.getItem()), world);
+            Optional<BlastingRecipe> optionalBlastingRecipe = world.getRecipeManager().getRecipe(IRecipeType.BLASTING, new Inventory(itemEntity.getItem()), world);
+            if (optionalLightningRecipe.isPresent() || optionalBlastingRecipe.isPresent()) {
+                ItemStack result = optionalLightningRecipe.map(
+                        lightningRecipe -> lightningRecipe.getRecipeOutput().copy())
+                        .orElseGet(() -> optionalBlastingRecipe.get().getRecipeOutput().copy());
                 result.setCount(result.getCount() * itemEntity.getItem().getCount());
                 itemEntity.setItem(result);
                 itemEntity.setInvulnerable(true);
