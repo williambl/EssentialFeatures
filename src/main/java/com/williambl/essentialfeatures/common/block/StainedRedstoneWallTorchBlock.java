@@ -19,6 +19,11 @@ public class StainedRedstoneWallTorchBlock extends RedstoneWallTorchBlock {
         this.setRegistryName(registryName);
     }
 
+    @Override
+    public int getLightValue(BlockState state) {
+        return state.get(LIT) ? 7 : 0;
+    }
+
     /**
      * Get the Item that this Block should drop when harvested.
      */
