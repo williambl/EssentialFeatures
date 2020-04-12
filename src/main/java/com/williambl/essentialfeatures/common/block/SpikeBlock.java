@@ -22,10 +22,17 @@ import net.minecraft.world.World;
 
 public class SpikeBlock extends Block implements IWaterLoggable {
 
+    private static VoxelShape SPIKE_SHAPE = makeCuboidShape(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+
     public SpikeBlock(String registryName, Material material, float hardness, float resistance) {
         super(Properties.create(material).hardnessAndResistance(hardness, resistance));
         this.setRegistryName(registryName);
         this.setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+        return SPIKE_SHAPE;
     }
 
     @Override
