@@ -37,7 +37,8 @@ public class BlockBreakerBlock extends DirectionalBlock {
 
     public void destroy(BlockPos pos, BlockState state, World worldIn) {
         BlockPos offsetPos = pos.offset(state.get(FACING));
-        worldIn.destroyBlock(offsetPos, true);
+        if (worldIn.getBlockState(offsetPos).getBlockHardness(worldIn, offsetPos) > 0)
+            worldIn.destroyBlock(offsetPos, true);
     }
 
     @Override
