@@ -61,8 +61,8 @@ public class RedstoneRodArrowEntity extends AbstractArrowEntity {
     protected void arrowHit(LivingEntity target) {
         super.arrowHit(target);
 
-        if (!world.isRemote && target.world.canBlockSeeSky(new BlockPos(target.getX(), target.getY(), target.getZ()))) {
-            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.getX(), target.getY(), target.getZ(), false);
+        if (!world.isRemote && target.world.canBlockSeeSky(new BlockPos(target.getPosX(), target.getPosY(), target.getPosZ()))) {
+            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.getPosX(), target.getPosY(), target.getPosZ(), false);
             ((ServerWorld) target.world).addLightningBolt(bolt);
         }
     }

@@ -46,8 +46,8 @@ public class BlockBreakerBlock extends DirectionalBlock {
     }
 
     public static Direction getFacingFromEntity(BlockPos pos, LivingEntity entityIn) {
-        if (MathHelper.abs((float) entityIn.getX() - (float) pos.getX()) < 2.0F && MathHelper.abs((float) entityIn.getZ() - (float) pos.getZ()) < 2.0F) {
-            double d0 = entityIn.getY() + (double) entityIn.getEyeHeight();
+        if (MathHelper.abs((float) entityIn.getPosX() - (float) pos.getX()) < 2.0F && MathHelper.abs((float) entityIn.getPosZ() - (float) pos.getZ()) < 2.0F) {
+            double d0 = entityIn.getPosY() + (double) entityIn.getEyeHeight();
 
             if (d0 - (double) pos.getY() > 2.0D) {
                 return Direction.UP;

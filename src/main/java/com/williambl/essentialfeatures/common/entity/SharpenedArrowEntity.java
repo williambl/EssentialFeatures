@@ -74,10 +74,10 @@ public class SharpenedArrowEntity extends AbstractArrowEntity {
             BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
             this.inBlockState = blockstate;
             if (!Arrays.asList(breakableMaterials).contains(blockstate.getMaterial())) {
-                Vec3d vec3d = blockraytraceresult.getHitVec().subtract(this.getX(), this.getY(), this.getZ());
+                Vec3d vec3d = blockraytraceresult.getHitVec().subtract(this.getPosX(), this.getPosY(), this.getPosZ());
                 this.setMotion(vec3d);
                 Vec3d vec3d1 = vec3d.normalize().scale(0.05F);
-                this.setPos(this.getX() - vec3d1.x, this.getY() - vec3d1.y, this.getZ() - vec3d1.z);
+                this.setPosition(this.getPosX() - vec3d1.x, this.getPosY() - vec3d1.y, this.getPosZ() - vec3d1.z);
                 this.playSound(this.getHitGroundSound(), 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
                 this.inGround = true;
                 this.arrowShake = 7;

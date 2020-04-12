@@ -63,7 +63,7 @@ public class StainedLampBlock extends Block {
 
     @Override
     @SuppressWarnings("deprecation")
-    public void scheduledTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isRemote) {
             if (state.get(LIT) && !worldIn.isBlockPowered(pos)) {
                 worldIn.setBlockState(pos, state.cycle(LIT), 2);

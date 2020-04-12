@@ -37,10 +37,10 @@ public class PortableJukeboxItem extends EFItem {
         Item discItem = ItemStack.read(tag).getItem();
 
         if (!(discItem instanceof MusicDiscItem))
-            return ActionResult.pass(player.getHeldItem(handIn));
+            return ActionResult.resultPass(player.getHeldItem(handIn));
         MusicDiscItem disc = (MusicDiscItem) discItem;
 
-        if (player.isSneaking()) {
+        if (player.isShiftKeyDown()) {
             stack.removeChildTag("Disc");
             stack.getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
             player.addItemStackToInventory(new ItemStack(disc));

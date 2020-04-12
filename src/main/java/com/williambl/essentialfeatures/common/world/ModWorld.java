@@ -21,13 +21,13 @@ public class ModWorld {
     public static void registerWorldGenerators() {
         if (Config.nettles) {
             for (Biome biome : new Biome[] {Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.DARK_FOREST_HILLS}) {
-                biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.field_227248_z_.configure(new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ModBlocks.NETTLES.getDefaultState()), new SimpleBlockPlacer()).build()).createDecoratedFeature(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(2))));
+                biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ModBlocks.NETTLES.getDefaultState()), new SimpleBlockPlacer()).build()).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(2))));
             }
         }
 
         if (Config.slate) {
             ForgeRegistries.BIOMES.forEach(
-                    biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ModBlocks.SLATE.getDefaultState().with(SlateBlock.LAYERS, 8), 33)).createDecoratedFeature(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 40, 0, 80))))
+                    biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ModBlocks.SLATE.getDefaultState().with(SlateBlock.LAYERS, 8), 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 40, 0, 80))))
             );
         }
     }

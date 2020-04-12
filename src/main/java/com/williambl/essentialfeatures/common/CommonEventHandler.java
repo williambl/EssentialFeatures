@@ -56,9 +56,9 @@ public class CommonEventHandler {
                     //Spawn a bat
                     BatEntity bat = new BatEntity(EntityType.BAT, world);
                     bat.setPosition(
-                            entity.getX() + rand.nextDouble() - 0.5,
-                            entity.getY() + rand.nextDouble(),
-                            entity.getZ() + rand.nextDouble() - 0.5
+                            entity.getPosX() + rand.nextDouble() - 0.5,
+                            entity.getPosY() + rand.nextDouble(),
+                            entity.getPosZ() + rand.nextDouble() - 0.5
                     );
 
                     world.addEntity(bat);
@@ -67,14 +67,14 @@ public class CommonEventHandler {
 
             if (rand.nextDouble() < Config.witchCatChance && e.getSource().getDamageType().equals("player")) {
                 CatEntity cat = new CatEntity(EntityType.CAT, world);
-                cat.setPosition(entity.getX(), entity.getY(), entity.getZ());
+                cat.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
 
                 cat.setTamedBy((PlayerEntity) Objects.requireNonNull(e.getSource().getTrueSource()));
                 cat.setSitting(true);
 
                 world.addEntity(cat);
             }
-            world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.HOSTILE, 1f, 1f);
+            world.playSound(null, entity.getPosX(), entity.getPosY(), entity.getPosZ(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.HOSTILE, 1f, 1f);
         }
     }
 }
