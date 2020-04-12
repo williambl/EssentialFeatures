@@ -223,8 +223,11 @@ public class ModBlocks {
 
         @OnlyIn(Dist.CLIENT)
         public static void registerBlockRenderTypes() {
-            RenderTypeLookup.setRenderLayer(REDSTONE_ROD, RenderType.getCutout());
-            RenderTypeLookup.setRenderLayer(SPIKE_BLOCK, RenderType.getCutoutMipped());
+            RenderTypeLookup.setRenderLayer(REDSTONE_ROD, RenderType.getCutoutMipped());
+            RenderTypeLookup.setRenderLayer(SPIKE_BLOCK, RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(NETTLES, RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(PURPUR_DOOR, RenderType.getCutoutMipped());
+            RenderTypeLookup.setRenderLayer(NETHER_BRICK_DOOR, RenderType.getCutoutMipped());
             for (Pair<StainedRedstoneTorchBlock, StainedRedstoneWallTorchBlock> pair :
                     STAINED_REDSTONE_TORCHES) {
                 RenderTypeLookup.setRenderLayer(pair.getLeft(), RenderType.getCutout());
