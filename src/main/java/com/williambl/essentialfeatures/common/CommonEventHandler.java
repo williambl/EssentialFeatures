@@ -1,12 +1,16 @@
 package com.williambl.essentialfeatures.common;
 
 import com.williambl.essentialfeatures.common.config.Config;
+import com.williambl.essentialfeatures.common.item.ModItems;
+import com.williambl.essentialfeatures.common.networking.ModPackets;
+import com.williambl.essentialfeatures.common.networking.PortableJukeboxMessage;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.WitchEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.ChestTileEntity;
@@ -15,14 +19,28 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Objects;
 import java.util.Random;
 
 public class CommonEventHandler {
+
+    @SubscribeEvent
+    public void onPlayerDropItem(ItemTossEvent event) {
+        ItemStack stack = event.getEntityItem().getItem();
+
+        if (stack.getItem() == ModItems.PORTABLE_JUKEBOX) {
+            PlayerEntity player = event.getPlayer();
+            if (!player.world.isRemote) {
+                ModPackets.INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PortableJukeboxMessage(false, player.getUniqueID(), ItemStack.read(stack.getOrCreateChildTag("Disc")).getItem().getRegistryName()));
+            }
+        }
+    }
 
     @SubscribeEvent
     public void OnPlayerOpenChest(PlayerInteractEvent.RightClickBlock event) {
