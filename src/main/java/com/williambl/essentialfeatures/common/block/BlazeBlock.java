@@ -27,9 +27,9 @@ public class BlazeBlock extends EFBlock {
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
         if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entityIn)) {
             entityIn.attackEntityFrom(DamageSource.HOT_FLOOR, 5.0F);
+            particleExplosion(worldIn, pos, worldIn.rand);
             entityIn.setFire(10);
         }
-        particleExplosion(worldIn, pos, worldIn.rand);
         super.onEntityWalk(worldIn, pos, entityIn);
     }
 
