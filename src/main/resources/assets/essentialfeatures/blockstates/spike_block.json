@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "waterlogged=false": {
+      "model": "essentialfeatures:block/spike_block"
+    },
+    "waterlogged=true": {
       "model": "essentialfeatures:block/spike_block"
     }
   }

@@ -1,5 +1,5 @@
 {
-  "parent": "builtin/generated",
+  "parent": "item/generated",
   "textures": {
     "layer0": "essentialfeatures:item/door_nether_brick"
   }

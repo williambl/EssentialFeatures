@@ -1,6 +1,36 @@
 package com.williambl.essentialfeatures.datagen;
 
-/*
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.williambl.essentialfeatures.EssentialFeatures;
+import com.williambl.essentialfeatures.common.block.*;
+import com.williambl.essentialfeatures.common.item.ModItems;
+import net.minecraft.block.Block;
+import net.minecraft.block.RedstoneTorchBlock;
+import net.minecraft.block.RedstoneWallTorchBlock;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DirectoryCache;
+import net.minecraft.data.IDataProvider;
+import net.minecraft.data.LootTableProvider;
+import net.minecraft.item.Item;
+import net.minecraft.state.properties.DoorHingeSide;
+import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.storage.loot.*;
+import net.minecraftforge.client.model.generators.*;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
@@ -59,7 +89,7 @@ public class DataGenerators {
                 try {
                     IDataProvider.save(GSON, cache, LootTableManager.toJson(lootTable), path);
                 } catch (IOException e) {
-                    LOGGER.error("Couldn't write loot table {}", path, e);
+                    LOGGER.log(Level.ERROR, "Couldn't write loot table {}", path, e);
                 }
             });
         }
@@ -137,6 +167,8 @@ public class DataGenerators {
             makeItemModelFromBlock(ModBlocks.BLUE_BRICKS);
             makeItemModelFromBlock(ModBlocks.MIXED_BRICKS);
             makeSlateItemModel(ModBlocks.SLATE);
+            makeItemModel(ModBlocks.NETHER_BRICK_DOOR.getRegistryName().getPath(), modLoc("item/door_nether_brick"));
+            makeItemModel(ModBlocks.PURPUR_DOOR.getRegistryName().getPath(), modLoc("item/door_purpur"));
             makeItemModelFromBlock(ModBlocks.BLAZE_BLOCK);
             makeItemModelFromBlock(ModBlocks.PACKED_SAND);
             makeItemModelFromBlock(ModBlocks.PACKED_RED_SAND);
@@ -265,39 +297,39 @@ public class DataGenerators {
         }
 
         private void makeSimpleBlockState(Block block, ResourceLocation texture) {
-            ModelFile model = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/cube_all")))
+            ModelFile model = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", texture);
             getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
         }
 
         private void makeLampBlockState(StainedLampBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
-            ModelFile modelOn = getBuilder(block.getRegistryName().getPath() + "_powered")
-                    .parent(getExistingFile(mcLoc("block/cube_all")))
+            ModelFile modelOn = models().getBuilder(block.getRegistryName().getPath() + "_powered")
+                    .parent(models().getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", onTexture);
-            ModelFile modelOff = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/cube_all")))
+            ModelFile modelOff = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", offTexture);
             getVariantBuilder(block).forAllStates(state -> state.get(StainedLampBlock.LIT) ? ConfiguredModel.builder().modelFile(modelOn).build() : ConfiguredModel.builder().modelFile(modelOff).build());
         }
 
         private void makeStandingTorchBlockState(StainedRedstoneTorchBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
-            ModelFile modelStandingOn = getBuilder(block.getRegistryName().getPath() + "_powered")
-                    .parent(getExistingFile(mcLoc("block/template_torch")))
+            ModelFile modelStandingOn = models().getBuilder(block.getRegistryName().getPath() + "_powered")
+                    .parent(models().getExistingFile(mcLoc("block/template_torch")))
                     .texture("torch", onTexture);
-            ModelFile modelStandingOff = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/template_torch")))
+            ModelFile modelStandingOff = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/template_torch")))
                     .texture("torch", offTexture);
 
             getVariantBuilder(block).forAllStates(state -> state.get(RedstoneTorchBlock.LIT) ? ConfiguredModel.builder().modelFile(modelStandingOn).build() : ConfiguredModel.builder().modelFile(modelStandingOff).build());
         }
 
         private void makeWallTorchBlockState(StainedRedstoneWallTorchBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
-            ModelFile modelWallOn = getBuilder(block.getRegistryName().getPath() + "powered")
-                    .parent(getExistingFile(mcLoc("block/torch_wall")))
+            ModelFile modelWallOn = models().getBuilder(block.getRegistryName().getPath() + "powered")
+                    .parent(models().getExistingFile(mcLoc("block/torch_wall")))
                     .texture("torch", onTexture);
-            ModelFile modelWallOff = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/torch_wall")))
+            ModelFile modelWallOff = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/torch_wall")))
                     .texture("torch", offTexture);
 
             getVariantBuilder(block).forAllStates(state -> {
@@ -325,8 +357,8 @@ public class DataGenerators {
         }
 
         private void makeBlockBreakerBlockState(BlockBreakerBlock block, ResourceLocation platformTexture, ResourceLocation sideTexture, ResourceLocation bottomTexture) {
-            ModelFile model = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/template_piston")))
+            ModelFile model = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/template_piston")))
                     .texture("platform", platformTexture)
                     .texture("side", sideTexture)
                     .texture("bottom", bottomTexture);
@@ -357,13 +389,13 @@ public class DataGenerators {
         }
 
         private void makeBlockPlacerBlockState(BlockPlacerBlock block, ResourceLocation frontTexture, ResourceLocation frontVerticalTexture, ResourceLocation sideTexture, ResourceLocation topTexture) {
-            ModelFile horizontalModel = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/orientable")))
+            ModelFile horizontalModel = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/orientable")))
                     .texture("front", frontTexture)
                     .texture("side", sideTexture)
                     .texture("top", topTexture);
-            ModelFile verticalModel = getBuilder(block.getRegistryName().getPath() + "_vertical")
-                    .parent(getExistingFile(mcLoc("block/orientable_vertical")))
+            ModelFile verticalModel = models().getBuilder(block.getRegistryName().getPath() + "_vertical")
+                    .parent(models().getExistingFile(mcLoc("block/orientable_vertical")))
                     .texture("front", frontVerticalTexture)
                     .texture("side", topTexture);
 
@@ -400,20 +432,20 @@ public class DataGenerators {
         }
 
         private void makeDoorBlockState(EFDoorBlock block, ResourceLocation topTexture, ResourceLocation bottomTexture) {
-            ModelFile bottomModel = getBuilder(block.getRegistryName().getPath() + "_bottom")
-                    .parent(getExistingFile(mcLoc("block/door_bottom")))
+            ModelFile bottomModel = models().getBuilder(block.getRegistryName().getPath() + "_bottom")
+                    .parent(models().getExistingFile(mcLoc("block/door_bottom")))
                     .texture("top", topTexture)
                     .texture("bottom", bottomTexture);
-            ModelFile bottomHingeModel = getBuilder(block.getRegistryName().getPath() + "_bottom_rh")
-                    .parent(getExistingFile(mcLoc("block/door_bottom_rh")))
+            ModelFile bottomHingeModel = models().getBuilder(block.getRegistryName().getPath() + "_bottom_rh")
+                    .parent(models().getExistingFile(mcLoc("block/door_bottom_rh")))
                     .texture("top", topTexture)
                     .texture("bottom", bottomTexture);
-            ModelFile topModel = getBuilder(block.getRegistryName().getPath() + "_top")
-                    .parent(getExistingFile(mcLoc("block/door_top")))
+            ModelFile topModel = models().getBuilder(block.getRegistryName().getPath() + "_top")
+                    .parent(models().getExistingFile(mcLoc("block/door_top")))
                     .texture("top", topTexture)
                     .texture("bottom", bottomTexture);
-            ModelFile topHingeModel = getBuilder(block.getRegistryName().getPath() + "_top_rh")
-                    .parent(getExistingFile(mcLoc("block/door_top_rh")))
+            ModelFile topHingeModel = models().getBuilder(block.getRegistryName().getPath() + "_top_rh")
+                    .parent(models().getExistingFile(mcLoc("block/door_top_rh")))
                     .texture("top", topTexture)
                     .texture("bottom", bottomTexture);
 
@@ -467,8 +499,8 @@ public class DataGenerators {
         }
 
         private void makeRedstoneRodBlockState(RedstoneRodBlock block, ResourceLocation texture) {
-            ModelFile model = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/end_rod")))
+            ModelFile model = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/end_rod")))
                     .texture("end_rod", texture)
                     .texture("particle", texture);
 
@@ -503,8 +535,8 @@ public class DataGenerators {
 
         private void makeSlateBlockState(SlateBlock block, ResourceLocation sideTexture, ResourceLocation topTexture) {
             //Other models are manually made in models/block folder. Don't delete them.
-            ModelFile fullModel = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/cube_column")))
+            ModelFile fullModel = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/cube_column")))
                     .texture("side", sideTexture)
                     .texture("end", topTexture);
 
@@ -512,25 +544,25 @@ public class DataGenerators {
                 ConfiguredModel.Builder builder = ConfiguredModel.builder();
                 switch (state.get(SlateBlock.LAYERS)) {
                     case 1:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height2")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height2")));
                         break;
                     case 2:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height4")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height4")));
                         break;
                     case 3:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height6")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height6")));
                         break;
                     case 4:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height8")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height8")));
                         break;
                     case 5:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height10")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height10")));
                         break;
                     case 6:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height12")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height12")));
                         break;
                     case 7:
-                        builder.modelFile(getExistingFile(modLoc("block/slate_height14")));
+                        builder.modelFile(models().getExistingFile(modLoc("block/slate_height14")));
                         break;
                     case 8:
                         builder.modelFile(fullModel);
@@ -542,30 +574,29 @@ public class DataGenerators {
         }
 
         private void makeCrossModel(Block block, ResourceLocation texture) {
-            ModelFile model = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/cross")))
+            ModelFile model = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/cross")))
                     .texture("cross", texture);
 
             getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
         }
 
         private void makeTintedCrossModel(Block block, ResourceLocation texture) {
-            ModelFile model = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/tinted_cross")))
+            ModelFile model = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/tinted_cross")))
                     .texture("cross", texture);
 
             getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
         }
 
         private void makeViewedBlockModel(ViewedBlockBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
-            ModelFile modelOn = getBuilder(block.getRegistryName().getPath() + "_powered")
-                    .parent(getExistingFile(mcLoc("block/cube_all")))
+            ModelFile modelOn = models().getBuilder(block.getRegistryName().getPath() + "_powered")
+                    .parent(models().getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", onTexture);
-            ModelFile modelOff = getBuilder(block.getRegistryName().getPath())
-                    .parent(getExistingFile(mcLoc("block/cube_all")))
+            ModelFile modelOff = models().getBuilder(block.getRegistryName().getPath())
+                    .parent(models().getExistingFile(mcLoc("block/cube_all")))
                     .texture("all", offTexture);
             getVariantBuilder(block).forAllStates(state -> state.get(ViewedBlockBlock.POWERED) ? ConfiguredModel.builder().modelFile(modelOn).build() : ConfiguredModel.builder().modelFile(modelOff).build());
         }
     }
 }
-*/
