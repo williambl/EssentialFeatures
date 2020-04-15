@@ -3,8 +3,9 @@ package com.williambl.essentialfeatures.common.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
@@ -12,6 +13,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class CryingObsidianBlock extends Block {
@@ -22,15 +24,14 @@ public class CryingObsidianBlock extends Block {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        if (context.getPlayer() != null) {
-            PlayerEntity player = context.getPlayer();
-            player.setSpawnDimenion(player.dimension);
-            player.setSpawnPoint(player.getPosition(), true, true, player.dimension);
-
-            particleExplosion(context.getWorld(), context.getPos());
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        if (placer instanceof PlayerEntity) {
+            if (!worldIn.isRemote) {
+                PlayerEntity player = (PlayerEntity) placer;
+                player.setSpawnDimenion(player.dimension);
+                player.setSpawnPoint(player.getPosition(), true, true, player.dimension);
+            } else particleExplosion(worldIn, pos);
         }
-        return super.getStateForPlacement(context);
     }
 
 
