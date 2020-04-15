@@ -37,8 +37,8 @@ public class SpikeBlock extends Block implements IWaterLoggable {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
         if (entityIn instanceof LivingEntity) {
+            entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
             ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.SLOWNESS, 1, 1));
         }
     }
