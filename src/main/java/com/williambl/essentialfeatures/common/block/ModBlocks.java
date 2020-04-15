@@ -13,6 +13,7 @@ import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,11 +30,11 @@ public class ModBlocks {
     @ObjectHolder("viewed_block")
     public static ViewedBlockBlock VIEWED_BLOCK;
     @ObjectHolder("smooth_glowstone")
-    public static EFBlock SMOOTH_GLOWSTONE;
+    public static Block SMOOTH_GLOWSTONE;
     @ObjectHolder("polished_glowstone")
-    public static EFBlock POLISHED_GLOWSTONE;
+    public static Block POLISHED_GLOWSTONE;
     @ObjectHolder("snow_brick")
-    public static EFBlock SNOW_BRICK;
+    public static Block SNOW_BRICK;
     @ObjectHolder("block_breaker")
     public static BlockBreakerBlock BLOCK_BREAKER;
     @ObjectHolder("crying_obsidian")
@@ -113,9 +114,9 @@ public class ModBlocks {
 
             event.getRegistry().registerAll(
                     new ViewedBlockBlock("viewed_block", Material.ROCK, 5, 5),
-                    new EFBlock("smooth_glowstone", Material.GLASS, SoundType.GLASS, 0.5f, 2, 15),
-                    new EFBlock("polished_glowstone", Material.GLASS, SoundType.GLASS, 1, 2, 15),
-                    new EFBlock("snow_brick", Material.SNOW_BLOCK, SoundType.SNOW, 0.5f, 1),
+                    new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5f, 2).lightValue(15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("smooth_glowstone"),
+                    new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1f, 2).lightValue(15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("polished_glowstone"),
+                    new Block(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.5f, 1).sound(SoundType.SNOW).harvestTool(ToolType.SHOVEL)).setRegistryName("snow_brick"),
                     new BlockBreakerBlock("block_breaker", Material.PISTON, 3, 3),
                     new CryingObsidianBlock("crying_obsidian", Material.ROCK, 100, 100),
                     new SpikeBlock("spike_block", Material.IRON, 1, 1),

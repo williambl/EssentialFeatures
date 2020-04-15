@@ -8,300 +8,141 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "minecraft:alternatives",
+              "type": "minecraft:item",
               "conditions": [
                 {
-                  "condition": "minecraft:inverted",
-                  "term": {
-                    "condition": "minecraft:match_tool",
-                    "predicate": {
-                      "enchantments": [
-                        {
-                          "enchantment": "minecraft:silk_touch",
-                          "levels": {
-                            "min": 1
-                          }
-                        }
-                      ]
-                    }
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "1"
                   }
                 }
               ],
-              "children": [
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "1"
-                      }
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "2"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 2
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "3"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 3
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "4"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 4
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "5"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 5
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "6"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 6
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "7"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 7
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 8
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                }
-              ]
+              "name": "essentialfeatures:slate"
             },
             {
-              "type": "minecraft:alternatives",
-              "children": [
+              "type": "minecraft:item",
+              "conditions": [
                 {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "1"
-                      }
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "2"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 2
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "3"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 3
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "4"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 4
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "5"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 5
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "6"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 6
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "condition": "minecraft:block_state_property",
-                      "block": "essentialfeatures:slate",
-                      "properties": {
-                        "layers": "7"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 7
-                    }
-                  ],
-                  "name": "essentialfeatures:slate"
-                },
-                {
-                  "type": "minecraft:item",
-                  "name": "essentialfeatures:slate"
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "2"
+                  }
                 }
-              ]
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ],
+              "name": "essentialfeatures:slate"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "3"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 3
+                }
+              ],
+              "name": "essentialfeatures:slate"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "4"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 4
+                }
+              ],
+              "name": "essentialfeatures:slate"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "5"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 5
+                }
+              ],
+              "name": "essentialfeatures:slate"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "6"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 6
+                }
+              ],
+              "name": "essentialfeatures:slate"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "essentialfeatures:slate",
+                  "properties": {
+                    "layers": "7"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 7
+                }
+              ],
+              "name": "essentialfeatures:slate"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 8
+                }
+              ],
+              "name": "essentialfeatures:slate"
             }
           ]
         }
