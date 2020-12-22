@@ -1,5 +1,6 @@
 package com.williambl.essentialfeatures.common.item;
 
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.item.IItemTier;
@@ -21,8 +22,10 @@ public class RedstoneRodSwordItem extends SwordItem {
     {
         if (target.world.canBlockSeeSky(new BlockPos(target.getPosX(), target.getPosY(), target.getPosZ()))) {
             stack.damageItem(2, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
-            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.getPosX(), target.getPosY(), target.getPosZ(), false);
-            ((ServerWorld) target.world).addLightningBolt(bolt);
+            LightningBoltEntity bolt = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, target.world);
+            bolt.setPosition(target.getPosX(), target.getPosY(), target.getPosZ());
+            bolt.setEffectOnly(false);
+            target.world.addEntity(bolt);
         }
         stack.damageItem(1, attacker, (entity) -> entity.sendBreakAnimation(attacker.getActiveHand()));
         return true;

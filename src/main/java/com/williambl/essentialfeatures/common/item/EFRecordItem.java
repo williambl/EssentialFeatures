@@ -16,6 +16,8 @@ public class EFRecordItem extends MusicDiscItem {
 
     @Override
     public ITextComponent getDisplayName(ItemStack stack) {
-        return super.getDisplayName(stack).applyTextStyle(TextFormatting.AQUA);
+        ITextComponent displayName = super.getDisplayName(stack);
+        displayName.getStyle().applyFormatting(TextFormatting.AQUA);
+        return displayName;
     }
 }

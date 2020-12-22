@@ -9,6 +9,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -29,8 +30,7 @@ public class StainedLampBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public int getLightValue(BlockState state) {
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return state.get(LIT) ? 15 : 0;
     }
 
@@ -54,7 +54,7 @@ public class StainedLampBlock extends Block {
                 if (flag) {
                     worldIn.getPendingBlockTicks().scheduleTick(pos, this, 4);
                 } else {
-                    worldIn.setBlockState(pos, state.cycle(LIT), 2);
+                    worldIn.setBlockState(pos, state.func_235896_a_(LIT), 2);
                 }
             }
 
@@ -66,7 +66,7 @@ public class StainedLampBlock extends Block {
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isRemote) {
             if (state.get(LIT) && !worldIn.isBlockPowered(pos)) {
-                worldIn.setBlockState(pos, state.cycle(LIT), 2);
+                worldIn.setBlockState(pos, state.func_235896_a_(LIT), 2);
             }
 
         }

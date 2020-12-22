@@ -114,8 +114,8 @@ public class ModBlocks {
 
             event.getRegistry().registerAll(
                     new ViewedBlockBlock("viewed_block", Material.ROCK, 5, 5),
-                    new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5f, 2).lightValue(15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("smooth_glowstone"),
-                    new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1f, 2).lightValue(15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("polished_glowstone"),
+                    new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5f, 2).setLightLevel(state -> 15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("smooth_glowstone"),
+                    new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1f, 2).setLightLevel(state -> 15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("polished_glowstone"),
                     new Block(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.5f, 1).sound(SoundType.SNOW).harvestTool(ToolType.SHOVEL)).setRegistryName("snow_brick"),
                     new BlockBreakerBlock("block_breaker", Material.PISTON, 3, 3),
                     new CryingObsidianBlock("crying_obsidian", Material.ROCK, 100, 100),

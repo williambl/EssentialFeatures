@@ -4,6 +4,7 @@ import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.item.crafting.LightningRecipe;
 import com.williambl.essentialfeatures.common.item.crafting.ModCrafting;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.inventory.Inventory;
@@ -61,8 +62,10 @@ public class TileEntityRedstoneRod extends TileEntity implements ITickableTileEn
 
         tickCounter = 0;
 
-        LightningBoltEntity bolt = new LightningBoltEntity(world, pos.getX(), pos.getY(), pos.getZ(), false);
-        ((ServerWorld) world).addLightningBolt(bolt);
+        LightningBoltEntity bolt = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, world);
+        bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+        bolt.setEffectOnly(false);
+        world.addEntity(bolt);
         ModBlocks.REDSTONE_ROD.redstoneEffects(world, pos);
 
         ModBlocks.REDSTONE_ROD.activate(world, pos, blockstate);

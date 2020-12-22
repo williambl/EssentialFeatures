@@ -13,6 +13,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class BlockPlacerBlock extends DispenserBlock {
 
@@ -33,7 +34,7 @@ public class BlockPlacerBlock extends DispenserBlock {
     }
 
     @Override
-    protected void dispense(World worldIn, BlockPos pos) {
+    protected void dispense(ServerWorld worldIn, BlockPos pos) {
         ProxyBlockSource blocksourceimpl = new ProxyBlockSource(worldIn, pos);
         DispenserTileEntity tileentityblockplacer = blocksourceimpl.getBlockTileEntity();
 
@@ -54,7 +55,7 @@ public class BlockPlacerBlock extends DispenserBlock {
         }
     }
 
-    public class BehaviorPlaceBlock implements IDispenseItemBehavior {
+    public static class BehaviorPlaceBlock implements IDispenseItemBehavior {
         @Override
         public ItemStack dispense(IBlockSource source, ItemStack stack) {
             Block block = Block.getBlockFromItem(stack.getItem());
@@ -71,12 +72,10 @@ public class BlockPlacerBlock extends DispenserBlock {
             if (world.isAirBlock(pos)) {
                 BlockState state = block.getDefaultState()/*getStateForPlacement(new BlockItemUseContext(new ItemUseContext(world, null, stack, pos, facing, pos.getX(), pos.getY(), pos.getZ())))*/;
 
-                if (state != null) {
-                    world.setBlockState(pos, state);
-                    SoundType soundtype = block.getSoundType(state);
-                    world.playSound(null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-                    stack.shrink(1);
-                }
+                world.setBlockState(pos, state);
+                SoundType soundtype = block.getSoundType(state);
+                world.playSound(null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                stack.shrink(1);
             }
 
             return stack;

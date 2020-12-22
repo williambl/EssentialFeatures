@@ -11,6 +11,8 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -30,7 +32,7 @@ public class StainedRedstoneTorchBlock extends RedstoneTorchBlock {
     }
 
     @Override
-    public int getLightValue(BlockState state) {
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return state.get(LIT) ? 7 : 0;
     }
 

@@ -10,7 +10,7 @@ public class EFBlock extends Block {
         super(Block.Properties.create(
                 material).
                 hardnessAndResistance(hardness, resistance).
-                lightValue(lightLevel).
+                setLightLevel((blockState) -> lightLevel).
                 sound(soundType));
         this.setRegistryName(registryName);
     }

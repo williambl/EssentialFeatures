@@ -28,9 +28,9 @@ public class BlockBreakerBlock extends DirectionalBlock {
         if (!worldIn.isRemote) {
             if (worldIn.isBlockPowered(pos)) {
                 destroy(pos, state, worldIn);
-                worldIn.setBlockState(pos, state.cycle(TRIGGERED), 6);
+                worldIn.setBlockState(pos, state.func_235896_a_(TRIGGERED), 6);
             } else if (!worldIn.isBlockPowered(pos)) {
-                worldIn.setBlockState(pos, state.cycle(TRIGGERED), 6);
+                worldIn.setBlockState(pos, state.func_235896_a_(TRIGGERED), 6);
             }
         }
     }

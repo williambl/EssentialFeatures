@@ -20,7 +20,7 @@ public class MovingSound extends TickableSound {
 
     public void tick() {
         if (!this.entity.isAlive()) {
-            this.donePlaying = true;
+            this.finishPlaying();
         } else {
             this.x = (float) this.entity.getPosX();
             this.y = (float) this.entity.getPosY();

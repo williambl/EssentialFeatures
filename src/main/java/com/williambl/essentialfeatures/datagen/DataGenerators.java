@@ -261,7 +261,6 @@ public class DataGenerators {
             makeSimpleBlockState(ModBlocks.SMOOTH_GLOWSTONE, modLoc("block/smooth_glowstone"));
             makeSimpleBlockState(ModBlocks.POLISHED_GLOWSTONE, modLoc("block/polished_glowstone"));
             makeSimpleBlockState(ModBlocks.SNOW_BRICK, modLoc("block/snow_brick"));
-            makeSimpleBlockState(ModBlocks.CRYING_OBSIDIAN, modLoc("block/crying_obsidian"));
             makeSimpleBlockState(ModBlocks.CARVED_STONE, modLoc("block/carved_stone"));
             makeSimpleBlockState(ModBlocks.CARVED_ANDESITE, modLoc("block/carved_andesite"));
             makeSimpleBlockState(ModBlocks.CARVED_DIORITE, modLoc("block/carved_diorite"));

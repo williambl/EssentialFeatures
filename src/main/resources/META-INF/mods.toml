@@ -7,6 +7,8 @@ loaderVersion="[28,)"
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/williambl/EssentialFeatures/issues"
 
+license="MIT"
+
 
 
 # A list of mods - how many allowed here is determined by the individual mod loader
@@ -61,6 +63,6 @@ The mod mainly focuses on adding building blocks, redstone, and music.
 [[dependencies.essentialfeatures]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.4]"
     ordering="NONE"
     side="BOTH"

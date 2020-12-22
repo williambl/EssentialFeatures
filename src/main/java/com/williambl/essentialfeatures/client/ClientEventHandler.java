@@ -9,6 +9,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -18,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.UUID;
 
 public class ClientEventHandler {
 
@@ -45,7 +48,6 @@ public class ClientEventHandler {
             String messageURL = "https://raw.githubusercontent.com/williambl/essentialfeatures-motd/master/motd-" + ModList.get().getModContainerById(EssentialFeatures.MODID).get().getModInfo().getVersion();
             URL url;
             try {
-
                 url = new URL(messageURL);
                 HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 
@@ -54,7 +56,7 @@ public class ClientEventHandler {
                 String output;
 
                 while ((output = bufferedReader.readLine()) != null)
-                    event.getPlayer().sendMessage(new StringTextComponent(output));
+                    event.getPlayer().sendMessage(new StringTextComponent(output), UUID.fromString("41C82C87-7AfB-4024-BA57-13D2C99CAE77"));
                 bufferedReader.close();
 
             } catch (IOException e) {

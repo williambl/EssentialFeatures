@@ -69,14 +69,13 @@ public class NettlesBlock extends BushBlock implements IForgeShearable {
     }
 
     @Override
-    public boolean isShearable(@Nonnull ItemStack item, IWorldReader world, BlockPos pos) {
+    public boolean isShearable(@Nonnull ItemStack item, World world, BlockPos pos) {
         return true;
     }
 
     @Nonnull
     @Override
-    public List<ItemStack> onSheared(@Nonnull ItemStack item, IWorld world, BlockPos pos, int fortune) {
+    public List<ItemStack> onSheared(PlayerEntity player, @Nonnull ItemStack item, World world, BlockPos pos, int fortune) {
         return Collections.singletonList(new ItemStack(ModBlocks.NETTLES));
     }
-
 }

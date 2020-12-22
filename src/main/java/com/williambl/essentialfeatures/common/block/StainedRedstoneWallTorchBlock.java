@@ -5,6 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneWallTorchBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 
 import java.util.Random;
 
@@ -20,7 +22,7 @@ public class StainedRedstoneWallTorchBlock extends RedstoneWallTorchBlock {
     }
 
     @Override
-    public int getLightValue(BlockState state) {
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return state.get(LIT) ? 7 : 0;
     }
 

@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
@@ -62,14 +63,16 @@ public class RedstoneRodArrowEntity extends AbstractArrowEntity {
         super.arrowHit(target);
 
         if (!world.isRemote && target.world.canBlockSeeSky(new BlockPos(target.getPosX(), target.getPosY(), target.getPosZ()))) {
-            LightningBoltEntity bolt = new LightningBoltEntity(target.world, target.getPosX(), target.getPosY(), target.getPosZ(), false);
-            ((ServerWorld) target.world).addLightningBolt(bolt);
+            LightningBoltEntity bolt = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, target.world);
+            bolt.setPosition(target.getPosX(), target.getPosY(), target.getPosZ());
+            bolt.setEffectOnly(false);
+            target.world.addEntity(bolt);
         }
     }
 
     @Override
-    protected void onHit(RayTraceResult raytraceResultIn) {
-        super.onHit(raytraceResultIn);
+    protected void onImpact(RayTraceResult raytraceResultIn) {
+        super.onImpact(raytraceResultIn);
         if (raytraceResultIn.getType() == RayTraceResult.Type.BLOCK) {
             if (world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()).getBlock() == ModBlocks.REDSTONE_ROD && world.canBlockSeeSky(((BlockRayTraceResult) raytraceResultIn).getPos())) {
                 ((TileEntityRedstoneRod) Objects.requireNonNull(world.getTileEntity(((BlockRayTraceResult) raytraceResultIn).getPos()))).makeLightning(world.getBlockState(((BlockRayTraceResult) raytraceResultIn).getPos()));

@@ -40,7 +40,7 @@ public class PortableJukeboxItem extends EFItem {
             return ActionResult.resultPass(player.getHeldItem(handIn));
         MusicDiscItem disc = (MusicDiscItem) discItem;
 
-        if (player.isShiftKeyDown()) {
+        if (player.isSneaking()) {
             stack.removeChildTag("Disc");
             stack.getOrCreateTag().put("Disc", ItemStack.EMPTY.serializeNBT());
             player.addItemStackToInventory(new ItemStack(disc));
@@ -65,7 +65,7 @@ public class PortableJukeboxItem extends EFItem {
         ItemStack discStack = ItemStack.read(tag);
 
         if (discStack.getItem() != Items.AIR)
-            tooltip.add(new StringTextComponent("Disc: ").appendSibling(((MusicDiscItem) discStack.getItem()).getRecordDescription()));
+            tooltip.add(new StringTextComponent("Disc: ").append(((MusicDiscItem) discStack.getItem()).getDescription()));
         else
             tooltip.add(new StringTextComponent("Empty"));
     }
@@ -82,7 +82,7 @@ public class PortableJukeboxItem extends EFItem {
     private List<ItemStack> getJukeboxes() {
         if (jukeboxes == null) {
             jukeboxes = new ArrayList<>();
-            ItemTags.getCollection().getOrCreate(new ResourceLocation("minecraft:music_discs")).getAllElements().forEach(it -> {
+            ItemTags.getCollection().get(new ResourceLocation("minecraft:music_discs")).getAllElements().forEach(it -> {
                 ItemStack stack = new ItemStack(ModItems.PORTABLE_JUKEBOX);
                 stack.getOrCreateTag().put("Disc", new ItemStack(it).serializeNBT());
                 jukeboxes.add(stack);

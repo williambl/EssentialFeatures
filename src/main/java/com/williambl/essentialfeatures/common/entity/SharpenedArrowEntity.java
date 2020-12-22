@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.*;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -65,7 +66,7 @@ public class SharpenedArrowEntity extends AbstractArrowEntity {
     }
 
     @Override
-    protected void onHit(RayTraceResult raytraceResultIn) {
+    protected void onImpact(RayTraceResult raytraceResultIn) {
         RayTraceResult.Type raytraceresult$type = raytraceResultIn.getType();
         if (raytraceresult$type == RayTraceResult.Type.ENTITY) {
             this.onEntityHit((EntityRayTraceResult) raytraceResultIn);
@@ -74,9 +75,9 @@ public class SharpenedArrowEntity extends AbstractArrowEntity {
             BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
             this.inBlockState = blockstate;
             if (!Arrays.asList(breakableMaterials).contains(blockstate.getMaterial())) {
-                Vec3d vec3d = blockraytraceresult.getHitVec().subtract(this.getPosX(), this.getPosY(), this.getPosZ());
+                Vector3d vec3d = blockraytraceresult.getHitVec().subtract(this.getPosX(), this.getPosY(), this.getPosZ());
                 this.setMotion(vec3d);
-                Vec3d vec3d1 = vec3d.normalize().scale(0.05F);
+                Vector3d vec3d1 = vec3d.normalize().scale(0.05F);
                 this.setPosition(this.getPosX() - vec3d1.x, this.getPosY() - vec3d1.y, this.getPosZ() - vec3d1.z);
                 this.playSound(this.getHitGroundSound(), 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
                 this.inGround = true;
