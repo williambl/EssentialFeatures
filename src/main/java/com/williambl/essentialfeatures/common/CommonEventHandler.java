@@ -88,7 +88,7 @@ public class CommonEventHandler {
                 cat.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
 
                 cat.setTamedBy((PlayerEntity) Objects.requireNonNull(e.getSource().getTrueSource()));
-                cat.setSitting(true);
+                cat.func_233687_w_(true);
 
                 world.addEntity(cat);
             }

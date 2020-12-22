@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.dispenser.ProjectileDispenseBehavior;
-import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -102,7 +102,7 @@ public class ModItems {
 
         public static void registerDispenseBehaviours() {
             DispenserBlock.registerDispenseBehavior(ModItems.REDSTONE_ROD_ARROW, new ProjectileDispenseBehavior() {
-                protected IProjectile getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
                     RedstoneRodArrowEntity arrowentity = new RedstoneRodArrowEntity(position.getX(), position.getY(), position.getZ(), worldIn);
                     arrowentity.pickupStatus = AbstractArrowEntity.PickupStatus.ALLOWED;
                     return arrowentity;

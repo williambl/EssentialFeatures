@@ -42,7 +42,6 @@ public class EssentialFeatures {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        ModWorld.registerWorldGenerators();
         ModPackets.registerPackets();
         ModItems.RegistrationHandler.registerDispenseBehaviours();
         ModCrafting.RegistrationHandler.registerRecipeTypes();
