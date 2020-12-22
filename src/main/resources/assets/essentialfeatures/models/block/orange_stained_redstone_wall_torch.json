@@ -1,5 +1,5 @@
 {
-  "parent": "block/torch_wall",
+  "parent": "minecraft:block/wall_torch",
   "textures": {
     "torch": "essentialfeatures:block/orange_stained_redstone_torch"
   }

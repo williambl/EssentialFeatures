@@ -324,10 +324,10 @@ public class DataGenerators {
 
         private void makeWallTorchBlockState(StainedRedstoneWallTorchBlock block, ResourceLocation onTexture, ResourceLocation offTexture) {
             ModelFile modelWallOn = models().getBuilder(block.getRegistryName().getPath() + "powered")
-                    .parent(models().getExistingFile(mcLoc("block/torch_wall")))
+                    .parent(models().getExistingFile(mcLoc("block/wall_torch")))
                     .texture("torch", onTexture);
             ModelFile modelWallOff = models().getBuilder(block.getRegistryName().getPath())
-                    .parent(models().getExistingFile(mcLoc("block/torch_wall")))
+                    .parent(models().getExistingFile(mcLoc("block/wall_torch")))
                     .texture("torch", offTexture);
 
             getVariantBuilder(block).forAllStates(state -> {
