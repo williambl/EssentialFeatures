@@ -37,8 +37,6 @@ public class ModBlocks {
     public static Block SNOW_BRICK;
     @ObjectHolder("block_breaker")
     public static BlockBreakerBlock BLOCK_BREAKER;
-    @ObjectHolder("crying_obsidian")
-    public static CryingObsidianBlock CRYING_OBSIDIAN;
     @ObjectHolder("spike_block")
     public static SpikeBlock SPIKE_BLOCK;
     @ObjectHolder("block_placer")
@@ -118,7 +116,6 @@ public class ModBlocks {
                     new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1f, 2).setLightLevel(state -> 15).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE)).setRegistryName("polished_glowstone"),
                     new Block(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.5f, 1).sound(SoundType.SNOW).harvestTool(ToolType.SHOVEL)).setRegistryName("snow_brick"),
                     new BlockBreakerBlock("block_breaker", Material.PISTON, 3, 3),
-                    new CryingObsidianBlock("crying_obsidian", Material.ROCK, 100, 100),
                     new SpikeBlock("spike_block", Material.IRON, 1, 1),
                     new BlockPlacerBlock("block_placer", Material.ROCK, 5, 5),
 
@@ -170,7 +167,6 @@ public class ModBlocks {
                     new BlockItem(POLISHED_GLOWSTONE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new BlockItem(SNOW_BRICK, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),
                     new BlockItem(BLOCK_BREAKER, new Item.Properties().group(ItemGroup.REDSTONE)),
-                    new BlockItem(CRYING_OBSIDIAN, new Item.Properties().group(ItemGroup.DECORATIONS)),
                     new BlockItem(SPIKE_BLOCK, new Item.Properties().group(ItemGroup.DECORATIONS)),
                     new BlockItem(BLOCK_PLACER, new Item.Properties().group(ItemGroup.REDSTONE)),
                     new BlockItem(CARVED_STONE, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)),

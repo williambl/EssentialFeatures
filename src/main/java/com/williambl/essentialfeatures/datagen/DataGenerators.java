@@ -114,7 +114,6 @@ public class DataGenerators {
             lootTables.put(ModBlocks.POLISHED_GLOWSTONE, createStandardTable("polished_glowstone", ModBlocks.POLISHED_GLOWSTONE));
             lootTables.put(ModBlocks.SNOW_BRICK, createStandardTable("snow_brick", ModBlocks.SNOW_BRICK));
             lootTables.put(ModBlocks.BLOCK_BREAKER, createStandardTable("block_breaker", ModBlocks.BLOCK_BREAKER));
-            lootTables.put(ModBlocks.CRYING_OBSIDIAN, createStandardTable("crying_obsidian", ModBlocks.CRYING_OBSIDIAN));
             lootTables.put(ModBlocks.SPIKE_BLOCK, createStandardTable("spike_block", ModBlocks.SPIKE_BLOCK));
             lootTables.put(ModBlocks.BLOCK_PLACER, createStandardTable("block_placer", ModBlocks.BLOCK_PLACER));
             lootTables.put(ModBlocks.CARVED_STONE, createStandardTable("carved_stone", ModBlocks.CARVED_STONE));
@@ -155,7 +154,6 @@ public class DataGenerators {
             makeItemModelFromBlock(ModBlocks.POLISHED_GLOWSTONE);
             makeItemModelFromBlock(ModBlocks.SNOW_BRICK);
             makeBlockBreakerItemModel(ModBlocks.BLOCK_BREAKER);
-            makeItemModelFromBlock(ModBlocks.CRYING_OBSIDIAN);
             makeFlatItemModelFromBlock(ModBlocks.SPIKE_BLOCK);
             makeItemModelFromBlock(ModBlocks.BLOCK_PLACER);
             makeItemModelFromBlock(ModBlocks.CARVED_STONE);
