@@ -35,7 +35,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
                     }
                     jukebox = stackInSlot;
                 } else {
-                    if (ItemTags.getCollection().get(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
+                    if (ItemTags.getCollection().getTagByID(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
                         if (!disc.isEmpty()) { //There can only be one!
                             return false;
                         }
@@ -67,7 +67,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
 
                     jukebox = stackInSlot.copy();
                 } else {
-                    if (ItemTags.getCollection().get(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
+                    if (ItemTags.getCollection().getTagByID(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
                         if (!disc.isEmpty()) { //There can only be one!
                             return ItemStack.EMPTY;
                         }

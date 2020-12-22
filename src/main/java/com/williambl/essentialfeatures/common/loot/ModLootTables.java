@@ -13,7 +13,7 @@ public class ModLootTables {
 
     private static LootEntry.Builder entry = TableLootEntry.builder(new ResourceLocation("essentialfeatures:inject/loot_chests")).weight(15);
 
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber()
     public static class RegistrationHandler {
         @SubscribeEvent
         public static void onLootTableLoad(LootTableLoadEvent event) {

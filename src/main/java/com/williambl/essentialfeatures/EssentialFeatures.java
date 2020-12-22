@@ -45,6 +45,7 @@ public class EssentialFeatures {
         ModPackets.registerPackets();
         ModItems.RegistrationHandler.registerDispenseBehaviours();
         ModCrafting.RegistrationHandler.registerRecipeTypes();
+        ModWorld.init();
 
         CommonEventHandler handler = new CommonEventHandler();
         MinecraftForge.EVENT_BUS.register(handler);
