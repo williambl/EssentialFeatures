@@ -375,10 +375,10 @@ public class DataGenerators {
                         builder.rotationY(90);
                         break;
                     case UP:
-                        builder.rotationX(90);
+                        builder.rotationX(270);
                         break;
                     case DOWN:
-                        builder.rotationX(270);
+                        builder.rotationX(90);
                         break;
                 }
 

@@ -2,11 +2,11 @@
   "variants": {
     "facing=down,triggered=false": {
       "model": "essentialfeatures:block/block_breaker",
-      "x": 270
+      "x": 90
     },
     "facing=up,triggered=false": {
       "model": "essentialfeatures:block/block_breaker",
-      "x": 90
+      "x": 270
     },
     "facing=north,triggered=false": {
       "model": "essentialfeatures:block/block_breaker"
