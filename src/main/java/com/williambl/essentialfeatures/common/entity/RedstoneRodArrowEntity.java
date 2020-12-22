@@ -4,9 +4,11 @@ import com.williambl.essentialfeatures.common.block.ModBlocks;
 import com.williambl.essentialfeatures.common.item.ModItems;
 import com.williambl.essentialfeatures.common.tileentity.TileEntityRedstoneRod;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
@@ -63,9 +65,11 @@ public class RedstoneRodArrowEntity extends AbstractArrowEntity {
         super.arrowHit(target);
 
         if (!world.isRemote && target.world.canBlockSeeSky(new BlockPos(target.getPosX(), target.getPosY(), target.getPosZ()))) {
+            Entity owner = func_234616_v_();
             LightningBoltEntity bolt = new LightningBoltEntity(EntityType.LIGHTNING_BOLT, target.world);
             bolt.setPosition(target.getPosX(), target.getPosY(), target.getPosZ());
             bolt.setEffectOnly(false);
+            bolt.setCaster(owner instanceof ServerPlayerEntity ? (ServerPlayerEntity) owner : null);
             target.world.addEntity(bolt);
         }
     }
