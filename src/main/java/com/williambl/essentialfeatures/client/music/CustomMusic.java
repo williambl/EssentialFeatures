@@ -8,7 +8,7 @@ import net.minecraft.client.world.ClientWorld;
 
 public class CustomMusic {
 
-    public static ISound PlayMusic(ISound musicIn) {
+    public static ISound playMusic(ISound musicIn) {
         Minecraft mc = Minecraft.getInstance();
         ClientWorld world = mc.world;
         ClientPlayerEntity player = mc.player;
@@ -16,14 +16,15 @@ public class CustomMusic {
             return musicIn;
         }
 
-        if (world.rand.nextFloat() > 0.5) {
+        if (world.rand.nextFloat() > 0.8) {
             return musicIn;
         }
 
         switch (world.getBiome(player.getPosition()).getCategory()) {
             case OCEAN:
-                musicIn = SimpleSound.music(ModSound.OCEAN);
-                return musicIn;
+                return SimpleSound.music(ModSound.OCEAN);
+            case NETHER:
+                return SimpleSound.music(ModSound.NETHER);
             default:
                 return musicIn;
         }

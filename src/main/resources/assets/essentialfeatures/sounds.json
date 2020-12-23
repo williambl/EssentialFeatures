@@ -9,6 +9,16 @@
       }
     ]
   },
+  "nether_music": {
+    "category": "music",
+    "subtitle": "essentialfeatures.subtitle.nether_music",
+    "sounds": [
+      {
+        "name": "essentialfeatures:music/nether/pure-evil",
+        "stream": true
+      }
+    ]
+  },
   "record_scarlet": {
     "category": "record",
     "subtitle": "essentialfeatures.subtitle.record_scarlet",

@@ -9,8 +9,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
-import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -28,7 +26,7 @@ public class ClientEventHandler {
     public void playSoundEvent(PlaySoundEvent event) {
         if (Config.customMusic) {
             if (event.getSound().getCategory() == SoundCategory.MUSIC && !event.getName().startsWith("music.essential_features")) {
-                ISound result = CustomMusic.PlayMusic(event.getSound());
+                ISound result = CustomMusic.playMusic(event.getSound());
                 event.setResultSound(result);
             }
         }
