@@ -18,6 +18,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
         super(idIn);
     }
 
+    @Override
     public boolean matches(CraftingInventory inv, World worldIn) {
         ItemStack jukebox = ItemStack.EMPTY;
         ItemStack disc = ItemStack.EMPTY;
@@ -48,6 +49,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
         return !jukebox.isEmpty() && !disc.isEmpty();
     }
 
+    @Override
     public ItemStack getCraftingResult(CraftingInventory inv) {
         ItemStack jukebox = ItemStack.EMPTY;
         ItemStack disc = ItemStack.EMPTY;
@@ -88,10 +90,12 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
     /**
      * Used to determine if this recipe can fit in a grid of the given width/height
      */
+    @Override
     public boolean canFit(int width, int height) {
         return width * height >= 2;
     }
 
+    @Override
     public IRecipeSerializer<?> getSerializer() {
         return ModCrafting.PORTABLE_JUKEBOX_LOAD;
     }

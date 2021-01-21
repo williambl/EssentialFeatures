@@ -21,8 +21,8 @@ public class PortableJukeboxItem extends EFItem {
 
     private List<ItemStack> jukeboxes = null;
 
-    public PortableJukeboxItem(String registryName, ItemGroup tab) {
-        super(registryName, tab);
+    public PortableJukeboxItem(String registryName, Item.Properties properties) {
+        super(registryName, properties);
     }
 
     /**
@@ -94,5 +94,4 @@ public class PortableJukeboxItem extends EFItem {
         }
         return jukeboxes;
     }
-
 }

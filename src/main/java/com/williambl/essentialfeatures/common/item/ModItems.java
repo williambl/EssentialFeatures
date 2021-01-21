@@ -89,7 +89,7 @@ public class ModItems {
                     new EFItem("cooked_nettles", new Item.Properties().group(ItemGroup.FOOD)),
                     new RedstoneRodSwordItem("redstone_rod_sword", ItemTier.GOLD),
                     new ItemRedstoneRodArrow("redstone_rod_arrow"),
-                    new PortableJukeboxItem("portable_jukebox", ItemGroup.MISC)
+                    new PortableJukeboxItem("portable_jukebox", new Item.Properties().group(ItemGroup.MISC).maxStackSize(1))
             };
 
             final IForgeRegistry<Item> registry = event.getRegistry();
