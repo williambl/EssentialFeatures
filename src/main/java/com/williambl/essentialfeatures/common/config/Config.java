@@ -17,7 +17,7 @@ public class Config {
     public static final CommonConfig COMMON_CONFIG;
     public static final ClientConfig CLIENT_CONFIG;
     public static boolean slate = true;
-    public static boolean nettles = true;
+    public static boolean nettles = false;
     public static int viewedBlockDelay = 2;
     public static int viewedBlockRange = 50;
     public static boolean witchBats = true;
