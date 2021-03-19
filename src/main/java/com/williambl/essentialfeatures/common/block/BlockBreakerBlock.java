@@ -26,10 +26,10 @@ public class BlockBreakerBlock extends DirectionalBlock {
     @Override
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         if (!worldIn.isRemote) {
-            if (worldIn.isBlockPowered(pos)) {
+            if (worldIn.isBlockPowered(pos) && !(state.get(TRIGGERED))) {
                 destroy(pos, state, worldIn);
                 worldIn.setBlockState(pos, state.func_235896_a_(TRIGGERED), 6);
-            } else if (!worldIn.isBlockPowered(pos)) {
+            } else if (!worldIn.isBlockPowered(pos) && state.get(TRIGGERED)) {
                 worldIn.setBlockState(pos, state.func_235896_a_(TRIGGERED), 6);
             }
         }
