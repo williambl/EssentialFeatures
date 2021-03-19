@@ -4,7 +4,7 @@
     "subtitle": "essentialfeatures.subtitle.ocean_music",
     "sounds": [
       {
-        "name": "essentialfeatures:music/ocean/give-up",
+        "name": "essentialfeatures:music/ocean/gave-up",
         "stream": true
       }
     ]

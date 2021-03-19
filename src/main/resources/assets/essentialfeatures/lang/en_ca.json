@@ -75,4 +75,6 @@
   "block.essentialfeatures.black_stained_redstone_torch": "Black Stained Redstone Torch",
   "item.essentialfeatures.redstone_rod_sword": "Redstone Rod Sword",
   "item.essentialfeatures.redstone_rod_arrow": "Redstone Rod Arrow"
+"essentialfeatures.subtitle.ocean_music": "Music: Gave Up",
+  "essentialfeatures.subtitle.nether_music": "Music: Pure Evil"
 }

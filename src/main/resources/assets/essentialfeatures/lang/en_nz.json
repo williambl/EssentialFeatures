@@ -90,5 +90,7 @@
   "essentialfeatures.red_stained_redstone_torch": "Red Stained Redstone Torch",
   "essentialfeatures.silver_stained_redstone_torch": "Light Grey Stained Redstone Torch",
   "essentialfeatures.white_stained_redstone_torch": "White Stained Redstone Torch",
-  "essentialfeatures.yellow_stained_redstone_torch": "Yellow Stained Redstone Torch"
+  "essentialfeatures.yellow_stained_redstone_torch": "Yellow Stained Redstone Torch",
+"essentialfeatures.subtitle.ocean_music": "Music: Gave Up",
+  "essentialfeatures.subtitle.nether_music": "Music: Pure Evil"
 }

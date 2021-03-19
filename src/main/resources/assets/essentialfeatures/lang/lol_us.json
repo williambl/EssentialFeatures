@@ -74,5 +74,7 @@
   "block.essentialfeatures.red_stained_redstone_torch": "Red staind redston glowstick",
   "block.essentialfeatures.black_stained_redstone_torch": "Black staind redston glowstick",
   "item.essentialfeatures.redstone_rod_sword": "elektric sword",
-  "item.essentialfeatures.redstone_rod_arrow": "elektric arrow"
+  "item.essentialfeatures.redstone_rod_arrow": "elektric arrow",
+"essentialfeatures.subtitle.ocean_music": "Music: Gave Up",
+  "essentialfeatures.subtitle.nether_music": "Music: Pure Evil"
 }
