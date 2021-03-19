@@ -36,7 +36,7 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/essential-features"
 credits="/u/Jake_Jeremy made the smooth glowstone texture. /u/DiamondHammer made the polished glowstone texture. github.com/Palmidence made the ocean music, scarlet music and texture, lo-fi music, the powered viewed block texture and the cereal texture."
 
 # A text field displayed in the mod UI
-authors="Willbl3pic"
+authors="Will BL"
 
 # The description text for the mod (multi line!)
 description='''
@@ -63,6 +63,6 @@ The mod mainly focuses on adding building blocks, redstone, and music.
 [[dependencies.essentialfeatures]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4]"
+    versionRange="[1.16, 1.17)"
     ordering="NONE"
     side="BOTH"
