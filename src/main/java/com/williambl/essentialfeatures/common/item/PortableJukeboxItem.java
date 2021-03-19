@@ -12,6 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -80,17 +81,16 @@ public class PortableJukeboxItem extends EFItem {
 
 
     private List<ItemStack> getJukeboxes() {
-        if (jukeboxes == null) {
+        if (jukeboxes == null || jukeboxes.isEmpty()) {
             jukeboxes = new ArrayList<>();
-            ItemTags.getCollection().getTagByID(new ResourceLocation("minecraft:music_discs")).getAllElements().forEach(it -> {
+            ForgeRegistries.ITEMS.getValues().stream()
+                    .filter(it -> it instanceof MusicDiscItem)
+        .map(it -> it.getDefaultInstance().serializeNBT())
+        .forEach(discnbt -> {
                 ItemStack stack = new ItemStack(ModItems.PORTABLE_JUKEBOX);
-                stack.getOrCreateTag().put("Disc", new ItemStack(it).serializeNBT());
+                stack.getOrCreateTag().put("Disc", discnbt);
                 jukeboxes.add(stack);
             });
-        }
-        if (jukeboxes.size() == 0) {
-            jukeboxes = null;
-            return new ArrayList<>();
         }
         return jukeboxes;
     }

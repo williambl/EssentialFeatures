@@ -69,7 +69,7 @@ public class PortableJukeboxLoadRecipe extends SpecialRecipe {
 
                     jukebox = stackInSlot.copy();
                 } else {
-                    if (ItemTags.getCollection().getTagByID(new ResourceLocation("minecraft:music_discs")).contains(stackInSlot.getItem()) || stackInSlot.getItem() instanceof MusicDiscItem) {
+                    if (stackInSlot.getItem() instanceof MusicDiscItem) {
                         if (!disc.isEmpty()) { //There can only be one!
                             return ItemStack.EMPTY;
                         }
